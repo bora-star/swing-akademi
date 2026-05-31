@@ -70,6 +70,7 @@
 
   var API = {
     LEVELS: LEVELS,
+    levelFor: levelFor,
 
     init: function (opts) {
       opts = opts || {};
