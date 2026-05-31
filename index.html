@@ -35,9 +35,9 @@
   <div class="hero">
     <div class="mascot">🐂</div>
     <div class="kicker">Haddini Aş Kulübü</div>
-    <h1>Bir adımda <span class="hl">bir trader.</span></h1>
-    <p class="lead">12 hafta, 4 faz, her gün küçük bir adım. Teoriyi öğren, gerçek piyasada uygula,
-    disiplinini ölç. Acele yok — <b>süreç, sonucu getirir.</b></p>
+    <h1>Şansla değil, <span class="hl">sistemle.</span></h1>
+    <p class="lead">Disiplinli swing trading'i adım adım öğreten 12 haftalık program. Teoriyi öğren,
+    gerçek piyasada uygula, disiplinini ölç. Acele yok — <b>doğru süreç, sonucu kendi getirir.</b></p>
     <div class="cta">
       <a class="btn btn-primary btn-lg" href="modules/modul-01.html">Modül 1'i dene →</a>
       <a class="btn btn-lg btn-ghost" id="continueBtn">Yol haritası ↓</a>
@@ -49,10 +49,10 @@
   <div class="statwrap" style="max-width:960px">
     <div class="spec">
       <div class="spec-main">
-        <h3>Sezgiyle değil, sistemle.</h3>
+        <h3>Bu program seni nereye götürür?</h3>
         <p style="font-size:15.5px;margin:8px 0 4px">Amacımız net: seni <b>disiplinli, kârlı bir swing
-        trader</b> yapmak. Tahmin etmeyi değil, <b>üstünlüğü olan setup'ları bulup tekrarlamayı</b>
-        öğreteceğiz — gerçek piyasada, kendi araçlarınla.</p>
+        trader</b> yapmak. Geleceği tahmin etmeyi değil, <b>üstünlüğü olan setup'ları bulup tekrar
+        tekrar oynamayı</b> öğreteceğiz — gerçek piyasada, kendi araçlarınla.</p>
         <div class="spec-grid">
           <div class="si"><div class="si-l">⏱ Süre</div><div class="si-v">12 hafta · 4 faz · 12 modül</div></div>
           <div class="si"><div class="si-l">🔁 Tempo</div><div class="si-v">Günde ~10 dk + haftalık modül</div></div>
@@ -81,13 +81,13 @@
         <div class="ring" id="lvlRing"><span class="lv" id="lvlIcon">🌱</span></div>
         <div><div class="lbl">Seviye</div><div class="val" id="lvlName">Çaylak</div><div class="sub" id="lvlNext">—</div></div>
       </div>
-      <div class="stat"><div><div class="lbl">Toplam XP</div><div class="val"><span id="xpVal">0</span></div><div class="sub">tecrübe puanı</div></div></div>
-      <div class="stat"><div><div class="lbl">Seri</div><div class="val"><span id="streakVal">0</span> 🔥</div><div class="sub">gün üst üste</div></div></div>
-      <div class="stat"><div><div class="lbl">Disiplin serisi</div><div class="val" style="color:var(--teal-ink)"><span id="discVal">0</span> 🛡️</div><div class="sub">plana sadık gün</div></div></div>
+      <div class="stat"><div><div class="lbl">Tecrübe Puanı</div><div class="val"><span id="xpVal">0</span> XP</div><div class="sub">dersleri bitirdikçe artar</div></div></div>
+      <div class="stat"><div><div class="lbl">Günlük Seri</div><div class="val"><span id="streakVal">0</span> 🔥</div><div class="sub">üst üste çalıştığın gün</div></div></div>
+      <div class="stat"><div><div class="lbl">Disiplin</div><div class="val" style="color:var(--teal-ink)"><span id="discVal">0</span> 🛡️</div><div class="sub">kurallara sadık kaldığın gün</div></div></div>
       <div class="stat" style="flex:1;min-width:170px"><div style="width:100%">
         <div class="lbl">İlerleme · <span id="pctVal">0</span>%</div>
         <div class="pbar" style="margin-top:8px"><i id="pbarFill"></i></div>
-        <div class="sub" style="margin-top:6px"><span id="doneCount">0</span>/12 modül tamam</div>
+        <div class="sub" style="margin-top:6px">12 modülün <span id="doneCount">0</span>'ı tamamlandı</div>
       </div></div>
     </div>
   </div>
@@ -228,7 +228,7 @@
   document.getElementById('lvlRing').style.setProperty('--p', lv.pct);
   document.getElementById('lvlIcon').textContent = lv.icon;
   document.getElementById('lvlName').textContent = lv.name;
-  document.getElementById('lvlNext').textContent = lv.next ? ((lv.next.min - P.xp) + ' XP → ' + lv.next.name) : 'En üst seviye 👑';
+  document.getElementById('lvlNext').textContent = lv.next ? ((lv.next.min - P.xp) + ' XP sonra: ' + lv.next.name) : 'En üst seviye 👑';
   Akademi.countUp(document.getElementById('xpVal'), P.xp);
   document.getElementById('streakVal').textContent = P.streak.count;
   document.getElementById('discVal').textContent = P.discipline.count;
