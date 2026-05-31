@@ -6,23 +6,15 @@
 <title>Swing Akademi · Yolculuk</title>
 <link rel="stylesheet" href="assets/akademi.css">
 <style>
-  /* sayfaya özel küçük dokunuşlar */
-  .hero{padding:64px 0 8px;text-align:center;position:relative}
-  .hero .mascot{width:72px;height:72px;margin:0 auto 20px;display:grid;place-items:center;font-size:34px;
-    background:var(--surface);border:1px solid var(--line);border-radius:22px;box-shadow:var(--shadow);transform:rotate(-3deg)}
+  .hero{padding:60px 0 6px;text-align:center;position:relative}
+  .hero .mascot{width:80px;height:80px;margin:0 auto 18px;display:grid;place-items:center;font-size:38px;
+    background:linear-gradient(160deg,#fff,var(--surface-2));border:1px solid var(--line);border-radius:24px;
+    box-shadow:var(--shadow-lg);transform:rotate(-4deg)}
   .hero h1{margin:6px 0 14px}
-  .hero .lead{max-width:560px;margin:0 auto}
-  .hero .cta{margin-top:26px;display:inline-flex;gap:10px;align-items:center}
-  .statwrap{margin:30px auto 8px;max-width:780px}
-  .toast{position:fixed;left:50%;bottom:28px;transform:translateX(-50%) translateY(20px);opacity:0;
-    background:var(--ink);color:var(--bg);padding:12px 20px;border-radius:12px;font-size:14px;font-weight:500;
-    box-shadow:var(--shadow-lg);transition:.3s var(--ease);z-index:80;pointer-events:none}
-  .toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
-  .sec-h{text-align:center;margin:54px 0 6px}
-  .sec-h .kicker{justify-content:center}
-  .sec-sub{text-align:center;color:var(--ink-3);font-size:14.5px;margin-bottom:8px}
-  .devbar{margin-top:40px;text-align:center;font-size:12px;color:var(--ink-3)}
-  .devbar a{cursor:pointer;border-bottom:1px dashed var(--line-2);color:var(--ink-3)}
+  .hero h1 .hl{background:linear-gradient(120deg,var(--coral),var(--amber));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+  .hero .lead{max-width:580px;margin:0 auto}
+  .hero .cta{margin-top:28px;display:inline-flex;gap:12px;align-items:center;flex-wrap:wrap;justify-content:center}
+  .statwrap{margin:32px auto 4px;max-width:840px}
 </style>
 </head>
 <body>
@@ -43,177 +35,132 @@
   <div class="hero">
     <div class="mascot">🐂</div>
     <div class="kicker">Haddini Aş Kulübü</div>
-    <h1>Bir adımda bir trader.</h1>
+    <h1>Bir adımda <span class="hl">bir trader.</span></h1>
     <p class="lead">12 hafta, 4 faz, her gün küçük bir adım. Teoriyi öğren, gerçek piyasada uygula,
     disiplinini ölç. Acele yok — <b>süreç, sonucu getirir.</b></p>
     <div class="cta">
-      <a class="btn btn-primary btn-lg" id="continueBtn">Yola devam ↓</a>
-      <a class="btn btn-lg" href="CONCEPT.md">Program hakkında</a>
+      <a class="btn btn-primary btn-lg" href="modules/modul-01.html">Modül 1'i dene →</a>
+      <a class="btn btn-lg btn-ghost" id="continueBtn">Yol haritası ↓</a>
     </div>
   </div>
 
   <!-- İSTATİSTİK ŞERİDİ -->
-  <div class="statwrap col reveal">
+  <div class="statwrap reveal">
     <div class="stats">
       <div class="stat">
         <div class="ring" id="lvlRing"><span class="lv" id="lvlIcon">🌱</span></div>
-        <div>
-          <div class="lbl">Seviye</div>
-          <div class="val" id="lvlName">Çaylak</div>
-          <div class="sub" id="lvlNext">—</div>
-        </div>
+        <div><div class="lbl">Seviye</div><div class="val" id="lvlName">Çaylak</div><div class="sub" id="lvlNext">—</div></div>
       </div>
-      <div class="stat">
-        <div>
-          <div class="lbl">Toplam XP</div>
-          <div class="val"><span id="xpVal">0</span></div>
-          <div class="sub">tecrübe puanı</div>
-        </div>
-      </div>
-      <div class="stat">
-        <div>
-          <div class="lbl">Seri</div>
-          <div class="val"><span id="streakVal">0</span> <span style="font-size:16px">🔥</span></div>
-          <div class="sub">gün üst üste</div>
-        </div>
-      </div>
-      <div class="stat">
-        <div>
-          <div class="lbl">Disiplin serisi</div>
-          <div class="val" style="color:var(--teal-ink)"><span id="discVal">0</span> 🛡️</div>
-          <div class="sub">plana sadık gün</div>
-        </div>
-      </div>
-      <div class="stat" style="flex:1;min-width:160px">
-        <div style="width:100%">
-          <div class="lbl">İlerleme · <span id="pctVal">0</span>%</div>
-          <div class="pbar" style="margin-top:8px"><i id="pbarFill"></i></div>
-          <div class="sub" style="margin-top:6px"><span id="doneCount">0</span>/12 modül</div>
-        </div>
-      </div>
+      <div class="stat"><div><div class="lbl">Toplam XP</div><div class="val"><span id="xpVal">0</span></div><div class="sub">tecrübe puanı</div></div></div>
+      <div class="stat"><div><div class="lbl">Seri</div><div class="val"><span id="streakVal">0</span> 🔥</div><div class="sub">gün üst üste</div></div></div>
+      <div class="stat"><div><div class="lbl">Disiplin serisi</div><div class="val" style="color:var(--teal-ink)"><span id="discVal">0</span> 🛡️</div><div class="sub">plana sadık gün</div></div></div>
+      <div class="stat" style="flex:1;min-width:170px"><div style="width:100%">
+        <div class="lbl">İlerleme · <span id="pctVal">0</span>%</div>
+        <div class="pbar" style="margin-top:8px"><i id="pbarFill"></i></div>
+        <div class="sub" style="margin-top:6px"><span id="doneCount">0</span>/12 modül tamam</div>
+      </div></div>
     </div>
   </div>
 
-  <!-- YOLCULUK HARİTASI -->
-  <div class="sec-h"><span class="kicker">🗺️ Yolculuk Haritası</span></div>
-  <div class="sec-sub">Her modül bir öncekinin üstüne kurulur. Sırayı takip et.</div>
+  <!-- YOL HARİTASI · 4 faz kolonu (yatay) -->
+  <div class="sec-h"><span class="kicker">🗺️ Yol Haritası</span></div>
+  <div class="sec-sub">Soldan sağa ilerle — her faz bir öncekinin üstüne kurulur.</div>
 
-  <div class="path" id="path">
-    <div class="spine"><i id="spineFill"></i></div>
+  <div class="roadmap" id="roadmap">
 
-    <div class="phase-mark"><span class="tag"><span class="n">Faz 1</span> · Temel & Zihniyet</span></div>
+    <!-- FAZ 1 -->
+    <div class="phase-col p1">
+      <div class="ph-head"><span class="pn">1</span><div><div class="pt">Temel & Zihniyet</div><div class="pw">Hafta 1–3</div></div></div>
+      <div class="ph-cards">
+        <a class="rcard" data-mod="1" href="modules/modul-01.html">
+          <div class="rc-top"><span class="rc-wk">Hafta 1</span><span class="rc-xp">+60 XP</span></div>
+          <h4>Swing Trading'in DNA'sı</h4><p>Swing nedir, neden çalışır, kazanma oranı yanılgısı, zihniyet.</p>
+          <span class="rc-state"></span>
+        </a>
+        <a class="rcard" data-mod="2" href="#">
+          <div class="rc-top"><span class="rc-wk">Hafta 2</span><span class="rc-xp">+70 XP</span></div>
+          <h4>Piyasa Rejimi & Bağlam</h4><p>Önce piyasa, sonra hisse. Risk-on/off, breadth, rotasyon.</p>
+          <span class="rc-state"></span>
+        </a>
+        <a class="rcard" data-mod="3" href="#">
+          <div class="rc-top"><span class="rc-wk">Hafta 3</span><span class="rc-xp">+70 XP</span></div>
+          <h4>Trendin Anatomisi</h4><p>EMA stack, slope, reclaim, göreceli güç. Trend kalitesi.</p>
+          <span class="rc-state"></span>
+        </a>
+      </div>
+    </div>
 
-    <a class="step" data-mod="1" href="modules/modul-01.html">
-      <div class="node">1</div>
-      <div class="mod-card">
-        <div class="mc-ph">Hafta 1</div><h4>Swing Trading'in DNA'sı</h4>
-        <p>Swing nedir, neden çalışır, gerçekçi beklenti, kazanma oranı yanılgısı, zihniyet.</p>
-        <div class="mc-foot"><span class="badge-state"></span><span class="xp">＋60 XP</span></div>
+    <!-- FAZ 2 -->
+    <div class="phase-col p2">
+      <div class="ph-head"><span class="pn">2</span><div><div class="pt">Setup & İcra</div><div class="pw">Hafta 4–6</div></div></div>
+      <div class="ph-cards">
+        <a class="rcard" data-mod="4" href="#">
+          <div class="rc-top"><span class="rc-wk">Hafta 4</span><span class="rc-xp">+80 XP</span></div>
+          <h4>Setup Kataloğu</h4><p>Kırılım, pullback, reclaim, bayrak/VCP, dip-reversal.</p>
+          <span class="rc-state"></span>
+        </a>
+        <a class="rcard" data-mod="5" href="#">
+          <div class="rc-top"><span class="rc-wk">Hafta 5</span><span class="rc-xp">+80 XP</span></div>
+          <h4>Giriş · Stop · Hedef · R/R</h4><p>Giriş tetiği, yapısal stop, ölçülü hedef, R/R ≥ 2:1.</p>
+          <span class="rc-state"></span>
+        </a>
+        <a class="rcard" data-mod="6" href="#">
+          <div class="rc-top"><span class="rc-wk">Hafta 6</span><span class="rc-xp">+80 XP</span></div>
+          <h4>Pozisyon Boyutu & Risk</h4><p>%R modeli, stop'tan lot, portföy ısı. Hayatta kalma.</p>
+          <span class="rc-state"></span>
+        </a>
       </div>
-    </a>
-    <a class="step" data-mod="2" href="#">
-      <div class="node">2</div>
-      <div class="mod-card">
-        <div class="mc-ph">Hafta 2</div><h4>Piyasa Rejimi & Bağlam</h4>
-        <p>"Önce piyasa, sonra hisse." Risk-on/off, breadth, sektör rotasyonu, makro risk.</p>
-        <div class="mc-foot"><span class="badge-state"></span><span class="xp">＋70 XP</span></div>
-      </div>
-    </a>
-    <a class="step" data-mod="3" href="#">
-      <div class="node">3</div>
-      <div class="mod-card">
-        <div class="mc-ph">Hafta 3</div><h4>Trendin Anatomisi</h4>
-        <p>EMA stack (9&gt;21&gt;50), slope, reclaim, göreceli güç. Trend kalitesi skoru.</p>
-        <div class="mc-foot"><span class="badge-state"></span><span class="xp">＋70 XP</span></div>
-      </div>
-    </a>
+    </div>
 
-    <div class="phase-mark"><span class="tag"><span class="n">Faz 2</span> · Setup & İcra</span></div>
+    <!-- FAZ 3 -->
+    <div class="phase-col p3">
+      <div class="ph-head"><span class="pn">3</span><div><div class="pt">Onay Katmanları</div><div class="pw">Hafta 7–9</div></div></div>
+      <div class="ph-cards">
+        <a class="rcard" data-mod="7" href="#">
+          <div class="rc-top"><span class="rc-wk">Hafta 7</span><span class="rc-xp">+90 XP</span></div>
+          <h4>Hacim & Göreceli Güç</h4><p>RVOL ≥ 1.5x, hacim onayı, RS vs SPY, sektör lideri.</p>
+          <span class="rc-state"></span>
+        </a>
+        <a class="rcard" data-mod="8" href="#">
+          <div class="rc-top"><span class="rc-wk">Hafta 8</span><span class="rc-xp">+90 XP</span></div>
+          <h4>Akıllı Para Onayı</h4><p>Opsiyon flow, dark pool, insider, LEAPS. Çift onay.</p>
+          <span class="rc-state"></span>
+        </a>
+        <a class="rcard" data-mod="9" href="#">
+          <div class="rc-top"><span class="rc-wk">Hafta 9</span><span class="rc-xp">+90 XP</span></div>
+          <h4>Katalizör & Earnings</h4><p>Earnings ≤14g = kırmızı bayrak. Gap, IV crush, oyna/kaç.</p>
+          <span class="rc-state"></span>
+        </a>
+      </div>
+    </div>
 
-    <a class="step" data-mod="4" href="#">
-      <div class="node">4</div>
-      <div class="mod-card">
-        <div class="mc-ph">Hafta 4</div><h4>Setup Kataloğu</h4>
-        <p>5 çekirdek setup: kırılım, pullback, reclaim, bayrak/VCP, dip-reversal.</p>
-        <div class="mc-foot"><span class="badge-state"></span><span class="xp">＋80 XP</span></div>
+    <!-- FAZ 4 -->
+    <div class="phase-col p4">
+      <div class="ph-head"><span class="pn">4</span><div><div class="pt">Sistemleşme & Ustalık</div><div class="pw">Hafta 10–12</div></div></div>
+      <div class="ph-cards">
+        <a class="rcard" data-mod="10" href="#">
+          <div class="rc-top"><span class="rc-wk">Hafta 10</span><span class="rc-xp">+100 XP</span></div>
+          <h4>İşlem Günlüğü & Metrikler</h4><p>Win rate, ort. R, expectancy, hata etiketleri.</p>
+          <span class="rc-state"></span>
+        </a>
+        <a class="rcard" data-mod="11" href="#">
+          <div class="rc-top"><span class="rc-wk">Hafta 11</span><span class="rc-xp">+100 XP</span></div>
+          <h4>Portföy · Korelasyon · Korunma</h4><p>Pozisyon kümeleri, ısı, çeşitlendirme yanılgısı, hedge.</p>
+          <span class="rc-state"></span>
+        </a>
+        <a class="rcard" data-mod="12" href="#">
+          <div class="rc-top"><span class="rc-wk">Hafta 12 · 🎓</span><span class="rc-xp">+120 XP</span></div>
+          <h4>Playbook + Rutin + Mezuniyet</h4><p>Kendi playbook'un, günlük rutin, mezuniyet projesi.</p>
+          <span class="rc-state"></span>
+        </a>
       </div>
-    </a>
-    <a class="step" data-mod="5" href="#">
-      <div class="node">5</div>
-      <div class="mod-card">
-        <div class="mc-ph">Hafta 5</div><h4>Giriş · Stop · Hedef · R/R</h4>
-        <p>Giriş tetiği, yapısal stop, ölçülü hedef, Risk/Reward ≥ 2:1 disiplini.</p>
-        <div class="mc-foot"><span class="badge-state"></span><span class="xp">＋80 XP</span></div>
-      </div>
-    </a>
-    <a class="step" data-mod="6" href="#">
-      <div class="node">6</div>
-      <div class="mod-card">
-        <div class="mc-ph">Hafta 6</div><h4>Pozisyon Boyutu & Risk</h4>
-        <p>%R modeli, stop mesafesinden lot, portföy ısı. "Önce ne kadar kaybederim."</p>
-        <div class="mc-foot"><span class="badge-state"></span><span class="xp">＋80 XP</span></div>
-      </div>
-    </a>
-
-    <div class="phase-mark"><span class="tag"><span class="n">Faz 3</span> · Onay Katmanları</span></div>
-
-    <a class="step" data-mod="7" href="#">
-      <div class="node">7</div>
-      <div class="mod-card">
-        <div class="mc-ph">Hafta 7</div><h4>Hacim & Göreceli Güç</h4>
-        <p>RVOL ≥ 1.5x, kırılımda hacim onayı, RS vs SPY, sektör lideri olma.</p>
-        <div class="mc-foot"><span class="badge-state"></span><span class="xp">＋90 XP</span></div>
-      </div>
-    </a>
-    <a class="step" data-mod="8" href="#">
-      <div class="node">8</div>
-      <div class="mod-card">
-        <div class="mc-ph">Hafta 8</div><h4>Akıllı Para Onayı</h4>
-        <p>Opsiyon flow, dark pool, congress/insider, LEAPS. Çift onay: swing ∩ flow.</p>
-        <div class="mc-foot"><span class="badge-state"></span><span class="xp">＋90 XP</span></div>
-      </div>
-    </a>
-    <a class="step" data-mod="9" href="#">
-      <div class="node">9</div>
-      <div class="mod-card">
-        <div class="mc-ph">Hafta 9</div><h4>Katalizör & Earnings</h4>
-        <p>Earnings ≤14 gün = kırmızı bayrak. Gap riski, IV crush, oyna vs kaçın.</p>
-        <div class="mc-foot"><span class="badge-state"></span><span class="xp">＋90 XP</span></div>
-      </div>
-    </a>
-
-    <div class="phase-mark"><span class="tag"><span class="n">Faz 4</span> · Sistemleşme & Ustalık</span></div>
-
-    <a class="step" data-mod="10" href="#">
-      <div class="node">10</div>
-      <div class="mod-card">
-        <div class="mc-ph">Hafta 10</div><h4>İşlem Günlüğü & Metrikler</h4>
-        <p>Win rate, ort. R, expectancy, R-multiple dağılımı, hata etiketleri.</p>
-        <div class="mc-foot"><span class="badge-state"></span><span class="xp">＋100 XP</span></div>
-      </div>
-    </a>
-    <a class="step" data-mod="11" href="#">
-      <div class="node">11</div>
-      <div class="mod-card">
-        <div class="mc-ph">Hafta 11</div><h4>Portföy · Korelasyon · Korunma</h4>
-        <p>Pozisyon kümeleri, portföy ısı, çeşitlendirme yanılgısı, hedge ne zaman.</p>
-        <div class="mc-foot"><span class="badge-state"></span><span class="xp">＋100 XP</span></div>
-      </div>
-    </a>
-    <a class="step" data-mod="12" href="#">
-      <div class="node">12</div>
-      <div class="mod-card">
-        <div class="mc-ph">Hafta 12 · 🎓</div><h4>Playbook + Rutin + Mezuniyet</h4>
-        <p>Kendi trading playbook'unu yaz, günlük rutini kur, mezuniyet projesi.</p>
-        <div class="mc-foot"><span class="badge-state"></span><span class="xp">＋120 XP</span></div>
-      </div>
-    </a>
+    </div>
   </div>
 
   <!-- ROZETLER -->
   <div class="sec-h reveal"><span class="kicker">🏅 Başarımlar</span></div>
   <div class="sec-sub reveal">Disiplin ve süreklilik ödüllenir — kazanç değil.</div>
-  <div class="badges col reveal" style="justify-content:center;margin-top:14px" id="badges">
+  <div class="badges reveal" style="margin-top:16px" id="badges">
     <div class="badge" data-b="first-step"><div class="b-ic">🌱</div>İlk Adım</div>
     <div class="badge" data-b="phase1"><div class="b-ic">🧭</div>Faz 1</div>
     <div class="badge" data-b="streak5"><div class="b-ic">🔥</div>5 Gün Seri</div>
@@ -222,7 +169,6 @@
     <div class="badge" data-b="graduate"><div class="b-ic">🎓</div>Mezun</div>
   </div>
 
-  <!-- DISCLAIMER -->
   <div class="disclaimer col">
     <b>⚠️ Yatırım tavsiyesi değildir.</b> Bu program yalnızca eğitim amaçlıdır; geçmiş performans
     geleceği garanti etmez. İçerik Telegram'da paylaşılmaz, kripto satışı yapılmaz — bu isimle
@@ -230,26 +176,22 @@
   </div>
 
   <div class="devbar">
-    <span>🔧 Prototip — ilerleme demo verisiyle gösteriliyor.</span>
-    &nbsp;·&nbsp; <a onclick="Akademi.reset()">İlerlemeyi sıfırla (boş hâli gör)</a>
+    🔧 Prototip — ilerleme demo verisiyle. &nbsp;·&nbsp; <a onclick="Akademi.reset()">İlerlemeyi sıfırla</a>
   </div>
-  <div class="foot">Swing Akademi · Tasarım dili v1 · Haddini Aş Kulübü</div>
+  <div class="foot">Swing Akademi · Tasarım dili v2 · Haddini Aş Kulübü</div>
 </div>
 
 <div class="toast" id="toast"></div>
 
 <script src="assets/akademi.js"></script>
 <script>
-  // Master Format butonları
   function fs(){ document.fullscreenElement ? document.exitFullscreen() : document.documentElement.requestFullscreen(); }
   function openTab(){ var b=new Blob([document.documentElement.outerHTML],{type:'text/html'}); window.open(URL.createObjectURL(b),'_blank'); }
   function copyHTML(){ navigator.clipboard.writeText(document.documentElement.outerHTML).then(function(){ toast('HTML kopyalandı ✓'); }); }
-  function toast(msg){ var t=document.getElementById('toast'); t.textContent=msg; t.classList.add('show'); clearTimeout(t._h); t._h=setTimeout(function(){t.classList.remove('show');},1900); }
+  function toast(m){ var t=document.getElementById('toast'); t.textContent=m; t.classList.add('show'); clearTimeout(t._h); t._h=setTimeout(function(){t.classList.remove('show');},1900); }
 
-  // ---- Başlat ----
-  var P = Akademi.init({ demo: true });   // prototip: demo ilerleme. Yayında: {demo:false}
-  Akademi.touchStreak();
-  P = Akademi.get();
+  var P = Akademi.init({ demo: true });   // prototip demo. Yayında: {demo:false}
+  Akademi.touchStreak(); P = Akademi.get();
 
   // İstatistik şeridi
   var lv = Akademi.levelFor(P.xp);
@@ -265,37 +207,28 @@
   document.getElementById('doneCount').textContent = P.completed.length;
   setTimeout(function(){ document.getElementById('pbarFill').style.width = pct + '%'; }, 200);
 
-  // Yol haritası durumları (+ dönüşümlü zigzag)
-  document.querySelectorAll('.step').forEach(function(step, i){
-    step.classList.add(i % 2 === 0 ? 'left' : 'right');
-    var id = +step.getAttribute('data-mod');
+  // Yol haritası durumları
+  document.querySelectorAll('.rcard').forEach(function(card){
+    var id = +card.getAttribute('data-mod');
     var st = Akademi.statusOf(id);
-    step.classList.add(st);
-    var bs = step.querySelector('.badge-state');
-    if (st==='done')    bs.innerHTML = '✓ Tamamlandı';
-    if (st==='current') bs.innerHTML = '⭐ Şimdi sıra burada';
-    if (st==='locked')  bs.innerHTML = '🔒 Kilitli';
-  });
+    card.classList.add(st);
+    var s = card.querySelector('.rc-state');
+    if (st==='done')    s.innerHTML = '✓ Tamamlandı';
+    if (st==='current'){ s.innerHTML = '⭐ Şimdi sıra burada'; var g=document.createElement('span'); g.className='go'; g.textContent='Başla →'; card.appendChild(g); }
+    if (st==='locked')  s.innerHTML = '🔒 Kilitli';
 
-  // Spine dolumu (tamamlanan oranı)
-  setTimeout(function(){ document.getElementById('spineFill').style.height = (P.completed.length/12*100) + '%'; }, 250);
+    // Sadece Modül 1 hazır; diğerleri toast
+    if (id !== 1) card.addEventListener('click', function(e){ e.preventDefault(); toast('Bu modül yakında üretilecek 🛠️'); });
+  });
 
   // Rozetler
   document.querySelectorAll('.badge').forEach(function(b){
     b.classList.add(P.badges.indexOf(b.getAttribute('data-b'))!==-1 ? 'earned' : 'locked');
   });
 
-  // "Yola devam" → mevcut modüle kaydır
   document.getElementById('continueBtn').addEventListener('click', function(e){
     e.preventDefault();
-    var cur = document.querySelector('.step.current') || document.querySelector('.step');
-    cur.scrollIntoView({ behavior:'smooth', block:'center' });
-  });
-
-  // Henüz üretilmemiş modüller (yalnız Modül 1 hazır) → toast
-  document.querySelectorAll('.step').forEach(function(step){
-    var id = +step.getAttribute('data-mod');
-    if (id !== 1) step.addEventListener('click', function(e){ e.preventDefault(); toast('Bu modül yakında üretilecek 🛠️'); });
+    document.getElementById('roadmap').scrollIntoView({behavior:'smooth',block:'start'});
   });
 
   Akademi.revealOnScroll();

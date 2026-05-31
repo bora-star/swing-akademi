@@ -125,6 +125,25 @@
       requestAnimationFrame(step);
     },
 
+    confetti: function (n) {
+      n = n || 44;
+      var colors = ['#FF5436', '#FF9F1C', '#06C29A', '#2E84FF', '#7C5CFF'];
+      for (var i = 0; i < n; i++) {
+        var d = document.createElement('div');
+        d.className = 'confetti-piece';
+        var x = (i * 97 + 13) % 100;                 // deterministik dağılım (Math.random yok)
+        var dur = 2.4 + ((i % 7) * 0.22);
+        var delay = (i % 11) * 0.06;
+        d.style.left = x + 'vw';
+        d.style.background = colors[i % colors.length];
+        d.style.animationDuration = dur + 's';
+        d.style.animationDelay = delay + 's';
+        if (i % 2) d.style.width = '7px', d.style.height = '11px';
+        document.body.appendChild(d);
+        (function (el) { setTimeout(function () { el.remove(); }, (dur + delay) * 1000 + 200); })(d);
+      }
+    },
+
     revealOnScroll: function () {
       var els = document.querySelectorAll('.reveal');
       if (!('IntersectionObserver' in global)) { els.forEach(function (e) { e.classList.add('in'); }); return; }
