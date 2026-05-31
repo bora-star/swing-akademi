@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Modül 1 · Swing Trading'in DNA'sı + Zihniyet</title>
+<style>
+  :root{
+    --bg:#0a0e14; --bg2:#0f1620; --card:#141c28; --card2:#1a2433;
+    --line:#243142; --txt:#e6edf3; --mut:#8b9bb0; --dim:#5e7186;
+    --acc:#3ddc97; --acc2:#4aa8ff; --warn:#ffb454; --bad:#ff6b6b; --p1:#4aa8ff;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:var(--bg);color:var(--txt);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;line-height:1.65;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:820px;margin:0 auto;padding:0 20px 80px}
+
+  .bar{position:sticky;top:0;z-index:50;background:rgba(10,14,20,.85);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+  .bar-in{max-width:820px;margin:0 auto;padding:10px 20px;display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+  .bar .brand{font-weight:700;margin-right:auto;font-size:13.5px;letter-spacing:.3px}
+  .bar .brand span{color:var(--acc)}
+  .bar .brand a{color:var(--dim);text-decoration:none;font-weight:500}
+  .bar .brand a:hover{color:var(--acc)}
+  .btn{background:var(--card2);color:var(--txt);border:1px solid var(--line);border-radius:8px;padding:7px 12px;font-size:12.5px;cursor:pointer;transition:.15s;font-weight:500}
+  .btn:hover{background:var(--acc);color:#06120c;border-color:var(--acc)}
+
+  .head{padding:46px 0 26px;border-bottom:1px solid var(--line)}
+  .crumb{display:flex;align-items:center;gap:10px;font-size:12px;color:var(--dim);margin-bottom:16px;flex-wrap:wrap}
+  .crumb .ph{background:rgba(74,168,255,.12);color:var(--p1);padding:3px 10px;border-radius:20px;font-weight:600;letter-spacing:.5px}
+  .crumb .wk{color:var(--mut)}
+  .head .mn{font-size:13px;color:var(--acc);font-weight:700;letter-spacing:2px;text-transform:uppercase}
+  .head h1{font-size:clamp(28px,5vw,40px);font-weight:800;margin:8px 0 12px;line-height:1.12}
+  .head .lead{color:var(--mut);font-size:16.5px}
+
+  .goals{display:flex;gap:10px;flex-wrap:wrap;margin-top:22px}
+  .goal{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:10px 14px;font-size:13px;display:flex;align-items:center;gap:8px}
+  .goal .c{color:var(--acc)}
+
+  h2{font-size:22px;font-weight:700;margin:40px 0 4px;display:flex;align-items:center;gap:10px;scroll-margin-top:70px}
+  h2 .em{font-size:20px}
+  .lvl{font-size:11px;font-weight:700;padding:3px 9px;border-radius:6px;margin-left:auto;letter-spacing:.5px;text-transform:uppercase}
+  .lvl.t{background:rgba(61,220,151,.15);color:var(--acc)}
+  .lvl.i{background:rgba(199,146,234,.15);color:#c792ea}
+  h3{font-size:16.5px;font-weight:700;margin:24px 0 8px;color:#dbe6f2}
+  p{margin:12px 0;font-size:15px;color:#cdd9e6}
+  ul,ol{margin:12px 0 12px 4px;padding-left:22px}
+  li{margin:7px 0;font-size:15px;color:#cdd9e6}
+  b,strong{color:var(--txt)}
+  .lead2{color:var(--mut);font-size:14.5px;margin-top:2px}
+
+  .yani{background:linear-gradient(135deg,rgba(61,220,151,.08),rgba(74,168,255,.05));border:1px solid rgba(61,220,151,.25);border-left:3px solid var(--acc);border-radius:10px;padding:14px 16px;margin:20px 0;font-size:14.5px}
+  .yani b{color:var(--acc)}
+
+  .callout{border-radius:10px;padding:14px 16px;margin:18px 0;font-size:14.5px;border:1px solid}
+  .callout.warn{background:rgba(255,180,84,.07);border-color:rgba(255,180,84,.3)}
+  .callout.warn b{color:var(--warn)}
+  .callout.bad{background:rgba(255,107,107,.07);border-color:rgba(255,107,107,.3)}
+  .callout.bad b{color:var(--bad)}
+
+  table.cmp{width:100%;border-collapse:collapse;margin:18px 0;font-size:14px}
+  table.cmp th,table.cmp td{padding:11px 13px;border:1px solid var(--line);text-align:left}
+  table.cmp th{background:var(--card2);color:var(--mut);font-size:12px;text-transform:uppercase;letter-spacing:.5px}
+  table.cmp td:first-child{color:var(--mut);font-weight:600}
+
+  .lab{background:var(--bg2);border:1px solid var(--line);border-radius:14px;padding:4px 22px 22px;margin:22px 0}
+  .lab .ltag{display:inline-block;background:var(--acc);color:#06120c;font-weight:700;font-size:12px;padding:4px 12px;border-radius:0 0 10px 10px;letter-spacing:.5px}
+  .lab ol{counter-reset:s;list-style:none;padding-left:0}
+  .lab ol li{counter-increment:s;padding-left:38px;position:relative;margin:12px 0}
+  .lab ol li::before{content:counter(s);position:absolute;left:0;top:0;width:26px;height:26px;background:var(--card2);border:1px solid var(--line);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12.5px;font-weight:700;color:var(--acc)}
+  code.ic{background:#05080d;border:1px solid var(--line);border-radius:5px;padding:2px 7px;font-family:ui-monospace,monospace;font-size:13px;color:var(--acc)}
+
+  .hw{background:var(--card);border:1px solid var(--line);border-left:3px solid var(--p1);border-radius:10px;padding:16px 18px;margin:18px 0}
+  .hw h3{margin-top:4px;color:var(--p1)}
+  .check{list-style:none;padding-left:0}
+  .check li{padding-left:30px;position:relative;margin:9px 0}
+  .check li::before{content:"☐";position:absolute;left:0;top:-1px;color:var(--acc);font-size:17px}
+
+  .quiz{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:6px 20px 18px;margin:18px 0}
+  .q{border-bottom:1px solid var(--line);padding:14px 0}
+  .q:last-child{border-bottom:none}
+  .q .qq{font-weight:600;font-size:14.5px;cursor:pointer;display:flex;gap:8px;align-items:flex-start}
+  .q .qq::marker{content:""}
+  details.q summary{list-style:none}
+  details.q summary::-webkit-details-marker{display:none}
+  .q .ans{margin-top:10px;font-size:14px;color:var(--acc);background:rgba(61,220,151,.06);border-radius:8px;padding:10px 12px}
+  .q .tap{font-size:11.5px;color:var(--dim);margin-left:auto;white-space:nowrap}
+
+  .gloss{background:var(--bg2);border:1px solid var(--line);border-radius:12px;padding:18px 20px;margin:18px 0}
+  .gloss dt{font-weight:700;color:var(--acc2);font-size:14px;margin-top:12px}
+  .gloss dt:first-child{margin-top:0}
+  .gloss dd{margin:3px 0 0;font-size:14px;color:var(--mut)}
+
+  .nav{display:flex;justify-content:space-between;gap:12px;margin-top:40px}
+  .nav a{flex:1;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 16px;text-decoration:none;color:var(--txt);transition:.15s}
+  .nav a:hover{border-color:var(--acc2)}
+  .nav .lbl{font-size:11px;color:var(--dim);text-transform:uppercase;letter-spacing:1px}
+  .nav .ttl{font-size:14.5px;font-weight:600;margin-top:3px}
+  .nav a.next{text-align:right}
+  .nav a.disabled{opacity:.4;pointer-events:none}
+
+  .disc{margin-top:34px;background:rgba(255,107,107,.06);border:1px solid rgba(255,107,107,.2);border-radius:10px;padding:14px 16px;font-size:12.5px;color:var(--mut)}
+  .disc b{color:var(--bad)}
+  footer{margin-top:24px;text-align:center;color:var(--dim);font-size:12px}
+
+  @media print{.bar,.nav{display:none}body{background:#fff;color:#000}}
+</style>
+</head>
+<body>
+
+<div class="bar">
+  <div class="bar-in">
+    <div class="brand">Swing<span>Akademi</span> · <a href="../index.html">Müfredat</a></div>
+    <button class="btn" onclick="openTab()">↗ Aç</button>
+    <button class="btn" onclick="window.print()">🖨 PDF</button>
+    <button class="btn" onclick="copyHTML()">⧉ Kopyala</button>
+    <button class="btn" onclick="fs()">⛶ Tam Ekran</button>
+  </div>
+</div>
+
+<div class="wrap">
+
+  <div class="head">
+    <div class="crumb"><span class="ph">Faz 1 · Temel & Zihniyet</span><span class="wk">Hafta 1</span></div>
+    <div class="mn">Modül 1</div>
+    <h1>Swing Trading'in DNA'sı + Zihniyet</h1>
+    <p class="lead">Para kazanmadan önce <b>oyunu anlamak</b> gerekir. Bu modülde swing trading'in
+    ne olduğunu, neden işe yaradığını ve neden çoğu insanın kaybettiğini — yani <b>gerçekçi
+    beklentiyi</b> kuruyoruz.</p>
+    <div class="goals">
+      <div class="goal"><span class="c">✓</span> Swing nedir, ne değildir</div>
+      <div class="goal"><span class="c">✓</span> Neden çalışır</div>
+      <div class="goal"><span class="c">✓</span> Kazanma oranı yanılgısı</div>
+      <div class="goal"><span class="c">✓</span> Süreç &gt; sonuç zihniyeti</div>
+    </div>
+  </div>
+
+  <h2><span class="em">🎯</span> Swing Trading Nedir?<span class="lvl t">Temel</span></h2>
+  <p>Swing trading, bir hisseyi <b>birkaç gün ile birkaç hafta</b> arasında tutarak fiyatın bir
+  "salınımını" (swing) yakalamaya çalışmaktır. Gün-içi alıp satan <b>day-trader</b> ile yıllarca
+  tutan <b>yatırımcı</b> arasında bir yerde durur.</p>
+
+  <table class="cmp">
+    <tr><th>Tarz</th><th>Tutuş süresi</th><th>Karar temeli</th><th>Ekran başı zaman</th></tr>
+    <tr><td>Scalp / Day-trade</td><td>Saniye – saat</td><td>Çoğunlukla teknik, çok hızlı</td><td>Tüm gün</td></tr>
+    <tr><td><b>Swing</b></td><td><b>2 gün – birkaç hafta</b></td><td><b>Teknik + bağlam + katalizör</b></td><td><b>Günde dakikalar</b></td></tr>
+    <tr><td>Yatırım</td><td>Aylar – yıllar</td><td>Temel/değerleme</td><td>Haftada/ayda bir</td></tr>
+  </table>
+
+  <div class="yani"><b>Yani:</b> Swing, normal işi/hayatı olan biri için en uygun tarzdır. Gün boyu
+  ekrana bakmak zorunda değilsin; akşam tarama yapar, plan kurar, sabah/gün içinde tetik beklersin.</div>
+
+  <h2><span class="em">⚙️</span> Neden Çalışır?<span class="lvl t">Temel</span></h2>
+  <p>Swing trading iki kalıcı piyasa davranışından beslenir:</p>
+  <ul>
+    <li><b>Momentum:</b> Yükselen güçlü hisse, kısa vadede yükselmeye devam etme eğilimindedir.
+    Para güce akar; güç gücü çeker.</li>
+    <li><b>Ortalamaya dönüş:</b> Aşırı uzaklaşan fiyat, bir ortalamaya (örn. hareketli ortalama)
+    geri çekilip oradan tekrar yön bulma eğilimindedir.</li>
+  </ul>
+  <p>İyi bir swing setup'ı genelde bu ikisinin kesişimidir: <b>güçlü trenddeki bir hissenin
+  sağlıklı bir geri çekilme sonrası yeniden harekete geçtiği an.</b> Faz 2'de bunu setup olarak
+  tek tek öğreneceğiz.</p>
+
+  <h2><span class="em">🧠</span> En Büyük Yanılgı: Kazanma Oranı<span class="lvl i">İleri</span></h2>
+  <p>Yeni başlayan herkes şunu sanır: <i>"İyi trader = çok kazanan trader."</i> Yanlış. Bir trader'ı
+  kârlı yapan kazanma oranı değil, <b>beklenen değerdir (expectancy)</b>.</p>
+
+  <h3>Beklenen Değer = (Kazanma oranı × Ort. kazanç) − (Kaybetme oranı × Ort. kayıp)</h3>
+  <p class="lead2">Bunu Modül 5 (R/R) ve Modül 10 (günlük) ile sayısallaştıracağız. Şimdilik sezgi:</p>
+  <ul>
+    <li><b>%40 kazanıp</b> kazançların kayıpların 3 katı olursa → <b>kârlısın.</b></li>
+    <li><b>%70 kazanıp</b> tek bir büyük kayıp tüm küçük kârları silerse → <b>zarardasın.</b></li>
+  </ul>
+
+  <div class="callout warn"><b>⚠️ Kayıp normaldir.</b> En iyi swing trader'lar bile işlemlerinin
+  yarısına yakınında yanılır. Fark, <b>yanıldığında küçük, haklı olduğunda büyük</b> kalmalarıdır.
+  Kaybı kişisel başarısızlık olarak görmek — kuralları bozmanın bir numaralı sebebidir.</div>
+
+  <h2><span class="em">🔥</span> Zihniyet: Süreç &gt; Sonuç<span class="lvl i">İleri</span></h2>
+  <p>Tek bir işlemin sonucu büyük ölçüde <b>şanstır</b>. Doğru kararla kaybedebilir, kötü kararla
+  kazanabilirsin. O yüzden kendini sonuca göre değil, <b>sürece göre</b> değerlendir: "Planıma
+  uydum mu? Riskimi yönettim mi?" — kâr/zarar ikincil.</p>
+
+  <h3>Üç ölümcül duygu ve panzehiri</h3>
+  <table class="cmp">
+    <tr><th>Duygu</th><th>Ne yaptırır</th><th>Panzehir</th></tr>
+    <tr><td>FOMO</td><td>Setup olmadan, geç, kovalayarak girer</td><td>Önceden yazılmış giriş kuralı</td></tr>
+    <tr><td>Revenge (öç)</td><td>Kaybı geri almak için boyutu büyütür</td><td>Sabit risk/işlem (Modül 6)</td></tr>
+    <tr><td>Tilt (kontrol kaybı)</td><td>Üst üste kaybedince plansız savrulur</td><td>Günlük kayıp limiti + mola</td></tr>
+  </table>
+
+  <div class="yani"><b>Yani:</b> Bu programın amacı seni "her zaman haklı çıkan" biri yapmak değil —
+  öyle biri yok. Amaç, <b>tekrarlanabilir bir süreç</b> kurup duyguyu denklemden çıkarmak.</div>
+
+  <!-- LAB -->
+  <div class="lab">
+    <span class="ltag">🧪 BU HAFTANIN LABI · Gözlem</span>
+    <p>Modül 1'in labı bir skill çalıştırmak değil — <b>gözlem disiplini</b> kurmaktır. Para
+    riske etmeden, piyasayı izlemeyi öğreniyorsun.</p>
+    <ol>
+      <li><b>Bir hisse seç</b> (örn. izlediğin, haberini takip ettiğin bir isim). Tercihen $5 üstü,
+      günlük hacmi 1M+ olan likit bir hisse.</li>
+      <li><b>5 iş günü boyunca</b> her gün kapanışta 2 dakika bak: bugün yükseldi mi düştü mü,
+      hacim yüksek miydi, bir haber var mıydı?</li>
+      <li><b>Tek cümle not al</b> her gün. Tahmin yok, işlem yok — sadece <b>ne gördüğünü</b> yaz.</li>
+      <li>Hafta sonunda 5 notuna bak: bir <b>örüntü</b> fark ettin mi? (Örn. "düşük hacimli
+      düşüşler ertesi gün geri alındı.")</li>
+    </ol>
+    <p class="lead2">İleri katman (istersen): Aynı hisseyi <code class="ic">trendcheck</code> ile
+    çalıştır ve skoruna bak — ama yorumlamaya çalışma, sadece tanış. Modül 3'te tam öğreneceğiz.</p>
+  </div>
+
+  <!-- ÖDEV -->
+  <div class="hw">
+    <h3>📝 Ödev</h3>
+    <p>İki şey yaz (telefon notu yeter, sonra <code class="ic">worksheets/</code> şablonuna taşırız):</p>
+    <ol>
+      <li><b>"Neden trade ediyorum?"</b> — 3-4 cümle. Para mı, oyun mu, bağımsızlık mı? Dürüst ol;
+      bu cümle zor günlerde pusulan olacak.</li>
+      <li><b>Kişisel kural taslağı (5 madde)</b> — Şu an bildiğin kadarıyla. Örn: "Stop'suz girmem",
+      "Earnings'e 14 günden yakın hisseye girmem". Program ilerledikçe bunu güncelleyeceğiz.</li>
+    </ol>
+  </div>
+
+  <!-- KONTROL -->
+  <h2><span class="em">✅</span> Bu modülü bitirdim mi?</h2>
+  <ul class="check">
+    <li>Swing'i day-trade ve yatırımdan ayırabiliyorum.</li>
+    <li>"Neden çalışır" (momentum + ortalamaya dönüş) mantığını anladım.</li>
+    <li>Kârlılığın kazanma oranı değil beklenen değer olduğunu kavradım.</li>
+    <li>FOMO / revenge / tilt'i ve panzehirlerini tanıyorum.</li>
+    <li>Gözlem labını yaptım, ödevimi yazdım.</li>
+  </ul>
+
+  <!-- QUIZ -->
+  <h2><span class="em">❓</span> Mini Quiz</h2>
+  <p class="lead2">Cevabı görmek için soruya dokun.</p>
+  <div class="quiz">
+    <details class="q"><summary class="qq">1. Bir trader'ı kârlı yapan nedir? <span class="tap">▾ cevap</span></summary>
+      <div class="ans">Kazanma oranı değil, <b>beklenen değer (expectancy)</b>. Yani kazançların boyutu × sıklığı, kayıpların boyutu × sıklığına göre net pozitif olmalı. %40 kazanıp kârlı olunabilir; %70 kazanıp zarar edilebilir.</div></details>
+    <details class="q"><summary class="qq">2. Swing trading hangi iki piyasa davranışından beslenir? <span class="tap">▾ cevap</span></summary>
+      <div class="ans"><b>Momentum</b> (güç güce çeker) ve <b>ortalamaya dönüş</b> (aşırı uzaklaşan fiyat geri çekilir). İyi setup ikisinin kesişimidir.</div></details>
+    <details class="q"><summary class="qq">3. Üst üste 3 kayıptan sonra pozisyon boyutunu büyütmek hangi hatadır? <span class="tap">▾ cevap</span></summary>
+      <div class="ans"><b>Revenge (öç) trade</b> — kaybı hızla geri alma dürtüsü. Panzehir: her işlemde sabit risk (Modül 6) ve günlük kayıp limiti.</div></details>
+    <details class="q"><summary class="qq">4. Kendini neye göre değerlendirmelisin? <span class="tap">▾ cevap</span></summary>
+      <div class="ans"><b>Sürece</b> göre ("planıma uydum mu, riskimi yönettim mi"), tek işlemin <b>sonucuna</b> göre değil. Tek sonuç büyük ölçüde şanstır.</div></details>
+  </div>
+
+  <!-- SÖZLÜK -->
+  <h2><span class="em">📖</span> Sözlük</h2>
+  <dl class="gloss">
+    <dt>Swing</dt><dd>Fiyatın bir yöndeki salınımı; birkaç gün–hafta süren hareket.</dd>
+    <dt>Momentum</dt><dd>Hareketin kendi yönünde devam etme eğilimi.</dd>
+    <dt>Ortalamaya dönüş (mean reversion)</dt><dd>Aşırı uzaklaşan fiyatın bir ortalamaya geri çekilme eğilimi.</dd>
+    <dt>Beklenen değer (expectancy)</dt><dd>Bir işlem stratejisinin ortalama getirisi; kârlılığın gerçek ölçüsü.</dd>
+    <dt>R</dt><dd>Bir işlemde riske ettiğin miktar (1R). Kazanç/kayıp bunun katı olarak ölçülür. Modül 5.</dd>
+    <dt>FOMO</dt><dd>"Kaçırma korkusu" — setup olmadan, geç ve duygusal giriş.</dd>
+    <dt>Tilt</dt><dd>Üst üste kayıp sonrası kontrolü kaybedip plansız işlem yapma hali.</dd>
+  </dl>
+
+  <!-- NAV -->
+  <div class="nav">
+    <a class="disabled"><div class="lbl">← Önceki</div><div class="ttl">—</div></a>
+    <a class="next" href="modul-02.html"><div class="lbl">Sonraki →</div><div class="ttl">Modül 2 · Piyasa Rejimi & Bağlam</div></a>
+  </div>
+
+  <div class="disc"><b>⚠️ Yatırım tavsiyesi değildir.</b> Eğitim amaçlıdır; geçmiş performans
+  geleceği garanti etmez. İçerik Telegram'da paylaşılmaz, kripto satışı yapılmaz — bu isimle
+  karşınıza çıkan taklit hesaplara/dolandırıcılara karşı dikkatli olun.</div>
+  <footer>Swing Akademi · Modül 1/12 · Haddini Aş Kulübü</footer>
+</div>
+
+<script>
+  function fs(){ if(!document.fullscreenElement){document.documentElement.requestFullscreen();}else{document.exitFullscreen();} }
+  function copyHTML(){ navigator.clipboard.writeText(document.documentElement.outerHTML).then(()=>{event.target.textContent='✓';setTimeout(()=>event.target.textContent='⧉ Kopyala',1200);}); }
+  function openTab(){ const b=new Blob([document.documentElement.outerHTML],{type:'text/html'}); window.open(URL.createObjectURL(b),'_blank'); }
+</script>
+</body>
+</html>

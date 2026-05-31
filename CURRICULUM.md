@@ -11,7 +11,7 @@ Her modülün üretim planı. Modül HTML'i yazılırken bu yapıyı izle.
 
 ## FAZ 1 — TEMEL & ZİHNİYET (Hafta 1-3)
 
-### Modül 1 — Swing Trading'in DNA'sı + Zihniyet ⬜
+### Modül 1 — Swing Trading'in DNA'sı + Zihniyet ✅ (modules/modul-01.html · şablon kilidi)
 - **Hedef:** Swing nedir (gün-içi ile day-trade arası, 2 gün–birkaç hafta tutuş), neden çalışır
   (momentum + ortalamaya dönüş), gerçekçi beklenti (win rate vs R, kayıp normaldir).
 - **Temel:** Time horizon, swing vs yatırım vs scalp; "trend dostundur"; kazanma oranı yanılgısı.
