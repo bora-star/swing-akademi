@@ -1,0 +1,202 @@
+/* ============================================================
+   AKADEMİ DESIGN SYSTEM · v1
+   Sıcak-Açık · Premium-Sıcak · Minimal/tipografi-odaklı
+   Tüm Akademi eğitimleri bu dosyayı paylaşır. İçerik değişir, dil sabit.
+   ============================================================ */
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap');
+
+:root{
+  /* — Sıcak-açık palet — */
+  --bg:        #FBF7F0;   /* krem zemin */
+  --bg-soft:   #F4ECE0;   /* hafif gömük alan */
+  --surface:   #FFFDF9;   /* kart */
+  --surface-2: #FFF8EF;   /* ikincil kart */
+  --ink:       #211C16;   /* sıcak-siyah metin */
+  --ink-2:     #6E655B;   /* yumuşak metin */
+  --ink-3:     #9C9388;   /* soluk metin */
+  --line:      #ECE3D6;   /* hairline */
+  --line-2:    #E2D6C4;
+
+  /* — Aksan (az & bilinçli) — */
+  --coral:     #FF6B4A;   /* ana eylem */
+  --coral-ink: #E0451F;
+  --coral-bg:  #FFEDE7;
+  --amber:     #F5A623;
+  --amber-bg:  #FFF3DC;
+  --teal:      #12B886;   /* başarı / ilerleme */
+  --teal-ink:  #0C8F69;
+  --teal-bg:   #E2F7EF;
+  --violet:    #8B7BD8;   /* nadir vurgular */
+  --bad:       #E5484D;
+
+  /* — Form — */
+  --r-sm:8px; --r:14px; --r-lg:20px; --r-xl:28px;
+  --shadow:   0 2px 4px rgba(120,80,40,.04), 0 8px 24px rgba(150,100,50,.07);
+  --shadow-lg:0 4px 8px rgba(120,80,40,.05), 0 18px 48px rgba(150,100,50,.12);
+  --ring: 0 0 0 4px rgba(255,107,74,.16);
+
+  --serif:'Fraunces',Georgia,'Times New Roman',serif;
+  --sans:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;
+  --col: 720px;
+  --ease:cubic-bezier(.22,.61,.36,1);
+}
+
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.65;
+  -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;
+  background-image:radial-gradient(1200px 600px at 80% -10%,rgba(245,166,35,.06),transparent 60%),
+                   radial-gradient(900px 500px at -10% 10%,rgba(255,107,74,.05),transparent 55%)}
+.wrap{max-width:1080px;margin:0 auto;padding:0 24px 96px}
+.col{max-width:var(--col);margin-inline:auto}
+
+/* — Tipografi — */
+h1,h2,h3,h4{font-family:var(--serif);font-weight:600;line-height:1.12;letter-spacing:-.01em;color:var(--ink)}
+h1{font-size:clamp(34px,5vw,52px);font-weight:600}
+h2{font-size:clamp(24px,3.2vw,32px)}
+h3{font-size:20px}
+p{font-size:16.5px;color:var(--ink-2)}
+a{color:var(--coral-ink);text-decoration:none}
+.kicker{font-family:var(--sans);font-weight:600;font-size:12.5px;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--coral);display:inline-flex;align-items:center;gap:8px}
+.lead{font-size:18.5px;color:var(--ink-2);line-height:1.6}
+.muted{color:var(--ink-3)}
+
+/* — Üst bar — */
+.bar{position:sticky;top:0;z-index:60;background:rgba(251,247,240,.82);
+  backdrop-filter:saturate(140%) blur(14px);border-bottom:1px solid var(--line)}
+.bar-in{max-width:1080px;margin:0 auto;padding:11px 24px;display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.brand{font-family:var(--serif);font-weight:600;font-size:17px;margin-right:auto;display:flex;align-items:center;gap:9px;color:var(--ink)}
+.brand .bull{width:26px;height:26px;display:grid;place-items:center;background:var(--ink);color:var(--bg);border-radius:8px;font-size:15px}
+.brand a{color:var(--ink-3);font-family:var(--sans);font-size:13px;font-weight:500}
+.brand a:hover{color:var(--coral)}
+
+/* — Buton — */
+.btn{font-family:var(--sans);background:var(--surface);color:var(--ink-2);border:1px solid var(--line-2);
+  border-radius:10px;padding:8px 13px;font-size:13px;font-weight:500;cursor:pointer;transition:.18s var(--ease)}
+.btn:hover{border-color:var(--coral);color:var(--coral-ink);background:var(--coral-bg)}
+.btn-primary{background:var(--coral);color:#fff;border-color:var(--coral);box-shadow:var(--shadow)}
+.btn-primary:hover{background:var(--coral-ink);color:#fff;transform:translateY(-1px)}
+.btn-lg{padding:13px 26px;font-size:15px;font-weight:600;border-radius:12px}
+
+/* — Chip / pill — */
+.chip{display:inline-flex;align-items:center;gap:7px;background:var(--surface);border:1px solid var(--line);
+  border-radius:999px;padding:7px 13px;font-size:13px;font-weight:500;color:var(--ink-2)}
+.chip b{color:var(--ink);font-weight:700}
+.chip .ic{font-size:15px;line-height:1}
+.chip.flame b{color:var(--coral-ink)}
+.chip.disc b{color:var(--teal-ink)}
+
+/* — İstatistik şeridi — */
+.stats{display:flex;gap:14px;flex-wrap:wrap;align-items:center;background:var(--surface);
+  border:1px solid var(--line);border-radius:var(--r-lg);padding:18px 22px;box-shadow:var(--shadow)}
+.stat{display:flex;align-items:center;gap:13px}
+.stat + .stat{padding-left:14px;border-left:1px solid var(--line)}
+.stat .lbl{font-size:11.5px;text-transform:uppercase;letter-spacing:.08em;color:var(--ink-3);font-weight:600}
+.stat .val{font-family:var(--serif);font-size:22px;font-weight:600;color:var(--ink);line-height:1}
+.stat .sub{font-size:12px;color:var(--ink-3)}
+
+/* — İlerleme halkası (seviye) — */
+.ring{--p:0;position:relative;width:54px;height:54px;border-radius:50%;display:grid;place-items:center;flex:0 0 auto;
+  background:conic-gradient(var(--teal) calc(var(--p)*1%),var(--line) 0)}
+.ring::before{content:'';position:absolute;inset:5px;border-radius:50%;background:var(--surface)}
+.ring .lv{position:relative;z-index:1;font-size:19px}
+
+/* — İlerleme çubuğu — */
+.pbar{height:8px;background:var(--line);border-radius:99px;overflow:hidden}
+.pbar > i{display:block;height:100%;width:0;border-radius:99px;
+  background:linear-gradient(90deg,var(--teal),#3DD9A0);transition:width .9s var(--ease)}
+
+/* — Kart — */
+.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--r-lg);
+  padding:22px;box-shadow:var(--shadow);transition:.2s var(--ease)}
+.card-hover:hover{box-shadow:var(--shadow-lg);transform:translateY(-2px);border-color:var(--line-2)}
+
+/* — Callout / Yani — */
+.yani{background:linear-gradient(180deg,var(--teal-bg),#EAF8F2);border:1px solid #BFEAD9;
+  border-left:3px solid var(--teal);border-radius:var(--r);padding:15px 17px;margin:20px 0;font-size:15.5px;color:#23463B}
+.yani b{color:var(--teal-ink)}
+.note{border-radius:var(--r);padding:14px 16px;margin:18px 0;font-size:15px;border:1px solid}
+.note.warn{background:var(--amber-bg);border-color:#F2D79B;color:#7A5A12}
+.note.warn b{color:#B9810E}
+.note.bad{background:#FDECEC;border-color:#F5C4C5;color:#8A2A2D}
+.note.bad b{color:var(--bad)}
+
+/* ============================================================
+   YOLCULUK HARİTASI (path)
+   ============================================================ */
+.path{position:relative;max-width:780px;margin:8px auto 0;padding:20px 0}
+.path .spine{position:absolute;left:50%;top:0;bottom:0;width:3px;transform:translateX(-50%);
+  background:var(--line-2);border-radius:99px}
+.path .spine > i{position:absolute;left:0;top:0;width:100%;border-radius:99px;
+  background:linear-gradient(180deg,var(--teal),var(--coral));transition:height 1s var(--ease)}
+
+.phase-mark{position:relative;text-align:center;margin:34px 0 26px;z-index:2}
+.phase-mark .tag{display:inline-flex;align-items:center;gap:9px;background:var(--ink);color:var(--bg);
+  font-family:var(--sans);font-size:12px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;
+  padding:8px 16px;border-radius:999px;box-shadow:var(--shadow)}
+.phase-mark .tag .n{opacity:.6}
+
+.step{position:relative;min-height:96px;display:flex;align-items:center;margin:6px 0;z-index:2}
+.step.left{justify-content:flex-start}
+.step.right{justify-content:flex-end}
+.node{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:58px;height:58px;
+  border-radius:50%;display:grid;place-items:center;font-family:var(--serif);font-size:20px;font-weight:600;
+  background:var(--surface);border:2px solid var(--line-2);color:var(--ink-3);z-index:3;transition:.2s var(--ease)}
+.mod-card{width:calc(50% - 56px);background:var(--surface);border:1px solid var(--line);
+  border-radius:var(--r-lg);padding:16px 18px;box-shadow:var(--shadow);transition:.2s var(--ease);text-decoration:none;display:block}
+.step.left  .mod-card{margin-right:auto}
+.step.right .mod-card{margin-left:auto}
+.mod-card .mc-ph{font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-3)}
+.mod-card h4{font-size:17px;margin:3px 0 6px;color:var(--ink)}
+.mod-card p{font-size:13.5px;color:var(--ink-2);line-height:1.5}
+.mod-card .mc-foot{display:flex;align-items:center;gap:9px;margin-top:12px;font-size:12px;color:var(--ink-3)}
+.mod-card .xp{display:inline-flex;align-items:center;gap:4px;font-weight:600;color:var(--amber)}
+
+/* durumlar */
+.step.done .node{background:var(--teal);border-color:var(--teal);color:#fff}
+.step.done .mod-card{border-color:#CDEBDE}
+.step.current .node{background:var(--coral);border-color:var(--coral);color:#fff;box-shadow:var(--ring)}
+.step.current .mod-card{border-color:#FAD0C4;box-shadow:var(--shadow-lg)}
+.step.current .mod-card:hover{transform:translateY(-2px)}
+.step.locked{opacity:.62}
+.step.locked .node{background:var(--bg-soft)}
+.step.locked .mod-card{background:var(--surface-2);pointer-events:none}
+.step .badge-state{display:inline-flex;align-items:center;gap:5px;font-weight:600;font-size:12px}
+.step.done .badge-state{color:var(--teal-ink)}
+.step.current .badge-state{color:var(--coral-ink)}
+.step.locked .badge-state{color:var(--ink-3)}
+
+/* pulse */
+@keyframes pulseRing{0%{box-shadow:0 0 0 0 rgba(255,107,74,.28)}70%{box-shadow:0 0 0 14px rgba(255,107,74,0)}100%{box-shadow:0 0 0 0 rgba(255,107,74,0)}}
+.step.current .node{animation:pulseRing 2.4s infinite}
+
+/* — Rozet rafı — */
+.badges{display:flex;gap:10px;flex-wrap:wrap}
+.badge{width:64px;text-align:center;font-size:11px;color:var(--ink-3)}
+.badge .b-ic{width:54px;height:54px;margin:0 auto 5px;border-radius:50%;display:grid;place-items:center;
+  font-size:24px;background:var(--surface);border:1px solid var(--line);box-shadow:var(--shadow)}
+.badge.earned .b-ic{background:linear-gradient(180deg,var(--amber-bg),#FFE9C2);border-color:#F2D79B}
+.badge.locked .b-ic{filter:grayscale(1);opacity:.4}
+
+/* — Disclaimer / footer — */
+.disclaimer{margin-top:48px;background:#FDECEC;border:1px solid #F5C4C5;border-radius:var(--r);
+  padding:15px 18px;font-size:12.5px;color:#7A4042;line-height:1.6}
+.disclaimer b{color:var(--bad)}
+.foot{margin-top:22px;text-align:center;color:var(--ink-3);font-size:12.5px}
+
+/* — Animasyon yardımcıları — */
+.reveal{opacity:0;transform:translateY(14px)}
+.reveal.in{opacity:1;transform:none;transition:.7s var(--ease)}
+
+/* — Responsive (masaüstü-öncelikli, makul daralma) — */
+@media(max-width:720px){
+  .path .spine{left:26px}
+  .step{justify-content:flex-end!important}
+  .node{left:26px}
+  .mod-card{width:calc(100% - 70px)!important;margin-left:auto!important;margin-right:0!important}
+  .phase-mark{text-align:left;padding-left:0}
+  .stat + .stat{border-left:none;padding-left:0}
+  .stats{gap:16px}
+}
+@media print{.bar{display:none}body{background:#fff}.step.current .node{animation:none}}
