@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Modül 9 · Episodic Pivot & Earnings</title>
+<link rel="stylesheet" href="../assets/akademi.css">
+</head>
+<body>
+
+<div class="bar">
+  <div class="bar-in">
+    <div class="brand"><span class="bull">🐂</span> Swing&nbsp;Akademi <a href="../index.html">· Yol haritası</a></div>
+    <button class="btn" onclick="window.print()">🖨 PDF</button>
+    <button class="btn" onclick="fs()">⛶ Tam Ekran</button>
+  </div>
+</div>
+
+<div class="wrap">
+  <div class="lesson">
+
+    <div class="l-top">
+      <a class="l-exit" href="../index.html">✕ Çık</a>
+      <div class="l-bar"><i id="lbar"></i></div>
+      <div class="l-count" id="lcount">1 / 12</div>
+    </div>
+
+    <div class="stage" id="stage">
+
+      <!-- 0 · KAPAK -->
+      <div class="lcard cover active">
+        <div class="badge-ph">⚡ Faz 3 · Modül 9</div>
+        <div class="mascot">⚡</div>
+        <h2>Episodic Pivot &amp; Earnings</h2>
+        <p class="lead">Bazen hisse yavaş yavaş sıkı bayrak yapmaz — bir gecede bir <b>haberle PATLAR.</b>
+        Buna <b>Episodic Pivot (EP)</b> denir; motorun ikinci giriş tipidir. Ama earnings iki tarafı keskin
+        bir bıçaktır: hem yakıt hem tuzak.</p>
+        <div class="takeaway" style="text-align:left">
+          <div class="tt">Bu modül bittiğinde</div>
+          <ul>
+            <li><b>EP</b> setup'ını tanıyacak ve neden çalıştığını bileceksin.</li>
+            <li>Earnings'in <b>çift yönlü</b> doğasını anlayacaksın.</li>
+            <li>Pozisyonla earnings'e girip girmeme kararını <b>kuralla</b> vereceksin.</li>
+          </ul>
+        </div>
+        <p class="muted" style="font-size:14px">⏱ ~8 dakika · 2 interaktif soru · +90 XP</p>
+      </div>
+
+      <!-- 1 · EP NEDİR -->
+      <div class="lcard">
+        <div class="l-eyebrow">Tanım</div>
+        <h2>Episodic Pivot: katalizör patlaması</h2>
+        <p>EP, bir hissenin <b>kazanç (earnings) veya majör bir haberle</b> devasa yukarı <b>gap</b> ile
+        açılmasıdır. Yavaş bayrak formasyonu yerine, <b>katalizörün kendisi</b> tetiktir.</p>
+        <div class="yani"><b>Yani:</b> Sıkı kurulum "sessiz birikimin" patlamasıdır; EP "ani bir haberin"
+        patlamasıdır. İkisi de aynı şeyi arar: güçlü, hacimli, yukarı yönlü bir başlangıç.</div>
+        <p class="bridge">Neden bir gecelik haber günlerce sürer?</p>
+      </div>
+
+      <!-- 2 · EP NEDEN ÇALIŞIR -->
+      <div class="lcard">
+        <div class="l-eyebrow">Neden çalışır</div>
+        <h2>Kurumlar bir günde dolduramaz</h2>
+        <p>Büyük, beklenmedik bir katalizör (örn. tahminleri ezen bir bilanço) piyasayı şaşırtır. Devasa
+        kurumlar pozisyonlarını <b>tek günde</b> alamaz — günlerce, haftalarca almaya devam ederler. Bu
+        süregelen alım, hissenin gap sonrası da yükselmesini sağlar.</p>
+        <div class="yani"><b>Yani:</b> Sürpriz haber + büyük hacim = momentumun ateşlenmesi. EP, bu ateşin
+        ilk gününde, doğru kurallarla atlama sanatıdır.</div>
+        <p class="bridge">Girişi ve stop'u Modül 5'ten hatırla.</p>
+      </div>
+
+      <!-- 3 · EP GİRİŞ/STOP -->
+      <div class="lcard">
+        <div class="l-eyebrow">Giriş &amp; stop</div>
+        <h2>Gap kuralları</h2>
+        <p>EP'de tetik, <b>gap'in kendisidir</b> (güçlü hacimle gelen yukarı açılış). Stop ise Modül 5'teki
+        <b>gap istisnası</b>: stop, <b>açılış mumunun dibine</b> konur; aradaki boşluk mesafesi risk hesabına
+        dahil edilir.</p>
+        <div class="note warn"><b>Hatırla:</b> Gap'li işlemler daha geniş riskli olabilir → pozisyonu
+        (Modül 6 formülü) ona göre küçültürsün. Ve 1 ATR / kovalama kuralı yine geçerli.</div>
+        <p class="bridge">Bir EP adayını tanı.</p>
+      </div>
+
+      <!-- 4 · SORU 1 -->
+      <div class="lcard gate" data-answered="0">
+        <div class="l-eyebrow">Senaryo</div>
+        <div class="q-stem">Bir hisse, beklentileri ezen bir bilançoyla <b>+%20 gap</b> ve <b>devasa hacimle</b>
+        açıldı. Bu nedir?</div>
+        <div class="choices">
+          <button class="choice" data-correct="1"><span class="key">A</span> Klasik bir Episodic Pivot adayı — gap stop kuralıyla yönetilir</button>
+          <button class="choice"><span class="key">B</span> Tehlikeli, gap'ler her zaman kapanır, short açarım</button>
+          <button class="choice"><span class="key">C</span> Alakasız, sadece sıkı bayrak alırım</button>
+        </div>
+        <div class="feedback"
+          data-ok="<b>Doğru.</b> Sürpriz katalizör + büyük gap + devasa hacim = ders kitabı EP. Stop açılış mumunun dibine, gap mesafesi riske dahil, boyut ona göre küçük. Motorun ikinci giriş tipi tam budur."
+          data-no="<b>Tekrar bak.</b> Bu klasik bir EP: bilanço sürprizi + büyük gap + hacim. 'Gap'ler kapanır' diye short açmak (B) momentuma karşı durmaktır — bu sistemde yok. EP, motorun meşru ikinci giriş tipidir."><span class="fb-txt"></span></div>
+      </div>
+
+      <!-- 5 · EARNINGS ÇİFT YÖNLÜ -->
+      <div class="lcard">
+        <div class="l-eyebrow">İki tarafı keskin bıçak</div>
+        <h2>Earnings: hem yakıt hem tuzak</h2>
+        <p>Earnings, EP'lerin <b>yakıtıdır</b> — en büyük patlamalar oradan gelir. Ama madalyonun diğer
+        yüzü tehlikelidir: <b>elinde zaten açık bir pozisyon varken</b> bir earnings raporuna girmek
+        <b>kumardır.</b></p>
+        <div class="note bad"><b>Neden?</b> Earnings gecesi hisse her iki yöne de sert gap yapabilir.
+        Yukarı giderse şanslısın; aşağı giderse stop'un bile <b>atlanır</b> (gap, stop'un altından açar),
+        beklediğinden çok kaybedersin.</div>
+        <p class="bridge">O zaman kural ne olmalı?</p>
+      </div>
+
+      <!-- 6 · KURAL -->
+      <div class="lcard">
+        <div class="l-eyebrow">Kural</div>
+        <h2>Bilinçli oyna ya da çık</h2>
+        <p>Normal bir breakout işlemini, <b>sırf umutla</b> earnings'e taşıma. İki seçeneğin var:</p>
+        <ul>
+          <li><b>EP'yi bilinçli oyna:</b> Earnings'i bir EP fırsatı olarak <b>kasıtlı</b> hedefliyorsan,
+          riskini buna göre (küçük boyut) ayarla.</li>
+          <li><b>Korun:</b> Sadece açık bir kârı/pozisyonu koruyorsan, earnings öncesi <b>azalt veya çık</b> —
+          kazancını kumara yatırma.</li>
+        </ul>
+        <div class="yani"><b>Yani:</b> EP = <b>hücum</b> (katalizör gap'ine bilinçli giriş). Mevcut pozisyonla
+        earnings = <b>savunma</b> (kazancı koru, kumar oynama).</div>
+        <p class="bridge">Bir kararla netleştir.</p>
+      </div>
+
+      <!-- 7 · SORU 2 -->
+      <div class="lcard gate" data-answered="0">
+        <div class="l-eyebrow">Senaryo</div>
+        <div class="q-stem">Normal bir sıkı-kurulum işlemindesin, güzel kârdasın. <b>Yarın</b> hissenin
+        earnings'i var. Varsayılan hamlen ne olmalı?</div>
+        <div class="choices">
+          <button class="choice"><span class="key">A</span> Tut, belki yukarı patlar, hepsini bırakırım</button>
+          <button class="choice" data-correct="1"><span class="key">B</span> Earnings öncesi azalt/çık — kazancı kumara yatırma</button>
+          <button class="choice"><span class="key">C</span> Pozisyonu iki katına çıkar, fırsat bu</button>
+        </div>
+        <div class="feedback"
+          data-ok="<b>Doğru.</b> Bunu özellikle bir EP olarak planlamadıysan, varsayılan = riski azalt/çık. Earnings gecesi gap riski stop'unu bile atlayabilir. Kazandığın kârı bir bozuk para atışına bağlama; kasıtlı oynamıyorsan korun."
+          data-no="<b>Dikkat.</b> Bu bir kumar. Earnings gap'i stop'unu atlayabilir; tutmak (A) ya da büyütmek (C) kontrolsüz risktir. Kasıtlı EP oynamıyorsan varsayılan hamle: earnings öncesi azalt/çık, kazancı koru."><span class="fb-txt"></span></div>
+      </div>
+
+      <!-- 8 · LAB -->
+      <div class="lcard">
+        <div class="l-eyebrow">🧪 Bu haftanın labı</div>
+        <h2>EP ve earnings takvimini yönet</h2>
+        <ul>
+          <li><code>qswing</code> (EP modu) → haber/bilanço gap'iyle gelen Episodic Pivot kurulumunu analiz eder.</li>
+          <li><code>preearnings</code> / <code>postearnings</code> / <code>earningstrade</code> → bilanço öncesi/sonrası
+          çalışma ve yön tahmini.</li>
+          <li><code>firsattara</code> → adaylarda earnings yakınlığını işaretler (≤14 gün uyarısı).</li>
+        </ul>
+        <div class="yani"><b>Yani:</b> Her adayın earnings tarihini bil. Sürprizi <b>oyna</b> (EP) ya da
+        riskten <b>kaç</b> — ama asla habersiz yakalanma.</div>
+      </div>
+
+      <!-- 9 · ÖDEV -->
+      <div class="lcard">
+        <div class="l-eyebrow">📝 Ödev</div>
+        <h2>Bir EP + bir tuzak bul</h2>
+        <ul>
+          <li>Yakın zamanlı bir <b>EP</b> (earnings gap) grafiği bul. Gap'i ve açılış mumu dibi stop'unu işaretle.</li>
+          <li>Bir de, <b>pozisyonla earnings'e girmenin zarar ettireceği</b> bir örnek bul (aşağı gap yapmış bir hisse).</li>
+        </ul>
+        <div class="note warn"><b>İpucu:</b> Watchlist'indeki her hissenin earnings tarihini bir kenara yaz.
+        Bu tek alışkanlık, seni en pahalı sürprizlerden korur.</div>
+      </div>
+
+      <!-- 10 · KUTLAMA -->
+      <div class="lcard celebrate">
+        <div class="big-emoji">⚡</div>
+        <h2>İki giriş tipini de biliyorsun</h2>
+        <p class="lead">Artık sessiz sıkı kurulumu da (ORH), gürültülü haber patlamasını da (EP) tanıyorsun.
+        Ve earnings'in çift yönlü doğasını kuralla yönetiyorsun: bilinçli oyna ya da korun.</p>
+        <div class="takeaway" style="text-align:left">
+          <div class="tt">Artık yapabilirsin</div>
+          <ul>
+            <li>Bir <b>EP</b> adayını tanıyıp gap stop kuralıyla yönetmek.</li>
+            <li>Earnings riskini <b>hücum/savunma</b> kararıyla yönetmek.</li>
+          </ul>
+        </div>
+        <div class="xp-won">＋90 XP</div>
+        <div class="won-badge">⚡</div>
+        <p class="muted" style="margin-top:6px">Faz 3 bitti! Sırada: <b>%25 isabetle kazandığını ölç.</b></p>
+        <div class="cta" style="margin-top:22px;display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
+          <a class="btn btn-primary btn-lg" href="modul-10.html">Modül 10'a geç →</a>
+          <a class="btn btn-lg btn-ghost" href="../index.html">Yol haritasına dön</a>
+        </div>
+      </div>
+
+    </div><!-- /stage -->
+
+    <div class="lnav" id="lnav">
+      <button class="btn btn-lg btn-ghost" id="prevBtn">← Geri</button>
+      <div class="spacer"></div>
+      <button class="btn btn-primary btn-lg" id="nextBtn">Başla →</button>
+    </div>
+  </div>
+
+  <div class="disclaimer">
+    <b>⚠️ Yatırım tavsiyesi değildir.</b> Eğitim amaçlıdır. İçerik Telegram'da paylaşılmaz, kripto
+    satışı yapılmaz — taklit hesaplara/dolandırıcılara karşı dikkatli olun.
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script src="../assets/akademi.js"></script>
+<script>
+  function fs(){ document.fullscreenElement ? document.exitFullscreen() : document.documentElement.requestFullscreen(); }
+  function toast(m){ var t=document.getElementById('toast'); t.textContent=m; t.classList.add('show'); clearTimeout(t._h); t._h=setTimeout(function(){t.classList.remove('show');},1700); }
+  Akademi.init({});
+  var cards = Array.prototype.slice.call(document.querySelectorAll('.lcard'));
+  var idx = 0;
+  var bar = document.getElementById('lbar'), count = document.getElementById('lcount');
+  var prevBtn = document.getElementById('prevBtn'), nextBtn = document.getElementById('nextBtn');
+  var lnav = document.getElementById('lnav');
+  function render(){
+    cards.forEach(function(c,i){ c.classList.toggle('active', i===idx); });
+    bar.style.width = (idx/(cards.length-1)*100) + '%';
+    count.textContent = (idx+1) + ' / ' + cards.length;
+    prevBtn.style.visibility = idx===0 ? 'hidden' : 'visible';
+    var last = idx === cards.length-1;
+    lnav.style.display = last ? 'none' : 'flex';
+    nextBtn.textContent = idx===0 ? 'Başla →' : (idx===cards.length-2 ? 'Bitir 🎉' : 'Devam →');
+    var cur = cards[idx];
+    nextBtn.disabled = (cur.classList.contains('gate') && cur.dataset.answered!=='1');
+    if (last && cur.dataset.done!=='1'){ cur.dataset.done='1'; finish(); }
+    try{ window.scrollTo({top:0,behavior:'smooth'}); }catch(e){ window.scrollTo(0,0); }
+  }
+  function next(){ if(idx<cards.length-1){ idx++; render(); } }
+  function prev(){ if(idx>0){ idx--; render(); } }
+  function finish(){ Akademi.completeModule(9,90); Akademi.touchStreak(); setTimeout(function(){ Akademi.confetti(); }, 250); }
+  nextBtn.addEventListener('click', next);
+  prevBtn.addEventListener('click', prev);
+  document.addEventListener('keydown', function(e){ if(e.key==='ArrowRight' && !nextBtn.disabled) next(); if(e.key==='ArrowLeft') prev(); });
+  document.querySelectorAll('.choices').forEach(function(group){
+    group.querySelectorAll('.choice').forEach(function(ch){
+      ch.addEventListener('click', function(){
+        var card = group.closest('.lcard');
+        if(card.dataset.answered==='1') return;
+        var correct = ch.getAttribute('data-correct')==='1';
+        group.querySelectorAll('.choice').forEach(function(o){ o.disabled = true; if(o.getAttribute('data-correct')==='1') o.classList.add('correct'); });
+        if(!correct) ch.classList.add('wrong');
+        group.querySelectorAll('.choice').forEach(function(o){ if(!o.classList.contains('correct') && !o.classList.contains('wrong')) o.classList.add('dim'); });
+        var fb = card.querySelector('.feedback');
+        fb.classList.add('show', correct?'ok':'no');
+        fb.querySelector('.fb-txt').innerHTML = correct ? fb.getAttribute('data-ok') : fb.getAttribute('data-no');
+        card.dataset.answered = '1';
+        if(correct){ Akademi.addXP(10); toast('+10 XP ✓'); }
+        nextBtn.disabled = false;
+      });
+    });
+  });
+  render();
+</script>
+</body>
+</html>

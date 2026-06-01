@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Modül 11 · Portföy & Konsantrasyon</title>
+<link rel="stylesheet" href="../assets/akademi.css">
+</head>
+<body>
+
+<div class="bar">
+  <div class="bar-in">
+    <div class="brand"><span class="bull">🐂</span> Swing&nbsp;Akademi <a href="../index.html">· Yol haritası</a></div>
+    <button class="btn" onclick="window.print()">🖨 PDF</button>
+    <button class="btn" onclick="fs()">⛶ Tam Ekran</button>
+  </div>
+</div>
+
+<div class="wrap">
+  <div class="lesson">
+
+    <div class="l-top">
+      <a class="l-exit" href="../index.html">✕ Çık</a>
+      <div class="l-bar"><i id="lbar"></i></div>
+      <div class="l-count" id="lcount">1 / 12</div>
+    </div>
+
+    <div class="stage" id="stage">
+
+      <!-- 0 · KAPAK -->
+      <div class="lcard cover active">
+        <div class="badge-ph">🗂️ Faz 4 · Modül 11</div>
+        <div class="mascot">🗂️</div>
+        <h2>Portföy &amp; Konsantrasyon</h2>
+        <p class="lead">Tek bir işlemi yönetmek bir şey; <b>tüm portföyü</b> yönetmek başka. 5 farklı
+        momentum hissesi tutmak seni "çeşitlenmiş" yapmaz — hepsi <b>aynı yöne bahis</b> olabilir.</p>
+        <div class="takeaway" style="text-align:left">
+          <div class="tt">Bu modül bittiğinde</div>
+          <ul>
+            <li><b>Portföy ısısını</b> (toplam açık risk) yöneteceksin.</li>
+            <li><b>Korelasyon tuzağını</b> (sahte çeşitlendirme) tanıyacaksın.</li>
+            <li>Fren ışığında <b>korunma</b> ve nakit planını kuracaksın.</li>
+          </ul>
+        </div>
+        <p class="muted" style="font-size:14px">⏱ ~8 dakika · 2 interaktif soru · +100 XP</p>
+      </div>
+
+      <!-- 1 · PORTFÖY ISISI -->
+      <div class="lcard">
+        <div class="l-eyebrow">Portföy ısısı</div>
+        <h2>Toplam açık riskini bil</h2>
+        <p>Her işlemin 1R'lik bir riski var (Modül 6). <b>Portföy ısısı</b> = aynı anda açık olan tüm
+        işlemlerin <b>toplam riski.</b> 8 işlem birden açıksan, her biri 1R bile olsa, toplam 8R risktesin.</p>
+        <div class="note bad"><b>Gizli kaldıraç:</b> Tek tek her işlem "güvenli" görünür ama hepsi birden
+        ters giderse (kötü bir piyasa günü), toplam darbe büyük olur. O yüzden aynı anda taşıdığın toplam
+        riski sınırla.</div>
+        <p class="bridge">Asıl sinsi tuzak: pozisyonların birbirine benzemesi.</p>
+      </div>
+
+      <!-- 2 · KORELASYON TUZAĞI -->
+      <div class="lcard">
+        <div class="l-eyebrow">Korelasyon tuzağı</div>
+        <h2>5 AI hissesi = 1 bahis</h2>
+        <p>Momentum hisseleri genelde <b>aynı temalarda</b> kümelenir (AI, yarı iletken, biyotek...). 5
+        farklı yapay zeka hissesi tutuyorsan, isimde "çeşitlenmiş" görünürsün — ama hepsi <b>birlikte
+        hareket eder.</b> Kötü bir günde <b>hepsi birden</b> aşağı gap yapar.</p>
+        <div class="yani"><b>Yani:</b> Gerçek soru "kaç farklı hisse?" değil, "<b>kaç farklı bahis?</b>"
+        Aynı temadaki 5 hisse, tek bir büyük pozisyondur. Riskini ona göre say.</div>
+        <p class="bridge">Bir kararla sına.</p>
+      </div>
+
+      <!-- 3 · SORU 1 -->
+      <div class="lcard gate" data-answered="0">
+        <div class="l-eyebrow">Senaryo</div>
+        <div class="q-stem">Aynı anda <b>6 küçük-orta ölçekli AI momentum hissesi</b> tutuyorsun.
+        Çeşitlenmiş misin?</div>
+        <div class="choices">
+          <button class="choice"><span class="key">A</span> Evet, 6 farklı hisse = çeşitlendirme</button>
+          <button class="choice" data-correct="1"><span class="key">B</span> Hayır — hepsi birlikte hareket eder, fiilen tek bahis</button>
+          <button class="choice"><span class="key">C</span> Evet ama 7'ye çıkarırsam daha güvenli olur</button>
+        </div>
+        <div class="feedback"
+          data-ok="<b>Doğru.</b> Aynı temadaki yüksek-beta hisseler birlikte hareket eder (yüksek korelasyon). 6 isim olsa da bu, tek bir 'AI momentum' bahsidir. Kötü bir günde hepsi birden düşer. Daha fazla benzer hisse eklemek (C) riski artırır, azaltmaz."
+          data-no="<b>Sahte çeşitlendirme.</b> 6 hisse ama tek tema = tek bahis. Hepsi korelasyonlu hareket eder; bir 'risk-off' gününde topluca gap'ler. Ad sayısı değil, bahis sayısı önemli. Eklemek (C) daha da yükler."><span class="fb-txt"></span></div>
+      </div>
+
+      <!-- 4 · %20 + ISI -->
+      <div class="lcard">
+        <div class="l-eyebrow">İki sınır birlikte</div>
+        <h2>%20 tavanı + ısı sınırı</h2>
+        <p>İki kuralı birlikte uygula:</p>
+        <ul>
+          <li><b>Tek hisse ≤ %20</b> (Modül 6): hiçbir tek isim portföyü ele geçirmesin.</li>
+          <li><b>Toplam ısı sınırı:</b> aynı anda taşıdığın toplam riski (ve korelasyonlu kümeleri) sınırla.
+          Çok pozisyon = gizli aşırı kaldıraç.</li>
+        </ul>
+        <div class="yani"><b>Yani:</b> "Kaç pozisyon açabilirim?" sorusunun cevabı, tek tek değil, <b>toplam
+        ve korelasyon</b> üzerinden verilir.</div>
+        <p class="bridge">Peki piyasa kırmızıya dönerse?</p>
+      </div>
+
+      <!-- 5 · FREN IŞIĞINDA KORUNMA -->
+      <div class="lcard">
+        <div class="l-eyebrow">Savunma</div>
+        <h2>Kırmızı ışıkta: nakit bir pozisyondur</h2>
+        <p>Modül 2'yi hatırla: endeksler 50 günlük ortalamanın altına düşerse, ışık <b>kırmızıdır.</b>
+        O zaman portföy seviyesinde savunmaya geçersin: <b>en zayıf pozisyonları kapat</b>, ısıyı düşür,
+        <b>nakde geç.</b></p>
+        <div class="note warn"><b>Nakit de bir pozisyondur.</b> Hiçbir şey yapmamak (beklemek) çoğu zaman
+        en iyi hamledir. Drawdown'lardan korunan, yeşil ışık penceresine sağ ulaşır.</div>
+        <p class="bridge">Bir kararla netleştir.</p>
+      </div>
+
+      <!-- 6 · SORU 2 -->
+      <div class="lcard gate" data-answered="0">
+        <div class="l-eyebrow">Senaryo</div>
+        <div class="q-stem">Elinde 5 momentum hissesi varken piyasa <b>kırmızı ışığa</b> döndü (endeksler 50
+        SMA altına indi). Ne yaparsın?</div>
+        <div class="choices">
+          <button class="choice"><span class="key">A</span> Düşüşü fırsat bilip pozisyon eklerim</button>
+          <button class="choice" data-correct="1"><span class="key">B</span> En zayıfları kapatır, ısıyı düşürür, nakde geçerim</button>
+          <button class="choice"><span class="key">C</span> Hiçbir şey yapmam, dönmesini beklerim</button>
+        </div>
+        <div class="feedback"
+          data-ok="<b>Doğru.</b> Kırmızı ışık = savunma. En zayıf/en uzamış pozisyonları kapat, toplam ısıyı düşür, nakit oranını artır. Amaç sermayeyi korumak. Eklemek (A) akıntıya karşı yüzmek; pasif beklemek (C) ise açık riski taşımaya devam etmek demek."
+          data-no="<b>Savunma zamanı.</b> Kırmızıda pozisyon eklemek (A) en tehlikelisi. Pasif beklemek (C) de açık riski taşımaktır. Doğru hamle: zayıfları kes, ısıyı düşür, nakde geç. Yeşil ışığa sağ ulaşmak için."><span class="fb-txt"></span></div>
+      </div>
+
+      <!-- 7 · BÜYÜK RESİM -->
+      <div class="lcard">
+        <div class="l-eyebrow">Büyük resim</div>
+        <h2>Hayatta kal ki yeşil ışıkta avlanabilesin</h2>
+        <p>Sistem kazancının çoğunu yeşil ışıkta yapar (Modül 2). Senin tek işin, kırmızı dönemlerde
+        <b>sermayeni korumak</b> — küçük drawdown'larla atlatıp yeşil pencereye <b>tam güçle</b> girmek.</p>
+        <div class="yani"><b>Yani:</b> Portföy yönetimi hücum değil, <b>hayatta kalma</b> sanatıdır.
+        Büyük kazançları yakalamak için önce büyük kayıplardan kaçınman gerekir.</div>
+        <p class="bridge">Bunu araçlarınla yönet.</p>
+      </div>
+
+      <!-- 8 · LAB -->
+      <div class="lcard">
+        <div class="l-eyebrow">🧪 Bu haftanın labı</div>
+        <h2>Portföyünü röntgenle</h2>
+        <ul>
+          <li><code>portman</code> / <code>porttech</code> → mevcut pozisyonlarını, ağırlıklarını ve teknik
+          durumlarını gör. En yüklü temayı bul.</li>
+          <li><code>protect</code> → kırmızı ışık / VIX yükselişi senaryosunda somut koruma paketleri üretir
+          (konservatif/dengeli/agresif).</li>
+        </ul>
+        <div class="yani"><b>Yani:</b> Portföyüne tek tek hisse gibi değil, bir <b>bütün</b> olarak bak:
+        en büyük korelasyonlu kümen ne? %20 kuralını aşan var mı? Kırmızı ışık planın hazır mı?</div>
+      </div>
+
+      <!-- 9 · ÖDEV -->
+      <div class="lcard">
+        <div class="l-eyebrow">📝 Ödev</div>
+        <h2>Portföy röntgeni + kırmızı plan</h2>
+        <ul>
+          <li>Mevcut (veya sanal) pozisyonlarını listele. <b>En korelasyonlu kümeni</b> bul — kaç "gerçek bahis"in var?</li>
+          <li>Her pozisyonu <b>%20 tavanına</b> göre kontrol et.</li>
+          <li>Bir <b>"kırmızı ışık planı"</b> yaz: ışık döndüğünde tam olarak ne yapacaksın?</li>
+        </ul>
+        <div class="note warn"><b>İpucu:</b> Kırmızı ışık planını <b>önceden</b> yaz. Piyasa düşerken
+        plan yapmak, panikle karar vermektir — en pahalısı.</div>
+      </div>
+
+      <!-- 10 · KUTLAMA -->
+      <div class="lcard celebrate">
+        <div class="big-emoji">🗂️</div>
+        <h2>Artık portföyü bir bütün görüyorsun</h2>
+        <p class="lead">Toplam ısını yönetiyor, sahte çeşitlendirmeyi (korelasyon) görüyor, kırmızı ışıkta
+        savunmaya geçip nakit tutuyorsun. Hayatta kalmayı, kazanmanın ön koşulu olarak içselleştirdin.</p>
+        <div class="takeaway" style="text-align:left">
+          <div class="tt">Artık yapabilirsin</div>
+          <ul>
+            <li>Portföy ısısını ve <b>korelasyonlu kümeleri</b> yönetmek.</li>
+            <li>Kırmızı ışıkta <b>korunup nakde</b> geçmek — drawdown'ları atlatmak.</li>
+          </ul>
+        </div>
+        <div class="xp-won">＋100 XP</div>
+        <div class="won-badge">🛟</div>
+        <p class="muted" style="margin-top:6px">Son durak: <b>her şeyi tek sayfaya indir</b> — mezuniyet.</p>
+        <div class="cta" style="margin-top:22px;display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
+          <a class="btn btn-primary btn-lg" href="modul-12.html">Modül 12'ye geç →</a>
+          <a class="btn btn-lg btn-ghost" href="../index.html">Yol haritasına dön</a>
+        </div>
+      </div>
+
+    </div><!-- /stage -->
+
+    <div class="lnav" id="lnav">
+      <button class="btn btn-lg btn-ghost" id="prevBtn">← Geri</button>
+      <div class="spacer"></div>
+      <button class="btn btn-primary btn-lg" id="nextBtn">Başla →</button>
+    </div>
+  </div>
+
+  <div class="disclaimer">
+    <b>⚠️ Yatırım tavsiyesi değildir.</b> Eğitim amaçlıdır. İçerik Telegram'da paylaşılmaz, kripto
+    satışı yapılmaz — taklit hesaplara/dolandırıcılara karşı dikkatli olun.
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script src="../assets/akademi.js"></script>
+<script>
+  function fs(){ document.fullscreenElement ? document.exitFullscreen() : document.documentElement.requestFullscreen(); }
+  function toast(m){ var t=document.getElementById('toast'); t.textContent=m; t.classList.add('show'); clearTimeout(t._h); t._h=setTimeout(function(){t.classList.remove('show');},1700); }
+  Akademi.init({});
+  var cards = Array.prototype.slice.call(document.querySelectorAll('.lcard'));
+  var idx = 0;
+  var bar = document.getElementById('lbar'), count = document.getElementById('lcount');
+  var prevBtn = document.getElementById('prevBtn'), nextBtn = document.getElementById('nextBtn');
+  var lnav = document.getElementById('lnav');
+  function render(){
+    cards.forEach(function(c,i){ c.classList.toggle('active', i===idx); });
+    bar.style.width = (idx/(cards.length-1)*100) + '%';
+    count.textContent = (idx+1) + ' / ' + cards.length;
+    prevBtn.style.visibility = idx===0 ? 'hidden' : 'visible';
+    var last = idx === cards.length-1;
+    lnav.style.display = last ? 'none' : 'flex';
+    nextBtn.textContent = idx===0 ? 'Başla →' : (idx===cards.length-2 ? 'Bitir 🎉' : 'Devam →');
+    var cur = cards[idx];
+    nextBtn.disabled = (cur.classList.contains('gate') && cur.dataset.answered!=='1');
+    if (last && cur.dataset.done!=='1'){ cur.dataset.done='1'; finish(); }
+    try{ window.scrollTo({top:0,behavior:'smooth'}); }catch(e){ window.scrollTo(0,0); }
+  }
+  function next(){ if(idx<cards.length-1){ idx++; render(); } }
+  function prev(){ if(idx>0){ idx--; render(); } }
+  function finish(){ Akademi.completeModule(11,100); Akademi.touchStreak(); setTimeout(function(){ Akademi.confetti(); }, 250); }
+  nextBtn.addEventListener('click', next);
+  prevBtn.addEventListener('click', prev);
+  document.addEventListener('keydown', function(e){ if(e.key==='ArrowRight' && !nextBtn.disabled) next(); if(e.key==='ArrowLeft') prev(); });
+  document.querySelectorAll('.choices').forEach(function(group){
+    group.querySelectorAll('.choice').forEach(function(ch){
+      ch.addEventListener('click', function(){
+        var card = group.closest('.lcard');
+        if(card.dataset.answered==='1') return;
+        var correct = ch.getAttribute('data-correct')==='1';
+        group.querySelectorAll('.choice').forEach(function(o){ o.disabled = true; if(o.getAttribute('data-correct')==='1') o.classList.add('correct'); });
+        if(!correct) ch.classList.add('wrong');
+        group.querySelectorAll('.choice').forEach(function(o){ if(!o.classList.contains('correct') && !o.classList.contains('wrong')) o.classList.add('dim'); });
+        var fb = card.querySelector('.feedback');
+        fb.classList.add('show', correct?'ok':'no');
+        fb.querySelector('.fb-txt').innerHTML = correct ? fb.getAttribute('data-ok') : fb.getAttribute('data-no');
+        card.dataset.answered = '1';
+        if(correct){ Akademi.addXP(10); toast('+10 XP ✓'); }
+        nextBtn.disabled = false;
+      });
+    });
+  });
+  render();
+</script>
+</body>
+</html>

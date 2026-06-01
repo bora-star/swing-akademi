@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Modül 6 · Mekanik Pozisyon Boyutu</title>
+<link rel="stylesheet" href="../assets/akademi.css">
+</head>
+<body>
+
+<div class="bar">
+  <div class="bar-in">
+    <div class="brand"><span class="bull">🐂</span> Swing&nbsp;Akademi <a href="../index.html">· Yol haritası</a></div>
+    <button class="btn" onclick="window.print()">🖨 PDF</button>
+    <button class="btn" onclick="fs()">⛶ Tam Ekran</button>
+  </div>
+</div>
+
+<div class="wrap">
+  <div class="lesson">
+
+    <div class="l-top">
+      <a class="l-exit" href="../index.html">✕ Çık</a>
+      <div class="l-bar"><i id="lbar"></i></div>
+      <div class="l-count" id="lcount">1 / 12</div>
+    </div>
+
+    <div class="stage" id="stage">
+
+      <!-- 0 · KAPAK -->
+      <div class="lcard cover active">
+        <div class="badge-ph">⚖️ Faz 2 · Modül 6</div>
+        <div class="mascot">⚖️</div>
+        <h2>Mekanik Pozisyon Boyutu</h2>
+        <p class="lead">Doğru hisse, doğru an, doğru stop... ama <b>kaç lot</b> alacaksın? Yanlış boyut,
+        en iyi sistemi bile batırır. İyi haber: bu, <b>tek bir formülle</b> çözülür — duygu yok.</p>
+        <div class="takeaway" style="text-align:left">
+          <div class="tt">Bu modül bittiğinde</div>
+          <ul>
+            <li><b>Sabit parasal risk</b> mantığını kuracaksın.</li>
+            <li>Lot'u <b>tek formülle</b> hesaplayacaksın.</li>
+            <li><b>%20 konsantrasyon</b> kuralıyla tek hisseden batmayacaksın.</li>
+          </ul>
+        </div>
+        <p class="muted" style="font-size:14px">⏱ ~8 dakika · 2 interaktif soru · +80 XP</p>
+      </div>
+
+      <!-- 1 · SABİT PARASAL RİSK -->
+      <div class="lcard">
+        <div class="l-eyebrow">Temel ilke</div>
+        <h2>Her işlemde aynı parayı riske et</h2>
+        <p>Qullamaggie boyutlandırması basittir: her işlem için <b>sabit bir dolar miktarı</b> riske
+        edersin (örn. <b>$500</b>). "Hesabın %2'si" gibi her seferinde değişen bir mantık yoktur — sabit,
+        net bir rakam.</p>
+        <div class="yani"><b>Yani:</b> 1R = riske ettiğin sabit para. Bu rakamı önceden belirlersin ve
+        her işlemde aynı kalır. Böylece tek bir işlem seni asla orantısız yaralayamaz.</div>
+        <p class="bridge">Peki bu sabit risk, lot'a nasıl çevrilir?</p>
+      </div>
+
+      <!-- 2 · FORMÜL -->
+      <div class="lcard">
+        <div class="l-eyebrow">Çekirdek formül</div>
+        <h2>Tek formül, sıfır duygu</h2>
+        <div class="formula">Alınacak Lot = <span class="op">Parasal Risk</span> ÷ (Giriş Fiyatı − Stop Fiyatı)</div>
+        <p>Örnek: Riskin <b>$500</b>, giriş <b>$50</b>, stop <b>$47</b>. Stop mesafesi = $3.</p>
+        <div class="formula">$500 ÷ ($50 − $47) = $500 ÷ $3 = <span class="res">166 lot</span></div>
+        <p>166 hisse alırsın. Eğer stop'a takılırsan (fiyat $47'ye düşerse), kaybın tam <b>166 × $3 = ~$500</b>
+        olur. Yani planladığın 1R.</p>
+        <p class="bridge">Bu formülün güzelliği nerede? Riski sabitlemesinde.</p>
+      </div>
+
+      <!-- 3 · NEDEN ÖNEMLİ -->
+      <div class="lcard">
+        <div class="l-eyebrow">Neden işe yarar</div>
+        <h2>Stop yakınsa çok al, uzaksa az al</h2>
+        <p>Formül, stop mesafesine göre lot'u otomatik ayarlar:</p>
+        <ul>
+          <li><b>Sıkı kurulum</b> (stop yakın, mesafe küçük) → <b>daha çok lot</b> alırsın, ama risk yine $500.</li>
+          <li><b>Gevşek kurulum</b> (stop uzak) → <b>daha az lot</b> alırsın, risk yine $500.</li>
+        </ul>
+        <div class="yani"><b>Yani:</b> Hangi işlem olursa olsun, kaybedersen hep aynı 1R'yi kaybedersin.
+        İşte Modül 1'deki "kayıpları küçük ve sabit tut" kuralının mekaniği budur — duygu değil, aritmetik.</div>
+        <p class="bridge">Şimdi sen hesapla.</p>
+      </div>
+
+      <!-- 4 · SORU 1 -->
+      <div class="lcard gate" data-answered="0">
+        <div class="l-eyebrow">Hesap</div>
+        <div class="q-stem">Riskin <b>$500</b>. Giriş <b>$20</b>, stop <b>$19</b> (mesafe $1). Kaç lot alırsın?</div>
+        <div class="choices">
+          <button class="choice" data-correct="1"><span class="key">A</span> 500 lot</button>
+          <button class="choice"><span class="key">B</span> 250 lot</button>
+          <button class="choice"><span class="key">C</span> 100 lot</button>
+        </div>
+        <div class="feedback"
+          data-ok="<b>Doğru.</b> Lot = $500 ÷ ($20 − $19) = $500 ÷ $1 = 500 lot. Stop'a takılırsan 500 × $1 = $500 kaybedersin = planlanan 1R. Stop yakın olduğu için lot büyük, ama risk sabit."
+          data-no="<b>Formüle dön:</b> Lot = Risk ÷ (Giriş − Stop) = $500 ÷ ($20−$19) = $500 ÷ $1 = 500 lot. Stop mesafesi küçük olduğu için lot büyük çıkar; risk yine $500."><span class="fb-txt"></span></div>
+      </div>
+
+      <!-- 5 · %20 KURALI -->
+      <div class="lcard">
+        <div class="l-eyebrow">İkinci sınır</div>
+        <h2>Tek hisse, portföyün max %20'si</h2>
+        <p>Bir güvenlik kuralı daha: <b>tek bir hisse, portföyünün en fazla ~%20'si</b> olabilir. Formül
+        sana çok büyük bir pozisyon söylese bile, <b>%20'de durursun.</b></p>
+        <div class="note bad"><b>Neden?</b> Bir hisseye fazla yüklenirsen, o hissede bir gecede gelen kötü
+        haber (gap down) tüm hesabını yaralar. %20 kuralı, tek bir felaketin seni bitirmesini engeller.</div>
+        <p class="bridge">İki kuralın çatıştığı an: hangisi kazanır?</p>
+      </div>
+
+      <!-- 6 · SORU 2 -->
+      <div class="lcard gate" data-answered="0">
+        <div class="l-eyebrow">Senaryo</div>
+        <div class="q-stem">Formül bir hisseden <b>$40.000'lık</b> pozisyon söylüyor. Ama bu, <b>$115.000'lık</b>
+        portföyünün <b>%35'i</b> demek. Ne yaparsın?</div>
+        <div class="choices">
+          <button class="choice"><span class="key">A</span> Formül öyle diyorsa $40.000 alırım</button>
+          <button class="choice" data-correct="1"><span class="key">B</span> %20'de keserim (~$23.000), fazlasını almam</button>
+          <button class="choice"><span class="key">C</span> %50'ye çıkarırım, çok güçlü bir kurulum</button>
+        </div>
+        <div class="feedback"
+          data-ok="<b>Doğru.</b> İki kural birlikte çalışır: sabit risk + %20 tavan. %35 tavanı aşıyor → pozisyonu ~%20'ye (~$23.000) indirirsin. Tek hissenin seni batırma ihtimalini keser. Güçlü kurulum bile bu tavanı kaldırmaz."
+          data-no="<b>Dikkat.</b> %20 konsantrasyon tavanı her zaman geçerli. %35 (hele %50) tek hisse riski = bir kötü gap'te felaket. Formül büyük dese de %20'de kesersin (~$23.000). Hayatta kalmak, kazanmaktan önce gelir."><span class="fb-txt"></span></div>
+      </div>
+
+      <!-- 7 · İKİ SINIR -->
+      <div class="lcard">
+        <div class="l-eyebrow">Özet</div>
+        <h2>İki sınır, iki felaketi engeller</h2>
+        <table class="cmp">
+          <tr><th>Kural</th><th>Neyi engeller</th></tr>
+          <tr><td>Sabit 1R risk (formül)</td><td>Tek işlemde orantısız kayıp</td></tr>
+          <tr><td>%20 konsantrasyon tavanı</td><td>Tek hissenin bir gecede hesabı patlatması</td></tr>
+        </table>
+        <div class="yani"><b>Yani:</b> Mekanik boyutlandırma, "ne kadar kazanırım"ı değil <b>"en kötü ne
+        kaybederim"i</b> sabitler. Bu sayede %25 isabet / 10R matematiği (Modül 1) çok işlemde gerçekleşebilir
+        — çünkü hiçbir tek işlem oyunu bozmaz.</div>
+        <p class="bridge">Bunu araçla pratiğe dök.</p>
+      </div>
+
+      <!-- 8 · LAB -->
+      <div class="lcard">
+        <div class="l-eyebrow">🧪 Bu haftanın labı</div>
+        <h2>Lot'unu hesapla</h2>
+        <ul>
+          <li>🆕 <code>risksize</code> (önerilen yeni skill) → hesap + sabit risk + stop mesafesi girersin,
+          lot'u ve %20 kontrolünü verir. (Henüz yoksa formülle elle hesapla.)</li>
+          <li><b>Not:</b> <code>qswing</code> sana sinyali ve seviyeleri verir ama <b>boyutu vermez</b> —
+          boyut senin disiplinin. İkisini birleştir.</li>
+        </ul>
+        <div class="yani"><b>Yani:</b> Sinyal (qswing) + boyut (formül) = tam işlem planı. Biri eksikse
+        işlem eksiktir.</div>
+      </div>
+
+      <!-- 9 · ÖDEV -->
+      <div class="lcard">
+        <div class="l-eyebrow">📝 Ödev</div>
+        <h2>Sabit riskini belirle, 3 lot hesapla</h2>
+        <ul>
+          <li>Kendi hesabın için <b>sabit parasal riskini</b> belirle (hesabın küçük bir yüzdesi olsun;
+          çoğu kişi işlem başına hesabın %0,5–1'i kadar riski tercih eder).</li>
+          <li>Farklı stop mesafeli <b>3 kurulum</b> için lot hesapla. Stop yakınken lot nasıl büyüyor, gör.</li>
+          <li>Her birinde <b>%20 tavanını</b> kontrol et — aşan var mı?</li>
+        </ul>
+        <div class="note warn"><b>İpucu:</b> Boyutlandırma sıkıcı görünür ama trader'ları batıran 1 numaralı
+        sebep yanlış boyuttur. Bu adımı atlama.</div>
+      </div>
+
+      <!-- 10 · KUTLAMA -->
+      <div class="lcard celebrate">
+        <div class="big-emoji">⚖️</div>
+        <h2>Artık duygusuz boyutlandırıyorsun</h2>
+        <p class="lead">Her işlemde aynı 1R'yi riske ediyor, lot'u tek formülle buluyor, tek hisseyi %20'de
+        sınırlıyorsun. En iyi sistemi batıran hatayı (yanlış boyut) <b>mekanikleştirerek</b> çözdün.</p>
+        <div class="takeaway" style="text-align:left">
+          <div class="tt">Artık yapabilirsin</div>
+          <ul>
+            <li>Lot = Risk ÷ (Giriş − Stop) ile <b>boyutlandırmak.</b></li>
+            <li>Sabit 1R + %20 tavanla <b>iki felaketi</b> birden engellemek.</li>
+          </ul>
+        </div>
+        <div class="xp-won">＋80 XP</div>
+        <div class="won-badge">🛡️</div>
+        <p class="muted" style="margin-top:6px">Sırada: girdin, koştu — <b>ne zaman satarsın?</b></p>
+        <div class="cta" style="margin-top:22px;display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
+          <a class="btn btn-primary btn-lg" href="modul-07.html">Modül 7'ye geç →</a>
+          <a class="btn btn-lg btn-ghost" href="../index.html">Yol haritasına dön</a>
+        </div>
+      </div>
+
+    </div><!-- /stage -->
+
+    <div class="lnav" id="lnav">
+      <button class="btn btn-lg btn-ghost" id="prevBtn">← Geri</button>
+      <div class="spacer"></div>
+      <button class="btn btn-primary btn-lg" id="nextBtn">Başla →</button>
+    </div>
+  </div>
+
+  <div class="disclaimer">
+    <b>⚠️ Yatırım tavsiyesi değildir.</b> Eğitim amaçlıdır. İçerik Telegram'da paylaşılmaz, kripto
+    satışı yapılmaz — taklit hesaplara/dolandırıcılara karşı dikkatli olun.
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script src="../assets/akademi.js"></script>
+<script>
+  function fs(){ document.fullscreenElement ? document.exitFullscreen() : document.documentElement.requestFullscreen(); }
+  function toast(m){ var t=document.getElementById('toast'); t.textContent=m; t.classList.add('show'); clearTimeout(t._h); t._h=setTimeout(function(){t.classList.remove('show');},1700); }
+  Akademi.init({});
+  var cards = Array.prototype.slice.call(document.querySelectorAll('.lcard'));
+  var idx = 0;
+  var bar = document.getElementById('lbar'), count = document.getElementById('lcount');
+  var prevBtn = document.getElementById('prevBtn'), nextBtn = document.getElementById('nextBtn');
+  var lnav = document.getElementById('lnav');
+  function render(){
+    cards.forEach(function(c,i){ c.classList.toggle('active', i===idx); });
+    bar.style.width = (idx/(cards.length-1)*100) + '%';
+    count.textContent = (idx+1) + ' / ' + cards.length;
+    prevBtn.style.visibility = idx===0 ? 'hidden' : 'visible';
+    var last = idx === cards.length-1;
+    lnav.style.display = last ? 'none' : 'flex';
+    nextBtn.textContent = idx===0 ? 'Başla →' : (idx===cards.length-2 ? 'Bitir 🎉' : 'Devam →');
+    var cur = cards[idx];
+    nextBtn.disabled = (cur.classList.contains('gate') && cur.dataset.answered!=='1');
+    if (last && cur.dataset.done!=='1'){ cur.dataset.done='1'; finish(); }
+    try{ window.scrollTo({top:0,behavior:'smooth'}); }catch(e){ window.scrollTo(0,0); }
+  }
+  function next(){ if(idx<cards.length-1){ idx++; render(); } }
+  function prev(){ if(idx>0){ idx--; render(); } }
+  function finish(){ Akademi.completeModule(6,80); Akademi.touchStreak(); setTimeout(function(){ Akademi.confetti(); }, 250); }
+  nextBtn.addEventListener('click', next);
+  prevBtn.addEventListener('click', prev);
+  document.addEventListener('keydown', function(e){ if(e.key==='ArrowRight' && !nextBtn.disabled) next(); if(e.key==='ArrowLeft') prev(); });
+  document.querySelectorAll('.choices').forEach(function(group){
+    group.querySelectorAll('.choice').forEach(function(ch){
+      ch.addEventListener('click', function(){
+        var card = group.closest('.lcard');
+        if(card.dataset.answered==='1') return;
+        var correct = ch.getAttribute('data-correct')==='1';
+        group.querySelectorAll('.choice').forEach(function(o){ o.disabled = true; if(o.getAttribute('data-correct')==='1') o.classList.add('correct'); });
+        if(!correct) ch.classList.add('wrong');
+        group.querySelectorAll('.choice').forEach(function(o){ if(!o.classList.contains('correct') && !o.classList.contains('wrong')) o.classList.add('dim'); });
+        var fb = card.querySelector('.feedback');
+        fb.classList.add('show', correct?'ok':'no');
+        fb.querySelector('.fb-txt').innerHTML = correct ? fb.getAttribute('data-ok') : fb.getAttribute('data-no');
+        card.dataset.answered = '1';
+        if(correct){ Akademi.addXP(10); toast('+10 XP ✓'); }
+        nextBtn.disabled = false;
+      });
+    });
+  });
+  render();
+</script>
+</body>
+</html>

@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Modül 7 · Kâr Alma & Trend Sürme</title>
+<link rel="stylesheet" href="../assets/akademi.css">
+</head>
+<body>
+
+<div class="bar">
+  <div class="bar-in">
+    <div class="brand"><span class="bull">🐂</span> Swing&nbsp;Akademi <a href="../index.html">· Yol haritası</a></div>
+    <button class="btn" onclick="window.print()">🖨 PDF</button>
+    <button class="btn" onclick="fs()">⛶ Tam Ekran</button>
+  </div>
+</div>
+
+<div class="wrap">
+  <div class="lesson">
+
+    <div class="l-top">
+      <a class="l-exit" href="../index.html">✕ Çık</a>
+      <div class="l-bar"><i id="lbar"></i></div>
+      <div class="l-count" id="lcount">1 / 13</div>
+    </div>
+
+    <div class="stage" id="stage">
+
+      <!-- 0 · KAPAK -->
+      <div class="lcard cover active">
+        <div class="badge-ph">📈 Faz 3 · Modül 7</div>
+        <div class="mascot">📈</div>
+        <h2>Kâr Alma &amp; Trend Sürme</h2>
+        <p class="lead">Girdin, koştu. Şimdi en zor soru: <b>ne zaman satarsın?</b> Açgözlülük "daha
+        yükselir" der, korku "şimdi sat, kaçar" der. İkisini de <b>kuralla</b> yeneceğiz.</p>
+        <div class="takeaway" style="text-align:left">
+          <div class="tt">Bu modül bittiğinde</div>
+          <ul>
+            <li><b>3-5 gün kuralı</b> ile kârın bir kısmını kilitleyeceksin.</li>
+            <li>Stop'u <b>maliyete</b> çekip "ücretsiz sörfe" geçeceksin.</li>
+            <li>Kalanı <b>10 günlük ortalamada</b> sürüp 10R'yi avlayacaksın.</li>
+          </ul>
+        </div>
+        <p class="muted" style="font-size:14px">⏱ ~9 dakika · 2 interaktif soru · +90 XP</p>
+      </div>
+
+      <!-- 1 · İKİ PARÇALI ÇIKIŞ -->
+      <div class="lcard">
+        <div class="l-eyebrow">Çıkış felsefesi</div>
+        <h2>Önce biraz kilitle, sonra büyüğü sür</h2>
+        <p>Çözüm tek bir satış değil, <b>iki parçalı</b> çıkıştır:</p>
+        <ul>
+          <li><b>Erken kâr al:</b> Yükselişin bir kısmını sat — kazancı kilitle, riski azalt (korkuyu yener).</li>
+          <li><b>Kalanı sür:</b> Geri kalanı trend bitene kadar taşı — büyük hareketi yakala (açgözlülüğü disipline eder).</li>
+        </ul>
+        <div class="yani"><b>Yani:</b> Hem "kuş elde bir" hem "büyük balığı kaçırma" — ikisini aynı anda.
+        Bu, hem korkuyu hem açgözlülüğü kuralla çözer.</div>
+        <p class="bridge">Birinci parça: 3-5 gün kuralı.</p>
+      </div>
+
+      <!-- 2 · 3-5 GÜN KURALI -->
+      <div class="lcard">
+        <div class="l-eyebrow">Birinci parça</div>
+        <h2>3-5 Gün Kuralı</h2>
+        <p>Kırılım sonrası momentum <b>hızlı ve şiddetli</b> olmalı. Eğer ilk <b>3 ila 5 gün</b> içinde
+        güçlü bir ralli yakalarsan, pozisyonunun <b>%33 ile %50'sini</b> bu güce satarak kâr al.</p>
+        <div class="yani"><b>Yani:</b> Güçlü hareket sana hızlı kâr verdiyse, bir kısmını cebe at. Piyasa
+        sana kazanç sunduğunda nazik olma — al.</div>
+        <p class="bridge">Sattıktan sonra kritik bir hamle daha var.</p>
+      </div>
+
+      <!-- 3 · MALİYETE ÇEK -->
+      <div class="lcard">
+        <div class="l-eyebrow">Riski sıfırla</div>
+        <h2>Stop'u maliyete çek: ücretsiz sörf</h2>
+        <p>Kısmi kârı aldıktan sonra, <b>kalan pozisyonun stop'unu giriş fiyatına (breakeven/maliyet)</b>
+        çekersin. Artık en kötü senaryoda bile kalan kısımdan <b>zarar etmezsin.</b></p>
+        <div class="note warn"><b>Buna "Free Ride" (ücretsiz sörf) denir.</b> Kârın bir kısmı cebinde,
+        kalanın riski sıfır. Artık rahatça, korkmadan trendi sürebilirsin.</div>
+        <p class="bridge">Şimdi sen karar ver.</p>
+      </div>
+
+      <!-- 4 · SORU 1 -->
+      <div class="lcard gate" data-answered="0">
+        <div class="l-eyebrow">Senaryo</div>
+        <div class="q-stem">Girişinden <b>4 gün</b> sonra hisse güçlü bir şekilde yükseldi, güzel kârdasın.
+        Kural ne der?</div>
+        <div class="choices">
+          <button class="choice"><span class="key">A</span> Hepsini sat, kârı garantiye al</button>
+          <button class="choice" data-correct="1"><span class="key">B</span> %33-50'sini sat, kalanın stop'unu maliyete çek</button>
+          <button class="choice"><span class="key">C</span> Hiç satma, daha çok yükselsin</button>
+        </div>
+        <div class="feedback"
+          data-ok="<b>Doğru.</b> 3-5 gün içinde güçlü ralli = kısmi kâr zamanı. %33-50 sat (kazancı kilitle), kalanın stop'unu maliyete çek (ücretsiz sörf). Hepsini satmak büyük hareketi kaçırtır; hiç satmamak kazancı geri verme riskidir."
+          data-no="<b>Denge bu.</b> Hepsini satmak (A) 10R'lik runner'ı kaçırtır; hiç satmamak (C) eldeki kârı geri verme riski. Doğru hamle: %33-50 sat + stop'u maliyete çek. Hem kilitle hem sür."><span class="fb-txt"></span></div>
+      </div>
+
+      <!-- 5 · RUNNER -->
+      <div class="lcard">
+        <div class="l-eyebrow">İkinci parça · Runner</div>
+        <h2>Kalan pozisyon: hedef koymak yok</h2>
+        <p>Kalan kısma <b>"runner"</b> denir. Bunun için <b>sabit bir hedef fiyat koymazsın.</b> Çünkü
+        en büyük kazançlar (10R, 20R), önceden tahmin edemeyeceğin kadar uzar.</p>
+        <div class="yani"><b>Yani:</b> "Şuradan satarım" deme. Runner'ı bir kurala bırak; kurala dokununca
+        çıkarsın. Tahmin değil, takip.</div>
+        <p class="bridge">Peki runner'ı hangi kural taşır?</p>
+      </div>
+
+      <!-- 6 · 10 GÜNLÜK TRAILING -->
+      <div class="lcard">
+        <div class="l-eyebrow">Dinamik takip</div>
+        <h2>10 günlük hareketli ortalama</h2>
+        <p>Runner'ı <b>10 günlük hareketli ortalama (10 DMA)</b> ile sürersin. Fiyat bu ortalamanın üstünde
+        kaldığı sürece trend sağlıklıdır ve pozisyonu tutarsın. Ortalama yükseldikçe, korunan kârın da
+        otomatik yükselir.</p>
+        <div class="yani"><b>Yani:</b> 10 DMA, yükselen bir "zemin"dir. Fiyat onun üstünde dans ettiği
+        sürece sörfe devam. Zemin kırılınca inersin.</div>
+        <p class="bridge">"Kırılma"yı tam olarak nasıl tanımlarız? Burada ince bir kural var.</p>
+      </div>
+
+      <!-- 7 · NİHAİ ÇIKIŞ -->
+      <div class="lcard">
+        <div class="l-eyebrow">Nihai çıkış</div>
+        <h2>Kapanış kuralı</h2>
+        <p>Çıkış sinyali: fiyatın <b>ilk kez 10 günlük ortalamanın altında günlük KAPANIŞ</b> yapması.</p>
+        <div class="note bad"><b>Kritik incelik:</b> Gün <b>içi</b> sarkmalar (fitiller) dikkate <b>alınmaz.</b>
+        Fiyat gün içinde ortalamanın altına inse bile, gün sonunda üstünde kapatırsa <b>tutmaya devam</b>
+        edersin. Sadece <b>kapanış</b> önemlidir.</p>
+        <p class="bridge">Bu inceliği bir kararla sına.</p>
+      </div>
+
+      <!-- 8 · SORU 2 -->
+      <div class="lcard gate" data-answered="0">
+        <div class="l-eyebrow">Senaryo</div>
+        <div class="q-stem">Runner'ın gün içinde 10 günlük ortalamanın <b>altına sarktı</b>, ama günü
+        ortalamanın <b>üstünde kapattı.</b> Çıkar mısın?</div>
+        <div class="choices">
+          <button class="choice"><span class="key">A</span> Evet, ortalamanın altına indi, hemen satarım</button>
+          <button class="choice" data-correct="1"><span class="key">B</span> Hayır — sadece günlük kapanış önemli, üstünde kapattı</button>
+          <button class="choice"><span class="key">C</span> Panikleyip yarısını satarım</button>
+        </div>
+        <div class="feedback"
+          data-ok="<b>Doğru.</b> Kural net: sadece <b>günlük kapanış</b> 10 DMA'nın altındaysa çıkarsın. Gün içi fitiller seni oyundan atmamalı — yoksa her dalgalanmada erken çıkıp 10R'lik hareketleri kaçırırsın. Üstünde kapattı = tut."
+          data-no="<b>Gün içi sarkma tuzağı.</b> Fitillere göre satarsan büyük trendlerden erken çıkarsın. Kural sadece <b>kapanışa</b> bakar; ortalamanın üstünde kapattıysa pozisyon sağlıklı, tutmaya devam."><span class="fb-txt"></span></div>
+      </div>
+
+      <!-- 9 · ASİMETRİ GERÇEKLEŞİR -->
+      <div class="lcard">
+        <div class="l-eyebrow">Büyük resim</div>
+        <h2>10R buradan gelir</h2>
+        <p>Hepsini birleştir: küçük, garantili kısmi kârlar (3-5 gün kuralı) + ara sıra gelen <b>devasa
+        runner'lar</b> (10 DMA trailing). Çoğu işlem küçük kâr/zararla biter; ama sürdüğün birkaç runner
+        20-30 günde 10R'ye gider.</p>
+        <div class="yani"><b>Yani:</b> Modül 1'deki "kazananı sonuna kadar taşı" kuralının mekaniği tam
+        olarak budur. 10 DMA trailing, asimetriyi gerçeğe çeviren araçtır.</div>
+        <p class="bridge">Bunu araçlarınla yönet.</p>
+      </div>
+
+      <!-- 10 · LAB -->
+      <div class="lcard">
+        <div class="l-eyebrow">🧪 Bu haftanın labı</div>
+        <h2>Çıkış planını kur</h2>
+        <ul>
+          <li><code>trailstop</code> → açık bir pozisyon için 10 günlük trailing stop seviyesini ve "nereye
+          kadar tut, nerede çık" planını hesaplar. Tam bu modülün aracı.</li>
+          <li><code>qswing</code> → 4 evreli yaşam döngüsünde kısmi çıkış ve nihai çıkış mantığını gösterir.</li>
+        </ul>
+        <div class="yani"><b>Yani:</b> Giriş kadar çıkış da kuralıdır. <code>trailstop</code> ile runner'ını
+        her gün nereden süreceğini bil.</div>
+      </div>
+
+      <!-- 11 · ÖDEV -->
+      <div class="lcard">
+        <div class="l-eyebrow">📝 Ödev</div>
+        <h2>Bir kazananın yaşam döngüsünü çiz</h2>
+        <ul>
+          <li>Geçmiş bir <b>kazanan</b> grafik bul. Üzerine işaretle: <b>giriş</b>, <b>3-5. gün kısmi
+          satış</b>, <b>maliyete çekilen stop</b>, <b>10 DMA takip çizgisi</b>, <b>kapanış-altı nihai çıkış.</b></li>
+          <li>Sor: "Eğer ilk güçlü günde hepsini satsaydım, ne kadar kaçırırdım?"</li>
+        </ul>
+        <div class="note warn"><b>İpucu:</b> Çoğu acemi kazananı erken satar, kaybedeni geç keser — tam
+        tersi. Bu modül o alışkanlığı tersine çevirir.</div>
+      </div>
+
+      <!-- 12 · KUTLAMA -->
+      <div class="lcard celebrate">
+        <div class="big-emoji">📈</div>
+        <h2>Artık bir işlemi sonuna kadar yönetiyorsun</h2>
+        <p class="lead">Kârın bir kısmını 3-5 günde kilitliyor, stop'u maliyete çekip ücretsiz sörfe
+        geçiyor, kalanı 10 günlük ortalamada sürüyorsun. Açgözlülük ve korku artık kural karşısında sus pus.</p>
+        <div class="takeaway" style="text-align:left">
+          <div class="tt">Artık yapabilirsin</div>
+          <ul>
+            <li>3-5 gün kuralıyla <b>kısmi kâr</b> alıp riski sıfırlamak.</li>
+            <li>10 DMA <b>kapanış</b> kuralıyla runner'ı sonuna kadar sürmek.</li>
+          </ul>
+        </div>
+        <div class="xp-won">＋90 XP</div>
+        <div class="won-badge">🏄</div>
+        <p class="muted" style="margin-top:6px">Sırada: breakout'a <b>akıllı para</b> da biniyor mu?</p>
+        <div class="cta" style="margin-top:22px;display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
+          <a class="btn btn-primary btn-lg" href="modul-08.html">Modül 8'e geç →</a>
+          <a class="btn btn-lg btn-ghost" href="../index.html">Yol haritasına dön</a>
+        </div>
+      </div>
+
+    </div><!-- /stage -->
+
+    <div class="lnav" id="lnav">
+      <button class="btn btn-lg btn-ghost" id="prevBtn">← Geri</button>
+      <div class="spacer"></div>
+      <button class="btn btn-primary btn-lg" id="nextBtn">Başla →</button>
+    </div>
+  </div>
+
+  <div class="disclaimer">
+    <b>⚠️ Yatırım tavsiyesi değildir.</b> Eğitim amaçlıdır. İçerik Telegram'da paylaşılmaz, kripto
+    satışı yapılmaz — taklit hesaplara/dolandırıcılara karşı dikkatli olun.
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script src="../assets/akademi.js"></script>
+<script>
+  function fs(){ document.fullscreenElement ? document.exitFullscreen() : document.documentElement.requestFullscreen(); }
+  function toast(m){ var t=document.getElementById('toast'); t.textContent=m; t.classList.add('show'); clearTimeout(t._h); t._h=setTimeout(function(){t.classList.remove('show');},1700); }
+  Akademi.init({});
+  var cards = Array.prototype.slice.call(document.querySelectorAll('.lcard'));
+  var idx = 0;
+  var bar = document.getElementById('lbar'), count = document.getElementById('lcount');
+  var prevBtn = document.getElementById('prevBtn'), nextBtn = document.getElementById('nextBtn');
+  var lnav = document.getElementById('lnav');
+  function render(){
+    cards.forEach(function(c,i){ c.classList.toggle('active', i===idx); });
+    bar.style.width = (idx/(cards.length-1)*100) + '%';
+    count.textContent = (idx+1) + ' / ' + cards.length;
+    prevBtn.style.visibility = idx===0 ? 'hidden' : 'visible';
+    var last = idx === cards.length-1;
+    lnav.style.display = last ? 'none' : 'flex';
+    nextBtn.textContent = idx===0 ? 'Başla →' : (idx===cards.length-2 ? 'Bitir 🎉' : 'Devam →');
+    var cur = cards[idx];
+    nextBtn.disabled = (cur.classList.contains('gate') && cur.dataset.answered!=='1');
+    if (last && cur.dataset.done!=='1'){ cur.dataset.done='1'; finish(); }
+    try{ window.scrollTo({top:0,behavior:'smooth'}); }catch(e){ window.scrollTo(0,0); }
+  }
+  function next(){ if(idx<cards.length-1){ idx++; render(); } }
+  function prev(){ if(idx>0){ idx--; render(); } }
+  function finish(){ Akademi.completeModule(7,90); Akademi.touchStreak(); setTimeout(function(){ Akademi.confetti(); }, 250); }
+  nextBtn.addEventListener('click', next);
+  prevBtn.addEventListener('click', prev);
+  document.addEventListener('keydown', function(e){ if(e.key==='ArrowRight' && !nextBtn.disabled) next(); if(e.key==='ArrowLeft') prev(); });
+  document.querySelectorAll('.choices').forEach(function(group){
+    group.querySelectorAll('.choice').forEach(function(ch){
+      ch.addEventListener('click', function(){
+        var card = group.closest('.lcard');
+        if(card.dataset.answered==='1') return;
+        var correct = ch.getAttribute('data-correct')==='1';
+        group.querySelectorAll('.choice').forEach(function(o){ o.disabled = true; if(o.getAttribute('data-correct')==='1') o.classList.add('correct'); });
+        if(!correct) ch.classList.add('wrong');
+        group.querySelectorAll('.choice').forEach(function(o){ if(!o.classList.contains('correct') && !o.classList.contains('wrong')) o.classList.add('dim'); });
+        var fb = card.querySelector('.feedback');
+        fb.classList.add('show', correct?'ok':'no');
+        fb.querySelector('.fb-txt').innerHTML = correct ? fb.getAttribute('data-ok') : fb.getAttribute('data-no');
+        card.dataset.answered = '1';
+        if(correct){ Akademi.addXP(10); toast('+10 XP ✓'); }
+        nextBtn.disabled = false;
+      });
+    });
+  });
+  render();
+</script>
+</body>
+</html>

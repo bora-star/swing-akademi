@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Modül 10 · İşlem Günlüğü & Beklenen Değer</title>
+<link rel="stylesheet" href="../assets/akademi.css">
+</head>
+<body>
+
+<div class="bar">
+  <div class="bar-in">
+    <div class="brand"><span class="bull">🐂</span> Swing&nbsp;Akademi <a href="../index.html">· Yol haritası</a></div>
+    <button class="btn" onclick="window.print()">🖨 PDF</button>
+    <button class="btn" onclick="fs()">⛶ Tam Ekran</button>
+  </div>
+</div>
+
+<div class="wrap">
+  <div class="lesson">
+
+    <div class="l-top">
+      <a class="l-exit" href="../index.html">✕ Çık</a>
+      <div class="l-bar"><i id="lbar"></i></div>
+      <div class="l-count" id="lcount">1 / 12</div>
+    </div>
+
+    <div class="stage" id="stage">
+
+      <!-- 0 · KAPAK -->
+      <div class="lcard cover active">
+        <div class="badge-ph">📒 Faz 4 · Modül 10</div>
+        <div class="mascot">📒</div>
+        <h2>İşlem Günlüğü &amp; Beklenen Değer</h2>
+        <p class="lead">%25 isabetle kazandığını <b>nasıl</b> bilirsin? Ölçmeden bilemezsin. Günlük tutmayan
+        bir trader, göstergeleri kapalı bir uçakla kör uçar. Bu modül seni <b>verinle</b> tanıştırır.</p>
+        <div class="takeaway" style="text-align:left">
+          <div class="tt">Bu modül bittiğinde</div>
+          <ul>
+            <li>Kendi <b>beklenen değerini (expectancy)</b> hesaplayacaksın.</li>
+            <li>R-dağılımı ve <b>hata etiketleriyle</b> zayıf alışkanlığını bulacaksın.</li>
+            <li>Sistemin %25 isabetle gerçekten kazandığını <b>kanıtlayacaksın.</b></li>
+          </ul>
+        </div>
+        <p class="muted" style="font-size:14px">⏱ ~8 dakika · 2 interaktif soru · +100 XP</p>
+      </div>
+
+      <!-- 1 · NEDEN GÜNLÜK -->
+      <div class="lcard">
+        <div class="l-eyebrow">Neden günlük?</div>
+        <h2>Ölçmediğini geliştiremezsin</h2>
+        <p>Bu sistemin üstünlüğü (Modül 1) <b>sadece çok işlemde</b> ortaya çıkar. Tek tek işlemler gürültü;
+        sinyal, <b>sayılarındadır.</b> Günlük tutmazsan, ne çalıştığını ne de neyi yanlış yaptığını
+        asla bilemezsin.</p>
+        <div class="yani"><b>Yani:</b> Hafıza yalan söyler — kazançları abartır, hataları unutur. Sadece
+        yazılı kayıt gerçeği söyler. Günlük, aynandır.</div>
+        <p class="bridge">Hangi sayıları tutacağız?</p>
+      </div>
+
+      <!-- 2 · TEMEL METRİKLER -->
+      <div class="lcard">
+        <div class="l-eyebrow">Çekirdek metrikler</div>
+        <h2>Dört sayı her şeyi söyler</h2>
+        <ul>
+          <li><b>Kazanma oranı (win rate):</b> İşlemlerin yüzde kaçı kârlı?</li>
+          <li><b>Ortalama kazanç (R):</b> Kazançların ortalama kaç R?</li>
+          <li><b>Ortalama kayıp (R):</b> Kayıpların ortalama kaç R?</li>
+          <li><b>Beklenen değer:</b> Hepsini birleştirir (Modül 1 formülü).</li>
+        </ul>
+        <div class="formula">Beklenen Değer = (Kazanma% <span class="op">×</span> Ort. Kazanç) <span class="op">−</span> (Kaybetme% <span class="op">×</span> Ort. Kayıp)</div>
+        <p class="bridge">Gerçek sayılarla görelim — ve sistemi kanıtlayalım.</p>
+      </div>
+
+      <!-- 3 · KANIT HESABI -->
+      <div class="lcard">
+        <div class="l-eyebrow">Sistemi kanıtla</div>
+        <h2>%25 isabet, yine de kârlı</h2>
+        <p>Diyelim 20 işlem yaptın: <b>5 kazanç</b> (ortalama <b>+4R</b>), <b>15 kayıp</b> (ortalama <b>−1R</b>).
+        Kazanma oranı sadece %25.</p>
+        <div class="formula">(0,25 <span class="op">×</span> 4R) <span class="op">−</span> (0,75 <span class="op">×</span> 1R) = 1,0R − 0,75R = <span class="res">+0,25R</span> / işlem</div>
+        <div class="kpis">
+          <div class="kpi"><div class="k-v">%25</div><div class="k-l">kazanma oranı</div></div>
+          <div class="kpi good"><div class="k-v">+5R</div><div class="k-l">20 işlemde</div></div>
+          <div class="kpi good"><div class="k-v">Pozitif</div><div class="k-l">beklenen değer</div></div>
+        </div>
+        <p>İşte Qullamaggie motorunun ruhu, kendi verinle ispatlanmış: az kazan, ama büyük kazan.</p>
+        <p class="bridge">Şimdi sen hesapla.</p>
+      </div>
+
+      <!-- 4 · SORU 1 -->
+      <div class="lcard gate" data-answered="0">
+        <div class="l-eyebrow">Hesap</div>
+        <div class="q-stem">Bir sistem: <b>%30</b> kazanma, ortalama kazanç <b>+3R</b>, ortalama kayıp <b>−1R</b>.
+        Beklenen değeri nedir?</div>
+        <div class="choices">
+          <button class="choice"><span class="key">A</span> −0,4R (zararda)</button>
+          <button class="choice" data-correct="1"><span class="key">B</span> +0,2R (kârda)</button>
+          <button class="choice"><span class="key">C</span> 0R (başabaş)</button>
+        </div>
+        <div class="feedback"
+          data-ok="<b>Doğru.</b> (0,30 × 3R) − (0,70 × 1R) = 0,9R − 0,7R = +0,2R/işlem. %30 isabetle bile pozitif — çünkü kazançlar (3R) kayıplardan (1R) büyük. Asimetri kazandırır."
+          data-no="<b>Formüle dön:</b> (0,30 × 3R) − (0,70 × 1R) = 0,9 − 0,7 = +0,2R. Pozitif. Düşük isabet seni yanıltmasın; önemli olan kazanç/kayıp dengesi (expectancy)."><span class="fb-txt"></span></div>
+      </div>
+
+      <!-- 5 · HATA ETİKETLERİ -->
+      <div class="lcard">
+        <div class="l-eyebrow">Derinlik</div>
+        <h2>R-dağılımı &amp; hata etiketleri</h2>
+        <p>Her işlemin R sonucunu yaz; ayrıca bir <b>hata etiketi</b> ekle:</p>
+        <table class="cmp">
+          <tr><th>Hata etiketi</th><th>Ne demek</th></tr>
+          <tr><td>Kovaladım</td><td>Hareket 1 ATR'yi aşmışken girdim (M5)</td></tr>
+          <tr><td>Stop'u oynattım</td><td>Zarar büyürken stop'u aşağı çektim</td></tr>
+          <tr><td>Aşırı boyut</td><td>%20 kuralını/sabit riski aştım (M6)</td></tr>
+          <tr><td>Earnings'e tuttum</td><td>Bilinçsizce earnings'e taşıdım (M9)</td></tr>
+        </table>
+        <div class="yani"><b>Yani:</b> Bir süre sonra etiketler bir <b>örüntü</b> gösterir: "en büyük
+        kayıplarım hep aynı hatadan." İşte geliştireceğin nokta orasıdır.</div>
+        <p class="bridge">Bir örnekle gör.</p>
+      </div>
+
+      <!-- 6 · SORU 2 -->
+      <div class="lcard gate" data-answered="0">
+        <div class="l-eyebrow">Senaryo</div>
+        <div class="q-stem">Günlüğün gösteriyor: en büyük 5 kaybının hepsinde <b>"stop'u aşağı oynattım"</b>
+        etiketi var. Doğru çözüm nedir?</div>
+        <div class="choices">
+          <button class="choice"><span class="key">A</span> Daha büyük pozisyonla açığı kapatırım</button>
+          <button class="choice" data-correct="1"><span class="key">B</span> Kural: stop asla aşağı çekilmez — mekanik disiplin</button>
+          <button class="choice"><span class="key">C</span> Sistemi bırakır, başka strateji ararım</button>
+        </div>
+        <div class="feedback"
+          data-ok="<b>Doğru.</b> Veri sana sistemin değil, <b>davranışının</b> bozuk olduğunu söylüyor. Çözüm: stop'u asla aşağı oynatmamayı mutlak kural yap (gerekirse stop'u broker'da bırak). Günlük, en pahalı alışkanlığını böyle yakalar."
+          data-no="<b>Veriyi dinle.</b> Sorun sistemde değil; tek bir tekrarlayan hatada (stop oynatma). Çözüm sistemi bırakmak (C) ya da daha çok riske girmek (A) değil — o tek hatayı mekanik kuralla öldürmek."><span class="fb-txt"></span></div>
+      </div>
+
+      <!-- 7 · LAB -->
+      <div class="lcard">
+        <div class="l-eyebrow">🧪 Bu haftanın labı</div>
+        <h2>Günlüğünü kur</h2>
+        <ul>
+          <li>🆕 <code>tradelog</code> (önerilen yeni skill) → işlemlerini kaydeder; win rate, ort. R,
+          <b>beklenen değer</b>, R-dağılımı ve hata etiketlerini otomatik hesaplar. (Henüz yoksa basit bir
+          tablo/worksheet ile başla.)</li>
+        </ul>
+        <div class="yani"><b>Yani:</b> Her işlemi gir: tarih, hisse, giriş, stop, çıkış, R sonucu, hata
+        etiketi. 20-30 işlem sonra sayıların sana ne yapman gerektiğini söyler.</div>
+      </div>
+
+      <!-- 8 · ÖDEV -->
+      <div class="lcard">
+        <div class="l-eyebrow">📝 Ödev</div>
+        <h2>10 işlem + 1 itiraf</h2>
+        <ul>
+          <li>Son (veya sanal) <b>10 işlemini</b> gir. Her biri için R sonucu + hata etiketi yaz.</li>
+          <li><b>Beklenen değerini</b> hesapla. Pozitif mi?</li>
+          <li>En çok tekrarlanan <b>hatanı</b> isimlendir — ve onu öldürecek tek bir kural yaz.</li>
+        </ul>
+        <div class="note warn"><b>İpucu:</b> Bu, tüm akademinin en sıkıcı ama belki <b>en kârlı</b> alışkanlığı.
+        Disiplinli günlük tutan trader, tutmayanın önündedir.</div>
+      </div>
+
+      <!-- 9 · KUTLAMA -->
+      <div class="lcard celebrate">
+        <div class="big-emoji">📒</div>
+        <h2>Artık üstünlüğünü ölçebiliyorsun</h2>
+        <p class="lead">Kendi beklenen değerini hesaplıyor, R-dağılımını okuyor, hata etiketleriyle en
+        pahalı alışkanlığını yakalıyorsun. "Umarım çalışıyor" yerine artık "<b>verim diyor ki çalışıyor</b>"
+        diyorsun.</p>
+        <div class="takeaway" style="text-align:left">
+          <div class="tt">Artık yapabilirsin</div>
+          <ul>
+            <li>İşlemlerini kaydedip <b>beklenen değerini</b> hesaplamak.</li>
+            <li>Hata etiketleriyle <b>zayıf noktanı</b> bulup mekanik kuralla kapatmak.</li>
+          </ul>
+        </div>
+        <div class="xp-won">＋100 XP</div>
+        <div class="won-badge">📊</div>
+        <p class="muted" style="margin-top:6px">Sırada: tek işlemden <b>tüm portföye</b>.</p>
+        <div class="cta" style="margin-top:22px;display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
+          <a class="btn btn-primary btn-lg" href="modul-11.html">Modül 11'e geç →</a>
+          <a class="btn btn-lg btn-ghost" href="../index.html">Yol haritasına dön</a>
+        </div>
+      </div>
+
+    </div><!-- /stage -->
+
+    <div class="lnav" id="lnav">
+      <button class="btn btn-lg btn-ghost" id="prevBtn">← Geri</button>
+      <div class="spacer"></div>
+      <button class="btn btn-primary btn-lg" id="nextBtn">Başla →</button>
+    </div>
+  </div>
+
+  <div class="disclaimer">
+    <b>⚠️ Yatırım tavsiyesi değildir.</b> Eğitim amaçlıdır. İçerik Telegram'da paylaşılmaz, kripto
+    satışı yapılmaz — taklit hesaplara/dolandırıcılara karşı dikkatli olun.
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script src="../assets/akademi.js"></script>
+<script>
+  function fs(){ document.fullscreenElement ? document.exitFullscreen() : document.documentElement.requestFullscreen(); }
+  function toast(m){ var t=document.getElementById('toast'); t.textContent=m; t.classList.add('show'); clearTimeout(t._h); t._h=setTimeout(function(){t.classList.remove('show');},1700); }
+  Akademi.init({});
+  var cards = Array.prototype.slice.call(document.querySelectorAll('.lcard'));
+  var idx = 0;
+  var bar = document.getElementById('lbar'), count = document.getElementById('lcount');
+  var prevBtn = document.getElementById('prevBtn'), nextBtn = document.getElementById('nextBtn');
+  var lnav = document.getElementById('lnav');
+  function render(){
+    cards.forEach(function(c,i){ c.classList.toggle('active', i===idx); });
+    bar.style.width = (idx/(cards.length-1)*100) + '%';
+    count.textContent = (idx+1) + ' / ' + cards.length;
+    prevBtn.style.visibility = idx===0 ? 'hidden' : 'visible';
+    var last = idx === cards.length-1;
+    lnav.style.display = last ? 'none' : 'flex';
+    nextBtn.textContent = idx===0 ? 'Başla →' : (idx===cards.length-2 ? 'Bitir 🎉' : 'Devam →');
+    var cur = cards[idx];
+    nextBtn.disabled = (cur.classList.contains('gate') && cur.dataset.answered!=='1');
+    if (last && cur.dataset.done!=='1'){ cur.dataset.done='1'; finish(); }
+    try{ window.scrollTo({top:0,behavior:'smooth'}); }catch(e){ window.scrollTo(0,0); }
+  }
+  function next(){ if(idx<cards.length-1){ idx++; render(); } }
+  function prev(){ if(idx>0){ idx--; render(); } }
+  function finish(){ Akademi.completeModule(10,100); Akademi.touchStreak(); setTimeout(function(){ Akademi.confetti(); }, 250); }
+  nextBtn.addEventListener('click', next);
+  prevBtn.addEventListener('click', prev);
+  document.addEventListener('keydown', function(e){ if(e.key==='ArrowRight' && !nextBtn.disabled) next(); if(e.key==='ArrowLeft') prev(); });
+  document.querySelectorAll('.choices').forEach(function(group){
+    group.querySelectorAll('.choice').forEach(function(ch){
+      ch.addEventListener('click', function(){
+        var card = group.closest('.lcard');
+        if(card.dataset.answered==='1') return;
+        var correct = ch.getAttribute('data-correct')==='1';
+        group.querySelectorAll('.choice').forEach(function(o){ o.disabled = true; if(o.getAttribute('data-correct')==='1') o.classList.add('correct'); });
+        if(!correct) ch.classList.add('wrong');
+        group.querySelectorAll('.choice').forEach(function(o){ if(!o.classList.contains('correct') && !o.classList.contains('wrong')) o.classList.add('dim'); });
+        var fb = card.querySelector('.feedback');
+        fb.classList.add('show', correct?'ok':'no');
+        fb.querySelector('.fb-txt').innerHTML = correct ? fb.getAttribute('data-ok') : fb.getAttribute('data-no');
+        card.dataset.answered = '1';
+        if(correct){ Akademi.addXP(10); toast('+10 XP ✓'); }
+        nextBtn.disabled = false;
+      });
+    });
+  });
+  render();
+</script>
+</body>
+</html>

@@ -8,7 +8,7 @@ cümleleriyle) → 2-3 düşündüren interaktif soru (anında geri bildirim + X
 → kutlama (XP + rozet + sonraki modüle köprü). Stil: `assets/akademi.css` + `akademi.js`.
 Türkçe: doğal, çeviri kokmaz (bkz. `TR_STYLE.md`).
 
-İlerleme: ⬜ planlandı · 🟨 yazılıyor · ✅ bitti
+İlerleme: ⬜ planlandı · 🟨 yazılıyor · ✅ bitti — **şu an: 12/12 modül ✅**
 
 ---
 
@@ -33,39 +33,39 @@ Tight consolidation (slayt 5): bayrak direği + sıkı bayrak, 10 SMA'ya yaslı,
 küçük 1R + büyük R-katı (asimetri). Uzamış/gevşek/kovalama tuzakları. Lab: qswing (tek hisse) +
 swinganalysis. 13 kart, 2 interaktif.
 
-### Modül 5 — Giriş & Stop: ORH ve Günün Dibi ⬜
+### Modül 5 — Giriş & Stop: ORH ve Günün Dibi ✅
 Giriş tetikleri (slayt 6): **ORH** (ilk 1,5/60 dk zirvesi hacimle kırılır) + **EP** (earnings/haber gap).
 Kritik kural: gün içi hareket 1 ATR'yi aştıysa kovalama yok. Stop (slayt 7): günün dibi (LoD); gap'te
 açılış mumunun dibi; mesafe ≤ 1 ATR. Lab: qswing (tek hisse, EP modu) + swinganalysis.
 
-### Modül 6 — Mekanik Pozisyon Boyutu ⬜
+### Modül 6 — Mekanik Pozisyon Boyutu ✅
 Risk (slayt 10): sabit parasal risk (örn. $500). **Lot = Risk ÷ (Giriş − Stop).** Tek hisse max %20.
 Hesabın %X'i değil, sabit dolar. Lab: 🆕 risksize (öneri) veya worksheets/risk-hesap.
 
 ## FAZ 3 — YÖNETİM & ONAY (Hafta 7-9)
 
-### Modül 7 — Kâr Alma & Trend Sürme ⬜
+### Modül 7 — Kâr Alma & Trend Sürme ✅
 3-5 gün kuralı (slayt 8): 3-5 günde güçlü ralli → %33-50 sat, stop'u maliyete çek (free ride).
 10 günlük trailing (slayt 9): kalanı 10 DMA'da sür; nihai çıkış = 10 DMA altında ilk günlük KAPANIŞ.
 Lab: trailstop + qswing.
 
-### Modül 8 — Akıllı Para Onayı (opsiyonel güç katmanı) ⬜
+### Modül 8 — Akıllı Para Onayı (opsiyonel güç katmanı) ✅
 Flow, dark pool, insider/congress — breakout'a ekstra teyit. Saf Qullamaggie'nin dışında ama uyumlu.
 Lab: firsattara (flow) + smartmoney + leapsflow.
 
-### Modül 9 — Episodic Pivot & Earnings ⬜
+### Modül 9 — Episodic Pivot & Earnings ✅
 EP setup'ı (slayt 6): earnings/haber gap'iyle gelen devasa yukarı açılış. Earnings riskini yönetmek.
 Lab: earnings skilleri (pre/postearnings, earningstrade) + qswing EP modu.
 
 ## FAZ 4 — SİSTEMLEŞME & USTALIK (Hafta 10-12)
 
-### Modül 10 — İşlem Günlüğü & Beklenen Değer ⬜
+### Modül 10 — İşlem Günlüğü & Beklenen Değer ✅
 Win rate, ort. R, expectancy, R-dağılımı, hata etiketleri. %25 isabetle kazandığını ÖLÇ. Lab: 🆕 tradelog.
 
-### Modül 11 — Portföy & Konsantrasyon ⬜
+### Modül 11 — Portföy & Konsantrasyon ✅
 %20 kuralı (slayt 10), portföy ısı, korelasyon, fren ışığında korunma/nakit. Lab: portman/porttech + protect.
 
-### Modül 12 — Pre-Flight Çeklist + Mezuniyet ⬜
+### Modül 12 — Pre-Flight Çeklist + Mezuniyet ✅
 5 yeşil ışık çeklisti (slayt 13): piyasa izni · momentum kalitesi · sıkı kurulum · giriş & risk ·
 mekanik boyut. Kendi playbook'un + günlük rutin + mezuniyet projesi. Lab: dailypack + qswing rutini.
 

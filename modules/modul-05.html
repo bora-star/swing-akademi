@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Modül 5 · Giriş & Stop: ORH ve Günün Dibi</title>
+<link rel="stylesheet" href="../assets/akademi.css">
+</head>
+<body>
+
+<div class="bar">
+  <div class="bar-in">
+    <div class="brand"><span class="bull">🐂</span> Swing&nbsp;Akademi <a href="../index.html">· Yol haritası</a></div>
+    <button class="btn" onclick="window.print()">🖨 PDF</button>
+    <button class="btn" onclick="fs()">⛶ Tam Ekran</button>
+  </div>
+</div>
+
+<div class="wrap">
+  <div class="lesson">
+
+    <div class="l-top">
+      <a class="l-exit" href="../index.html">✕ Çık</a>
+      <div class="l-bar"><i id="lbar"></i></div>
+      <div class="l-count" id="lcount">1 / 13</div>
+    </div>
+
+    <div class="stage" id="stage">
+
+      <!-- 0 · KAPAK -->
+      <div class="lcard cover active">
+        <div class="badge-ph">🎯 Faz 2 · Modül 5</div>
+        <div class="mascot">🎯</div>
+        <h2>Giriş &amp; Stop: ORH ve Günün Dibi</h2>
+        <p class="lead"><b>NE</b> (av) ve <b>NEREDE</b> (sıkı kurulum) tamam. Şimdi <b>NE ZAMAN</b>
+        tetiğe basacağını ve <b>nereye</b> stop koyacağını öğren. Sıkı kurulum "şimdi al" demek değildir —
+        yayın <b>yukarı bırakıldığını</b> görmen gerekir.</p>
+        <div class="takeaway" style="text-align:left">
+          <div class="tt">Bu modül bittiğinde</div>
+          <ul>
+            <li>İki giriş tetiğini tanıyacaksın: <b>ORH</b> ve <b>EP</b>.</li>
+            <li><b>Kovalama (FOMO)</b> tuzağını matematikle reddedeceksin.</li>
+            <li>Stop'unu <b>günün dibine</b> ve <b>≤ 1 ATR</b> kuralıyla koyacaksın.</li>
+          </ul>
+        </div>
+        <p class="muted" style="font-size:14px">⏱ ~9 dakika · 2 interaktif soru · +80 XP</p>
+      </div>
+
+      <!-- 1 · TETİK MANTIĞI -->
+      <div class="lcard">
+        <div class="l-eyebrow">Tetik mantığı</div>
+        <h2>Sıkı kurulum ≠ hemen al</h2>
+        <p>Yay gerildi (Modül 4). Ama her gerilen yay yukarı fırlamaz; bazen aşağı boşalır. Bu yüzden
+        <b>onay</b> bekleriz: fiyatın gerçekten <b>yukarı kırdığını</b> görmeden tetiğe basmayız.</p>
+        <p>Motorun iki giriş tetiği var:</p>
+        <div class="kpis">
+          <div class="kpi"><div class="k-v">ORH</div><div class="k-l">Açılış aralığı kırılımı</div></div>
+          <div class="kpi"><div class="k-v">EP</div><div class="k-l">Episodic Pivot (haber gap'i)</div></div>
+        </div>
+        <p class="bridge">En sık kullanılan: ORH.</p>
+      </div>
+
+      <!-- 2 · ORH -->
+      <div class="lcard">
+        <div class="l-eyebrow">Tetik 1 · ORH</div>
+        <h2>Açılış Aralığı Kırılımı (ORH)</h2>
+        <p>Piyasa açılır. Hissenin ilk <b>1,5 veya 60 dakikasının zirvesi</b> bir "açılış aralığı" tanımlar.
+        Fiyat bu zirveyi (High) <b>hacimle</b> yukarı kırdığında → <b>giriş tetiği</b> basar.</p>
+        <div class="yani"><b>Yani:</b> İlk dakikaların zirvesi, gün içi alıcı-satıcı savaşının çizgisidir.
+        O çizgi hacimle aşılıyorsa, alıcılar kontrolü ele aldı demektir — işte o an girersin.</div>
+        <p class="bridge">İkinci tetik bir haberle gelir (Modül 9'da derinleşeceğiz).</p>
+      </div>
+
+      <!-- 3 · EP -->
+      <div class="lcard">
+        <div class="l-eyebrow">Tetik 2 · EP</div>
+        <h2>Episodic Pivot (haber patlaması)</h2>
+        <p>Bazen hisse yavaş yavaş bayrak yapmaz; bir gecede <b>kazanç (earnings) veya majör bir haberle</b>
+        devasa yukarı <b>gap</b> ile açılır. Buna <b>Episodic Pivot</b> denir — katalizörün kendisi tetiktir.</p>
+        <div class="yani"><b>Yani:</b> ORH "sessiz yayın" kırılımı, EP "gürültülü haber" kırılımıdır. İkisi de
+        aynı amaca hizmet eder: momentumun yukarı patladığı anı yakalamak.</div>
+        <p class="bridge">Her iki tetikte de ölümcül bir hata var: geç kalmak.</p>
+      </div>
+
+      <!-- 4 · KRİTİK KURAL: KOVALAMA -->
+      <div class="lcard">
+        <div class="l-eyebrow">Kritik kural</div>
+        <h2>Kovalama yok: 1 ATR sınırı</h2>
+        <p><b>ATR (Average True Range):</b> hissenin bir günde ortalama kat ettiği mesafe. Kritik kural:</p>
+        <div class="note bad"><b>Gün içi hareket zaten 1 ATR'yi aştıysa, KOVALAMA.</b> Tetiği kaçırdıysan
+        ve fiyat çoktan koştuysa, peşinden koşmak FOMO'dur — stop çok uzakta kalır, risk şişer.</div>
+        <p>Kaçırdığın işlem, kötü girişten <b>çok daha ucuzdur.</b> Bir sonraki kurulumu beklersin.</p>
+        <p class="bridge">Bunu bir kararla sına.</p>
+      </div>
+
+      <!-- 5 · SORU 1 -->
+      <div class="lcard gate" data-answered="0">
+        <div class="l-eyebrow">Senaryo</div>
+        <div class="q-stem">Hisse ORH'yi kırdı ama sen bakmadığın için fiyat şimdiden <b>+2 ATR</b> yukarıda.
+        Ne yaparsın?</div>
+        <div class="choices">
+          <button class="choice"><span class="key">A</span> Hemen al, momentum güçlü, kaçırmam</button>
+          <button class="choice" data-correct="1"><span class="key">B</span> Girmem — kovalama. Sonraki kurulumu beklerim</button>
+          <button class="choice"><span class="key">C</span> Yarısını al, gerisini düşerse eklerim</button>
+        </div>
+        <div class="feedback"
+          data-ok="<b>Doğru.</b> Hareket zaten 1 ATR'yi (hatta 2) aştı = kovalama. Şimdi girersen stop'un çok uzakta kalır, riskin şişer, hareketin sonuna yetişirsin. Kaçan işlem ucuzdur; sabret."
+          data-no="<b>Bu klasik FOMO.</b> +2 ATR çıkmış bir hareketi kovalamak: stop uzak, risk büyük, geç kalmışsın. Kural net — gün içi hareket 1 ATR'yi aştıysa girilmez. Sonraki fırsatı bekle."><span class="fb-txt"></span></div>
+      </div>
+
+      <!-- 6 · STOP KURAL 1 -->
+      <div class="lcard">
+        <div class="l-eyebrow">Güvenlik ağı · Kural 1</div>
+        <h2>Stop = Günün Dibi (LoD)</h2>
+        <p>Girdin. Şimdi güvenlik ağı: <b>ilk gün stop'un, giriş gününün en düşük seviyesidir</b>
+        (Low of the Day - LoD). İstisnasız.</p>
+        <div class="yani"><b>Yani:</b> Mantık basit — eğer fiyat, kırılım yaptığı günün dibinin altına
+        inerse, kurulum çökmüştür; orada çık. Tahmin yok, "biraz daha bekleyeyim" yok.</div>
+        <p class="bridge">Tek istisna: gap'li açılışlar.</p>
+      </div>
+
+      <!-- 7 · STOP KURAL 2 -->
+      <div class="lcard">
+        <div class="l-eyebrow">Güvenlik ağı · Kural 2</div>
+        <h2>Gap istisnası</h2>
+        <p>Boşluklu (gap) açılışlarda veya EP kurulumlarında stop, <b>açılış mumunun dibine</b> konur.
+        Aradaki boşluk (gap) mesafesi de <b>risk hesabına dahil edilir.</b></p>
+        <div class="note warn"><b>Not:</b> Gap'li işlemler daha geniş riskli olabilir — tam da bu yüzden
+        gap mesafesini risk hesabına katmak ve pozisyonu ona göre küçültmek (Modül 6) şart.</div>
+        <p class="bridge">Her durumda geçerli bir üst sınır var.</p>
+      </div>
+
+      <!-- 8 · MESAFE SINIRI -->
+      <div class="lcard">
+        <div class="l-eyebrow">Mesafe sınırı</div>
+        <h2>Stop ≤ 1 ATR</h2>
+        <p>Stop mesafesi (giriş − stop) genelde <b>1 günlük ATR'den geniş olmamalı.</b> Eğer daha geniğse,
+        işlem <b>çok risklidir</b> — ya kurulum yeterince sıkı değildir (Modül 4'e dön), ya da geç kalmışsındır.</p>
+        <div class="formula">Sıkı kurulum → günün dibi <span class="op">yakın</span> → stop ≤ 1 ATR → küçük <span class="res">1R</span></div>
+        <p>Görüyorsun: her şey birbirine bağlanıyor. Sıkı kurulum (M4) yakın stop demekti; yakın stop küçük
+        1R demek; küçük 1R asimetri demek (M1).</p>
+        <p class="bridge">Bir karar daha.</p>
+      </div>
+
+      <!-- 9 · SORU 2 -->
+      <div class="lcard gate" data-answered="0">
+        <div class="l-eyebrow">Senaryo</div>
+        <div class="q-stem">Bir kurulumda giriş ile günün dibi (stop) arası <b>2,5 ATR</b>. Ne yaparsın?</div>
+        <div class="choices">
+          <button class="choice"><span class="key">A</span> Girerim, stop biraz uzak ama olsun</button>
+          <button class="choice" data-correct="1"><span class="key">B</span> Geçerim — stop &gt; 1 ATR, kurulum yeterince sıkı değil</button>
+          <button class="choice"><span class="key">C</span> Stop'u 1 ATR'ye yakın, yapay bir yere koyarım</button>
+        </div>
+        <div class="feedback"
+          data-ok="<b>Doğru.</b> Stop 2,5 ATR = çok geniş = çok riskli. Genelde bu, kurulumun gevşek olduğunun işaretidir. Bu işlemi geçer, daha sıkı bir kurulum beklersin. (C de yanlış: yapay stop, kurulumu kurtarmaz.)"
+          data-no="<b>Dikkat.</b> Stop 2,5 ATR çok geniş — 1 ATR sınırını aşıyor. Bu, kurulumun yeterince sıkı olmadığını söyler. Doğru hamle: işlemi geç. Yapay/keyfi stop koymak (C) riski gizlemez, sadece ertelersin."><span class="fb-txt"></span></div>
+      </div>
+
+      <!-- 10 · LAB -->
+      <div class="lcard">
+        <div class="l-eyebrow">🧪 Bu haftanın labı</div>
+        <h2>Giriş ve stop planı çıkar</h2>
+        <ul>
+          <li><code>qswing</code> (tek hisse / EP modu) → bir aday için giriş tetiğini, stop'u (günün dibi
+          / 1 ATR sınırı) ve 4 evreli yaşam döngüsünü verir.</li>
+          <li><code>swinganalysis</code> → giriş/stop seviyelerini ve kurulum kalitesini derinleştir.</li>
+          <li>Modül 3-4'teki bir adayda: ORH nerede olurdu? Günün dibi stop'u ≤ 1 ATR mi?</li>
+        </ul>
+        <div class="yani"><b>Yani:</b> Önce planı yaz (tetik + stop), sonra araçla doğrula. Plansız giriş yok.</div>
+      </div>
+
+      <!-- 11 · ÖDEV -->
+      <div class="lcard">
+        <div class="l-eyebrow">📝 Ödev</div>
+        <h2>Bir tetik + stop planı</h2>
+        <ul>
+          <li>Watchlist'inden bir hisse seç. <b>Tetik:</b> ORH (ilk 1,5/60 dk zirvesi) nerede?</li>
+          <li><b>Stop:</b> Günün dibi nereye düşerdi? Giriş − stop kaç ATR? <b>≤ 1 ATR mi?</b></li>
+          <li>Eğer &gt; 1 ATR ise: bu kurulumu neden <b>geçeceğini</b> yaz.</li>
+        </ul>
+        <div class="note warn"><b>İpucu:</b> "Tetik gelmezse girmem, stop gelirse çıkarım" — ikisi de
+        önceden yazılı olmalı. İşlem açıldıktan sonra kural değiştirmek, en pahalı alışkanlıktır.</div>
+      </div>
+
+      <!-- 12 · KUTLAMA -->
+      <div class="lcard celebrate">
+        <div class="big-emoji">🎯</div>
+        <h2>Artık ne zaman ve nereye biliyorsun</h2>
+        <p class="lead">Tetiği (ORH/EP) bekliyor, kovalamayı reddediyor, stop'unu günün dibine ≤ 1 ATR
+        kuralıyla koyuyorsun. Riskin artık <b>küçük ve net.</b></p>
+        <div class="takeaway" style="text-align:left">
+          <div class="tt">Artık yapabilirsin</div>
+          <ul>
+            <li>ORH/EP tetiğiyle <b>doğru anda</b> girmek, geç kalanı elemek.</li>
+            <li>Stop'u günün dibine + <b>≤ 1 ATR</b> sınırıyla yerleştirmek.</li>
+          </ul>
+        </div>
+        <div class="xp-won">＋80 XP</div>
+        <div class="won-badge">🎯</div>
+        <p class="muted" style="margin-top:6px">Sırada: <b>kaç lot?</b> Mekanik pozisyon boyutu.</p>
+        <div class="cta" style="margin-top:22px;display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
+          <a class="btn btn-primary btn-lg" href="modul-06.html">Modül 6'ya geç →</a>
+          <a class="btn btn-lg btn-ghost" href="../index.html">Yol haritasına dön</a>
+        </div>
+      </div>
+
+    </div><!-- /stage -->
+
+    <div class="lnav" id="lnav">
+      <button class="btn btn-lg btn-ghost" id="prevBtn">← Geri</button>
+      <div class="spacer"></div>
+      <button class="btn btn-primary btn-lg" id="nextBtn">Başla →</button>
+    </div>
+  </div>
+
+  <div class="disclaimer">
+    <b>⚠️ Yatırım tavsiyesi değildir.</b> Eğitim amaçlıdır. İçerik Telegram'da paylaşılmaz, kripto
+    satışı yapılmaz — taklit hesaplara/dolandırıcılara karşı dikkatli olun.
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script src="../assets/akademi.js"></script>
+<script>
+  function fs(){ document.fullscreenElement ? document.exitFullscreen() : document.documentElement.requestFullscreen(); }
+  function toast(m){ var t=document.getElementById('toast'); t.textContent=m; t.classList.add('show'); clearTimeout(t._h); t._h=setTimeout(function(){t.classList.remove('show');},1700); }
+  Akademi.init({});
+  var cards = Array.prototype.slice.call(document.querySelectorAll('.lcard'));
+  var idx = 0;
+  var bar = document.getElementById('lbar'), count = document.getElementById('lcount');
+  var prevBtn = document.getElementById('prevBtn'), nextBtn = document.getElementById('nextBtn');
+  var lnav = document.getElementById('lnav');
+  function render(){
+    cards.forEach(function(c,i){ c.classList.toggle('active', i===idx); });
+    bar.style.width = (idx/(cards.length-1)*100) + '%';
+    count.textContent = (idx+1) + ' / ' + cards.length;
+    prevBtn.style.visibility = idx===0 ? 'hidden' : 'visible';
+    var last = idx === cards.length-1;
+    lnav.style.display = last ? 'none' : 'flex';
+    nextBtn.textContent = idx===0 ? 'Başla →' : (idx===cards.length-2 ? 'Bitir 🎉' : 'Devam →');
+    var cur = cards[idx];
+    nextBtn.disabled = (cur.classList.contains('gate') && cur.dataset.answered!=='1');
+    if (last && cur.dataset.done!=='1'){ cur.dataset.done='1'; finish(); }
+    try{ window.scrollTo({top:0,behavior:'smooth'}); }catch(e){ window.scrollTo(0,0); }
+  }
+  function next(){ if(idx<cards.length-1){ idx++; render(); } }
+  function prev(){ if(idx>0){ idx--; render(); } }
+  function finish(){ Akademi.completeModule(5,80); Akademi.touchStreak(); setTimeout(function(){ Akademi.confetti(); }, 250); }
+  nextBtn.addEventListener('click', next);
+  prevBtn.addEventListener('click', prev);
+  document.addEventListener('keydown', function(e){ if(e.key==='ArrowRight' && !nextBtn.disabled) next(); if(e.key==='ArrowLeft') prev(); });
+  document.querySelectorAll('.choices').forEach(function(group){
+    group.querySelectorAll('.choice').forEach(function(ch){
+      ch.addEventListener('click', function(){
+        var card = group.closest('.lcard');
+        if(card.dataset.answered==='1') return;
+        var correct = ch.getAttribute('data-correct')==='1';
+        group.querySelectorAll('.choice').forEach(function(o){ o.disabled = true; if(o.getAttribute('data-correct')==='1') o.classList.add('correct'); });
+        if(!correct) ch.classList.add('wrong');
+        group.querySelectorAll('.choice').forEach(function(o){ if(!o.classList.contains('correct') && !o.classList.contains('wrong')) o.classList.add('dim'); });
+        var fb = card.querySelector('.feedback');
+        fb.classList.add('show', correct?'ok':'no');
+        fb.querySelector('.fb-txt').innerHTML = correct ? fb.getAttribute('data-ok') : fb.getAttribute('data-no');
+        card.dataset.answered = '1';
+        if(correct){ Akademi.addXP(10); toast('+10 XP ✓'); }
+        nextBtn.disabled = false;
+      });
+    });
+  });
+  render();
+</script>
+</body>
+</html>

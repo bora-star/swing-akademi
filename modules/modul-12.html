@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Modül 12 · Pre-Flight Çeklist + Mezuniyet</title>
+<link rel="stylesheet" href="../assets/akademi.css">
+</head>
+<body>
+
+<div class="bar">
+  <div class="bar-in">
+    <div class="brand"><span class="bull">🐂</span> Swing&nbsp;Akademi <a href="../index.html">· Yol haritası</a></div>
+    <button class="btn" onclick="window.print()">🖨 PDF</button>
+    <button class="btn" onclick="fs()">⛶ Tam Ekran</button>
+  </div>
+</div>
+
+<div class="wrap">
+  <div class="lesson">
+
+    <div class="l-top">
+      <a class="l-exit" href="../index.html">✕ Çık</a>
+      <div class="l-bar"><i id="lbar"></i></div>
+      <div class="l-count" id="lcount">1 / 12</div>
+    </div>
+
+    <div class="stage" id="stage">
+
+      <!-- 0 · KAPAK -->
+      <div class="lcard cover active">
+        <div class="badge-ph">🎓 Faz 4 · Modül 12</div>
+        <div class="mascot">🎓</div>
+        <h2>Pre-Flight Çeklist + Mezuniyet</h2>
+        <p class="lead">Her şeyi öğrendin. Şimdi tüm motoru <b>tek bir sayfaya</b> indir: <b>5 yeşil ışık.</b>
+        Hepsi yanmıyorsa, işlem yok. Bu modül, bir pilotun her uçuştan önce yaptığı kontrolü senin için kurar.</p>
+        <div class="takeaway" style="text-align:left">
+          <div class="tt">Bu modül bittiğinde</div>
+          <ul>
+            <li><b>5 maddelik pre-flight çeklistini</b> ezbere bileceksin.</li>
+            <li>Günlük rutinini (sabah-gün içi-akşam) kuracaksın.</li>
+            <li>Kendi <b>playbook'unu</b> yazıp <b>mezun olacaksın.</b></li>
+          </ul>
+        </div>
+        <p class="muted" style="font-size:14px">⏱ ~9 dakika · 2 interaktif soru · +120 XP 🎓</p>
+      </div>
+
+      <!-- 1 · ÇEKLIST -->
+      <div class="lcard">
+        <div class="l-eyebrow">Pre-Flight Çeklist</div>
+        <h2>5 Yeşil Işık</h2>
+        <p>Her işlemden önce, bu beş soruyu sor. <b>Hepsi "evet" değilse, işlem yok.</b></p>
+        <table class="cmp">
+          <tr><th>#</th><th>Yeşil ışık</th><th>Modül</th></tr>
+          <tr><td>1</td><td><b>Piyasa İzni:</b> Endeksler 50 ve 200 SMA üstünde mi?</td><td>M2</td></tr>
+          <tr><td>2</td><td><b>Momentum Kalitesi:</b> Son ayların lideri mi ve ADR &gt; %5 mi?</td><td>M3</td></tr>
+          <tr><td>3</td><td><b>Sıkı Kurulum:</b> 10&gt;20 SMA üstünde ve formasyon yeterince sıkı mı?</td><td>M4</td></tr>
+          <tr><td>4</td><td><b>Giriş &amp; Risk:</b> Tetik net mi? Stop mesafesi 1 ATR'yi aşıyor mu?</td><td>M5</td></tr>
+          <tr><td>5</td><td><b>Mekanik Boyut:</b> Lot formülle mi ve %20 kuralı korundu mu?</td><td>M6</td></tr>
+        </table>
+        <div class="yani"><b>Yani:</b> Tüm akademi, bu beş satıra sığar. Gerisi bu satırların derinliğidir.</div>
+        <p class="bridge">Bu çeklistin bir de altın kuralı var.</p>
+      </div>
+
+      <!-- 2 · ALTIN KURAL -->
+      <div class="lcard">
+        <div class="l-eyebrow">Altın kural</div>
+        <h2>Disiplin, stratejiden önemlidir</h2>
+        <p>Qullamaggie'nin en önemli cümlesi strateji değil, <b>disiplin</b> hakkındadır:</p>
+        <div class="takeaway">
+          <div class="tt">Ezberle</div>
+          <ul>
+            <li>"Disiplin, stratejinin kendisinden daha önemlidir."</li>
+            <li><b>Beş yeşil ışık yoksa, işlem yoktur.</b></li>
+          </ul>
+        </div>
+        <p>Dünyanın en iyi sistemi bile, kurallarına uymayan birinin elinde para kaybeder. Senin
+        üstünlüğün sistemde değil, sisteme <b>uyma disiplininde.</b></p>
+        <p class="bridge">Bir kararla sına.</p>
+      </div>
+
+      <!-- 3 · SORU 1 -->
+      <div class="lcard gate" data-answered="0">
+        <div class="l-eyebrow">Senaryo</div>
+        <div class="q-stem">5 ışıktan <b>4'ü yeşil.</b> Ama stop mesafesi <b>2 ATR</b> (4. ışık kırmızı). Harika
+        bir hisse. İşlemi alır mısın?</div>
+        <div class="choices">
+          <button class="choice"><span class="key">A</span> Evet, 5'te 4 yeterince iyi</button>
+          <button class="choice" data-correct="1"><span class="key">B</span> Hayır — beş ışığın hepsi yanmalı, yoksa işlem yok</button>
+          <button class="choice"><span class="key">C</span> Stop'u yapay olarak 1 ATR'ye çekip alırım</button>
+        </div>
+        <div class="feedback"
+          data-ok="<b>Doğru.</b> Çeklist 'çoğunluk' değil, 'hepsi' ister. 4. ışık kırmızı (stop 2 ATR = çok riskli/gevşek kurulum) → işlem yok. Yapay stop (C) riski gizlemez. Tek bir kırmızı ışık, en güzel hisseyi bile elemeye yeter. Sabır."
+          data-no="<b>Disiplin testi.</b> '5'te 4' yok; ya hepsi yeşil ya işlem yok. Stop 2 ATR demek kurulum yeterince sıkı değil (M4/M5). Yapay stop koymak (C) sadece riski gizler. Bu işlemi geç, bir sonrakini bekle."><span class="fb-txt"></span></div>
+      </div>
+
+      <!-- 4 · YAŞAM DÖNGÜSÜ ÖZET -->
+      <div class="lcard">
+        <div class="l-eyebrow">Tek resim</div>
+        <h2>Kusursuz işlemin 4 evresi</h2>
+        <table class="cmp">
+          <tr><th>Evre</th><th>Ne yaparsın</th></tr>
+          <tr><td>1 · Setup</td><td>Sıkı bayrak + 10&gt;20 SMA konumu (M3-M4)</td></tr>
+          <tr><td>2 · Giriş &amp; Risk</td><td>ORH/EP tetiği + stop günün dibine, ≤1 ATR (M5-M6)</td></tr>
+          <tr><td>3 · Kısmi Çıkış</td><td>3-5 günde %50 sat + stop'u maliyete çek (M7)</td></tr>
+          <tr><td>4 · Nihai Çıkış</td><td>Runner'ı 10 DMA'da sür; kapanış-altı çıkış (M7)</td></tr>
+        </table>
+        <div class="yani"><b>Yani:</b> Çeklist "girer miyim?"i, bu 4 evre "girdikten sonra ne yaparım?"ı
+        cevaplar. İkisi birlikte tam motordur.</div>
+        <p class="bridge">Bunu her güne bir rutine bağla.</p>
+      </div>
+
+      <!-- 5 · GÜNLÜK RUTİN -->
+      <div class="lcard">
+        <div class="l-eyebrow">Operasyonel rutin</div>
+        <h2>Sabah · Gün içi · Akşam</h2>
+        <ul>
+          <li><b>🌅 Sabah:</b> Önce ışığa bak (M2). Yeşilse, watchlist'i gözden geçir, ORH tetik
+          seviyelerine alarm kur.</li>
+          <li><b>📈 Gün içi:</b> Sadece kurallarına göre işlem yap. Tetik gelmezse girme; stop gelirse çık.
+          Duygusal izolasyon: dedikoduya değil, fiyat/hacim/sıkışmaya bak.</li>
+          <li><b>🌙 Akşam:</b> Top gainers'ı tara (M3), watchlist'i 10-20 hisseyle güncelle, işlemlerini
+          günlüğe yaz (M10).</li>
+        </ul>
+        <div class="yani"><b>Yani:</b> Ustalık ilham değil, <b>tekrarlanabilir rutindir.</b> Aynı süreci her
+        gün uygula; sonuç süreçten gelir.</div>
+        <p class="bridge">Sabahın ilk hamlesini bir kararla netleştir.</p>
+      </div>
+
+      <!-- 6 · SORU 2 -->
+      <div class="lcard gate" data-answered="0">
+        <div class="l-eyebrow">Senaryo</div>
+        <div class="q-stem">Her trading sabahı yaptığın <b>ilk hamle</b> ne olmalı?</div>
+        <div class="choices">
+          <button class="choice"><span class="key">A</span> En çok konuşulan hisseyi alıp güne başlamak</button>
+          <button class="choice" data-correct="1"><span class="key">B</span> Piyasa ışığına bakmak — gaz mı, fren mi (M2)</button>
+          <button class="choice"><span class="key">C</span> Dün kaybettiğimi geri almak için işlem aramak</button>
+        </div>
+        <div class="feedback"
+          data-ok="<b>Doğru.</b> Hisseye bakmadan önce piyasadan izin al. Işık kırmızıysa, en güzel kurulum bile beklemede kalır. Bu, tüm sürecin 1. adımı — ve çoğu trader'ın atladığı adım. Sen atlamayacaksın."
+          data-no="<b>Sıralama yanlış.</b> Güne hisseyle değil, <b>ışıkla</b> başlanır (M2). Popüler hisse kovalamak (A) veya zarar telafisi (C, revenge) duygusal tuzaklardır. Önce izin: gaz mı, fren mi?"><span class="fb-txt"></span></div>
+      </div>
+
+      <!-- 7 · PLAYBOOK -->
+      <div class="lcard">
+        <div class="l-eyebrow">Mezuniyet projesi · 1</div>
+        <h2>Kendi playbook'unu yaz</h2>
+        <p>Şimdi her şeyi <b>tek sayfalık kişisel bir playbook'a</b> indir:</p>
+        <ul>
+          <li><b>5 yeşil ışık</b> çeklistin (ezbere).</li>
+          <li><b>4 evre</b> yaşam döngüsü.</li>
+          <li>Senin <b>sabit parasal riskin</b> ve %20 tavanın.</li>
+          <li>Kişisel kuralların (Modül 1'de başlattığın liste — artık olgun).</li>
+          <li>Günlük rutinin (sabah/gün içi/akşam).</li>
+        </ul>
+        <div class="yani"><b>Yani:</b> Bu tek sayfa, senin trading anayasandır. Zor anlarda ona bakarsın;
+        duygu değil, o konuşur.</div>
+        <p class="bridge">Ve son adım: gerçek bir işlemi baştan sona belgele.</p>
+      </div>
+
+      <!-- 8 · MEZUNİYET PROJESİ -->
+      <div class="lcard">
+        <div class="l-eyebrow">Mezuniyet projesi · 2</div>
+        <h2>Bir işlemi baştan sona belgele</h2>
+        <p>Gerçek (veya kâğıt) bir işlemi, motorun tüm zincirini göstererek belgele:</p>
+        <ul>
+          <li>🚦 Işık yeşil mi? → 🎯 Huniden geçti mi (momentum/ADR/hacim)? → 🪤 Sıkı kurulum var mı?</li>
+          <li>→ Giriş tetiği (ORH/EP) → stop (günün dibi, ≤1 ATR) → lot (formül, %20)</li>
+          <li>→ 3-5 gün kısmi çıkış → 10 DMA takip → kapanış-altı nihai çıkış → günlüğe R sonucu.</li>
+        </ul>
+        <div class="yani"><b>Yani:</b> Bu belge, motoru gerçekten içselleştirdiğinin kanıtıdır. Tek bir
+        kusursuz döngü, yüz dağınık işlemden değerlidir.</div>
+        <p class="bridge">Araçların hazır.</p>
+      </div>
+
+      <!-- 9 · LAB -->
+      <div class="lcard">
+        <div class="l-eyebrow">🧪 Operasyonel lab</div>
+        <h2>Günlük motorun</h2>
+        <ul>
+          <li><code>dailypack</code> → sabah rutini: piyasa nabzı + makro + portföy tek pakette.</li>
+          <li><code>qswing</code> (tara + tek hisse) → av sahası + sıkı kurulum + giriş/stop. Motorun kalbi.</li>
+          <li><code>firsattara</code>, <code>trailstop</code>, <code>protect</code>, <code>smartmoney</code> →
+          onay, çıkış yönetimi, korunma, akıllı para.</li>
+        </ul>
+        <div class="yani"><b>Yani:</b> Bu skill'ler artık dağınık araçlar değil — hepsi tek bir motorun
+        parçaları. Hangi modülün hangi aracı olduğunu biliyorsun.</div>
+      </div>
+
+      <!-- 10 · MEZUNİYET -->
+      <div class="lcard celebrate">
+        <div class="big-emoji">🎓</div>
+        <h2>Tebrikler — mezun oldun!</h2>
+        <p class="lead">Sıfırdan başladın: "kaç kez kazandın?" diye soruyordun. Şimdi <b>kumarhane gibi
+        düşünüyor</b>, piyasadan izin alıyor, en güçlüyü avlıyor, sıkı kurulumu yakalıyor, mekanik girip
+        disiplinle yönetiyor ve üstünlüğünü ölçüyorsun. <b>Qullamaggie motorunu baştan sona biliyorsun.</b></p>
+        <div class="takeaway" style="text-align:left">
+          <div class="tt">Artık bir sistemin var</div>
+          <ul>
+            <li>🚦 Piyasa izni → 🎯 av sahası → 🪤 sıkı kurulum</li>
+            <li>🎯 giriş &amp; stop → ⚖️ mekanik boyut → 📈 kâr alma &amp; trailing</li>
+            <li>📒 günlük &amp; beklenen değer → 🗂️ portföy → ✅ 5 yeşil ışık</li>
+          </ul>
+        </div>
+        <div class="xp-won">＋120 XP</div>
+        <div class="won-badge">🎓</div>
+        <p class="muted" style="margin-top:6px">Rozet: <b>Mezun</b> · Ama gerçek iş şimdi başlıyor:
+        <b>disiplinle tekrarla.</b></p>
+        <div class="cta" style="margin-top:22px;display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
+          <a class="btn btn-primary btn-lg" href="../index.html">🏠 Yol haritasına dön</a>
+          <a class="btn btn-lg btn-ghost" href="modul-01.html">Baştan tekrar et</a>
+        </div>
+      </div>
+
+    </div><!-- /stage -->
+
+    <div class="lnav" id="lnav">
+      <button class="btn btn-lg btn-ghost" id="prevBtn">← Geri</button>
+      <div class="spacer"></div>
+      <button class="btn btn-primary btn-lg" id="nextBtn">Başla →</button>
+    </div>
+  </div>
+
+  <div class="disclaimer">
+    <b>⚠️ Yatırım tavsiyesi değildir.</b> Eğitim amaçlıdır. İçerik Telegram'da paylaşılmaz, kripto
+    satışı yapılmaz — taklit hesaplara/dolandırıcılara karşı dikkatli olun.
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script src="../assets/akademi.js"></script>
+<script>
+  function fs(){ document.fullscreenElement ? document.exitFullscreen() : document.documentElement.requestFullscreen(); }
+  function toast(m){ var t=document.getElementById('toast'); t.textContent=m; t.classList.add('show'); clearTimeout(t._h); t._h=setTimeout(function(){t.classList.remove('show');},1700); }
+  Akademi.init({});
+  var cards = Array.prototype.slice.call(document.querySelectorAll('.lcard'));
+  var idx = 0;
+  var bar = document.getElementById('lbar'), count = document.getElementById('lcount');
+  var prevBtn = document.getElementById('prevBtn'), nextBtn = document.getElementById('nextBtn');
+  var lnav = document.getElementById('lnav');
+  function render(){
+    cards.forEach(function(c,i){ c.classList.toggle('active', i===idx); });
+    bar.style.width = (idx/(cards.length-1)*100) + '%';
+    count.textContent = (idx+1) + ' / ' + cards.length;
+    prevBtn.style.visibility = idx===0 ? 'hidden' : 'visible';
+    var last = idx === cards.length-1;
+    lnav.style.display = last ? 'none' : 'flex';
+    nextBtn.textContent = idx===0 ? 'Başla →' : (idx===cards.length-2 ? 'Mezun ol 🎓' : 'Devam →');
+    var cur = cards[idx];
+    nextBtn.disabled = (cur.classList.contains('gate') && cur.dataset.answered!=='1');
+    if (last && cur.dataset.done!=='1'){ cur.dataset.done='1'; finish(); }
+    try{ window.scrollTo({top:0,behavior:'smooth'}); }catch(e){ window.scrollTo(0,0); }
+  }
+  function next(){ if(idx<cards.length-1){ idx++; render(); } }
+  function prev(){ if(idx>0){ idx--; render(); } }
+  function finish(){ Akademi.completeModule(12,120); Akademi.touchStreak(); setTimeout(function(){ Akademi.confetti(70); }, 250); setTimeout(function(){ Akademi.confetti(70); }, 900); }
+  nextBtn.addEventListener('click', next);
+  prevBtn.addEventListener('click', prev);
+  document.addEventListener('keydown', function(e){ if(e.key==='ArrowRight' && !nextBtn.disabled) next(); if(e.key==='ArrowLeft') prev(); });
+  document.querySelectorAll('.choices').forEach(function(group){
+    group.querySelectorAll('.choice').forEach(function(ch){
+      ch.addEventListener('click', function(){
+        var card = group.closest('.lcard');
+        if(card.dataset.answered==='1') return;
+        var correct = ch.getAttribute('data-correct')==='1';
+        group.querySelectorAll('.choice').forEach(function(o){ o.disabled = true; if(o.getAttribute('data-correct')==='1') o.classList.add('correct'); });
+        if(!correct) ch.classList.add('wrong');
+        group.querySelectorAll('.choice').forEach(function(o){ if(!o.classList.contains('correct') && !o.classList.contains('wrong')) o.classList.add('dim'); });
+        var fb = card.querySelector('.feedback');
+        fb.classList.add('show', correct?'ok':'no');
+        fb.querySelector('.fb-txt').innerHTML = correct ? fb.getAttribute('data-ok') : fb.getAttribute('data-no');
+        card.dataset.answered = '1';
+        if(correct){ Akademi.addXP(10); toast('+10 XP ✓'); }
+        nextBtn.disabled = false;
+      });
+    });
+  });
+  render();
+</script>
+</body>
+</html>

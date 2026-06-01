@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Modül 8 · Akıllı Para Onayı</title>
+<link rel="stylesheet" href="../assets/akademi.css">
+</head>
+<body>
+
+<div class="bar">
+  <div class="bar-in">
+    <div class="brand"><span class="bull">🐂</span> Swing&nbsp;Akademi <a href="../index.html">· Yol haritası</a></div>
+    <button class="btn" onclick="window.print()">🖨 PDF</button>
+    <button class="btn" onclick="fs()">⛶ Tam Ekran</button>
+  </div>
+</div>
+
+<div class="wrap">
+  <div class="lesson">
+
+    <div class="l-top">
+      <a class="l-exit" href="../index.html">✕ Çık</a>
+      <div class="l-bar"><i id="lbar"></i></div>
+      <div class="l-count" id="lcount">1 / 11</div>
+    </div>
+
+    <div class="stage" id="stage">
+
+      <!-- 0 · KAPAK -->
+      <div class="lcard cover active">
+        <div class="badge-ph">🐋 Faz 3 · Modül 8</div>
+        <div class="mascot">🐋</div>
+        <h2>Akıllı Para Onayı</h2>
+        <p class="lead">Saf motor tek başına çalışır. Ama bazen breakout'una <b>kurumsal "akıllı para"</b>
+        da biniyorsa, güvenin artar. Bu modül <b>opsiyonel bir güç katmanı</b> — kuralın yerine geçmez,
+        üstüne eklenir.</p>
+        <div class="takeaway" style="text-align:left">
+          <div class="tt">Bu modül bittiğinde</div>
+          <ul>
+            <li>Kurumsal izleri (flow, dark pool, insider) <b>tanıyacaksın.</b></li>
+            <li>Bunların neden <b>onay</b> olduğunu, <b>tetik</b> olmadığını bileceksin.</li>
+            <li><b>Çift onaylı</b> (kurulum + akıllı para) fikirleri seçeceksin.</li>
+          </ul>
+        </div>
+        <p class="muted" style="font-size:14px">⏱ ~7 dakika · 2 interaktif soru · +90 XP</p>
+      </div>
+
+      <!-- 1 · AKILLI PARA NEDİR -->
+      <div class="lcard">
+        <div class="l-eyebrow">Tanım</div>
+        <h2>Kurumların ayak izleri</h2>
+        <p>"Akıllı para" = büyük kurumların hareketleri. Bunlar piyasada iz bırakır:</p>
+        <ul>
+          <li><b>Opsiyon akışı (flow):</b> Büyük, agresif call alımları (sweep / golden sweep).</li>
+          <li><b>Dark pool:</b> Borsa dışı büyük blok işlemler.</li>
+          <li><b>Insider / Congress:</b> CEO/CFO veya kongre üyelerinin alımları.</li>
+        </ul>
+        <div class="yani"><b>Yani:</b> Bunlar, "büyük oyuncular bu hisseye konumlanıyor" sinyalidir. Bazen
+        büyük hareketi önceden haber verir.</div>
+        <p class="bridge">Ama kritik bir uyarı var.</p>
+      </div>
+
+      <!-- 2 · ONAY, TETİK DEĞİL -->
+      <div class="lcard">
+        <div class="l-eyebrow">Altın kural</div>
+        <h2>Onay'dır, tetik değildir</h2>
+        <p>Motorun tetiği hâlâ <b>ORH / sıkı kurulumdur</b> (Modül 4-5). Akıllı para bunun <b>yerine
+        geçmez</b> — sadece konviksiyonu artırır. <b>Sadece flow'a bakarak işlem açılmaz.</b></p>
+        <div class="note bad"><b>Tuzak:</b> "Devasa call alımı var, hemen alayım." Kurulum yoksa, piyasa
+        kırmızıysa, bu flow seni kurtarmaz. Önce kurallar, sonra onay.</div>
+        <p class="bridge">İki onay kaynağına daha yakından bak.</p>
+      </div>
+
+      <!-- 3 · OPSİYON AKIŞI -->
+      <div class="lcard">
+        <div class="l-eyebrow">Kaynak 1 · Flow</div>
+        <h2>Opsiyon akışı</h2>
+        <p>Breakout adayında büyük ölçekli (premium ≥ $250K), <b>ask tarafında</b> agresif call alımları
+        (sweep, golden sweep) görmek, kurumların yukarı yönlü konumlandığının işaretidir.</p>
+        <div class="yani"><b>Yani:</b> Birisi milyonlarca dolarlık call'u aceleyle alıyorsa, o hissenin
+        yukarı gitmesine ciddi para yatırıyor demektir. Senin kurulumunla aynı yöndeyse, güzel teyit.</div>
+        <p class="bridge">Diğer kaynaklar: dark pool ve içeriden alımlar.</p>
+      </div>
+
+      <!-- 4 · DARK POOL + INSIDER -->
+      <div class="lcard">
+        <div class="l-eyebrow">Kaynak 2-3</div>
+        <h2>Dark pool &amp; insider/congress</h2>
+        <ul>
+          <li><b>Dark pool baskıları:</b> Büyük blokların sessizce el değiştirmesi — birikim işareti olabilir.</li>
+          <li><b>Insider / Congress alımları:</b> Şirketi en iyi tanıyanlar (yöneticiler) veya bilgili
+          kişiler kendi paralarıyla alıyorsa, dikkat çekicidir.</li>
+        </ul>
+        <div class="yani"><b>Yani:</b> Üç kaynak da aynı hikâyeyi anlatıyorsa (kurumlar topluyor), senin
+        teknik kurulumun "yalnız" değildir.</div>
+        <p class="bridge">Bir kararla sına.</p>
+      </div>
+
+      <!-- 5 · SORU 1 -->
+      <div class="lcard gate" data-answered="0">
+        <div class="l-eyebrow">Senaryo</div>
+        <div class="q-stem">Bir hissede <b>devasa bullish flow</b> var. Ama sıkı bir kurulum <b>yok</b> ve
+        piyasa <b>kırmızı ışıkta.</b> Sadece flow'a güvenip alır mısın?</div>
+        <div class="choices">
+          <button class="choice"><span class="key">A</span> Evet, akıllı para biliyor demektir</button>
+          <button class="choice" data-correct="1"><span class="key">B</span> Hayır — flow onaydır, tetik değil; kurallar önce</button>
+          <button class="choice"><span class="key">C</span> Yarısını alırım, flow yeterli sinyal</button>
+        </div>
+        <div class="feedback"
+          data-ok="<b>Doğru.</b> Flow tek başına işlem açtırmaz. Piyasa kırmızı (Modül 2) ve kurulum yok (Modül 4) — iki temel kapı kapalı. Akıllı para sadece var olan bir kurulumu güçlendirir, yokken yaratmaz."
+          data-no="<b>Tuzağa düştün.</b> Flow 'onay' katmanıdır, 'tetik' değil. Piyasa kırmızı + kurulum yok = işlem yok, ne kadar büyük flow olursa olsun. Kurallar her zaman flow'dan önce gelir."><span class="fb-txt"></span></div>
+      </div>
+
+      <!-- 6 · ÇİFT ONAY -->
+      <div class="lcard">
+        <div class="l-eyebrow">İdeal senaryo</div>
+        <h2>Çift onay: kurulum 🟢 ∩ akıllı para 🟢</h2>
+        <p>En güçlü fikirler, ikisinin <b>kesiştiği</b> yerde doğar: sıkı bir breakout kurulumu (teknik)
+        <b>VE</b> aynı yönde kurumsal akıllı para (flow/insider). <code>firsattara</code> tam da bu çifte
+        onaylı fikirleri öne çıkarır.</p>
+        <div class="yani"><b>Yani:</b> Teknik diyor ki "yukarı kırıyor", akıllı para diyor ki "biz de
+        buradayız". İki bağımsız kanıt aynı yönü gösteriyorsa, konviksiyon artar — ama kurallar (giriş,
+        stop, boyut) yine aynen geçerli.</div>
+        <p class="bridge">Son bir karar.</p>
+      </div>
+
+      <!-- 7 · SORU 2 -->
+      <div class="lcard gate" data-answered="0">
+        <div class="l-eyebrow">Senaryo</div>
+        <div class="q-stem">A+ sıkı kurulumun <b>aynı zamanda</b> golden sweep call alımları + bir insider
+        alımı gösteriyor. Bu ne anlama gelir?</div>
+        <div class="choices">
+          <button class="choice"><span class="key">A</span> Stop'a gerek yok, kazanç garanti</button>
+          <button class="choice" data-correct="1"><span class="key">B</span> Konviksiyon yüksek — ama giriş/stop/boyut kuralları aynen geçerli</button>
+          <button class="choice"><span class="key">C</span> Pozisyonu %50'ye çıkarırım, çift onay var</button>
+        </div>
+        <div class="feedback"
+          data-ok="<b>Doğru.</b> Çift onay konviksiyonu artırır, ama kuralları değiştirmez. Stop yine günün dibinde, boyut yine formülde ve %20 tavanında. Onay, riski yönetmeni gerektirmekten muaf tutmaz — sadece daha rahat uyursun."
+          data-no="<b>Dikkat.</b> Çift onay güzel ama 'garanti' yoktur (stop'suz işlem yok!) ve %20 tavanı kalkmaz. Akıllı para konviksiyonu artırır; risk kuralları (stop, boyut) hep aynen uygulanır. Onay ≠ kuralları esnetme izni."><span class="fb-txt"></span></div>
+      </div>
+
+      <!-- 8 · LAB -->
+      <div class="lcard">
+        <div class="l-eyebrow">🧪 Bu haftanın labı</div>
+        <h2>Çifte onay ara</h2>
+        <ul>
+          <li><code>firsattara</code> → swing kurulumu + opsiyon flow'u birlikte tarar, çift onaylı (🟢∩🟢)
+          fikirleri öne çıkarır.</li>
+          <li><code>smartmoney</code> → congress/insider alımlarını portföy/adaylarınla kesiştirir.</li>
+          <li><code>leapsflow</code> → uzun vadeli call (LEAPS) birikimini tespit eder.</li>
+        </ul>
+        <div class="yani"><b>Yani:</b> Önce kurulumu bul (qswing), sonra akıllı parayı kontrol et (firsattara/
+        smartmoney). İkisi örtüşüyorsa, listende öne al.</div>
+      </div>
+
+      <!-- 9 · ÖDEV -->
+      <div class="lcard">
+        <div class="l-eyebrow">📝 Ödev</div>
+        <h2>Çift onaylı bir aday bul</h2>
+        <ul>
+          <li>Sıkı kurulumu olan bir adayda <code>firsattara</code>/<code>smartmoney</code> ile akıllı parayı
+          kontrol et. Çift onay var mı?</li>
+          <li>Bir de <b>"flow var ama kurulum yok"</b> bir örnek bul — neden <b>işlem olmadığını</b> yaz.</li>
+        </ul>
+        <div class="note warn"><b>İpucu:</b> Bu katman <b>opsiyoneldir.</b> Saf Qullamaggie motoru akıllı
+        para olmadan da çalışır. Onu bir "bonus güven" olarak kullan, bağımlılık yapma.</div>
+      </div>
+
+      <!-- 10 · KUTLAMA -->
+      <div class="lcard celebrate">
+        <div class="big-emoji">🐋</div>
+        <h2>Konviksiyon katmanın hazır</h2>
+        <p class="lead">Artık bir breakout'a kurumsal akıllı paranın eşlik edip etmediğini görebiliyorsun —
+        ve bunun bir <b>onay</b> olduğunu, asla kuralların yerine geçmediğini biliyorsun.</p>
+        <div class="takeaway" style="text-align:left">
+          <div class="tt">Artık yapabilirsin</div>
+          <ul>
+            <li>Flow / dark pool / insider izlerini <b>okumak.</b></li>
+            <li>Çift onaylı (kurulum ∩ akıllı para) fikirleri <b>öne almak</b> — kuralları bozmadan.</li>
+          </ul>
+        </div>
+        <div class="xp-won">＋90 XP</div>
+        <div class="won-badge">🤝</div>
+        <p class="muted" style="margin-top:6px">Sırada: <b>haberle patlayan</b> hisseler — Episodic Pivot.</p>
+        <div class="cta" style="margin-top:22px;display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
+          <a class="btn btn-primary btn-lg" href="modul-09.html">Modül 9'a geç →</a>
+          <a class="btn btn-lg btn-ghost" href="../index.html">Yol haritasına dön</a>
+        </div>
+      </div>
+
+    </div><!-- /stage -->
+
+    <div class="lnav" id="lnav">
+      <button class="btn btn-lg btn-ghost" id="prevBtn">← Geri</button>
+      <div class="spacer"></div>
+      <button class="btn btn-primary btn-lg" id="nextBtn">Başla →</button>
+    </div>
+  </div>
+
+  <div class="disclaimer">
+    <b>⚠️ Yatırım tavsiyesi değildir.</b> Eğitim amaçlıdır. İçerik Telegram'da paylaşılmaz, kripto
+    satışı yapılmaz — taklit hesaplara/dolandırıcılara karşı dikkatli olun.
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script src="../assets/akademi.js"></script>
+<script>
+  function fs(){ document.fullscreenElement ? document.exitFullscreen() : document.documentElement.requestFullscreen(); }
+  function toast(m){ var t=document.getElementById('toast'); t.textContent=m; t.classList.add('show'); clearTimeout(t._h); t._h=setTimeout(function(){t.classList.remove('show');},1700); }
+  Akademi.init({});
+  var cards = Array.prototype.slice.call(document.querySelectorAll('.lcard'));
+  var idx = 0;
+  var bar = document.getElementById('lbar'), count = document.getElementById('lcount');
+  var prevBtn = document.getElementById('prevBtn'), nextBtn = document.getElementById('nextBtn');
+  var lnav = document.getElementById('lnav');
+  function render(){
+    cards.forEach(function(c,i){ c.classList.toggle('active', i===idx); });
+    bar.style.width = (idx/(cards.length-1)*100) + '%';
+    count.textContent = (idx+1) + ' / ' + cards.length;
+    prevBtn.style.visibility = idx===0 ? 'hidden' : 'visible';
+    var last = idx === cards.length-1;
+    lnav.style.display = last ? 'none' : 'flex';
+    nextBtn.textContent = idx===0 ? 'Başla →' : (idx===cards.length-2 ? 'Bitir 🎉' : 'Devam →');
+    var cur = cards[idx];
+    nextBtn.disabled = (cur.classList.contains('gate') && cur.dataset.answered!=='1');
+    if (last && cur.dataset.done!=='1'){ cur.dataset.done='1'; finish(); }
+    try{ window.scrollTo({top:0,behavior:'smooth'}); }catch(e){ window.scrollTo(0,0); }
+  }
+  function next(){ if(idx<cards.length-1){ idx++; render(); } }
+  function prev(){ if(idx>0){ idx--; render(); } }
+  function finish(){ Akademi.completeModule(8,90); Akademi.touchStreak(); setTimeout(function(){ Akademi.confetti(); }, 250); }
+  nextBtn.addEventListener('click', next);
+  prevBtn.addEventListener('click', prev);
+  document.addEventListener('keydown', function(e){ if(e.key==='ArrowRight' && !nextBtn.disabled) next(); if(e.key==='ArrowLeft') prev(); });
+  document.querySelectorAll('.choices').forEach(function(group){
+    group.querySelectorAll('.choice').forEach(function(ch){
+      ch.addEventListener('click', function(){
+        var card = group.closest('.lcard');
+        if(card.dataset.answered==='1') return;
+        var correct = ch.getAttribute('data-correct')==='1';
+        group.querySelectorAll('.choice').forEach(function(o){ o.disabled = true; if(o.getAttribute('data-correct')==='1') o.classList.add('correct'); });
+        if(!correct) ch.classList.add('wrong');
+        group.querySelectorAll('.choice').forEach(function(o){ if(!o.classList.contains('correct') && !o.classList.contains('wrong')) o.classList.add('dim'); });
+        var fb = card.querySelector('.feedback');
+        fb.classList.add('show', correct?'ok':'no');
+        fb.querySelector('.fb-txt').innerHTML = correct ? fb.getAttribute('data-ok') : fb.getAttribute('data-no');
+        card.dataset.answered = '1';
+        if(correct){ Akademi.addXP(10); toast('+10 XP ✓'); }
+        nextBtn.disabled = false;
+      });
+    });
+  });
+  render();
+</script>
+</body>
+</html>

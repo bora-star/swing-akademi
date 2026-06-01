@@ -130,12 +130,12 @@
           <h4>Sıkı Kurulum: Yay Gerilmesi</h4><p>Bayrak direği + sıkı konsolidasyon, 10>20 SMA üstünde. "Tight setups."</p>
           <span class="rc-state"></span>
         </a>
-        <a class="rcard" data-mod="5" href="#">
+        <a class="rcard" data-mod="5" href="modules/modul-05.html">
           <div class="rc-top"><span class="rc-wk">Hafta 5</span><span class="rc-xp">+80 XP</span></div>
           <h4>Giriş & Stop: ORH ve Günün Dibi</h4><p>Açılış aralığı kırılımı / Episodic Pivot tetik; stop günün dibine, 1 ATR sınırı.</p>
           <span class="rc-state"></span>
         </a>
-        <a class="rcard" data-mod="6" href="#">
+        <a class="rcard" data-mod="6" href="modules/modul-06.html">
           <div class="rc-top"><span class="rc-wk">Hafta 6</span><span class="rc-xp">+80 XP</span></div>
           <h4>Mekanik Pozisyon Boyutu</h4><p>Lot = sabit risk ÷ (giriş − stop). Tek hisse max %20. Duyguyu mekanizma çıkarır.</p>
           <span class="rc-state"></span>
@@ -147,17 +147,17 @@
     <div class="phase-col p3">
       <div class="ph-head"><span class="pn">3</span><div><div class="pt">Yönetim & Onay</div><div class="pw">Hafta 7–9</div></div></div>
       <div class="ph-cards">
-        <a class="rcard" data-mod="7" href="#">
+        <a class="rcard" data-mod="7" href="modules/modul-07.html">
           <div class="rc-top"><span class="rc-wk">Hafta 7</span><span class="rc-xp">+90 XP</span></div>
           <h4>Kâr Alma & Trend Sürme</h4><p>3-5 gün kuralı: %50 sat, stop'u maliyete çek. Kalanı 10 günlük ortalamada sür.</p>
           <span class="rc-state"></span>
         </a>
-        <a class="rcard" data-mod="8" href="#">
+        <a class="rcard" data-mod="8" href="modules/modul-08.html">
           <div class="rc-top"><span class="rc-wk">Hafta 8</span><span class="rc-xp">+90 XP</span></div>
           <h4>Akıllı Para Onayı</h4><p>Flow, dark pool, insider — breakout'a ekstra güç katmanı (opsiyonel).</p>
           <span class="rc-state"></span>
         </a>
-        <a class="rcard" data-mod="9" href="#">
+        <a class="rcard" data-mod="9" href="modules/modul-09.html">
           <div class="rc-top"><span class="rc-wk">Hafta 9</span><span class="rc-xp">+90 XP</span></div>
           <h4>Episodic Pivot & Earnings</h4><p>Haber/bilanço gap'iyle gelen EP setup'ı; earnings riskini yönetmek.</p>
           <span class="rc-state"></span>
@@ -169,17 +169,17 @@
     <div class="phase-col p4">
       <div class="ph-head"><span class="pn">4</span><div><div class="pt">Sistemleşme & Ustalık</div><div class="pw">Hafta 10–12</div></div></div>
       <div class="ph-cards">
-        <a class="rcard" data-mod="10" href="#">
+        <a class="rcard" data-mod="10" href="modules/modul-10.html">
           <div class="rc-top"><span class="rc-wk">Hafta 10</span><span class="rc-xp">+100 XP</span></div>
           <h4>İşlem Günlüğü & Beklenen Değer</h4><p>Win rate, ort. R, expectancy. %25 isabetle kazandığını kanıtla.</p>
           <span class="rc-state"></span>
         </a>
-        <a class="rcard" data-mod="11" href="#">
+        <a class="rcard" data-mod="11" href="modules/modul-11.html">
           <div class="rc-top"><span class="rc-wk">Hafta 11</span><span class="rc-xp">+100 XP</span></div>
           <h4>Portföy & Konsantrasyon</h4><p>%20 kuralı, portföy ısı, fren ışığında korunma ve nakit yönetimi.</p>
           <span class="rc-state"></span>
         </a>
-        <a class="rcard" data-mod="12" href="#">
+        <a class="rcard" data-mod="12" href="modules/modul-12.html">
           <div class="rc-top"><span class="rc-wk">Hafta 12 · 🎓</span><span class="rc-xp">+120 XP</span></div>
           <h4>Pre-Flight Çeklist + Mezuniyet</h4><p>5 yeşil ışık çeklisti, kendi playbook'un, günlük rutin, mezuniyet projesi.</p>
           <span class="rc-state"></span>
@@ -247,9 +247,6 @@
     if (st==='done')    s.innerHTML = '✓ Tamamlandı';
     if (st==='current'){ s.innerHTML = '⭐ Şimdi sıra burada'; var g=document.createElement('span'); g.className='go'; g.textContent='Başla →'; card.appendChild(g); }
     if (st==='locked')  s.innerHTML = '🔒 Kilitli';
-
-    // Modül 1-4 hazır; 5+ yakında
-    if (id > 4) card.addEventListener('click', function(e){ e.preventDefault(); toast('Bu modül yakında üretilecek 🛠️'); });
   });
 
   // Rozetler
