@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Modül 3 · Av Sahası: En Güçlüyü Filtrele</title>
+<link rel="stylesheet" href="../assets/akademi.css">
+</head>
+<body>
+
+<div class="bar">
+  <div class="bar-in">
+    <div class="brand"><span class="bull">🐂</span> Swing&nbsp;Akademi <a href="../index.html">· Yol haritası</a></div>
+    <button class="btn" onclick="window.print()">🖨 PDF</button>
+    <button class="btn" onclick="fs()">⛶ Tam Ekran</button>
+  </div>
+</div>
+
+<div class="wrap">
+  <div class="lesson">
+
+    <div class="l-top">
+      <a class="l-exit" href="../index.html">✕ Çık</a>
+      <div class="l-bar"><i id="lbar"></i></div>
+      <div class="l-count" id="lcount">1 / 13</div>
+    </div>
+
+    <div class="stage" id="stage">
+
+      <!-- 0 · KAPAK -->
+      <div class="lcard cover active">
+        <div class="badge-ph">🎯 Faz 1 · Modül 3</div>
+        <div class="mascot">🎯</div>
+        <h2>Av Sahası: En Güçlüyü Filtrele</h2>
+        <p class="lead">Borsada binlerce hisse var. Qullamaggie sadece bir avuç <b>"en güçlüye"</b> bakar.
+        Neden? Çünkü en çok hareket eden hisse, hareketine <b>devam etme</b> eğilimindedir.</p>
+        <div class="takeaway" style="text-align:left">
+          <div class="tt">Bu modül bittiğinde</div>
+          <ul>
+            <li>Binlerce hisseyi <b>3 filtreyle</b> bir avuca indireceksin.</li>
+            <li>Momentum, <b>ADR</b> ve likiditeyi sayısal kapı olarak kullanacaksın.</li>
+            <li>"Güzel hikâye" ile "iyi kurulum" arasındaki farkı bileceksin.</li>
+          </ul>
+        </div>
+        <p class="muted" style="font-size:14px">⏱ ~9 dakika · 2 interaktif soru · +70 XP</p>
+      </div>
+
+      <!-- 1 · HUNİ -->
+      <div class="lcard">
+        <div class="l-eyebrow">Av stratejisi</div>
+        <h2>Filtreleme hunisi</h2>
+        <p>Işık yeşil (Modül 2). Şimdi <b>ne</b> avlayacağız? Aslan sürünün en zayıfını değil, en
+        belirgin hedefini seçer — biz de tersini değil: <b>en güçlüleri</b> seçeriz.</p>
+        <p>Üç filtreyi sırayla uygularız. Her filtre binlerce hisseyi eler; geriye sadece <b>avlanmaya
+        değer</b> bir avuç kalır:</p>
+        <div class="kpis">
+          <div class="kpi"><div class="k-v">1️⃣</div><div class="k-l">Momentum</div></div>
+          <div class="kpi"><div class="k-v">2️⃣</div><div class="k-l">Volatilite (ADR)</div></div>
+          <div class="kpi"><div class="k-v">3️⃣</div><div class="k-l">Likidite</div></div>
+        </div>
+        <p class="bridge">Birinci filtre: en bariz olan.</p>
+      </div>
+
+      <!-- 2 · FİLTRE 1: MOMENTUM -->
+      <div class="lcard">
+        <div class="l-eyebrow">Filtre 1 · Momentum</div>
+        <h2>Sadece liderleri avla</h2>
+        <p>Son <b>1, 3 ve 6 ayın</b> en büyük kazananlarına (Top Gainers) bakarız. <b>Dipte yatan</b>
+        ("ucuzladı, belki döner" denen) hisseler doğrudan <b>reddedilir.</b></p>
+        <p>Mantık Modül 1'den tanıdık: <b>güç güce çeker.</b> Kurumlar kazananı kovalar, kazanan koşmaya
+        devam eder. Biz dönmeyi ummayız; zaten koşanın yanına atlarız.</p>
+        <div class="yani"><b>Yani:</b> "Ucuz" diye düşeni almak değil, <b>en güçlüyü</b> seçmek. Trend
+        dostundur; ona karşı değil, yanında dururuz.</div>
+        <p class="bridge">Lider olmak yetmez — yeterince <b>hareketli</b> de olmalı.</p>
+      </div>
+
+      <!-- 3 · FİLTRE 2: ADR -->
+      <div class="lcard">
+        <div class="l-eyebrow">Filtre 2 · Volatilite</div>
+        <h2>ADR ≥ %5 — yeterli hareket marjı</h2>
+        <p><b>ADR (Average Daily Range / Günlük Ortalama Hareket Marjı):</b> bir hissenin günde ortalama
+        yüzde kaç oynadığı. Qullamaggie eşiği: <b>ADR ≥ %5.</b></p>
+        <p>Neden? Bu sistem <b>asimetriden</b> (10R'lik kazananlardan) yaşar. Günde sadece %1 oynayan
+        durgun bir hisse, sana o büyük hareketi makul sürede <b>veremez.</b> Küçük bir hesabı hızlı
+        büyütmek için <b>oynaklık</b> şarttır.</p>
+        <div class="note warn"><b>Denge:</b> Yüksek ADR = yüksek potansiyel <b>ama</b> yüksek risk. Bu
+        yüzden stop ve pozisyon boyutu (Modül 5–6) bu kadar kritik. Oynaklık dostumuz, ama kurallıyken.</div>
+        <p class="bridge">Hareketli olması da yetmez — <b>girip çıkabilmeliyiz.</b></p>
+      </div>
+
+      <!-- 4 · FİLTRE 3: LİKİDİTE -->
+      <div class="lcard">
+        <div class="l-eyebrow">Filtre 3 · Likidite</div>
+        <h2>Günlük hacim ≥ $20 Milyon</h2>
+        <p>Hissede günde en az <b>$20 Milyon</b> işlem hacmi olmalı. Likidite, <b>kaygan zemin olmadan</b>
+        girip çıkabilmen demektir — ve genelde kurumsal ilginin işaretidir.</p>
+        <p>Düşük hacimli bir hissede, çıkmak istediğinde alıcı bulamayabilir, fiyatı kendi emrinle
+        bozabilirsin. $20M kuralı bunu engeller.</p>
+        <div class="yani"><b>Yani:</b> Üç filtre birlikte: <b>en güçlü</b> (momentum) + <b>yeterince
+        hareketli</b> (ADR ≥ %5) + <b>rahat girilip çıkılır</b> (hacim ≥ $20M). Üçünü de geçmeyen elenir.</div>
+        <p class="bridge">Şimdi avcı sen ol.</p>
+      </div>
+
+      <!-- 5 · SORU 1 -->
+      <div class="lcard gate" data-answered="0">
+        <div class="l-eyebrow">Avlanma testi</div>
+        <div class="q-stem">Hangi hisse huninin <b>üç filtresini de</b> geçer? (lider momentum + ADR ≥ %5 +
+        hacim ≥ $20M)</div>
+        <div class="choices">
+          <button class="choice" data-correct="1"><span class="key">A</span> Son 6 ayın lideri · ADR %7 · hacim $80M</button>
+          <button class="choice"><span class="key">B</span> Son 6 ayın lideri · ADR %2 · hacim $90M</button>
+          <button class="choice"><span class="key">C</span> Aylardır dipte yatıyor · ADR %8 · hacim $120M</button>
+          <button class="choice"><span class="key">D</span> Son 6 ayın lideri · ADR %6 · hacim $4M</button>
+        </div>
+        <div class="feedback"
+          data-ok="<b>Doğru, A.</b> Üç kapıyı da geçer: lider + ADR %7 (≥%5) + hacim $80M (≥$20M). B durgun (ADR %2), C dipte yatıyor (momentum yok), D illikit ($4M). Üçünden biri bile eksikse elenir."
+          data-no="<b>Tekrar bak.</b> Üç filtre de geçmeli: A hepsini geçer. B ADR %2 (çok durgun), C aylardır dipte (momentum yok), D hacim $4M (illikit). Tek eksik = elenme."><span class="fb-txt"></span></div>
+      </div>
+
+      <!-- 6 · TREND HİYERARŞİSİ -->
+      <div class="lcard">
+        <div class="l-eyebrow">Kalite süzgeci</div>
+        <h2>Hiyerarşi: 10 günlük &gt; 20 günlük</h2>
+        <p>Filtreden geçen adaylar arasında bir kalite şartı daha var: hisse <b>kontrollü bir yükselişte</b>
+        olmalı. Bunu hareketli ortalamaların dizilimi söyler:</p>
+        <ul>
+          <li><b>10 günlük SMA, 20 günlük SMA'nın üzerinde</b> olmalı (kısa vade > orta vade).</li>
+          <li>Fiyat bu ortalamaların <b>üstünde</b> ve onlara yakın olmalı — uzaklaşmış (extended) değil.</li>
+        </ul>
+        <div class="yani"><b>Yani:</b> Sıralı bir merdiven: fiyat &gt; 10 SMA &gt; 20 SMA. Bu dizilim,
+        hissenin <b>sağlıklı ve kontrollü</b> yükseldiğini gösterir. Modül 4'te bu dizilimin üstündeki
+        <b>sıkı kurulumu</b> avlayacağız.</p>
+        <p class="bridge">Peki ya harika bir hikâyesi olan hisse?</p>
+      </div>
+
+      <!-- 7 · HİKAYE İKİNCİL -->
+      <div class="lcard">
+        <div class="l-eyebrow">Disiplin</div>
+        <h2>Hikâye ikincil; kurulum birincil</h2>
+        <p>"Bu şirket geleceğin teknolojisi", "herkes bundan bahsediyor" — bunlar <b>seni yanıltır.</b>
+        Qullamaggie kararı dedikoduya, foruma, "bence yükselir" hissine göre vermez. Karar sadece üç
+        şeye dayanır: <b>fiyat, hacim, sıkışma.</b></p>
+        <div class="note bad"><b>Tuzak:</b> Güzel hikâye + kötü kurulum = kaybeden işlem. Hikâye girişini
+        haklı çıkarmaz; sadece <b>sayılar</b> (filtreler + kurulum) haklı çıkarır.</div>
+        <p class="bridge">Bunu bir kararla sına.</p>
+      </div>
+
+      <!-- 8 · SORU 2 -->
+      <div class="lcard gate" data-answered="0">
+        <div class="l-eyebrow">Senaryo</div>
+        <div class="q-stem">Bir hissenin <b>muhteşem bir yapay zeka hikâyesi</b> var, herkes konuşuyor.
+        Ama son aylarda <b>yatay</b> (lider değil), ADR'si <b>%2</b>. İşleme girer misin?</div>
+        <div class="choices">
+          <button class="choice"><span class="key">A</span> Evet, hikâye çok güçlü, eninde sonunda patlar</button>
+          <button class="choice" data-correct="1"><span class="key">B</span> Hayır — huniyi geçemiyor, hikâye kuralı ezmez</button>
+          <button class="choice"><span class="key">C</span> Yarı pozisyonla girer, hikâyeye güvenirim</button>
+        </div>
+        <div class="feedback"
+          data-ok="<b>Doğru.</b> Lider değil (momentum yok) + ADR %2 (durgun) = huni elemesi. Hikâye ne kadar parlak olsa da kurulum yoksa giriş yok. Sayılar konuşur, dedikodu değil."
+          data-no="<b>Klasik tuzak.</b> Hikâyeye âşık olmak. Hisse huniyi geçemiyor: lider değil, ADR %2. Bu sistemde hikâye girişi haklı çıkarmaz — sadece fiyat, hacim ve sıkışma."><span class="fb-txt"></span></div>
+      </div>
+
+      <!-- 9 · WATCHLIST RUTİNİ -->
+      <div class="lcard">
+        <div class="l-eyebrow">Rutin</div>
+        <h2>Her akşam: avı daralt</h2>
+        <p>Süreç mekaniktir: <b>her gün piyasa kapandıktan sonra</b> tarayıcı 1/3/6 aylık Top Gainers'ı
+        çıkarır. Sen bunların içinden <b>en sıkı formasyona</b> sahip olan <b>10-20 hisseyi</b> seçip
+        ertesi günün radarına (watchlist) koyarsın.</p>
+        <div class="yani"><b>Yani:</b> Sabah panik içinde hisse aramazsın. Akşamdan avın hazırdır;
+        sabah sadece tetiği beklersin (Modül 5). Hazırlık, icradan önce gelir.</div>
+        <p class="bridge">Bunu araçlarınla yap.</p>
+      </div>
+
+      <!-- 10 · LAB -->
+      <div class="lcard">
+        <div class="l-eyebrow">🧪 Bu haftanın labı</div>
+        <h2>Kendi av listeni çıkar</h2>
+        <ul>
+          <li><code>qswing</code> (tara modu) → en güçlü momentum liderini bulur; ADR, trend ve hacim
+          kapılarından geçirip <b>ADAY / İZLE / ELENDİ</b> olarak etiketler. Tam bu modülün motoru.</li>
+          <li><code>firsattara</code> → günlük yüksek hacimli/hareketli adayları tarar.</li>
+          <li><code>trendcheck</code> → seçtiğin adayda <b>10&gt;20 SMA</b> dizilimini ve trend kalitesini doğrula.</li>
+        </ul>
+        <div class="yani"><b>Yani:</b> <code>qswing</code> bu modülün hunisini otomatik uygular —
+        çıktısını okumayı öğren, neden bazılarının "ELENDİ" olduğunu gör.</div>
+      </div>
+
+      <!-- 11 · ÖDEV -->
+      <div class="lcard">
+        <div class="l-eyebrow">📝 Ödev</div>
+        <h2>3 aday + 1 "tuzak"</h2>
+        <ul>
+          <li><code>qswing tara</code> veya <code>firsattara</code> çalıştır. Hunin'in <b>üç filtresini de</b>
+          geçen <b>3 hisse</b> seç; her biri için momentum/ADR/hacim sayısını yaz.</li>
+          <li>Bir de <b>"hikâyesi güzel ama elenen"</b> bir hisse bul ve <b>neden elendiğini</b> yaz.</li>
+          <li>Seçtiklerinde <code>trendcheck</code> ile 10&gt;20 SMA dizilimini doğrula.</li>
+        </ul>
+        <div class="note warn"><b>İpucu:</b> Amacın "çok hisse" değil, <b>az ve güçlü</b> hisse bulmak.
+        Listeni 10-20 ile sınırla; gerisi gürültü.</div>
+      </div>
+
+      <!-- 12 · KUTLAMA -->
+      <div class="lcard celebrate">
+        <div class="big-emoji">🎯</div>
+        <h2>Artık nereye bakacağını biliyorsun</h2>
+        <p class="lead">Binlerce hisseyi üç sayısal filtreyle bir avuca indiriyorsun: <b>en güçlü +
+        yeterince hareketli + likit.</b> Hikâyeye değil, sayılara bakıyorsun.</p>
+        <div class="takeaway" style="text-align:left">
+          <div class="tt">Artık yapabilirsin</div>
+          <ul>
+            <li>Momentum + ADR ≥ %5 + hacim ≥ $20M ile <b>av listesi</b> çıkarmak.</li>
+            <li>10&gt;20 SMA hiyerarşisiyle <b>kontrollü trendi</b> doğrulamak.</li>
+          </ul>
+        </div>
+        <div class="xp-won">＋70 XP</div>
+        <div class="won-badge">🦅</div>
+        <p class="muted" style="margin-top:6px">Sıradaki: <b>sıkı kurulum</b></p>
+        <div class="cta" style="margin-top:22px;display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
+          <a class="btn btn-primary btn-lg" href="modul-04.html">Modül 4'e geç →</a>
+          <a class="btn btn-lg btn-ghost" href="../index.html">Yol haritasına dön</a>
+        </div>
+      </div>
+
+    </div><!-- /stage -->
+
+    <div class="lnav" id="lnav">
+      <button class="btn btn-lg btn-ghost" id="prevBtn">← Geri</button>
+      <div class="spacer"></div>
+      <button class="btn btn-primary btn-lg" id="nextBtn">Başla →</button>
+    </div>
+  </div>
+
+  <div class="disclaimer">
+    <b>⚠️ Yatırım tavsiyesi değildir.</b> Eğitim amaçlıdır. İçerik Telegram'da paylaşılmaz, kripto
+    satışı yapılmaz — taklit hesaplara/dolandırıcılara karşı dikkatli olun.
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script src="../assets/akademi.js"></script>
+<script>
+  function fs(){ document.fullscreenElement ? document.exitFullscreen() : document.documentElement.requestFullscreen(); }
+  function toast(m){ var t=document.getElementById('toast'); t.textContent=m; t.classList.add('show'); clearTimeout(t._h); t._h=setTimeout(function(){t.classList.remove('show');},1700); }
+
+  Akademi.init({});
+  var cards = Array.prototype.slice.call(document.querySelectorAll('.lcard'));
+  var idx = 0;
+  var bar = document.getElementById('lbar'), count = document.getElementById('lcount');
+  var prevBtn = document.getElementById('prevBtn'), nextBtn = document.getElementById('nextBtn');
+  var lnav = document.getElementById('lnav');
+
+  function render(){
+    cards.forEach(function(c,i){ c.classList.toggle('active', i===idx); });
+    bar.style.width = (idx/(cards.length-1)*100) + '%';
+    count.textContent = (idx+1) + ' / ' + cards.length;
+    prevBtn.style.visibility = idx===0 ? 'hidden' : 'visible';
+    var last = idx === cards.length-1;
+    lnav.style.display = last ? 'none' : 'flex';
+    nextBtn.textContent = idx===0 ? 'Başla →' : (idx===cards.length-2 ? 'Bitir 🎉' : 'Devam →');
+    var cur = cards[idx];
+    nextBtn.disabled = (cur.classList.contains('gate') && cur.dataset.answered!=='1');
+    if (last && cur.dataset.done!=='1'){ cur.dataset.done='1'; finish(); }
+    try{ window.scrollTo({top:0,behavior:'smooth'}); }catch(e){ window.scrollTo(0,0); }
+  }
+  function next(){ if(idx<cards.length-1){ idx++; render(); } }
+  function prev(){ if(idx>0){ idx--; render(); } }
+  function finish(){ Akademi.completeModule(3,70); Akademi.touchStreak(); setTimeout(function(){ Akademi.confetti(); }, 250); }
+
+  nextBtn.addEventListener('click', next);
+  prevBtn.addEventListener('click', prev);
+  document.addEventListener('keydown', function(e){
+    if(e.key==='ArrowRight' && !nextBtn.disabled) next();
+    if(e.key==='ArrowLeft') prev();
+  });
+
+  document.querySelectorAll('.choices').forEach(function(group){
+    group.querySelectorAll('.choice').forEach(function(ch){
+      ch.addEventListener('click', function(){
+        var card = group.closest('.lcard');
+        if(card.dataset.answered==='1') return;
+        var correct = ch.getAttribute('data-correct')==='1';
+        group.querySelectorAll('.choice').forEach(function(o){
+          o.disabled = true;
+          if(o.getAttribute('data-correct')==='1') o.classList.add('correct');
+        });
+        if(!correct) ch.classList.add('wrong');
+        group.querySelectorAll('.choice').forEach(function(o){
+          if(!o.classList.contains('correct') && !o.classList.contains('wrong')) o.classList.add('dim');
+        });
+        var fb = card.querySelector('.feedback');
+        fb.classList.add('show', correct?'ok':'no');
+        fb.querySelector('.fb-txt').innerHTML = correct ? fb.getAttribute('data-ok') : fb.getAttribute('data-no');
+        card.dataset.answered = '1';
+        if(correct){ Akademi.addXP(10); toast('+10 XP ✓'); }
+        nextBtn.disabled = false;
+      });
+    });
+  });
+
+  render();
+</script>
+</body>
+</html>

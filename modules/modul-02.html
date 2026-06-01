@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Modül 2 · Piyasa İzni: Gaz mı, Fren mi?</title>
+<link rel="stylesheet" href="../assets/akademi.css">
+</head>
+<body>
+
+<div class="bar">
+  <div class="bar-in">
+    <div class="brand"><span class="bull">🐂</span> Swing&nbsp;Akademi <a href="../index.html">· Yol haritası</a></div>
+    <button class="btn" onclick="window.print()">🖨 PDF</button>
+    <button class="btn" onclick="fs()">⛶ Tam Ekran</button>
+  </div>
+</div>
+
+<div class="wrap">
+  <div class="lesson">
+
+    <div class="l-top">
+      <a class="l-exit" href="../index.html">✕ Çık</a>
+      <div class="l-bar"><i id="lbar"></i></div>
+      <div class="l-count" id="lcount">1 / 12</div>
+    </div>
+
+    <div class="stage" id="stage">
+
+      <!-- 0 · KAPAK -->
+      <div class="lcard cover active">
+        <div class="badge-ph">🚦 Faz 1 · Modül 2</div>
+        <div class="mascot">🚦</div>
+        <h2>Piyasa İzni: Gaz mı, Fren mi?</h2>
+        <p class="lead">En mükemmel kurulum bile <b>yanlış piyasada</b> para kaybettirir. Bu yüzden
+        Qullamaggie motorunun <b>1 numaralı kuralı</b> hisseye bakmadan önce çalışır: piyasadan izin al.</p>
+        <div class="takeaway" style="text-align:left">
+          <div class="tt">Bu modül bittiğinde</div>
+          <ul>
+            <li>Piyasanın <b>yeşil mi kırmızı mı</b> olduğunu tek bakışta anlayacaksın.</li>
+            <li>Ne zaman <b>agresif</b>, ne zaman <b>nakitte</b> olman gerektiğini bileceksin.</li>
+            <li>İlk <b>pre-flight kapısını</b> kazanacaksın.</li>
+          </ul>
+        </div>
+        <p class="muted" style="font-size:14px">⏱ ~8 dakika · 2 interaktif soru · +70 XP</p>
+      </div>
+
+      <!-- 1 · NEDEN ÖNCE PİYASA -->
+      <div class="lcard">
+        <div class="l-eyebrow">Neden önce piyasa?</div>
+        <h2>Yüzme yönünü akıntı belirler</h2>
+        <p>Momentum breakout'ları <b>yükselen piyasada</b> çalışır. Düşen piyasada aynı kurulumların
+        çoğu <b>tuzağa döner</b> (kırar gibi yapıp geri çöker).</p>
+        <p>Hatırla: bu sistemin isabet oranı zaten sadece <b>%25</b>. Bir de piyasa sana karşıyken
+        işlem açarsan, o ince üstünlüğü tamamen kaybedersin. Akıntıya karşı yüzülmez.</p>
+        <div class="yani"><b>Yani:</b> Tek tek hisseler ne kadar güçlü olursa olsun, <b>gelgiti piyasa
+        belirler.</b> Qullamaggie kazancının büyük çoğunluğunu piyasa "yeşil" ışıktayken yapar.</div>
+        <p class="bridge">Peki "yeşil" ve "kırmızı" tam olarak ne demek? Kuralı net.</p>
+      </div>
+
+      <!-- 2 · İKİ IŞIK -->
+      <div class="lcard">
+        <div class="l-eyebrow">Çekirdek kural</div>
+        <h2>İki ışık: Gaz Pedalı &amp; Fren</h2>
+        <table class="cmp">
+          <tr><th>Işık</th><th>Koşul</th><th>Aksiyon</th></tr>
+          <tr class="hot"><td>🟢 Gaz Pedalı</td><td>Endeksler <b>50 VE 200</b> günlük SMA'nın <b>üstünde</b></td><td>Boğa piyasası. Agresif ol, maksimum sermaye.</td></tr>
+          <tr><td>🔴 Fren</td><td>Endeksler <b>50</b> günlük SMA'nın <b>altında</b></td><td>Korunma. Pozisyonları küçült veya tamamen nakde geç, bekle.</td></tr>
+        </table>
+        <p>Bu kadar basit. Tahmin yok, "bence döner" yok. Endeksin hareketli ortalamalara göre yeri
+        sana izni verir ya da vermez.</p>
+        <div class="yani"><b>Yani:</b> Yeşilde gaza bas, kırmızıda fren yap. Sistem kazancının çoğu
+        yeşilde gelir; kırmızıda amaç <b>kazanmak değil, sermayeyi korumak.</b></div>
+        <p class="bridge">"Endeks" ve "SMA" tam olarak ne? Hızlı netleştirelim.</p>
+      </div>
+
+      <!-- 3 · ENDEKS & SMA -->
+      <div class="lcard">
+        <div class="l-eyebrow">Terim netliği</div>
+        <h2>Endeks ve hareketli ortalama</h2>
+        <ul>
+          <li><b>Endeks:</b> Piyasanın geneli. Pratikte <b>SPY</b> (S&amp;P 500) ve <b>QQQ</b> (Nasdaq 100)
+          ETF'lerine bakarız — momentum hisseleri genelde teknolojide olduğu için QQQ önemlidir.</li>
+          <li><b>SMA (Basit Hareketli Ortalama):</b> Son N günün ortalama fiyatı. <b>50 günlük</b> orta
+          vade trendi, <b>200 günlük</b> uzun vade trendi gösterir.</li>
+          <li><b>Fiyat ortalamanın üstündeyse</b> trend yukarı; altındaysa aşağı.</li>
+        </ul>
+        <div class="note warn"><b>Not:</b> 50 ve 200'ün <b>ikisinin de</b> üstünde olmak en güçlü yeşildir.
+        50'nin altına sarkma ilk uyarıdır; orada gaz kesilir.</div>
+        <p class="bridge">Şimdi sıra sende — bir karar ver.</p>
+      </div>
+
+      <!-- 4 · SORU 1 -->
+      <div class="lcard gate" data-answered="0">
+        <div class="l-eyebrow">Senaryo</div>
+        <div class="q-stem">Endeksler (SPY/QQQ) <b>50 günlük SMA'nın altına</b> düştü. Elinde güzel görünen
+        bir breakout adayı var. Motora göre ne yaparsın?</div>
+        <div class="choices">
+          <button class="choice"><span class="key">A</span> En güçlü adayı yine de agresif alırım</button>
+          <button class="choice" data-correct="1"><span class="key">B</span> Pozisyonları küçültür / nakde geçer, beklerim</button>
+          <button class="choice"><span class="key">C</span> Kaldıracı artırıp fırsatı büyütürüm</button>
+        </div>
+        <div class="feedback"
+          data-ok="<b>Doğru — fren.</b> Endeks 50 SMA altındayken breakout'ların çoğu başarısız olur. %25'lik üstünlüğünü piyasaya karşı harcamazsın. Amaç kazanmak değil, sermayeyi koruyup yeşil ışığı beklemek."
+          data-no="<b>Tehlikeli.</b> Endeks 50 SMA altında = kırmızı ışık. Breakout başarı oranı çöker; agresifleşmek (hele kaldıraç) hesabı eritir. Doğru hamle: küçül / nakde geç, bekle."><span class="fb-txt"></span></div>
+      </div>
+
+      <!-- 5 · NEDEN ÇALIŞIR (matematik) -->
+      <div class="lcard">
+        <div class="l-eyebrow">Neden işe yarar</div>
+        <h2>Akıntı üstünlüğü besler ya da yok eder</h2>
+        <p>Yeşilde alıcılar baskındır; sıkı bir kurulumdan kırılan hisse koşar — kazananların +10R'ye
+        gitme ihtimali artar. Kırmızıda satıcılar baskındır; aynı kırılım birkaç gün sonra çöker,
+        kayıpların sıklaşır.</p>
+        <div class="note bad"><b>Sayıyla:</b> Yeşilde %30 isabetle pozitif üstünlük yakalarsın. Kırmızıda
+        aynı sistem %15'e düşebilir — ve <b>negatif beklenen değere</b> kayarsın. Aynı kurallar, zıt sonuç.</div>
+        <p class="bridge">Bu yüzden yeşilde çekingen olmak da hata. Madalyonun diğer yüzü:</p>
+      </div>
+
+      <!-- 6 · YEŞİLDE CESARET -->
+      <div class="lcard">
+        <div class="l-eyebrow">Madalyonun diğer yüzü</div>
+        <h2>Yeşilken çekingenlik para kaybettirir</h2>
+        <p>Sistem kazancının <b>büyük çoğunluğunu</b> yeşil ışıkta yapar. Bu pencereler sınırlıdır —
+        boğa piyasası sonsuza kadar sürmez. Koşullar dizildiğinde <b>kurallarına uyarak agresif olmak</b>
+        gerekir; korkup kenarda kalmak fırsat maliyetidir.</p>
+        <div class="yani"><b>Yani:</b> Disiplin iki yönlü çalışır — kırmızıda <b>frene bas</b>, yeşilde
+        <b>gaza bas.</b> Işık ne diyorsa onu yap; duygunu değil, kuralı dinle.</div>
+        <p class="bridge">Bir senaryo daha.</p>
+      </div>
+
+      <!-- 7 · SORU 2 -->
+      <div class="lcard gate" data-answered="0">
+        <div class="l-eyebrow">Senaryo</div>
+        <div class="q-stem">SPY ve QQQ <b>hem 50 hem 200 günlük SMA'nın üstünde</b> ve yükseliyor. Sıkı,
+        kurallara uyan bir breakout adayın da var. Motor ne der?</div>
+        <div class="choices">
+          <button class="choice"><span class="key">A</span> Yine de bekle, her an dönebilir</button>
+          <button class="choice" data-correct="1"><span class="key">B</span> Yeşil ışık — kurallarına uyarak gir</button>
+          <button class="choice"><span class="key">C</span> Pozisyonun yarısını al, gerisini şansa bırak</button>
+        </div>
+        <div class="feedback"
+          data-ok="<b>Evet — yeşil ışık.</b> Piyasa izni var, kurulum hazır. Bu pencerelerde tereddüt fırsat maliyetidir. Kurallarına (giriş, stop, boyut) uyarak işlemi al. Cesaret de disiplinin parçasıdır."
+          data-no="<b>Çekingenlik de hata.</b> Tüm koşullar yeşil: izin var, kurulum var. 'Dönebilir' korkusu seni en kârlı pencerelerden mahrum eder. Kuralına uy ve gir; riskini stop zaten yönetiyor."><span class="fb-txt"></span></div>
+      </div>
+
+      <!-- 8 · IŞIK BİR TAHMİN DEĞİL -->
+      <div class="lcard">
+        <div class="l-eyebrow">Zihniyet</div>
+        <h2>Işık bir tahmin değil, bir kapıdır</h2>
+        <p>Yeşil ışık "piyasa yükselecek" demek değildir. "<b>Şu an işlem açmaya iznin var</b>" demektir.
+        Kırmızı ışık "çökecek" demek değil; "<b>iznin yok, bekle</b>" demektir.</p>
+        <p>Bu yüzden ışıkla tartışmazsın. Her sabah bakarsın, ne diyorsa ona uyarsın. Bu, Qullamaggie
+        pre-flight çeklistinin <b>1. maddesidir:</b> "Endeksler 50 ve 200 SMA üzerinde mi?"</p>
+        <div class="yani"><b>Yani:</b> Işık senin için karar verir, sen değil. Duygudan arınmış ilk filtre budur.</div>
+        <p class="bridge">Şimdi bunu gerçek piyasada kontrol etmeyi öğren.</p>
+      </div>
+
+      <!-- 9 · LAB -->
+      <div class="lcard">
+        <div class="l-eyebrow">🧪 Bu haftanın labı</div>
+        <h2>Günün ışığını belirle</h2>
+        <p>Araçlarınla bugünün ışığını okumayı öğren:</p>
+        <ul>
+          <li><code>marketpulse</code> çalıştır → SPY/QQQ'nun <b>50 ve 200 günlük</b> ortalamalara göre
+          yerini gör. İkisinin de üstünde mi?</li>
+          <li><code>makro</code> ile genel risk havasını teyit et (risk-on / risk-off).</li>
+          <li><code>qswing</code> zaten bu kontrolü <b>pre-flight</b> olarak yapar — taramaya başlamadan
+          ışığı doğrular.</li>
+          <li>Sonucu tek kelimeyle yaz: <b>🟢 Gaz</b> mı, <b>🔴 Fren</b> mi?</li>
+        </ul>
+        <div class="yani"><b>Yani:</b> Bu, her trading gününün ilk hareketi olmalı — hisseye bakmadan önce
+        piyasadan izin al.</div>
+      </div>
+
+      <!-- 10 · ÖDEV -->
+      <div class="lcard">
+        <div class="l-eyebrow">📝 Ödev</div>
+        <h2>Bir hafta ışık günlüğü</h2>
+        <ul>
+          <li><b>5 iş günü</b>, her sabah ışığı yaz: SPY ve QQQ 50/200 SMA'ya göre nerede? 🟢 / 🔴</li>
+          <li>Işık <b>değiştiği</b> gün not düş — ne oldu da değişti?</li>
+          <li>Kendine sor: "Bu hafta işlem açmaya iznim <b>kaç gün</b> vardı?"</li>
+        </ul>
+        <div class="note warn"><b>İpucu:</b> Çoğu acemi bu kapıyı atlar ve kırmızıda işlem açıp yanar.
+        Sadece bu tek alışkanlık (önce ışık) seni kalabalığın önüne geçirir.</div>
+      </div>
+
+      <!-- 11 · KUTLAMA -->
+      <div class="lcard celebrate">
+        <div class="big-emoji">🚦</div>
+        <h2>İlk pre-flight kapısı: kazanıldı</h2>
+        <p class="lead">Artık hiçbir işleme piyasadan izin almadan girmeyeceksin. Yeşilde gaza, kırmızıda
+        frene — ışığı duygunla değil, <b>kuralla</b> okuyorsun.</p>
+        <div class="takeaway" style="text-align:left">
+          <div class="tt">Artık yapabilirsin</div>
+          <ul>
+            <li>SPY/QQQ'nun 50 ve 200 SMA'ya göre yerinden <b>ışığı belirlemek.</b></li>
+            <li>Yeşilde agresif, kırmızıda korunmacı olmak — <b>çift yönlü disiplin.</b></li>
+          </ul>
+        </div>
+        <div class="xp-won">＋70 XP</div>
+        <div class="won-badge">🧭</div>
+        <p class="muted" style="margin-top:6px">Sıradaki kapı: <b>av sahası</b></p>
+        <div class="cta" style="margin-top:22px;display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
+          <a class="btn btn-primary btn-lg" href="modul-03.html">Modül 3'e geç →</a>
+          <a class="btn btn-lg btn-ghost" href="../index.html">Yol haritasına dön</a>
+        </div>
+      </div>
+
+    </div><!-- /stage -->
+
+    <div class="lnav" id="lnav">
+      <button class="btn btn-lg btn-ghost" id="prevBtn">← Geri</button>
+      <div class="spacer"></div>
+      <button class="btn btn-primary btn-lg" id="nextBtn">Başla →</button>
+    </div>
+  </div>
+
+  <div class="disclaimer">
+    <b>⚠️ Yatırım tavsiyesi değildir.</b> Eğitim amaçlıdır. İçerik Telegram'da paylaşılmaz, kripto
+    satışı yapılmaz — taklit hesaplara/dolandırıcılara karşı dikkatli olun.
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script src="../assets/akademi.js"></script>
+<script>
+  function fs(){ document.fullscreenElement ? document.exitFullscreen() : document.documentElement.requestFullscreen(); }
+  function toast(m){ var t=document.getElementById('toast'); t.textContent=m; t.classList.add('show'); clearTimeout(t._h); t._h=setTimeout(function(){t.classList.remove('show');},1700); }
+
+  Akademi.init({});
+  var cards = Array.prototype.slice.call(document.querySelectorAll('.lcard'));
+  var idx = 0;
+  var bar = document.getElementById('lbar'), count = document.getElementById('lcount');
+  var prevBtn = document.getElementById('prevBtn'), nextBtn = document.getElementById('nextBtn');
+  var lnav = document.getElementById('lnav');
+
+  function render(){
+    cards.forEach(function(c,i){ c.classList.toggle('active', i===idx); });
+    bar.style.width = (idx/(cards.length-1)*100) + '%';
+    count.textContent = (idx+1) + ' / ' + cards.length;
+    prevBtn.style.visibility = idx===0 ? 'hidden' : 'visible';
+    var last = idx === cards.length-1;
+    lnav.style.display = last ? 'none' : 'flex';
+    nextBtn.textContent = idx===0 ? 'Başla →' : (idx===cards.length-2 ? 'Bitir 🎉' : 'Devam →');
+    var cur = cards[idx];
+    nextBtn.disabled = (cur.classList.contains('gate') && cur.dataset.answered!=='1');
+    if (last && cur.dataset.done!=='1'){ cur.dataset.done='1'; finish(); }
+    try{ window.scrollTo({top:0,behavior:'smooth'}); }catch(e){ window.scrollTo(0,0); }
+  }
+  function next(){ if(idx<cards.length-1){ idx++; render(); } }
+  function prev(){ if(idx>0){ idx--; render(); } }
+  function finish(){ Akademi.completeModule(2,70); Akademi.touchStreak(); setTimeout(function(){ Akademi.confetti(); }, 250); }
+
+  nextBtn.addEventListener('click', next);
+  prevBtn.addEventListener('click', prev);
+  document.addEventListener('keydown', function(e){
+    if(e.key==='ArrowRight' && !nextBtn.disabled) next();
+    if(e.key==='ArrowLeft') prev();
+  });
+
+  document.querySelectorAll('.choices').forEach(function(group){
+    group.querySelectorAll('.choice').forEach(function(ch){
+      ch.addEventListener('click', function(){
+        var card = group.closest('.lcard');
+        if(card.dataset.answered==='1') return;
+        var correct = ch.getAttribute('data-correct')==='1';
+        group.querySelectorAll('.choice').forEach(function(o){
+          o.disabled = true;
+          if(o.getAttribute('data-correct')==='1') o.classList.add('correct');
+        });
+        if(!correct) ch.classList.add('wrong');
+        group.querySelectorAll('.choice').forEach(function(o){
+          if(!o.classList.contains('correct') && !o.classList.contains('wrong')) o.classList.add('dim');
+        });
+        var fb = card.querySelector('.feedback');
+        fb.classList.add('show', correct?'ok':'no');
+        fb.querySelector('.fb-txt').innerHTML = correct ? fb.getAttribute('data-ok') : fb.getAttribute('data-no');
+        card.dataset.answered = '1';
+        if(correct){ Akademi.addXP(10); toast('+10 XP ✓'); }
+        nextBtn.disabled = false;
+      });
+    });
+  });
+
+  render();
+</script>
+</body>
+</html>

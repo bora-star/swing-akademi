@@ -1,118 +1,83 @@
 # CURRICULUM.md — 12 Modül Üretim Master'ı
 
-Her modülün üretim planı. Modül HTML'i yazılırken bu yapıyı izle.
-**Her modül HTML şablonu:** Hedef → Neden önemli → Teori (Temel katman) → Teori (İleri katman)
-→ 🧪 Skill-Lab (adım adım) → 📝 Ödev → ✅ Kontrol listesi → ❓ Mini quiz (3-5 soru) → 📖 Sözlük
-→ "Yani:" kutuları serpiştirilmiş + standart disclaimer.
+> **Omurga: Qullamaggie Momentum Breakout Motoru** (bkz. `ENGINE.md`). Müfredat bu sistemi baştan
+> sona inşa eder. Lab aracı: `qswing` skill'i (tara + tek hisse breakout/EP).
 
-İlerleme işaretleri: ⬜ planlandı · 🟨 yazılıyor · ✅ bitti
+Her modül HTML şablonu (interaktif stepper): kapak (kanca) → bağlı öğretici kartlar (köprü
+cümleleriyle) → 2-3 düşündüren interaktif soru (anında geri bildirim + XP) → 🧪 skill-lab → 📝 ödev
+→ kutlama (XP + rozet + sonraki modüle köprü). Stil: `assets/akademi.css` + `akademi.js`.
+Türkçe: doğal, çeviri kokmaz (bkz. `TR_STYLE.md`).
+
+İlerleme: ⬜ planlandı · 🟨 yazılıyor · ✅ bitti
 
 ---
 
-## FAZ 1 — TEMEL & ZİHNİYET (Hafta 1-3)
+## FAZ 1 — TEMEL & PİYASA (Hafta 1-3)
 
-### Modül 1 — Swing Trading'in DNA'sı + Zihniyet ✅ (modules/modul-01.html · şablon kilidi)
-- **Hedef:** Swing nedir (gün-içi ile day-trade arası, 2 gün–birkaç hafta tutuş), neden çalışır
-  (momentum + ortalamaya dönüş), gerçekçi beklenti (win rate vs R, kayıp normaldir).
-- **Temel:** Time horizon, swing vs yatırım vs scalp; "trend dostundur"; kazanma oranı yanılgısı.
-- **İleri:** Beklenen değer (expectancy) sezgisi; süreç-odaklılık; tilt/FOMO/revenge trade.
-- **Lab:** Yok (gözlem haftası) — bir hisseyi 1 hafta sadece izle, not al.
-- **Ödev:** "Neden trade ediyorum?" + kişisel kurallar taslağı (worksheets/kurallar.md).
+### Modül 1 — Swing'in DNA'sı + %25 Paradoksu ✅ `modules/modul-01.html`
+Kumarhane/edge zihniyeti = motorun ruhu. Beklenen değer, kayıp asimetrisi, varyans, süreç>sonuç,
+duygular. Sonda "Qullamaggie motoru" reveal'i (%25 isabet, 1R/10R). 16 kart, 3 interaktif.
 
-### Modül 2 — Piyasa Rejimi & Bağlam ⬜
-- **Hedef:** "Önce piyasa, sonra hisse." Risk-on/risk-off, trend vs range rejim tespiti.
-- **Temel:** SPY/QQQ trendi, VIX seviyesi, 50/200 MA; long-only ne zaman tehlikeli.
-- **İleri:** Breadth (SPY vs RSP eşit ağırlık), sektör rotasyonu, Growth/Value; makro takvim riski.
-- **Lab:** `marketpulse` (endeks teknik) + `makro` (ekonomi panosu) + `firsattara` rotasyon paneli.
-- **Ödev:** Bugünün rejimi nedir? 3 kanıtla yaz. Risk-on mu risk-off mu?
+### Modül 2 — Piyasa İzni: Gaz mı, Fren mi? ✅ `modules/modul-02.html`
+Endeks filtresi (slayt 4): 🟢 endeksler 50 VE 200 SMA üstünde = gaz; 🔴 50 SMA altında = fren.
+Çift yönlü disiplin. Lab: marketpulse + makro + qswing (pre-flight). 12 kart, 2 interaktif.
 
-### Modül 3 — Trendin Anatomisi ⬜
-- **Hedef:** EMA stack (9>21>50), slope, reclaim/failed retest, göreceli güç (RS vs SPY).
-- **Temel:** Hareketli ortalama nedir, dizilim neden önemli, yukarı/aşağı/yatay trend.
-- **İleri:** Slope kalitesi, 50 EMA'dan uzanma (>%18 = aşırı), haftalık trend hizası, RS skoru.
-- **Lab:** `trendcheck` — 3 hisse çalıştır, skorları (0-100) ve geçersiz kılma seviyelerini oku.
-- **Ödev:** Skoru >70 ve <40 olan birer hisse bul, farkı kendi cümlenle açıkla.
+### Modül 3 — Av Sahası: En Güçlüyü Filtrele ✅ `modules/modul-03.html`
+Filtreleme hunisi (slayt 3): momentum (top gainers 1/3/6 ay) + ADR ≥ %5 + hacim ≥ $20M. 10>20 SMA
+hiyerarşisi. Hikâye ikincil. Watchlist rutini. Lab: qswing (tara) + firsattara + trendcheck. 13 kart.
 
-## FAZ 2 — SETUP & İCRA (Hafta 4-6)
+## FAZ 2 — KURULUM & İCRA (Hafta 4-6)
 
-### Modül 4 — Setup Kataloğu ⬜
-- **Hedef:** 5 çekirdek setup: (1) yatay direnç kırılımı, (2) MA'ya pullback, (3) reclaim,
-  (4) bayrak/VCP sıkışma, (5) dip-reversal. Her birinin "nasıl görünür / ne zaman geçersiz".
-- **Temel:** Her setup'ın şekli, tetikleyici mum, ideal hacim.
-- **İleri:** Setup kalite derecesi; "A+ setup" kriterleri; tuzak (fakeout) işaretleri.
-- **Lab:** `swinganalysis` (tek hisse modu) — bir aday için setup tipini ve giriş/stop/hedefi çıkar.
-- **Ödev:** 3 farklı setup tipini 3 grafikten tanımla (ekran görüntüsü + etiket).
+### Modül 4 — Sıkı Kurulum: Yay Gerilmesi ✅ `modules/modul-04.html`
+Tight consolidation (slayt 5): bayrak direği + sıkı bayrak, 10 SMA'ya yaslı, 10>20 SMA. Sıkılık =
+küçük 1R + büyük R-katı (asimetri). Uzamış/gevşek/kovalama tuzakları. Lab: qswing (tek hisse) +
+swinganalysis. 13 kart, 2 interaktif.
 
-### Modül 5 — Giriş · Stop · Hedef · R/R ⬜
-- **Hedef:** Giriş tetiği, stop nereye (yapısal — swing low / MA altı), hedef (ölçülü hareket,
-  önceki direnç), Risk/Reward ≥ 2:1 disiplini.
-- **Temel:** R nedir (1R = riske ettiğin mesafe), stop'suz trade yok, hedefi önceden yaz.
-- **İleri:** Çoklu hedef/kademeli çıkış, stop'u maliyete çekme, trailing; R/R < 2 ise geç.
-- **Lab:** `swinganalysis` + `trendcheck` (invalidation seviyeleri) ile bir trade planı yaz.
-- **Ödev:** 2 aday için tam plan: giriş, stop, T1, T2, R/R. RR<2 olanı ele.
+### Modül 5 — Giriş & Stop: ORH ve Günün Dibi ⬜
+Giriş tetikleri (slayt 6): **ORH** (ilk 1,5/60 dk zirvesi hacimle kırılır) + **EP** (earnings/haber gap).
+Kritik kural: gün içi hareket 1 ATR'yi aştıysa kovalama yok. Stop (slayt 7): günün dibi (LoD); gap'te
+açılış mumunun dibi; mesafe ≤ 1 ATR. Lab: qswing (tek hisse, EP modu) + swinganalysis.
 
-### Modül 6 — Pozisyon Boyutu & Risk Yönetimi ⬜
-- **Hedef:** Hesabın %X'i kuralı (genelde %0.5–1 risk/trade), stop mesafesinden lot hesabı,
-  korelasyonlu pozisyon limiti, maksimum açık risk.
-- **Temel:** "Ne kadar kaybedebilirim" önce gelir; lot = (hesap×%risk) / (giriş−stop).
-- **İleri:** Toplam portföy ısı (heat), korelasyon kümeleri, kademeli ekleme (pyramiding).
-- **Lab:** 🆕 **risksize** (öneri) — yoksa `worksheets/risk-hesap.html` ile manuel.
-- **Ödev:** Kendi hesabın için risk/trade belirle, 3 senaryo için lot hesapla.
+### Modül 6 — Mekanik Pozisyon Boyutu ⬜
+Risk (slayt 10): sabit parasal risk (örn. $500). **Lot = Risk ÷ (Giriş − Stop).** Tek hisse max %20.
+Hesabın %X'i değil, sabit dolar. Lab: 🆕 risksize (öneri) veya worksheets/risk-hesap.
 
-## FAZ 3 — ONAY KATMANLARI (Hafta 7-9)
+## FAZ 3 — YÖNETİM & ONAY (Hafta 7-9)
 
-### Modül 7 — Hacim & Göreceli Güç ⬜
-- **Hedef:** RVOL (≥1.5x), kırılımda hacim onayı, RS vs SPY, sektör lideri olma.
-- **Temel:** Hacim = niyet; düşük hacimli kırılım şüpheli.
-- **İleri:** Akümülasyon/dağıtım, göreceli güç sıralaması, lider vs takipçi.
-- **Lab:** `firsattara` — günlük tarama (swing + rotasyon), RVOL ve RS sütunlarını oku.
-- **Ödev:** Taramadan RS'i güçlü + hacim onaylı 2 aday seç, neden seçtiğini yaz.
+### Modül 7 — Kâr Alma & Trend Sürme ⬜
+3-5 gün kuralı (slayt 8): 3-5 günde güçlü ralli → %33-50 sat, stop'u maliyete çek (free ride).
+10 günlük trailing (slayt 9): kalanı 10 DMA'da sür; nihai çıkış = 10 DMA altında ilk günlük KAPANIŞ.
+Lab: trailstop + qswing.
 
-### Modül 8 — Akıllı Para Onayı ⬜
-- **Hedef:** Opsiyon flow (sweep/golden sweep, premium≥$250K), dark pool, congress/insider,
-  LEAPS birikimi — bunlar setup'ı nasıl *onaylar veya çürütür*.
-- **Temel:** Flow nedir, ask-side vs bid-side, bullish vs bearish akış.
-- **İleri:** Çift onay (swing 🟢 ∩ flow 🟢); flow ile fiyatın çeliştiği tuzaklar.
-- **Lab:** `firsattara` (flow paneli) + `smartmoney` (congress/insider) + `leapsflow`.
-- **Ödev:** Bir adayda swing + flow çift onayı ara; bulamazsan "neden yok" yaz.
+### Modül 8 — Akıllı Para Onayı (opsiyonel güç katmanı) ⬜
+Flow, dark pool, insider/congress — breakout'a ekstra teyit. Saf Qullamaggie'nin dışında ama uyumlu.
+Lab: firsattara (flow) + smartmoney + leapsflow.
 
-### Modül 9 — Katalizör & Earnings Yönetimi ⬜
-- **Hedef:** Earnings ≤14 gün = swing için kırmızı bayrak (otomatik geç); katalizör türleri;
-  oyna vs kaçın kararı.
-- **Temel:** Earnings gap riski, IV crush; haber katalizörü vs teknik setup.
-- **İleri:** Earnings momentum oynama (ileri/opsiyonel), takvim disiplini.
-- **Lab:** Earnings skilleri (preearnings/postearnings/earningstrade) + `firsattara` earnings filtresi.
-- **Ödev:** Watchlist'inde earnings ≤14g olanları işaretle, hangilerini neden elediğini yaz.
+### Modül 9 — Episodic Pivot & Earnings ⬜
+EP setup'ı (slayt 6): earnings/haber gap'iyle gelen devasa yukarı açılış. Earnings riskini yönetmek.
+Lab: earnings skilleri (pre/postearnings, earningstrade) + qswing EP modu.
 
 ## FAZ 4 — SİSTEMLEŞME & USTALIK (Hafta 10-12)
 
-### Modül 10 — İşlem Günlüğü & Metrikler ⬜
-- **Hedef:** Her trade'i kaydet; win rate, ort. kazanç/kayıp (R), **expectancy**, R-multiple
-  dağılımı, hata etiketleri (erken giriş, stop kaçırma, plan dışı).
-- **Temel:** Neden günlük tutmadan gelişemezsin; expectancy = (WR×avgWin) − (LR×avgLoss).
-- **İleri:** Setup bazlı performans ayrıştırma; en kârlı setup'ı bulma; tilt tespiti.
-- **Lab:** 🆕 **tradelog** (öneri) — yoksa `worksheets/islem-gunlugu.html` şablonu.
-- **Ödev:** Son/sanal 10 trade'i gir, expectancy hesapla, en zayıf alışkanlığını isimlendir.
+### Modül 10 — İşlem Günlüğü & Beklenen Değer ⬜
+Win rate, ort. R, expectancy, R-dağılımı, hata etiketleri. %25 isabetle kazandığını ÖLÇ. Lab: 🆕 tradelog.
 
-### Modül 11 — Portföy · Korelasyon · Korunma ⬜
-- **Hedef:** Pozisyon kümeleri (aynı yöne bahis), portföy ısı, hedge ne zaman.
-- **Temel:** Çeşitlendirme yanılgısı (5 AI hissesi = 1 bahis); nakit de pozisyondur.
-- **İleri:** Korelasyon, beta-ağırlıklı maruziyet, put/indeks hedge mantığı.
-- **Lab:** `portman`/`porttech` (portföy görünüm/teknik) + `protect` (koruma paketleri).
-- **Ödev:** Portföyünde en yüklü temayı bul; bir koruma alternatifi `protect` ile üret.
+### Modül 11 — Portföy & Konsantrasyon ⬜
+%20 kuralı (slayt 10), portföy ısı, korelasyon, fren ışığında korunma/nakit. Lab: portman/porttech + protect.
 
-### Modül 12 — Kendi Playbook'un + Rutin + Mezuniyet ⬜
-- **Hedef:** Tüm öğrenileni tek "trading playbook"a yaz: hangi setup, hangi rejimde, hangi risk,
-  hangi onay. Günlük rutin (sabah tarama → plan → icra → akşam günlük).
-- **Temel:** Tekrarlanabilir süreç = ustalık; rutin disiplini.
-- **İleri:** Kendi kurallarını backtest etme; sürekli iyileştirme döngüsü.
-- **Lab:** `dailypack` + `firsattara` rutini (günlük), mezuniyet projesi.
-- **Mezuniyet:** Tam bir trade'i baştan sona (rejim→setup→onay→risk→plan→günlük) belgele.
+### Modül 12 — Pre-Flight Çeklist + Mezuniyet ⬜
+5 yeşil ışık çeklisti (slayt 13): piyasa izni · momentum kalitesi · sıkı kurulum · giriş & risk ·
+mekanik boyut. Kendi playbook'un + günlük rutin + mezuniyet projesi. Lab: dailypack + qswing rutini.
 
 ---
 
+## Skill önerileri (programın açtığı boşluklar)
+- 🆕 `tradelog` (expectancy/metrik, M10) · 🆕 `risksize` (pozisyon boyutu, M6) · 🆕 `swingreplay`
+  (karar-replay, ödev motoru) · ✏️ `qswing` "akademi modu" (öğretici gerekçe katmanı) ·
+  ✏️ tüm skill'lere "📚 İlgili ders" rozeti.
+- **Mevcut güçlü eşleşme:** `qswing` zaten Qullamaggie motorunun birebir uygulaması — M3/M4/M5'in ana labı.
+
 ## Üretim notları
-- Stil: Master Format v1 dark theme, üst butonlar (Tarayıcıda Aç / Yazdır-PDF / HTML Kopyala / Tam Ekran).
-- Her modül **standalone** (inline CSS/JS) — Skool'a tek dosya yüklenebilmeli.
-- Her HTML'e standart disclaimer + taklit hesap uyarısı.
-- Ortak stil değişirse: `assets/akademi.css`'i master yapıp modüllere inline kopyala (Skool standalone ister).
+- Stil: Master Format v1 → Akademi v2 (sıcak-açık, minimal, interaktif stepper). Standalone modüller.
+- Her HTML'e standart disclaimer + taklit hesap uyarısı. Doğal Türkçe (TR_STYLE.md).
+- Demo ilerleme: index `{demo:true}` (M1-3 done, M4 current). Yayında `{demo:false}`.
