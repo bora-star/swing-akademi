@@ -140,10 +140,10 @@
 
       <!-- 8 · LAB -->
       <div class="lcard">
-        <div class="l-eyebrow">🧪 Bu haftanın labı</div>
+        <div class="l-eyebrow">Bu haftanın labı</div>
         <h2>Lot'unu hesapla</h2>
         <ul>
-          <li>🆕 <code>risksize</code> (önerilen yeni skill) → hesap + sabit risk + stop mesafesi girersin,
+          <li><code>risksize</code> (önerilen yeni skill) → hesap + sabit risk + stop mesafesi girersin,
           lot'u ve %20 kontrolünü verir. (Henüz yoksa formülle elle hesapla.)</li>
           <li><b>Not:</b> <code>qswing</code> sana sinyali ve seviyeleri verir ama <b>boyutu vermez</b> —
           boyut senin disiplinin. İkisini birleştir.</li>
@@ -166,7 +166,7 @@
 
       <!-- 9 · ÖDEV -->
       <div class="lcard">
-        <div class="l-eyebrow">📝 Ödev</div>
+        <div class="l-eyebrow">Ödev</div>
         <h2>Sabit riskini belirle, 3 lot hesapla</h2>
         <ul>
           <li>Kendi hesabın için <b>sabit parasal riskini</b> belirle (hesabın küçük bir yüzdesi olsun;
@@ -179,6 +179,31 @@
       </div>
 
       <!-- 10 · KUTLAMA -->
+      <!-- BUGÜN NE YAPACAĞIM -->
+      <div class="lcard">
+        <div class="l-eyebrow">Bugün ne yapacağım?</div>
+        <h2>Tek somut adım</h2>
+        <div class="action-card">Bir kurulumda lot'unu yukarıdaki hesaplayıcıyla bul. %20 tavanını aşıyor mu? Aşıyorsa kaç lot'a indirdin?</div>
+        <p class="bridge">Yaptıktan sonra toplulukta paylaş — söz vermek, uygulamayı kolaylaştırır.</p>
+      </div>
+
+      <!-- SKOOL PAYLAŞIM -->
+      <div class="lcard">
+        <div class="l-eyebrow">Skool'da paylaş</div>
+        <h2>Kararını toplulukla paylaş</h2>
+        <p>Şablonu doldur, <b>Haddini Aş Kulübü</b>'nde paylaş. Aynı format = ortak dil + birbirinden öğrenme.</p>
+        <textarea class="share-box" id="shareBox" rows="13" readonly>Modül 6 — Mekanik Pozisyon Boyutu
+
+İncelediğim hisse/konu:
+Ana kararım:
+Neden (veri + bağlam):
+İşlem açıyor muyum? (Evet / Hayır):
+Açmıyorsam neden:
+Bu modülden aldığım tek kural:</textarea>
+        <button class="btn btn-primary" type="button"
+          onclick="Akademi.copyText(document.getElementById('shareBox').value, this)">Şablonu kopyala</button>
+      </div>
+
       <div class="lcard celebrate">
         <div class="big-emoji">⚖️</div>
         <h2>Artık duygusuz boyutlandırıyorsun</h2>

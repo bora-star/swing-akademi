@@ -158,7 +158,7 @@
 
       <!-- 10 · LAB -->
       <div class="lcard">
-        <div class="l-eyebrow">🧪 Bu haftanın labı</div>
+        <div class="l-eyebrow">Bu haftanın labı</div>
         <h2>Giriş ve stop planı çıkar</h2>
         <ul>
           <li><code>qswing</code> (tek hisse / EP modu) → bir aday için giriş tetiğini, stop'u (günün dibi
@@ -171,7 +171,7 @@
 
       <!-- 11 · ÖDEV -->
       <div class="lcard">
-        <div class="l-eyebrow">📝 Ödev</div>
+        <div class="l-eyebrow">Ödev</div>
         <h2>Bir tetik + stop planı</h2>
         <ul>
           <li>Watchlist'inden bir hisse seç. <b>Tetik:</b> ORH (ilk 1,5/60 dk zirvesi) nerede?</li>
@@ -183,6 +183,31 @@
       </div>
 
       <!-- 12 · KUTLAMA -->
+      <!-- BUGÜN NE YAPACAĞIM -->
+      <div class="lcard">
+        <div class="l-eyebrow">Bugün ne yapacağım?</div>
+        <h2>Tek somut adım</h2>
+        <div class="action-card">Bir aday için ORH tetiğini ve günün dibi stop'unu yaz. Stop mesafesi ≤ 1 ATR mi? Kovalama riski var mı?</div>
+        <p class="bridge">Yaptıktan sonra toplulukta paylaş — söz vermek, uygulamayı kolaylaştırır.</p>
+      </div>
+
+      <!-- SKOOL PAYLAŞIM -->
+      <div class="lcard">
+        <div class="l-eyebrow">Skool'da paylaş</div>
+        <h2>Kararını toplulukla paylaş</h2>
+        <p>Şablonu doldur, <b>Haddini Aş Kulübü</b>'nde paylaş. Aynı format = ortak dil + birbirinden öğrenme.</p>
+        <textarea class="share-box" id="shareBox" rows="13" readonly>Modül 5 — Giriş &amp; Stop: ORH ve Günün Dibi
+
+İncelediğim hisse/konu:
+Ana kararım:
+Neden (veri + bağlam):
+İşlem açıyor muyum? (Evet / Hayır):
+Açmıyorsam neden:
+Bu modülden aldığım tek kural:</textarea>
+        <button class="btn btn-primary" type="button"
+          onclick="Akademi.copyText(document.getElementById('shareBox').value, this)">Şablonu kopyala</button>
+      </div>
+
       <div class="lcard celebrate">
         <div class="big-emoji">🎯</div>
         <h2>Artık ne zaman ve nereye biliyorsun</h2>

@@ -148,6 +148,13 @@
       return { fresh: fresh };
     },
 
+    // Metni panoya kopyala (+ buton geri bildirimi)
+    copyText: function (text, btn) {
+      function done(){ if(btn){ var o=btn.textContent; btn.textContent='Kopyalandı ✓'; setTimeout(function(){ btn.textContent=o; },1600); } }
+      try { if (global.navigator && navigator.clipboard && navigator.clipboard.writeText) { navigator.clipboard.writeText(text).then(done, function(){}); return; } } catch(e){}
+      try { var ta=document.createElement('textarea'); ta.value=text; document.body.appendChild(ta); ta.select(); document.execCommand('copy'); document.body.removeChild(ta); done(); } catch(e){}
+    },
+
     reset: function () { P = blank(); save(P); location.reload(); },
 
     // ---------- Görsel yardımcılar ----------

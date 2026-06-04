@@ -136,10 +136,10 @@
 
       <!-- 7 · LAB -->
       <div class="lcard">
-        <div class="l-eyebrow">🧪 Bu haftanın labı</div>
+        <div class="l-eyebrow">Bu haftanın labı</div>
         <h2>Günlüğünü kur</h2>
         <ul>
-          <li>🆕 <code>tradelog</code> (önerilen yeni skill) → işlemlerini kaydeder; win rate, ort. R,
+          <li><code>tradelog</code> (önerilen yeni skill) → işlemlerini kaydeder; win rate, ort. R,
           <b>beklenen değer</b>, R-dağılımı ve hata etiketlerini otomatik hesaplar. (Henüz yoksa basit bir
           tablo/worksheet ile başla.)</li>
         </ul>
@@ -171,7 +171,7 @@
 
       <!-- 8 · ÖDEV -->
       <div class="lcard">
-        <div class="l-eyebrow">📝 Ödev</div>
+        <div class="l-eyebrow">Ödev</div>
         <h2>10 işlem + 1 itiraf</h2>
         <ul>
           <li>Son (veya sanal) <b>10 işlemini</b> gir. Her biri için R sonucu + hata etiketi yaz.</li>
@@ -183,6 +183,31 @@
       </div>
 
       <!-- 9 · KUTLAMA -->
+      <!-- BUGÜN NE YAPACAĞIM -->
+      <div class="lcard">
+        <div class="l-eyebrow">Bugün ne yapacağım?</div>
+        <h2>Tek somut adım</h2>
+        <div class="action-card">Son (veya sanal) 10 işlemini yukarıdaki günlüğe gir. Beklenen değerin kaç R, pozitif mi? En sık tekrarlayan hatan ne?</div>
+        <p class="bridge">Yaptıktan sonra toplulukta paylaş — söz vermek, uygulamayı kolaylaştırır.</p>
+      </div>
+
+      <!-- SKOOL PAYLAŞIM -->
+      <div class="lcard">
+        <div class="l-eyebrow">Skool'da paylaş</div>
+        <h2>Kararını toplulukla paylaş</h2>
+        <p>Şablonu doldur, <b>Haddini Aş Kulübü</b>'nde paylaş. Aynı format = ortak dil + birbirinden öğrenme.</p>
+        <textarea class="share-box" id="shareBox" rows="13" readonly>Modül 10 — İşlem Günlüğü &amp; Beklenen Değer
+
+İncelediğim hisse/konu:
+Ana kararım:
+Neden (veri + bağlam):
+İşlem açıyor muyum? (Evet / Hayır):
+Açmıyorsam neden:
+Bu modülden aldığım tek kural:</textarea>
+        <button class="btn btn-primary" type="button"
+          onclick="Akademi.copyText(document.getElementById('shareBox').value, this)">Şablonu kopyala</button>
+      </div>
+
       <div class="lcard celebrate">
         <div class="big-emoji">📒</div>
         <h2>Artık üstünlüğünü ölçebiliyorsun</h2>

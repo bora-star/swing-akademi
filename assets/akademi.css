@@ -356,3 +356,10 @@ a{color:var(--coral-ink);text-decoration:none}
   .jrnl-stats{grid-template-columns:1fr 1fr}
   .jrnl-table{font-size:12px} .jrnl-table th:nth-child(3),.jrnl-table td:nth-child(3){display:none}
 }
+
+/* ============ Bugün ne yapacağım? + Skool paylaşım ============ */
+.action-card{background:linear-gradient(160deg,var(--amber-bg),var(--surface));border:1px solid var(--amber);
+  border-radius:var(--r-lg);padding:18px 20px;font-size:16.5px;color:var(--ink);margin-top:8px;line-height:1.6}
+.share-box{width:100%;min-height:172px;font-family:var(--sans);font-size:14.5px;line-height:1.75;padding:15px 17px;
+  border:1.5px dashed var(--line-2);border-radius:14px;background:var(--surface-2);color:var(--ink);resize:vertical;margin:12px 0}
+.share-box:focus{outline:none;border-color:var(--coral);background:#fff}

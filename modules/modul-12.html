@@ -42,7 +42,7 @@
             <li>Kendi <b>playbook'unu</b> yazıp <b>mezun olacaksın.</b></li>
           </ul>
         </div>
-        <p class="muted" style="font-size:14px">⏱ ~9 dakika · 2 interaktif soru · +120 XP 🎓</p>
+        <p class="muted" style="font-size:14px">⏱ ~9 dakika · 2 interaktif soru · +120 XP</p>
       </div>
 
       <!-- 1 · ÇEKLIST -->
@@ -164,7 +164,7 @@
         <h2>Bir işlemi baştan sona belgele</h2>
         <p>Gerçek (veya kâğıt) bir işlemi, motorun tüm zincirini göstererek belgele:</p>
         <ul>
-          <li>🚦 Işık yeşil mi? → 🎯 Huniden geçti mi (momentum/ADR/hacim)? → 🪤 Sıkı kurulum var mı?</li>
+          <li>Işık yeşil mi? → Huniden geçti mi (momentum/ADR/hacim)? → Sıkı kurulum var mı?</li>
           <li>→ Giriş tetiği (ORH/EP) → stop (günün dibi, ≤1 ATR) → lot (formül, %20)</li>
           <li>→ 3-5 gün kısmi çıkış → 10 DMA takip → kapanış-altı nihai çıkış → günlüğe R sonucu.</li>
         </ul>
@@ -175,7 +175,7 @@
 
       <!-- 9 · LAB -->
       <div class="lcard">
-        <div class="l-eyebrow">🧪 Operasyonel lab</div>
+        <div class="l-eyebrow">Operasyonel lab</div>
         <h2>Günlük motorun</h2>
         <ul>
           <li><code>dailypack</code> → sabah rutini: piyasa nabzı + makro + portföy tek pakette.</li>
@@ -188,6 +188,31 @@
       </div>
 
       <!-- 10 · MEZUNİYET -->
+      <!-- BUGÜN NE YAPACAĞIM -->
+      <div class="lcard">
+        <div class="l-eyebrow">Bugün ne yapacağım?</div>
+        <h2>Tek somut adım</h2>
+        <div class="action-card">Pre-flight çeklistini gerçek bir işleme uygula: 5 yeşil ışık da yanıyor mu (piyasa izni · momentum · sıkı kurulum · giriş &amp; stop · formülle boyut)? Biri eksikse işlem yok.</div>
+        <p class="bridge">Yaptıktan sonra toplulukta paylaş — söz vermek, uygulamayı kolaylaştırır.</p>
+      </div>
+
+      <!-- SKOOL PAYLAŞIM -->
+      <div class="lcard">
+        <div class="l-eyebrow">Skool'da paylaş</div>
+        <h2>Kararını toplulukla paylaş</h2>
+        <p>Şablonu doldur, <b>Haddini Aş Kulübü</b>'nde paylaş. Aynı format = ortak dil + birbirinden öğrenme.</p>
+        <textarea class="share-box" id="shareBox" rows="13" readonly>Modül 12 — Pre-Flight Çeklist + Mezuniyet
+
+İncelediğim hisse/konu:
+Ana kararım:
+Neden (veri + bağlam):
+İşlem açıyor muyum? (Evet / Hayır):
+Açmıyorsam neden:
+Bu modülden aldığım tek kural:</textarea>
+        <button class="btn btn-primary" type="button"
+          onclick="Akademi.copyText(document.getElementById('shareBox').value, this)">Şablonu kopyala</button>
+      </div>
+
       <div class="lcard celebrate">
         <div class="big-emoji">🎓</div>
         <h2>Tebrikler — mezun oldun!</h2>
@@ -197,9 +222,9 @@
         <div class="takeaway" style="text-align:left">
           <div class="tt">Artık bir sistemin var</div>
           <ul>
-            <li>🚦 Piyasa izni → 🎯 av sahası → 🪤 sıkı kurulum</li>
-            <li>🎯 giriş &amp; stop → ⚖️ mekanik boyut → 📈 kâr alma &amp; trailing</li>
-            <li>📒 günlük &amp; beklenen değer → 🗂️ portföy → ✅ 5 yeşil ışık</li>
+            <li>Piyasa izni → av sahası → sıkı kurulum</li>
+            <li>Giriş &amp; stop → mekanik boyut → kâr alma &amp; trailing</li>
+            <li>Günlük &amp; beklenen değer → portföy → 5 yeşil ışık</li>
           </ul>
         </div>
         <div class="xp-won">＋120 XP</div>
