@@ -1,94 +1,88 @@
-# Swing Akademi 🎯
+# Swing Akademi
 
 Sıfırdan ustalığa, 12 haftalık **uygulamalı swing trading** eğitim programı.
-Hem Bora'nın kendi gelişimi için, hem **Skool / Haddini Aş Kulübü** üyelerine teslim edilebilir.
+Skool / Haddini Aş Kulübü üyelerine teslim edilebilir.
 
-> **Felsefe:** Skill'ler ders değil — **laboratuvar**. Her modülde teori öğrenilir, sonra
-> Bora'nın mevcut skill'leri (firsattara, swinganalysis, trendcheck, marketpulse, makro,
-> smartmoney, leapsflow, protect, portman/porttech) o teorinin **canlı pratiği** olarak kullanılır.
+> **Felsefe:** Bu eğitim hangi hisseyi alacağını söylemez; **hangi işlemi almaman gerektiğini**
+> bilme disiplinini kazandırır. Skill'ler ders değil — **laboratuvar**. Her modülde teori öğrenilir,
+> sonra mevcut skill'ler (firsattara, swinganalysis, trendcheck, marketpulse, makro, smartmoney,
+> leapsflow, protect, portman/porttech) o teorinin canlı pratiği olarak kullanılır.
 
-- **Format:** Self-paced, standalone paylaşılabilir HTML modüller (Master Format v1, dark theme).
-- **Kapsam:** 12 hafta / 4 faz / 12 modül.
-- **Seviye:** Karma — her modülde "Temel" + "İleri" katman.
+- **Format:** Self-paced, standalone HTML modüller. Skill erişimi gerekmez — her lab'da donmuş örnek çıktı var.
+- **Kapsam:** 12 hafta / 4 faz / 12 modül + 4 faz sınavı + günlük mikro.
 - **Dil:** Sade Türkçe, "Yani:" kutuları + mini sözlük.
 
 ---
 
-## 📂 Repo yapısı
+## Repo yapısı
 
 ```
 swing-akademi/
-├── index.html            # Ana müfredat panosu (akademi giriş sayfası)
-├── modules/              # modul-01.html ... modul-12.html (her ders standalone)
-├── worksheets/           # Ödev/çalışma kağıtları (işlem günlüğü, R hesap, setup checklist)
-├── assets/               # Ortak görseller/ikonlar (gerekirse)
-├── CURRICULUM.md         # 12 modülün detaylı içerik planı (üretim master'ı)
+├── index.html            # Ana müfredat panosu
+├── modules/              # modul-01.html ... modul-12.html
+├── sinavlar/             # faz-1.html ... faz-4.html (senaryo sınavları, rozet+XP)
+├── gunluk.html           # Günlük mikro tekrar motoru (SRS havuzu)
+├── data/srs-pool.json    # 12 modül spaced-repetition soru havuzu
+├── assets/               # akademi.css · akademi.js
+├── CURRICULUM.md         # Detaylı içerik planı
+├── DENETIM.md            # Dalga 0 denetim raporu (review kalibrasyonu)
 └── README.md
 ```
 
-## 🗺️ 12 Haftalık Müfredat (özet)
+## 12 Haftalık Müfredat
 
 | # | Modül | Faz | Skill-Lab | Durum |
 |---|-------|-----|-----------|-------|
-| 1 | Swing Trading'in DNA'sı + Zihniyet | Temel | (gözlem) | ⬜ |
-| 2 | Piyasa Rejimi & Bağlam | Temel | marketpulse · makro · firsattara(rotasyon) | ⬜ |
-| 3 | Trendin Anatomisi (EMA stack, RS) | Temel | **trendcheck** | ⬜ |
-| 4 | Setup Kataloğu (kırılım/pullback/reclaim/VCP) | Setup | **swinganalysis** (tek hisse) | ⬜ |
-| 5 | Giriş · Stop · Hedef · R/R matematiği | Setup | swinganalysis · trendcheck (invalidation) | ⬜ |
-| 6 | Pozisyon Boyutu & Risk Yönetimi | Setup | 🆕 **risksize** (öneri) | ⬜ |
-| 7 | Hacim & Göreceli Güç (RVOL, RS vs SPY) | Onay | **firsattara** (swing+rotasyon) | ⬜ |
-| 8 | Akıllı Para Onayı (flow, dark pool, LEAPS) | Onay | firsattara(flow) · smartmoney · leapsflow | ⬜ |
-| 9 | Katalizör & Earnings Yönetimi | Onay | earnings skilleri · firsattara(earnings filtresi) | ⬜ |
-| 10 | İşlem Günlüğü & Metrikler (expectancy) | Ustalık | 🆕 **tradelog** (öneri) | ⬜ |
-| 11 | Portföy · Korelasyon · Korunma | Ustalık | portman/porttech · **protect** | ⬜ |
-| 12 | Kendi Playbook'un + Rutin + Mezuniyet | Ustalık | dailypack · firsattara rutini | ⬜ |
+| 1 | Swing Trading'in DNA'sı + Zihniyet | Temel | trendcheck (gözlem) | ✅ |
+| 2 | Piyasa Rejimi & Bağlam | Temel | marketpulse · makro | ✅ |
+| 3 | Av Sahası: En Güçlüyü Filtrele | Temel | qswing (tara) · firsattara · trendcheck | ✅ |
+| 4 | Sıkı Kurulum: Yay Gerilmesi | Kurulum | qswing (tek hisse) · swinganalysis | ✅ |
+| 5 | Giriş & Stop: ORH ve Günün Dibi | Kurulum | qswing · swinganalysis | ✅ |
+| 6 | Mekanik Pozisyon Boyutu | Kurulum | gömülü lot hesaplayıcı | ✅ |
+| 7 | Kâr Alma & Trend Sürme | Yönetim | qswing · trailstop | ✅ |
+| 8 | Akıllı Para Onayı | Yönetim | firsattara · leapsflow · smartmoney | ✅ |
+| 9 | Episodic Pivot & Earnings | Yönetim | firsattara · qswing | ✅ |
+| 10 | İşlem Günlüğü & Beklenen Değer | Ustalık | gömülü işlem günlüğü | ✅ |
+| 11 | Portföy & Konsantrasyon | Ustalık | portman/porttech · protect | ✅ |
+| 12 | Pre-Flight Çeklist + Mezuniyet | Ustalık | dailypack · firsattara · qswing | ✅ |
 
-Detay için → `CURRICULUM.md`.
+Her modülde: teori kartları · interaktif sorular · donmuş skill snapshot · "Bugün ne yapacağım?" · Skool paylaşım şablonu.
 
-## 🔧 Skill önerileri (bu programın açtığı boşluklar)
+## 4 Faz Sınavı
 
-1. **🆕 tradelog** — İşlem günlüğü skill'i. Trade kaydı + win rate, ort. R, **expectancy**,
-   R-multiple dağılımı, hata etiketleri. Modül 10'un omurgası. *Şu an ekosistemde yok.*
-2. **🆕 risksize** — Pozisyon boyutu & risk hesaplayıcı. Hesap büyüklüğü + %risk + stop
-   mesafesi → lot. Modül 6. (Alternatif: `protect` içine bir mod eklenebilir.)
-3. **🆕 swingreplay** — Geçmiş chart üzerinde "ne yapardın" pratiği (kör backtest). Pedagojik
-   olarak en değerli ekleme; modülleri ödevlerle besler.
-4. **✏️ swinganalysis → "akademi modu"** — Çıktıya öğretici katman ekleyen flag (neden bu setup,
-   neden bu stop). Üyeye sadece sonucu değil *gerekçeyi* öğretir.
-5. **✏️ Tüm skill'lere "📚 İlgili ders" rozeti** — Her skill çıktısının altına "Bu skill Modül X'in
-   labıdır" linki. Skill ↔ müfredat çift yönlü bağlanır.
+| Sınav | Kapsam | Rozet |
+|-------|--------|-------|
+| Faz 1 | Piyasa izni + filtre + tuzak | 🏹 Avcı |
+| Faz 2 | Giriş + stop + lot + %20 tavanı | Avcı+İcracı |
+| Faz 3 | Kâr alma + earnings + onay/tetik | Yönetici |
+| Faz 4 | Beklenen değer + portföy + pre-flight | Mezun |
 
-> Bunlar **öneri**; Bora onayıyla `skill-creator` / `improve` ile inşa edilir.
+## Açık iş listesi
+
+- [ ] Karar-replay MVP (M4/M5/M7 — donmuş grafik üzerinde bar-bar karar)
+- [ ] tradelog / risksize skill'leri (skill-runner projesinde, ayrı iş)
+- [ ] "İleri katman" blokları veya README vaadini düzelt
 
 ---
 
-## 💻 3 makineli çalışma akışı (ÖNEMLİ)
+## Çoklu cihaz çalışma akışı
 
 Bu repo iCloud'un **dışında** (`~/swing-akademi`) durur — GitHub tek kaynaktır.
-`.git`'i iCloud'a koymuyoruz (senkron çakışması/corrupt riski).
 
-**Yeni bir Mac'te ilk kez:**
 ```bash
+# Yeni cihazda ilk kez
 cd ~ && git clone https://github.com/bora-star/swing-akademi.git
-cd ~/swing-akademi
-```
 
-**Her oturuma başlarken (her makinede):**
-```bash
+# Her oturuma başlarken
 cd ~/swing-akademi && git pull
-```
 
-**Çalışma bitince (değişiklikleri diğer makinelere taşı):**
-```bash
+# Çalışma bitince
 cd ~/swing-akademi && git add -A && git commit -m "ne yaptın" && git push
 ```
 
-**Claude ile devam:** Yeni Cowork oturumunda *"swing akademiye devam"* de → Claude `~/swing-akademi`
-içinde `git pull` yapıp `CURRICULUM.md`'deki durumdan kaldığı yerden sürer.
-
-> Çakışma olursa: `git pull` önce, sonra çalış. Aynı dosyayı iki makinede aynı anda düzenleme.
+**Claude ile devam:** Yeni oturumda *"swing akademiye devam"* de →
+Claude `~/swing-akademi`'de `git pull` yapıp `DENETIM.md`'deki durumdan kaldığı yerden sürer.
 
 ---
 
-*Yatırım tavsiyesi değildir. Eğitim amaçlıdır. Bora bu içeriği Telegram'da paylaşmaz, kripto
-satmaz; taklit hesaplara/dolandırıcılara karşı dikkatli olun.*
+*Yatırım tavsiyesi değildir. Eğitim amaçlıdır.*
