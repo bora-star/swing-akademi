@@ -363,3 +363,23 @@ a{color:var(--coral-ink);text-decoration:none}
 .share-box{width:100%;min-height:172px;font-family:var(--sans);font-size:14.5px;line-height:1.75;padding:15px 17px;
   border:1.5px dashed var(--line-2);border-radius:14px;background:var(--surface-2);color:var(--ink);resize:vertical;margin:12px 0}
 .share-box:focus{outline:none;border-color:var(--coral);background:#fff}
+
+/* ============ Snapshot (lab örnek çıktısı) ============ */
+.snap{border:1px solid var(--line-2);border-radius:var(--r-lg);overflow:hidden;margin-top:10px;background:var(--surface)}
+.snap-h{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:10px 14px;background:var(--surface-2);border-bottom:1px solid var(--line)}
+.snap-h .sk{font-weight:700;font-size:13px;color:var(--ink)}
+.snap-h .tag{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--ink-3);background:var(--surface);border:1px solid var(--line-2);padding:3px 8px;border-radius:999px}
+.snap-b{padding:4px 14px}
+.snap-row{display:flex;justify-content:space-between;gap:12px;padding:9px 0;border-top:1px solid var(--line);font-size:14.5px;color:var(--ink-2)}
+.snap-row:first-child{border-top:none}
+.snap-row .v{font-weight:700;color:var(--ink)}
+.snap-row .v.g{color:var(--teal-ink)} .snap-row .v.r{color:var(--coral-ink)} .snap-row .v.a{color:var(--amber-ink)}
+.snap-verdict{margin:10px 14px 12px;padding:10px 12px;border-radius:11px;font-weight:700;font-size:14.5px;text-align:center;background:var(--teal-bg);color:var(--teal-ink)}
+.snap-read{border-top:1px dashed var(--line-2);padding:12px 14px;font-size:14px;color:var(--ink-2);background:var(--surface-2)}
+.snap-read b{color:var(--coral-ink)}
+.snap-tbl{width:100%;border-collapse:collapse;font-size:13.5px}
+.snap-tbl th{font-size:10.5px;text-transform:uppercase;letter-spacing:.04em;color:var(--ink-3);text-align:left;padding:7px 6px;border-bottom:1px solid var(--line)}
+.snap-tbl td{padding:8px 6px;border-bottom:1px solid var(--line);color:var(--ink-2)}
+.snap-tbl tr:last-child td{border-bottom:none}
+.pill{display:inline-block;font-size:11px;font-weight:700;padding:2px 9px;border-radius:999px}
+.pill.g{background:var(--teal-bg);color:var(--teal-ink)} .pill.a{background:var(--amber-bg);color:var(--amber-ink)} .pill.r{background:var(--coral-bg);color:var(--coral-ink)}
