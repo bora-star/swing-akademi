@@ -145,6 +145,28 @@
         </ul>
         <div class="yani"><b>Yani:</b> Her işlemi gir: tarih, hisse, giriş, stop, çıkış, R sonucu, hata
         etiketi. 20-30 işlem sonra sayıların sana ne yapman gerektiğini söyler.</div>
+
+        <div class="tool" id="jrnl" style="margin-top:20px">
+          <div class="l-eyebrow" style="margin-bottom:12px">📒 İşlem günlüğü (tarayıcında saklanır)</div>
+          <div class="jrnl-form">
+            <label class="wide">Hisse<input type="text" id="jT" placeholder="örn. NVDA" maxlength="8"></label>
+            <label>Setup
+              <select id="jS"><option>ORH</option><option>Episodic Pivot</option><option>Pullback</option><option>Breakout</option><option>Diğer</option></select>
+            </label>
+            <label>Sonuç (R)<input type="number" id="jR" placeholder="+3 / −1" step="0.1"></label>
+            <label>Hata etiketi
+              <select id="jE"><option value="Yok">Yok</option><option>Kovalama</option><option>Erken çıkış</option><option>Stop kaydırma</option><option>Plansız giriş</option><option>FOMO</option></select>
+            </label>
+            <label>Kurala uydum?
+              <select id="jOk"><option value="1">Evet</option><option value="0">Hayır</option></select>
+            </label>
+          </div>
+          <div style="margin-top:12px"><button class="btn btn-primary" id="jAdd" type="button">＋ İşlem ekle</button></div>
+
+          <div class="jrnl-stats" id="jStats"></div>
+          <div id="jBody"></div>
+          <div id="jErrNote" class="yani" style="display:none;margin-top:12px"></div>
+        </div>
       </div>
 
       <!-- 8 · ÖDEV -->
@@ -248,6 +270,75 @@
     });
   });
   render();
+
+  // ---------- İşlem günlüğü + beklenen değer ----------
+  (function(){
+    var KEY='swingakademi.journal.v1';
+    var addBtn=document.getElementById('jAdd');
+    if(!addBtn) return;
+    var fT=document.getElementById('jT'), fS=document.getElementById('jS'), fR=document.getElementById('jR'),
+        fE=document.getElementById('jE'), fOk=document.getElementById('jOk'),
+        statsEl=document.getElementById('jStats'), bodyEl=document.getElementById('jBody'), errNote=document.getElementById('jErrNote');
+    function loadJ(){ try{ return JSON.parse(localStorage.getItem(KEY))||[]; }catch(e){ return []; } }
+    function saveJ(a){ try{ localStorage.setItem(KEY, JSON.stringify(a)); }catch(e){} }
+    function fmt1(n){ return n.toLocaleString('tr-TR',{minimumFractionDigits:2,maximumFractionDigits:2}); }
+    var trades=loadJ();
+
+    function dateStr(){
+      var d=new Date();
+      return ('0'+d.getDate()).slice(-2)+'.'+('0'+(d.getMonth()+1)).slice(-2);
+    }
+    function render(){
+      // tablo
+      if(!trades.length){
+        bodyEl.innerHTML='<div class="jrnl-empty">Henüz işlem yok. Yukarıdan ilk işlemini ekle — sayılar canlı hesaplanır.</div>';
+      } else {
+        var rows=trades.map(function(t,i){
+          var cls=t.r>0?'r-pos':(t.r<0?'r-neg':'');
+          var rTxt=(t.r>0?'+':'')+fmt1(t.r)+'R';
+          return '<tr><td>'+t.d+'</td><td><b>'+(t.t||'—')+'</b></td><td>'+t.setup+'</td>'+
+                 '<td class="'+cls+'">'+rTxt+'</td><td>'+(t.ok==='0'?'⚠️ ':'')+t.err+'</td>'+
+                 '<td><button class="del" data-i="'+i+'" title="Sil">✕</button></td></tr>';
+        }).join('');
+        bodyEl.innerHTML='<table class="jrnl-table"><thead><tr><th>Tarih</th><th>Hisse</th><th>Setup</th><th>R</th><th>Hata</th><th></th></tr></thead><tbody>'+rows+'</tbody></table>';
+        bodyEl.querySelectorAll('.del').forEach(function(b){
+          b.addEventListener('click',function(){ trades.splice(+b.getAttribute('data-i'),1); saveJ(trades); render(); });
+        });
+      }
+      // metrikler
+      var n=trades.length;
+      var wins=trades.filter(function(t){return t.r>0;}), losses=trades.filter(function(t){return t.r<0;});
+      var winRate=n?(wins.length/n*100):0;
+      var avgWin=wins.length?wins.reduce(function(s,t){return s+t.r;},0)/wins.length:0;
+      var avgLoss=losses.length?losses.reduce(function(s,t){return s+t.r;},0)/losses.length:0;
+      var ev=n?trades.reduce(function(s,t){return s+t.r;},0)/n:0;
+      var evCls=ev>0?'ev-pos':(ev<0?'ev-neg':'');
+      statsEl.innerHTML=
+        '<div class="jstat"><div class="jl">Kazanma oranı</div><div class="jv">%'+fmt1(winRate)+'</div></div>'+
+        '<div class="jstat"><div class="jl">Ort. kazanç</div><div class="jv">+'+fmt1(avgWin)+'R</div></div>'+
+        '<div class="jstat"><div class="jl">Ort. kayıp</div><div class="jv">'+fmt1(avgLoss)+'R</div></div>'+
+        '<div class="jstat '+evCls+'"><div class="jl">Beklenen değer</div><div class="jv">'+(ev>0?'+':'')+fmt1(ev)+'R</div></div>';
+      // en sık hata
+      var counts={};
+      trades.forEach(function(t){ if(t.err && t.err!=='Yok') counts[t.err]=(counts[t.err]||0)+1; });
+      var top=Object.keys(counts).sort(function(a,b){return counts[b]-counts[a];})[0];
+      if(top && n>=3){
+        errNote.style.display='block';
+        errNote.innerHTML='<b>En sık hatan:</b> '+top+' ('+counts[top]+' kez). Bunu öldürecek tek bir kural yaz — bir sonraki 10 işlemde tekrarını say.';
+      } else { errNote.style.display='none'; }
+    }
+    addBtn.addEventListener('click',function(){
+      var r=parseFloat(fR.value);
+      if(isNaN(r)){ fR.focus(); fR.style.borderColor='var(--coral)'; return; }
+      fR.style.borderColor='';
+      trades.push({ d:dateStr(), t:(fT.value||'').trim().toUpperCase(), setup:fS.value, r:r, err:fE.value, ok:fOk.value });
+      saveJ(trades);
+      fT.value=''; fR.value=''; fE.value='Yok'; fOk.value='1'; fT.focus();
+      render();
+      Akademi.addXP(2); toast('İşlem eklendi');
+    });
+    render();
+  })();
 </script>
 </body>
 </html>

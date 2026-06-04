@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Swing Akademi · Günlük Mikro</title>
+<link rel="stylesheet" href="assets/akademi.css">
+<style>
+  .micro-wrap{max-width:680px;margin:0 auto;padding:0 18px 80px}
+  .m-hero{text-align:center;padding:46px 0 8px}
+  .m-hero .mascot{width:66px;height:66px;margin:0 auto 14px;display:grid;place-items:center;font-size:32px;
+    background:linear-gradient(160deg,#fff,var(--surface-2));border:1px solid var(--line);border-radius:20px;
+    box-shadow:var(--shadow-lg);transform:rotate(-4deg)}
+  .m-hero h1{margin:4px 0 8px;font-size:30px}
+  .m-meta{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:14px}
+  .m-meta .chip{background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:7px 14px;
+    font-size:13.5px;font-weight:600;color:var(--ink-2);box-shadow:var(--shadow)}
+  .m-step{margin-top:26px}
+  .m-step-h{display:flex;align-items:center;gap:10px;margin:30px 0 12px}
+  .m-step-h .n{width:26px;height:26px;border-radius:8px;display:grid;place-items:center;font-size:13px;
+    font-weight:700;background:var(--coral);color:#fff}
+  .m-step-h h3{margin:0;font-size:18px}
+  .flash{background:var(--surface);border:1px solid var(--line);border-radius:var(--r-lg);
+    padding:22px 22px 18px;box-shadow:var(--shadow);margin-bottom:14px}
+  .flash .mtag{font-size:12px;font-weight:700;color:var(--coral-ink);background:var(--coral-bg);
+    display:inline-block;padding:3px 10px;border-radius:999px;margin-bottom:10px}
+  .flash .fq{font-size:17px;font-weight:600;line-height:1.5;color:var(--ink)}
+  .flash .fa{margin-top:14px;padding-top:14px;border-top:1px dashed var(--line-2);color:var(--ink-2);
+    font-size:15px;line-height:1.6;display:none}
+  .flash.open .fa{display:block}
+  .flash .reveal-b{margin-top:14px}
+  .rate{display:none;gap:10px;margin-top:14px}
+  .flash.open .rate{display:flex}
+  .rate button{flex:1;border:1px solid var(--line-2);background:var(--surface-2);border-radius:12px;
+    padding:11px;font-weight:600;font-size:14px;cursor:pointer;font-family:var(--sans);color:var(--ink)}
+  .rate button.yes:hover,.rate button.yes.sel{background:var(--teal-bg);border-color:var(--teal);color:var(--teal-ink)}
+  .rate button.no:hover,.rate button.no.sel{background:var(--amber-bg);border-color:var(--amber);color:var(--amber-ink)}
+  .rate button.done{opacity:.5;cursor:default}
+  .term-card{background:var(--violet-bg);border:1px solid var(--violet);border-radius:var(--r-lg);padding:22px}
+  .term-card .tt{font-family:var(--serif);font-size:21px;color:var(--ink);margin:0 0 8px}
+  .term-card .td{color:var(--ink-2);font-size:15px;line-height:1.6;margin:0}
+  .disc-card{background:var(--surface);border:1px solid var(--line);border-radius:var(--r-lg);padding:22px;text-align:center;box-shadow:var(--shadow)}
+  .disc-card p{font-size:16px;font-weight:600;margin:0 0 16px}
+  .disc-btns{display:flex;gap:12px;justify-content:center}
+  .m-finish{text-align:center;margin-top:40px;padding:30px;background:linear-gradient(160deg,var(--teal-bg),var(--surface));
+    border:1px solid var(--teal);border-radius:var(--r-xl);display:none}
+  .m-finish.show{display:block}
+  .m-finish .big{font-size:40px}
+  .m-finish h2{margin:8px 0 6px}
+  .m-empty{text-align:center;padding:50px 20px;color:var(--ink-2)}
+</style>
+</head>
+<body>
+
+<div class="bar">
+  <div class="bar-in">
+    <div class="brand"><span class="bull">🐂</span> Swing&nbsp;Akademi <a href="index.html">· Yol haritası</a></div>
+    <button class="btn" onclick="fs()">⛶ Tam Ekran</button>
+  </div>
+</div>
+
+<div class="micro-wrap">
+
+  <div class="m-hero">
+    <div class="mascot">☀️</div>
+    <div class="kicker">Günlük Mikro · ~3 dakika</div>
+    <h1>Bugünün <span style="color:var(--coral-ink)">tekrarı</span></h1>
+    <p class="lead" style="max-width:520px;margin:6px auto 0">Az ama her gün. Üç hızlı tekrar, günün terimi,
+    bir disiplin check-in. Seriyi sıcak tut — ustalık tekrarla gelir.</p>
+    <div class="m-meta">
+      <span class="chip">🔥 Seri: <b id="streakChip">0</b> gün</span>
+      <span class="chip">🛡️ Disiplin: <b id="discChip">0</b></span>
+      <span class="chip" id="doneChip" style="display:none">✓ Bugün tamamlandı</span>
+    </div>
+  </div>
+
+  <div id="content"></div>
+
+  <!-- BİTİŞ -->
+  <div class="m-finish" id="finish">
+    <div class="big">🎉</div>
+    <h2>Günlük mikro tamam!</h2>
+    <p class="lead" id="finishMsg" style="margin:4px auto 18px"></p>
+    <a class="btn btn-primary btn-lg" href="index.html">Yol haritasına dön →</a>
+  </div>
+
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script src="assets/akademi.js"></script>
+<script>
+  function fs(){ document.fullscreenElement ? document.exitFullscreen() : document.documentElement.requestFullscreen(); }
+  function toast(m){ var t=document.getElementById('toast'); t.textContent=m; t.classList.add('show'); clearTimeout(t._h); t._h=setTimeout(function(){t.classList.remove('show');},1900); }
+  function pick(arr,n){ var a=arr.slice(),out=[]; while(a.length&&out.length<n){ out.push(a.splice(Math.floor(Math.random()*a.length),1)[0]); } return out; }
+  function modName(id){ return {1:"Zihniyet",2:"Piyasa İzni",3:"Av Sahası",4:"Sıkı Kurulum",5:"Giriş & Stop",6:"Pozisyon Boyutu",7:"Kâr Alma",8:"Akıllı Para",9:"Episodic Pivot",10:"İşlem Günlüğü",11:"Portföy",12:"Pre-Flight"}[id]||("Modül "+id); }
+
+  var P = Akademi.init({ demo: true });   // prototip demo. Yayında: {demo:false}
+  document.getElementById('streakChip').textContent = P.streak.count;
+  document.getElementById('discChip').textContent = P.discipline.count;
+
+  var state = { srsTotal: 0, srsRated: 0, discDone: false };
+
+  fetch('data/srs-pool.json')
+    .then(function(r){ if(!r.ok) throw new Error('fetch'); return r.json(); })
+    .then(build)
+    .catch(function(){
+      document.getElementById('content').innerHTML =
+        '<div class="m-empty"><h3>Soru havuzu yüklenemedi</h3>' +
+        '<p class="lead">Bu sayfa bir sunucu üzerinden açılmalı (dosyaya çift tıklayınca tarayıcı veri dosyasını engeller).<br>' +
+        'Terminalde: <code>cd ~/swing-akademi &amp;&amp; python3 -m http.server</code> → sonra <code>localhost:8000/gunluk.html</code></p></div>';
+    });
+
+  function build(pool){
+    var doneMods = P.completed.slice();
+    // Hiç modül bitmemişse mikro yapılamaz
+    if(!doneMods.length){
+      document.getElementById('content').innerHTML =
+        '<div class="m-empty"><div style="font-size:38px">🌱</div><h3>Önce ilk dersini bitir</h3>' +
+        '<p class="lead">Günlük tekrar, tamamladığın modüllerin sorularından beslenir. Modül 1\'i bitirince burası açılır.</p>' +
+        '<a class="btn btn-primary btn-lg" href="modules/modul-01.html" style="margin-top:14px">Modül 1\'i dene →</a></div>';
+      return;
+    }
+
+    // Tamamlanan modüllerin tüm sorularını topla
+    var bank = [];
+    doneMods.forEach(function(id){
+      (pool.questions['m'+id]||[]).forEach(function(q){ bank.push({mod:id,q:q.q,a:q.a}); });
+    });
+    var qs = pick(bank, Math.min(3, bank.length));
+    state.srsTotal = qs.length;
+
+    // Terim havuzu da tamamlanan modüllerle sınırlı
+    var terms = (pool.terms||[]).filter(function(t){ return doneMods.indexOf(t.mod)!==-1; });
+    var term = terms.length ? pick(terms,1)[0] : null;
+
+    var html = '';
+
+    // 1 · SRS flashcards
+    html += '<div class="m-step"><div class="m-step-h"><span class="n">1</span><h3>Üç hızlı tekrar</h3></div>';
+    qs.forEach(function(item,i){
+      html += '<div class="flash" data-i="'+i+'">' +
+        '<span class="mtag">'+modName(item.mod)+'</span>' +
+        '<div class="fq">'+item.q+'</div>' +
+        '<button class="btn reveal-b">Cevabı gör</button>' +
+        '<div class="fa">'+item.a+'</div>' +
+        '<div class="rate"><button class="yes">✓ Biliyordum</button><button class="no">✗ Tekrar et</button></div>' +
+        '</div>';
+    });
+    html += '</div>';
+
+    // 2 · Günün terimi
+    if(term){
+      html += '<div class="m-step"><div class="m-step-h"><span class="n">2</span><h3>Günün terimi</h3></div>' +
+        '<div class="term-card"><p class="tt">'+term.t+'</p><p class="td">'+term.d+'</p></div></div>';
+    }
+
+    // 3 · Disiplin check-in
+    html += '<div class="m-step"><div class="m-step-h"><span class="n">3</span><h3>Disiplin check-in</h3></div>' +
+      '<div class="disc-card" id="discCard"><p>Bugün kurallarına / planına uydun mu?</p>' +
+      '<div class="disc-btns"><button class="btn btn-primary" data-d="1">Evet, uydum 🛡️</button>' +
+      '<button class="btn btn-ghost" data-d="0">Bugün kayıyorum</button></div></div></div>';
+
+    document.getElementById('content').innerHTML = html;
+    wire();
+  }
+
+  function wire(){
+    // Flashcard reveal
+    document.querySelectorAll('.flash .reveal-b').forEach(function(b){
+      b.addEventListener('click', function(){
+        var f=b.closest('.flash'); f.classList.add('open'); b.style.display='none';
+      });
+    });
+    // Self-rate
+    document.querySelectorAll('.flash .rate button').forEach(function(b){
+      b.addEventListener('click', function(){
+        var rate=b.closest('.rate'); if(rate.dataset.done==='1') return;
+        rate.dataset.done='1'; b.classList.add('sel');
+        rate.querySelectorAll('button').forEach(function(o){ o.classList.add('done'); });
+        state.srsRated++; maybeFinish();
+      });
+    });
+    // Disiplin
+    document.querySelectorAll('#discCard [data-d]').forEach(function(b){
+      b.addEventListener('click', function(){
+        var card=document.getElementById('discCard'); if(card.dataset.done==='1') return;
+        card.dataset.done='1';
+        var kept=b.getAttribute('data-d')==='1';
+        var c=Akademi.recordDiscipline(kept);
+        document.getElementById('discChip').textContent = Akademi.get().discipline.count;
+        card.innerHTML = kept
+          ? '<p>🛡️ Disiplin serisi: <b>'+c+'</b>. İşte bu — süreç, sonucu kendi getirir.</p>'
+          : '<p>Dürüstlük de disiplindir. Yarın küçük bir adımla seriyi yeniden ısıt. 🌱</p>';
+        state.discDone=true; maybeFinish();
+      });
+    });
+  }
+
+  function maybeFinish(){
+    if(state.srsRated < state.srsTotal || !state.discDone) return;
+    var res = Akademi.recordMicro(15);
+    Akademi.touchStreak();
+    var p = Akademi.get();
+    document.getElementById('streakChip').textContent = p.streak.count;
+    var fin=document.getElementById('finish'); fin.classList.add('show');
+    document.getElementById('finishMsg').innerHTML = res.awarded
+      ? '+15 XP · 🔥 '+p.streak.count+' günlük seri. Bugünün tekrarı cebinde.'
+      : 'Bugünün mikrosunu zaten yapmıştın — tekrar gözden geçirmek bedava. 🔁';
+    document.getElementById('doneChip').style.display='';
+    if(res.awarded){ toast('+15 XP ✓'); setTimeout(function(){ Akademi.confetti(); },250); }
+    fin.scrollIntoView({behavior:'smooth',block:'center'});
+  }
+</script>
+</body>
+</html>

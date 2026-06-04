@@ -150,6 +150,18 @@
         </ul>
         <div class="yani"><b>Yani:</b> Sinyal (qswing) + boyut (formül) = tam işlem planı. Biri eksikse
         işlem eksiktir.</div>
+
+        <div class="tool" id="lotCalc" style="margin-top:20px">
+          <div class="l-eyebrow" style="margin-bottom:12px">🧮 Canlı lot hesaplayıcı</div>
+          <div class="tool-grid">
+            <label>Hesap büyüklüğü ($)<input type="number" id="cAcc" value="25000" min="0" step="100"></label>
+            <label>İşlem riski — 1R ($)<input type="number" id="cRisk" value="250" min="0" step="10"></label>
+            <label>Giriş fiyatı ($)<input type="number" id="cEntry" value="52.40" min="0" step="0.01"></label>
+            <label>Stop fiyatı ($)<input type="number" id="cStop" value="50.80" min="0" step="0.01"></label>
+          </div>
+          <div class="tool-out" id="cOut"></div>
+          <div class="out-flag" id="cFlag"></div>
+        </div>
       </div>
 
       <!-- 9 · ÖDEV -->
@@ -253,6 +265,42 @@
     });
   });
   render();
+
+  // ---------- Canlı lot hesaplayıcı ----------
+  (function(){
+    var acc=document.getElementById('cAcc'), risk=document.getElementById('cRisk'),
+        entry=document.getElementById('cEntry'), stop=document.getElementById('cStop'),
+        out=document.getElementById('cOut'), flag=document.getElementById('cFlag');
+    if(!out) return;
+    function fmt(n){ return n.toLocaleString('tr-TR',{maximumFractionDigits:0}); }
+    function fmt2(n){ return n.toLocaleString('tr-TR',{minimumFractionDigits:2,maximumFractionDigits:2}); }
+    function calc(){
+      var A=+acc.value, R=+risk.value, E=+entry.value, S=+stop.value;
+      var dist=E-S;
+      if(!(A>0)||!(R>0)||!(E>0)||!(S>0)||dist<=0){
+        out.innerHTML='<div class="out-row"><span>Stop, girişin altında ve tüm alanlar pozitif olmalı.</span></div>';
+        flag.className='out-flag'; return;
+      }
+      var lot=Math.floor(R/dist), posVal=lot*E, pct=posVal/A*100;
+      out.innerHTML=
+        '<div class="out-row"><span>Stop mesafesi (giriş − stop)</span><span class="v">$'+fmt2(dist)+'</span></div>'+
+        '<div class="out-row hero"><span>Alınacak lot</span><span class="v">'+fmt(lot)+'</span></div>'+
+        '<div class="out-row"><span>Pozisyon tutarı</span><span class="v">$'+fmt(posVal)+'</span></div>'+
+        '<div class="out-row"><span>Gerçek risk (lot × mesafe)</span><span class="v">$'+fmt(lot*dist)+'</span></div>'+
+        '<div class="out-row"><span>Portföy payı</span><span class="v">%'+fmt2(pct)+'</span></div>';
+      if(pct>20){
+        var capLot=Math.floor(A*0.20/E);
+        flag.className='out-flag warn show';
+        flag.innerHTML='<b>⚠️ %20 tavanı aşıldı.</b> Bu pozisyon portföyünün %'+fmt2(pct)+'’i. '+
+          'Tek hisse en fazla %20 olmalı → lot’u <b>'+fmt(capLot)+'</b>’e indir. Formül ile tavan çatışırsa tavan kazanır.';
+      } else {
+        flag.className='out-flag ok show';
+        flag.innerHTML='<b>✓ %20 tavanı içindesin.</b> Risk sabit $'+fmt(lot*dist)+' (≈1R), pozisyon portföyün %'+fmt2(pct)+'’i.';
+      }
+    }
+    [acc,risk,entry,stop].forEach(function(el){ el.addEventListener('input',calc); });
+    calc();
+  })();
 </script>
 </body>
 </html>

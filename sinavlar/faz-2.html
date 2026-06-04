@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Faz 2 Sınavı · Kurulum & İcra</title>
+<link rel="stylesheet" href="../assets/akademi.css">
+<style>
+  .exam{max-width:680px;margin:0 auto;padding:0 18px 90px}
+  .e-hero{text-align:center;padding:42px 0 6px}
+  .e-hero .mascot{width:66px;height:66px;margin:0 auto 14px;display:grid;place-items:center;font-size:32px;
+    background:linear-gradient(160deg,#fff,var(--surface-2));border:1px solid var(--line);border-radius:20px;
+    box-shadow:var(--shadow-lg);transform:rotate(-4deg)}
+  .e-hero h1{margin:4px 0 8px;font-size:30px}
+  .e-prog{position:sticky;top:54px;z-index:5;background:var(--bg);padding:12px 0 10px;margin-top:18px;
+    display:flex;align-items:center;gap:12px;border-bottom:1px solid var(--line)}
+  .e-prog .pbar{flex:1;height:8px;background:var(--surface-2);border:1px solid var(--line);border-radius:999px;overflow:hidden}
+  .e-prog .pbar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--coral),var(--amber));transition:width .4s}
+  .e-prog .pc{font-size:13px;font-weight:700;color:var(--ink-2);white-space:nowrap}
+  .brief{background:var(--blue-bg);border:1px solid var(--blue);border-radius:var(--r-lg);padding:20px 22px;margin:22px 0 8px}
+  .brief h3{margin:0 0 12px;font-size:17px}
+  .brief .row{display:flex;gap:12px;padding:10px 0;border-top:1px dashed rgba(46,132,255,.3);font-size:15px;line-height:1.5}
+  .brief .row:first-of-type{border-top:none}
+  .brief .row .lab{flex:0 0 92px;font-weight:700;color:var(--blue)}
+  .eq{background:var(--surface);border:1px solid var(--line);border-radius:var(--r-lg);padding:22px;margin:18px 0;box-shadow:var(--shadow)}
+  .eq .qn{font-size:12px;font-weight:700;color:var(--coral-ink);background:var(--coral-bg);display:inline-block;padding:3px 10px;border-radius:999px;margin-bottom:10px}
+  .e-result{display:none;text-align:center;margin-top:26px;padding:30px;border-radius:var(--r-xl);border:1px solid var(--line)}
+  .e-result.show{display:block;animation:cardIn .4s var(--ease)}
+  .e-result.pass{background:linear-gradient(160deg,var(--teal-bg),var(--surface));border-color:var(--teal)}
+  .e-result.fail{background:linear-gradient(160deg,var(--amber-bg),var(--surface));border-color:var(--amber)}
+  .e-result .big{font-size:44px}
+  .e-result h2{margin:8px 0 6px}
+  .e-result .score{font-size:15px;font-weight:700;color:var(--ink-2);margin-bottom:14px}
+  .e-cta{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:8px}
+</style>
+</head>
+<body>
+
+<div class="bar">
+  <div class="bar-in">
+    <div class="brand"><span class="bull">🐂</span> Swing&nbsp;Akademi <a href="../index.html">· Yol haritası</a></div>
+    <button class="btn" onclick="fs()">⛶ Tam Ekran</button>
+  </div>
+</div>
+
+<div class="exam">
+
+  <div class="e-hero">
+    <div class="mascot">🎯</div>
+    <div class="kicker">Faz 2 Sınavı · Kurulum & İcra (Modül 4–6)</div>
+    <h1>İcracı <span style="color:var(--coral-ink)">olabilir misin?</span></h1>
+    <p class="lead" style="max-width:540px;margin:6px auto 0">Tek kurulum, üç karar. Girişi onayla, stop'a göre
+    lot'u hesapla, %20 tavanını koru. Üçünü de doğru yaparsan <b>İcracı</b> rozetini kazanırsın.</p>
+  </div>
+
+  <div class="e-prog">
+    <div class="pbar"><i id="pbar"></i></div>
+    <div class="pc"><span id="ansCount">0</span>/3 yanıtlandı</div>
+  </div>
+
+  <!-- SENARYO -->
+  <div class="brief">
+    <h3>📋 Senaryo — Hisse C</h3>
+    <div class="row"><span class="lab">Kurulum</span><span>Güçlü direk yapmış, şimdi <b>10 SMA'ya yaslı sıkı bir bayrak</b>. ATR = <b>$2</b>.</span></div>
+    <div class="row"><span class="lab">Tetik</span><span>ORH seviyesi <b>$52</b>. Açılışta <b>hacimle $52'yi kırdı</b>, şu an <b>$52.40</b>.</span></div>
+    <div class="row"><span class="lab">Seviye</span><span>Günün dibi (LoD) <b>$50.80</b>.</span></div>
+    <div class="row"><span class="lab">Hesap</span><span>Hesabın <b>$25.000</b>, sabit işlem riskin <b>$400</b>.</span></div>
+  </div>
+
+  <!-- SORU 1 -->
+  <div class="eq" data-correct="b">
+    <span class="qn">Soru 1 · Giriş geçerli mi?</span>
+    <div class="q-stem">Bu bir <b>giriş</b> mi? Gün içi hareket kovalama sınırını aştı mı?</div>
+    <div class="choices">
+      <button class="choice" data-k="a"><span class="key">A</span> Hayır — kurulum yeterince sıkı değil</button>
+      <button class="choice" data-k="b"><span class="key">B</span> Evet — ORH hacimle kırıldı, fiyat tetiğe yakın, günün hareketi 1 ATR içinde</button>
+      <button class="choice" data-k="c"><span class="key">C</span> Hayır — fiyat çoktan kaçmış, kovalama olur</button>
+    </div>
+    <div class="feedback"
+      data-ok="<b>Doğru.</b> ORH $52 hacimle kırıldı (tetik). Fiyat $52.40 — tetiğe yakın, kovalama değil. Günün dibinden ($50.80) bugünkü hareket $1.60, ki bu 1 ATR'nin ($2) altında. Geçerli giriş."
+      data-no="<b>Hayır.</b> ORH $52 hacimle kırıldı = geçerli tetik. $52.40 tetiğe yakın (kovalama değil) ve günün hareketi ($1.60) 1 ATR'nin ($2) altında. Bu geçerli bir giriş."><span class="fb-txt"></span></div>
+  </div>
+
+  <!-- SORU 2 -->
+  <div class="eq" data-correct="a">
+    <span class="qn">Soru 2 · Lot Hesabı</span>
+    <div class="q-stem">Giriş <b>$52.40</b>, stop günün dibi <b>$50.80</b>, sabit risk <b>$400</b>. Kaç lot?</div>
+    <div class="choices">
+      <button class="choice" data-k="a"><span class="key">A</span> 250 lot</button>
+      <button class="choice" data-k="b"><span class="key">B</span> 400 lot</button>
+      <button class="choice" data-k="c"><span class="key">C</span> 100 lot</button>
+    </div>
+    <div class="feedback"
+      data-ok="<b>Doğru.</b> Lot = Risk ÷ (Giriş − Stop) = 400 ÷ (52.40 − 50.80) = 400 ÷ 1.60 = <b>250 lot.</b>"
+      data-no="<b>Hayır.</b> Lot = Risk ÷ (Giriş − Stop) = 400 ÷ (52.40 − 50.80) = 400 ÷ 1.60 = 250 lot. Stop mesafesi $1.60, $400 riski tam karşılar."><span class="fb-txt"></span></div>
+  </div>
+
+  <!-- SORU 3 -->
+  <div class="eq" data-correct="b">
+    <span class="qn">Soru 3 · %20 Tavanı</span>
+    <div class="q-stem">250 lot × $52.40 = <b>$13.100</b> — hesabının (<b>$25.000</b>) ~%52'si. Ne yaparsın?</div>
+    <div class="choices">
+      <button class="choice" data-k="a"><span class="key">A</span> Formül 250 dedi, 250 lot alırım</button>
+      <button class="choice" data-k="b"><span class="key">B</span> %20 tavanını uygularım → ~95 lot'a indiririm</button>
+      <button class="choice" data-k="c"><span class="key">C</span> İşlemi tamamen geçerim</button>
+    </div>
+    <div class="feedback"
+      data-ok="<b>Doğru.</b> 250 lot portföyün %52'si — %20 tavanını aşar. Tavan = $25.000 × 0.20 = $5.000 → $5.000 ÷ $52.40 ≈ <b>95 lot.</b> Formül ile tavan çatışırsa, her zaman tavan kazanır."
+      data-no="<b>Hayır.</b> Formül %52'lik pozisyon söylüyor ama %20 tavanı kutsaldır: $25.000 × 0.20 = $5.000 → ≈95 lot. İşlemi geçmene gerek yok, sadece lot'u tavana indirirsin."><span class="fb-txt"></span></div>
+  </div>
+
+  <!-- SONUÇ -->
+  <div class="e-result" id="result">
+    <div class="big" id="rIcon">🎯</div>
+    <h2 id="rTitle"></h2>
+    <div class="score" id="rScore"></div>
+    <p class="lead" id="rMsg" style="margin:0 auto 16px"></p>
+    <div class="e-cta" id="rCta"></div>
+  </div>
+
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script src="../assets/akademi.js"></script>
+<script>
+  function fs(){ document.fullscreenElement ? document.exitFullscreen() : document.documentElement.requestFullscreen(); }
+  function toast(m){ var t=document.getElementById('toast'); t.textContent=m; t.classList.add('show'); clearTimeout(t._h); t._h=setTimeout(function(){t.classList.remove('show');},1900); }
+
+  var P = Akademi.init({ demo: true });
+  var EXAM_N = 2, BADGE = 'phase2', PASS = 3, TOTAL = 3;
+  var answered = 0, correct = 0;
+
+  function wire(){
+    document.querySelectorAll('.eq .choices').forEach(function(group){
+      group.querySelectorAll('.choice').forEach(function(ch){
+        ch.addEventListener('click', function(){
+          var card = group.closest('.eq');
+          if(card.dataset.done==='1') return;
+          card.dataset.done = '1';
+          var ok = ch.getAttribute('data-k') === card.getAttribute('data-correct');
+          group.querySelectorAll('.choice').forEach(function(o){
+            o.disabled = true;
+            if(o.getAttribute('data-k') === card.getAttribute('data-correct')) o.classList.add('correct');
+          });
+          if(!ok) ch.classList.add('wrong');
+          group.querySelectorAll('.choice').forEach(function(o){
+            if(!o.classList.contains('correct') && !o.classList.contains('wrong')) o.classList.add('dim');
+          });
+          var fb = card.querySelector('.feedback');
+          fb.classList.add('show', ok?'ok':'no');
+          fb.querySelector('.fb-txt').innerHTML = ok ? fb.getAttribute('data-ok') : fb.getAttribute('data-no');
+          answered++; if(ok) correct++;
+          document.getElementById('ansCount').textContent = answered;
+          document.getElementById('pbar').style.width = (answered/TOTAL*100) + '%';
+          if(answered === TOTAL) setTimeout(showResult, 400);
+        });
+      });
+    });
+  }
+
+  function showResult(){
+    var pass = correct >= PASS;
+    var res = document.getElementById('result');
+    res.classList.add('show', pass ? 'pass' : 'fail');
+    document.getElementById('rScore').textContent = correct + '/' + TOTAL + ' doğru';
+    var cta = document.getElementById('rCta');
+    if(pass){
+      var r = Akademi.completeExam(EXAM_N, { badge: BADGE, xp: 60 });
+      document.getElementById('rIcon').textContent = '🎯';
+      document.getElementById('rTitle').textContent = r.fresh ? 'İcracı rozeti kazanıldı!' : 'Yine 3/3 — İcracı’sın!';
+      document.getElementById('rMsg').innerHTML = 'Girişi onayladın, lot’u hesapladın, %20 tavanını korudun. <b>Faz 3 — Yönetim & Onay</b> seni bekliyor.';
+      cta.innerHTML = '<a class="btn btn-primary btn-lg" href="../modules/modul-07.html">Faz 3’e geç →</a>' +
+                      '<a class="btn btn-lg btn-ghost" href="../index.html">Yol haritası</a>';
+      if(r.fresh){ toast('+60 XP · 🎯 İcracı'); setTimeout(function(){ Akademi.confetti(); }, 250); }
+    } else {
+      document.getElementById('rIcon').textContent = '🧮';
+      document.getElementById('rTitle').textContent = 'Az kaldı — tekrar dene';
+      document.getElementById('rScore').textContent = correct + '/' + TOTAL + ' doğru (geçmek için ' + PASS + '/' + TOTAL + ')';
+      document.getElementById('rMsg').innerHTML = 'Yanlış kararların geri bildirimini oku, sonra tekrar dene. Gerekirse <b>Modül 4–6</b>’yı hızlıca gözden geçir.';
+      cta.innerHTML = '<button class="btn btn-primary btn-lg" onclick="location.reload()">Tekrar dene ↻</button>' +
+                      '<a class="btn btn-lg btn-ghost" href="../modules/modul-04.html">Modül 4–6’yı tekrar gör</a>';
+    }
+    res.scrollIntoView({ behavior:'smooth', block:'center' });
+  }
+
+  wire();
+</script>
+</body>
+</html>

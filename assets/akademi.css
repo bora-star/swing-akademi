@@ -314,3 +314,45 @@ a{color:var(--coral-ink);text-decoration:none}
 }
 @media(max-width:560px){ .roadmap{grid-template-columns:1fr} .lcard{padding:28px 22px} }
 @media print{.bar,.lnav,.l-top{display:none}body{background:#fff}.rcard.current{animation:none}}
+
+/* ============ İnteraktif araçlar (M6 hesaplayıcı · M10 günlük) ============ */
+.tool{background:var(--surface-2);border:1px solid var(--line-2);border-radius:var(--r-lg);padding:20px;margin-top:16px}
+.tool-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.tool label{display:flex;flex-direction:column;gap:5px;font-size:12.5px;font-weight:700;color:var(--ink-2);letter-spacing:.01em}
+.tool input,.tool select{font-family:var(--sans);font-size:16px;padding:10px 12px;border:1.5px solid var(--line-2);
+  border-radius:10px;background:var(--surface);color:var(--ink);width:100%}
+.tool input:focus,.tool select:focus{outline:none;border-color:var(--coral);background:var(--coral-bg)}
+.tool-out{margin-top:16px;display:grid;gap:8px}
+.out-row{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:11px 14px;
+  background:var(--surface);border:1px solid var(--line);border-radius:11px;font-size:14.5px;color:var(--ink-2)}
+.out-row .v{font-family:var(--serif);font-weight:600;font-size:18px;color:var(--ink)}
+.out-row.hero{background:linear-gradient(160deg,var(--teal-bg),var(--surface));border-color:var(--teal)}
+.out-row.hero .v{color:var(--teal-ink)}
+.out-flag{margin-top:10px;border-radius:12px;padding:13px 15px;font-size:14.5px;display:none}
+.out-flag.show{display:block;animation:cardIn .35s var(--ease)}
+.out-flag.warn{background:var(--coral-bg);border:1px solid var(--coral);color:var(--coral-ink)}
+.out-flag.ok{background:var(--teal-bg);border:1px solid var(--teal);color:var(--teal-ink)}
+.out-flag b{font-weight:700}
+
+/* İşlem günlüğü tablosu */
+.jrnl-form{display:grid;grid-template-columns:repeat(6,1fr);gap:8px;align-items:end}
+.jrnl-form .wide{grid-column:span 2}
+.jrnl-table{width:100%;border-collapse:collapse;margin-top:14px;font-size:13.5px}
+.jrnl-table th,.jrnl-table td{text-align:left;padding:8px 10px;border-bottom:1px solid var(--line)}
+.jrnl-table th{font-size:11px;text-transform:uppercase;letter-spacing:.05em;color:var(--ink-3);font-weight:700}
+.jrnl-table td.r-pos{color:var(--teal-ink);font-weight:700}
+.jrnl-table td.r-neg{color:var(--coral-ink);font-weight:700}
+.jrnl-table .del{cursor:pointer;color:var(--ink-3);border:none;background:none;font-size:16px}
+.jrnl-table .del:hover{color:var(--bad)}
+.jrnl-empty{padding:18px;text-align:center;color:var(--ink-3);font-size:14px}
+.jrnl-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:16px}
+.jstat{background:var(--surface);border:1px solid var(--line);border-radius:13px;padding:13px;text-align:center}
+.jstat .jl{font-size:10.5px;text-transform:uppercase;letter-spacing:.05em;color:var(--ink-3);font-weight:700}
+.jstat .jv{font-family:var(--serif);font-weight:600;font-size:22px;color:var(--ink);margin-top:3px}
+.jstat.ev-pos .jv{color:var(--teal-ink)} .jstat.ev-neg .jv{color:var(--coral-ink)}
+@media(max-width:560px){
+  .tool-grid{grid-template-columns:1fr}
+  .jrnl-form{grid-template-columns:1fr 1fr} .jrnl-form .wide{grid-column:span 2}
+  .jrnl-stats{grid-template-columns:1fr 1fr}
+  .jrnl-table{font-size:12px} .jrnl-table th:nth-child(3),.jrnl-table td:nth-child(3){display:none}
+}

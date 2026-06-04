@@ -1,0 +1,106 @@
+{
+  "_meta": {
+    "amac": "Spaced-repetition soru havuzu. Günlük mikro motoru (gunluk.html) tamamlanmış modüllerden rastgele 3 soru çeker.",
+    "kural": "Her modül üretildiğinde/güncellendiğinde o modülün 3-5 sorusu buraya eklenir. Cevaplar kısa ve net olmalı.",
+    "format": "questions[mN] = [{q, a}]  ·  terms = [{t, d, mod}]",
+    "kaynak": "Sorular modüllerin gerçek kart içeriğine dayanır (DENETIM.md)."
+  },
+  "questions": {
+    "m1": [
+      { "q": "Bir trader'ı uzun vadede kazandıran nedir: kazanma oranı mı, beklenen değer mi?", "a": "Beklenen değer (expectancy) — kazanma oranı tek başına yanıltır." },
+      { "q": "1R ne demektir?", "a": "Bir işlemde riske ettiğin sabit para (örn. $100). Tüm kazanç/kayıp bunun katıyla ölçülür." },
+      { "q": "%40 kazanma oranıyla para basmak mümkün mü? Neden?", "a": "Evet — kazançlar (+3R) kayıplardan (−1R) büyükse beklenen değer pozitiftir." },
+      { "q": "İyi trader neden 'kumarhane' gibidir?", "a": "Sonraki eli bilmez, tek tek kaybeder; ama küçük üstünlüğü (edge) çok kez tekrarlayınca kazancı matematiksel kesindir." },
+      { "q": "Beklenen değeri sessizce bozan üç duygu nedir?", "a": "FOMO (kovalayarak girme), Revenge (kaybı geri almak için boyut büyütme), Tilt (üst üste kayıpta savrulma)." },
+      { "q": "Plana uyup kaybettiğin işlem iyi mi kötü mü?", "a": "İYİ işlem — süreç > sonuç. Kurala uydun, sonuç dalgalanmadır." }
+    ],
+    "m2": [
+      { "q": "Yeşil ışık (gaz pedalı) koşulu nedir?", "a": "Endeksler 50 VE 200 günlük SMA'nın üzerinde." },
+      { "q": "Hangi iki ETF ile piyasa ışığını okuruz?", "a": "SPY ve QQQ." },
+      { "q": "Kırmızı ışık 'piyasa çökecek' mi der, 'iznin yok, bekle' mi?", "a": "İznin yok, bekle — ışık bir tahmin değil, bir kapıdır." },
+      { "q": "Yeşil ışıkta çekingen kalmak neden hatalıdır?", "a": "Sistem kazancının çoğu yeşil pencerede olur; bu pencereler sınırlıdır, kurallarına uyup agresif olmak gerekir." }
+    ],
+    "m3": [
+      { "q": "Av sahasının üç filtresi nedir?", "a": "Momentum (top gainers) + ADR ≥ %5 + günlük hacim ≥ $20M." },
+      { "q": "ADR ≥ %5 eşiği neden var?", "a": "Sistem asimetriden (10R kazananlar) yaşar; durgun hisse büyük hareketi makul sürede veremez. Küçük hesabı hızlı büyütmek için oynaklık şart." },
+      { "q": "10 ve 20 günlük SMA dizilimi nasıl olmalı?", "a": "10 SMA > 20 SMA; fiyat ikisinin de üstünde ve onlara yakın (uzaklaşmış/extended değil)." },
+      { "q": "Karar neye dayanır: hikâyeye mi, fiyat/hacim/sıkışmaya mı?", "a": "Fiyat, hacim, sıkışma — hikâye ikincildir." }
+    ],
+    "m4": [
+      { "q": "Sıkı kurulum hangi iki parçadan oluşur?", "a": "Bayrak direği (flag pole — güçlü yükseliş) + sıkı konsolidasyon (flag)." },
+      { "q": "Sıkılık neden küçük risk demek?", "a": "Dar aralık → stop yakın → küçük 1R → yüksek asimetri (risk/ödül)." },
+      { "q": "Sıkı kurulum ararken üç yaygın hata nedir?", "a": "Uzamış (extended) hisseyi kovalamak, gevşek konsolidasyonu sıkı sanmak, direği olmayan bayrağa girmek." },
+      { "q": "Sıkı bayrak nerede oluşmalı?", "a": "Hareketli ortalamaların (özellikle 10 SMA) hemen üstünde — ortalamadan kopmuş değil." }
+    ],
+    "m5": [
+      { "q": "ORH nedir?", "a": "Açılış Aralığı Kırılımı — açılışın ilk aralığının (örn. 1/5/60 dk) zirvesinin hacimle kırılması." },
+      { "q": "Stop normal günde nereye konur?", "a": "Günün dibi (Low of the Day)." },
+      { "q": "Gün içi hareket 1 ATR'yi aştıysa ne yaparsın?", "a": "Kovalamazsın — geri çekilmeyi veya sonraki kurulumu beklersin." },
+      { "q": "ORH dışındaki ikinci giriş tipi nedir?", "a": "Episodic Pivot — haber/bilanço patlamasıyla gelen gap girişi." }
+    ],
+    "m6": [
+      { "q": "Lot formülü nedir?", "a": "Lot = Sabit Risk ÷ (Giriş − Stop)." },
+      { "q": "Tek hisse portföyün en fazla yüzde kaçı olabilir?", "a": "Yaklaşık %20 (konsantrasyon tavanı)." },
+      { "q": "Stop girişe yakınsa lot ve risk ne olur?", "a": "Lot büyür, risk sabit kalır ($ olarak aynı) — yakın stop = çok lot, aynı R." },
+      { "q": "Formül ile %20 tavanı çatışırsa hangisi kazanır?", "a": "Her zaman %20 tavanı — biri tek işlemin, diğeri tek hissenin seni batırmasını engeller." }
+    ],
+    "m7": [
+      { "q": "3-5 gün kuralı ne der?", "a": "3-5 günde güçlü ralli olursa pozisyonun %33-50'sini sat, stop'u maliyete çek (ücretsiz sörf)." },
+      { "q": "Kalan runner'ı hangi ortalama taşır?", "a": "10 günlük hareketli ortalama (10 DMA)." },
+      { "q": "Nihai çıkış sinyali tam olarak nedir?", "a": "Fiyatın 10 DMA altında İLK günlük KAPANIŞI. Gün içi sarkma (fitil) çıkış değildir." },
+      { "q": "Runner'a hedef fiyat konur mu?", "a": "Hayır — büyük R buradan gelir; trend kırılana kadar tutulur, hedefle kesilmez." }
+    ],
+    "m8": [
+      { "q": "Akıllı para onay mı tetik mi?", "a": "Onay — tetik hâlâ ORH/sıkı kurulumdur; flow sadece konviksiyon katar." },
+      { "q": "Çift onay nedir?", "a": "Sıkı kurulum (teknik) ile kurumsal akıllı para (flow/insider) aynı hissede üst üste binmesi." },
+      { "q": "Kurumların ayak izini nerede görürüz?", "a": "Opsiyon akışı (sweep/golden sweep), dark pool, insider/congress alımları." }
+    ],
+    "m9": [
+      { "q": "Episodic Pivot (EP) nedir?", "a": "Earnings/haber gap'iyle gelen devasa yukarı açılış; katalizör tetiktir." },
+      { "q": "Kurumlar neden bir günde pozisyon dolduramaz?", "a": "Çok büyükler — birikim günlere yayılır; bu yüzden EP sonrası süreklilik beklenir." },
+      { "q": "EP'de stop nereye konur?", "a": "Açılış mumunun dibine; gap mesafesi risk hesabına dahildir." },
+      { "q": "Açık pozisyonla earnings'e girmek?", "a": "Kumar — ya bilinçli küçük EP oyna ya da önce azalt/çık." }
+    ],
+    "m10": [
+      { "q": "Hangi dört sayı her şeyi söyler?", "a": "Kazanma oranı, ort. kazanç (R), ort. kayıp (R), beklenen değer (expectancy)." },
+      { "q": "Ölçmediğini ne yapamazsın?", "a": "Geliştiremezsin — günlük tutmak üstünlüğü görünür kılar." },
+      { "q": "Hata etiketi ne işe yarar?", "a": "Tekrarlayan hataları (kovalama, erken çıkış, plansız giriş) gruplayıp düzeltmeyi hedeflemeye." }
+    ],
+    "m11": [
+      { "q": "Portföy ısısı nedir?", "a": "Aynı anda açık tüm işlemlerin toplam riski (toplam R)." },
+      { "q": "5 farklı AI hissesi neden 1 bahistir?", "a": "Korelasyon — aynı temada birlikte hareket ederler; sahte çeşitlendirmedir." },
+      { "q": "Kırmızı ışıkta nakit nedir?", "a": "Bir pozisyondur — savunma. En zayıfları kapat, ısıyı düşür." }
+    ],
+    "m12": [
+      { "q": "5 yeşil ışık nedir?", "a": "Piyasa izni, momentum kalitesi, sıkı kurulum, giriş & risk, mekanik boyut." },
+      { "q": "Disiplin mi strateji mi daha önemli?", "a": "Disiplin — Qullamaggie'nin altın kuralı; en iyi sistem bile disiplinsiz batar." },
+      { "q": "Kusursuz işlemin 4 evresi hangi sırayla işler?", "a": "Işık → huni/kurulum → giriş & stop & boyut → yönetim (kısmi çıkış + 10 DMA)." }
+    ]
+  },
+  "terms": [
+    { "t": "Beklenen Değer (Expectancy)", "d": "Bir sistemin her işlemde ortalama kazandırdığı R. Pozitifse uzun vadede kazandırır.", "mod": 1 },
+    { "t": "1R", "d": "Bir işlemde riske ettiğin sabit para. Tüm kazanç/kayıp bunun katıyla ölçülür.", "mod": 1 },
+    { "t": "Edge (Üstünlük)", "d": "Sistemin piyasaya karşı küçük ama tutarlı matematiksel avantajı.", "mod": 1 },
+    { "t": "Gaz / Fren Işığı", "d": "Endeksler 50/200 SMA üstündeyse gaz (işlem izni), altındaysa fren (bekle).", "mod": 2 },
+    { "t": "ADR", "d": "Average Daily Range — bir hissenin günde ortalama yüzde kaç oynadığı.", "mod": 3 },
+    { "t": "Top Gainer Filtresi", "d": "Sadece momentum liderlerini avlamak: en çok yükselen + ADR + hacim eşikleri.", "mod": 3 },
+    { "t": "Bayrak Direği (Flag Pole)", "d": "Konsolidasyon öncesi güçlü yükseliş — sıkışmanın patlayacak enerjisinin kaynağı.", "mod": 4 },
+    { "t": "Sıkı Konsolidasyon", "d": "Dar, düzenli sıkışma. Yakın stop, küçük risk, yüksek asimetri demektir.", "mod": 4 },
+    { "t": "ORH", "d": "Opening Range High — açılış aralığının hacimle kırılan zirvesi; klasik giriş tetiği.", "mod": 5 },
+    { "t": "ATR", "d": "Average True Range — ortalama günlük gerçek hareket; stop ve kovalama sınırında kullanılır.", "mod": 5 },
+    { "t": "Pozisyon Boyutu", "d": "Lot = Risk ÷ (Giriş − Stop). Duyguyu değil mekanizmayı izler.", "mod": 6 },
+    { "t": "%20 Tavanı", "d": "Tek hisse portföyün en fazla ~%20'si; tek bir felaketin seni bitirmesini engeller.", "mod": 6 },
+    { "t": "3-5 Gün Kuralı", "d": "Hızlı ralliden sonra %33-50 sat, stop'u maliyete çek.", "mod": 7 },
+    { "t": "10 DMA Trailing", "d": "Runner'ı 10 günlük ortalamada sürme; altında günlük kapanış = çıkış.", "mod": 7 },
+    { "t": "Çift Onay", "d": "Sıkı kurulum (teknik) + akıllı para (flow) aynı hissede üst üste binmesi.", "mod": 8 },
+    { "t": "Opsiyon Akışı (Flow)", "d": "Kurumsal opsiyon alımları (sweep). Yön ve agresiflik onay katar.", "mod": 8 },
+    { "t": "Episodic Pivot (EP)", "d": "Earnings/haber gap'iyle gelen devasa açılış; katalizör tetiktir.", "mod": 9 },
+    { "t": "Gap Riski", "d": "Açık pozisyonda gece/haber kaynaklı ani fiyat sıçraması; earnings'in tuzak yüzü.", "mod": 9 },
+    { "t": "R-Dağılımı", "d": "İşlemlerin R cinsinden dağılımı; sistemin asimetrisini görünür kılar.", "mod": 10 },
+    { "t": "Hata Etiketi", "d": "Tekrarlayan hataları gruplayan etiket (kovalama, erken çıkış, plansız giriş).", "mod": 10 },
+    { "t": "Portföy Isısı", "d": "Aynı anda açık tüm işlemlerin toplam riski.", "mod": 11 },
+    { "t": "Korelasyon Tuzağı", "d": "Aynı temadan çok hisse = tek bahis; sahte çeşitlendirme.", "mod": 11 },
+    { "t": "Pre-Flight Çeklist", "d": "İşlem öncesi 5 yeşil ışığın tamamının yandığının kontrolü.", "mod": 12 },
+    { "t": "Playbook", "d": "Kendi kurallarını, setup'larını ve rutinini yazılı hâle getirdiğin kişisel el kitabı.", "mod": 12 }
+  ]
+}

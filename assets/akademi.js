@@ -28,6 +28,8 @@
       moduleStep: {},           // { "1": 3 } modül içi adım
       streak: { count: 0, last: null, freezes: 2 },
       discipline: { count: 0, last: null },
+      micro: { last: null, count: 0 },  // günlük mikro: son tarih + toplam tamamlama
+      exams: [],                // tamamlanan faz sınavları (1..4)
       badges: []                // kazanılan rozet id'leri
     };
   }
@@ -61,6 +63,7 @@
     p.completed = [1, 2, 3];
     p.streak = { count: 5, last: todayKey(), freezes: 2 };
     p.discipline = { count: 4, last: todayKey() };
+    p.exams = [1];
     p.badges = ['first-step', 'phase1', 'streak5'];
     save(p);
     return p;
@@ -111,6 +114,38 @@
         p.discipline.count += 1; p.discipline.last = t; save(p);
       }
       return p.discipline.count;
+    },
+
+    // Günlük mikro tamamlandı mı? (bugün için)
+    microDoneToday: function () { return API.get().micro.last === todayKey(); },
+
+    // Günlük mikro tamamla: günde 1 kez XP verir, seriyi günceller
+    recordMicro: function (xp) {
+      var p = API.get(), t = todayKey();
+      if (p.micro.last === t) return { awarded: false, count: p.micro.count };
+      p.micro.last = t; p.micro.count += 1; p.xp += (xp || 15);
+      save(p);
+      return { awarded: true, count: p.micro.count };
+    },
+
+    // Rozet ver (zaten varsa no-op). Yeni verildiyse true döner.
+    awardBadge: function (id) {
+      var p = API.get();
+      if (p.badges.indexOf(id) === -1) { p.badges.push(id); save(p); return true; }
+      return false;
+    },
+
+    // Faz sınavı tamamlandı mı?
+    examDone: function (n) { return (API.get().exams || []).indexOf(n) !== -1; },
+
+    // Faz sınavını tamamla: ilk geçişte XP + rozet verir. { fresh } döner.
+    completeExam: function (n, opts) {
+      opts = opts || {};
+      var p = API.get(), fresh = (p.exams.indexOf(n) === -1);
+      if (fresh) { p.exams.push(n); p.xp += (opts.xp || 50); }
+      if (opts.badge && p.badges.indexOf(opts.badge) === -1) p.badges.push(opts.badge);
+      save(p);
+      return { fresh: fresh };
     },
 
     reset: function () { P = blank(); save(P); location.reload(); },

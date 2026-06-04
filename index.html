@@ -15,6 +15,10 @@
   .hero .lead{max-width:580px;margin:0 auto}
   .hero .cta{margin-top:28px;display:inline-flex;gap:12px;align-items:center;flex-wrap:wrap;justify-content:center}
   .statwrap{margin:32px auto 4px;max-width:840px}
+  .ecard{background:linear-gradient(160deg,var(--coral-bg),var(--surface));border-color:var(--coral)!important}
+  .ecard h4{color:var(--coral-ink)}
+  .ecard.done{background:linear-gradient(160deg,var(--teal-bg),var(--surface));border-color:var(--teal)!important}
+  .ecard.done h4{color:var(--teal-ink)}
 </style>
 </head>
 <body>
@@ -40,6 +44,7 @@
     gerçek piyasada uygula, disiplinini ölç. Acele yok — <b>doğru süreç, sonucu kendi getirir.</b></p>
     <div class="cta">
       <a class="btn btn-primary btn-lg" href="modules/modul-01.html">Modül 1'i dene →</a>
+      <a class="btn btn-lg btn-ghost" href="gunluk.html">☀️ Günlük mikro</a>
       <a class="btn btn-lg btn-ghost" id="continueBtn">Yol haritası ↓</a>
     </div>
   </div>
@@ -118,6 +123,11 @@
           <h4>Av Sahası: En Güçlüyü Filtrele</h4><p>Filtreleme hunisi: top gainers, ADR ≥ %5, hacim ≥ $20M. 10>20 SMA.</p>
           <span class="rc-state"></span>
         </a>
+        <a class="rcard ecard" data-exam="1" href="sinavlar/faz-1.html">
+          <div class="rc-top"><span class="rc-wk">🏹 Faz Sınavı</span><span class="rc-xp">+60 XP</span></div>
+          <h4>Faz 1 Sınavı: Avcı</h4><p>3 modülü tek senaryoda birleştir. Geç → Avcı rozeti + Faz 2.</p>
+          <span class="rc-state"></span>
+        </a>
       </div>
     </div>
 
@@ -138,6 +148,11 @@
         <a class="rcard" data-mod="6" href="modules/modul-06.html">
           <div class="rc-top"><span class="rc-wk">Hafta 6</span><span class="rc-xp">+80 XP</span></div>
           <h4>Mekanik Pozisyon Boyutu</h4><p>Lot = sabit risk ÷ (giriş − stop). Tek hisse max %20. Duyguyu mekanizma çıkarır.</p>
+          <span class="rc-state"></span>
+        </a>
+        <a class="rcard ecard" data-exam="2" href="sinavlar/faz-2.html">
+          <div class="rc-top"><span class="rc-wk">🎯 Faz Sınavı</span><span class="rc-xp">+60 XP</span></div>
+          <h4>Faz 2 Sınavı: İcracı</h4><p>Giriş + stop + lot + %20 tavanı tek senaryoda. Geç → İcracı rozeti + Faz 3.</p>
           <span class="rc-state"></span>
         </a>
       </div>
@@ -162,6 +177,11 @@
           <h4>Episodic Pivot & Earnings</h4><p>Haber/bilanço gap'iyle gelen EP setup'ı; earnings riskini yönetmek.</p>
           <span class="rc-state"></span>
         </a>
+        <a class="rcard ecard" data-exam="3" href="sinavlar/faz-3.html">
+          <div class="rc-top"><span class="rc-wk">🧭 Faz Sınavı</span><span class="rc-xp">+60 XP</span></div>
+          <h4>Faz 3 Sınavı: Yönetici</h4><p>Kâr alma + earnings + onay/tetik tek senaryoda. Geç → Yönetici rozeti + Faz 4.</p>
+          <span class="rc-state"></span>
+        </a>
       </div>
     </div>
 
@@ -184,6 +204,11 @@
           <h4>Pre-Flight Çeklist + Mezuniyet</h4><p>5 yeşil ışık çeklisti, kendi playbook'un, günlük rutin, mezuniyet projesi.</p>
           <span class="rc-state"></span>
         </a>
+        <a class="rcard ecard" data-exam="4" href="sinavlar/faz-4.html">
+          <div class="rc-top"><span class="rc-wk">🎓 Mezuniyet Sınavı</span><span class="rc-xp">+100 XP</span></div>
+          <h4>Faz 4 Sınavı: Mezun</h4><p>Beklenen değer + portföy + pre-flight tek senaryoda. Geç → Mezun rozeti.</p>
+          <span class="rc-state"></span>
+        </a>
       </div>
     </div>
   </div>
@@ -193,9 +218,10 @@
   <div class="sec-sub reveal">Disiplin ve süreklilik ödüllenir — kazanç değil.</div>
   <div class="badges reveal" style="margin-top:16px" id="badges">
     <div class="badge" data-b="first-step"><div class="b-ic">🌱</div>İlk Adım</div>
-    <div class="badge" data-b="phase1"><div class="b-ic">🧭</div>Faz 1</div>
+    <div class="badge" data-b="phase1"><div class="b-ic">🏹</div>Avcı</div>
+    <div class="badge" data-b="phase2"><div class="b-ic">🎯</div>İcracı</div>
+    <div class="badge" data-b="phase3"><div class="b-ic">🧭</div>Yönetici</div>
     <div class="badge" data-b="streak5"><div class="b-ic">🔥</div>5 Gün Seri</div>
-    <div class="badge" data-b="plan10"><div class="b-ic">🎯</div>10 Plan</div>
     <div class="badge" data-b="disc7"><div class="b-ic">🛡️</div>Disiplin 7</div>
     <div class="badge" data-b="graduate"><div class="b-ic">🎓</div>Mezun</div>
   </div>
@@ -238,8 +264,8 @@
   document.getElementById('doneCount').textContent = P.completed.length;
   setTimeout(function(){ document.getElementById('pbarFill').style.width = pct + '%'; }, 200);
 
-  // Yol haritası durumları
-  document.querySelectorAll('.rcard').forEach(function(card){
+  // Yol haritası durumları (yalnız modül kartları)
+  document.querySelectorAll('.rcard[data-mod]').forEach(function(card){
     var id = +card.getAttribute('data-mod');
     var st = Akademi.statusOf(id);
     card.classList.add(st);
@@ -247,6 +273,14 @@
     if (st==='done')    s.innerHTML = '✓ Tamamlandı';
     if (st==='current'){ s.innerHTML = '⭐ Şimdi sıra burada'; var g=document.createElement('span'); g.className='go'; g.textContent='Başla →'; card.appendChild(g); }
     if (st==='locked')  s.innerHTML = '🔒 Kilitli';
+  });
+
+  // Faz sınavı kartları
+  document.querySelectorAll('.ecard[data-exam]').forEach(function(card){
+    var n = +card.getAttribute('data-exam');
+    var s = card.querySelector('.rc-state');
+    if (Akademi.examDone(n)) { card.classList.add('done'); s.innerHTML = '✓ Geçildi'; }
+    else { s.innerHTML = '🏹 Sınava gir'; }
   });
 
   // Rozetler
