@@ -177,7 +177,39 @@
         <p class="bridge">Bunu gerçek grafikte görelim.</p>
       </div>
 
-      <!-- 10 · LAB -->
+      <!-- 10 · KARAR-REPLAY -->
+      <div class="lcard">
+        <div class="l-eyebrow">Karar-Replay</div>
+        <h2>Sıkı mı, gevşek mi? Sen karar ver</h2>
+        <p>Barları birer birer ilerleterek kurulumu gerçek zamanlı değerlendirirsin.
+        Kritik anlarda <b>ne yapardın?</b> sorusu gelecek — verinin üstünde karar ver, sonra gör.</p>
+        <div class="replay" id="replay-m4">
+          <div class="rp-bar">
+            <span class="rp-title">Hisse X — 20 günlük grafik</span>
+            <span class="rp-tag">karar-replay</span>
+            <div class="rp-controls">
+              <span class="rp-step">Gün — / 20</span>
+              <button class="btn rp-next-bar" id="rp-m4-next">Sonraki bar →</button>
+            </div>
+          </div>
+          <div class="rp-svg-wrap"></div>
+          <div class="rp-decision" style="display:none">
+            <div class="q"></div>
+            <div class="rp-choices"></div>
+            <div class="rp-fb"></div>
+            <div class="rp-next">
+              <button class="btn btn-primary rp-next-dec" id="rp-m4-nextdec">Devam →</button>
+            </div>
+          </div>
+          <div class="rp-result"></div>
+          <div style="padding:8px 14px 12px;font-size:12.5px;color:var(--ink-3)">
+            Turuncu = 10 günlük GMA &nbsp;·&nbsp; Mavi = 20 günlük GMA &nbsp;·&nbsp; Yeşil mum = yükseliş &nbsp;·&nbsp; Kırmızı = düşüş
+          </div>
+        </div>
+        <div class="yani"><b>Yani:</b> Gerçek sahadaki en büyük hata "bu sıkı mı?" sorusunu grafik görmeden yanıtlamak. Barları bizzat görmek, soyut kuralı içselleştirir.</div>
+      </div>
+
+      <!-- 11 · LAB -->
       <div class="lcard">
         <div class="l-eyebrow">Bu haftanın labı</div>
         <h2>Sıkılığı gerçek grafikte gör</h2>
@@ -344,6 +376,79 @@ Bu modülden aldığım tek kural:</textarea>
   });
 
   render();
+
+  // --- Karar-Replay M4: Sıkı mı, Gevşek mi? ---
+  (function(){
+    var el=document.getElementById('replay-m4'); if(!el) return;
+
+    // Donmuş OHLC verisi: güçlü direk (g1-8) + sıkı bayrak (g9-16) + tetik (g17-20)
+    // ma10 / ma20: gerçekçi yaklaşım
+    var bars=[
+      {o:42,h:44,l:41,c:43, ma10:null,ma20:null},
+      {o:43,h:47,l:43,c:46, ma10:null,ma20:null},
+      {o:46,h:50,l:45,c:49, ma10:null,ma20:null},
+      {o:49,h:54,l:48,c:53, ma10:null,ma20:null},
+      {o:53,h:58,l:52,c:57, ma10:null,ma20:null},
+      {o:57,h:61,l:56,c:60, ma10:null,ma20:null},
+      {o:60,h:64,l:59,c:63, ma10:59,ma20:null},
+      {o:63,h:66,l:62,c:65, ma10:61,ma20:null},
+      {o:65,h:67,l:63,c:64, ma10:62,ma20:53},  // bayrak başlıyor
+      {o:64,h:66,l:63,c:65, ma10:63,ma20:55},
+      {o:65,h:66,l:64,c:64, ma10:63,ma20:57},
+      {o:64,h:66,l:63,c:65, ma10:64,ma20:58},
+      {o:65,h:66,l:64,c:64, ma10:64,ma20:59, label:'sıkı'},
+      {o:64,h:65,l:63,c:65, ma10:64,ma20:60},
+      {o:65,h:66,l:64,c:65, ma10:64,ma20:61},
+      {o:65,h:66,l:64,c:64, ma10:64,ma20:61},
+      {o:64,h:68,l:64,c:67, ma10:64,ma20:62, label:'kırılım?'},  // kırılım
+      {o:67,h:71,l:66,c:70, ma10:65,ma20:63},
+      {o:70,h:74,l:69,c:73, ma10:66,ma20:64},
+      {o:73,h:77,l:72,c:76, ma10:68,ma20:65}
+    ];
+
+    var decisions=[
+      { afterBar:8,
+        q:'Bar 9: Güçlü bir yükseliş var. Hisse şu an yükseliyor — şimdi girer misin?',
+        choices:[
+          {t:'Evet, momentum güçlü, şimdi alırım',ok:false,
+           fb:'<b>Erken.</b> Henüz bir sıkı kurulum yok — sadece yükseliş var. Bayrak oluşmadı, stop nereye koyacaksın? Kurulumu bekle.'},
+          {t:'Hayır, henüz sıkı bir bayrak yok — beklerim',ok:true,
+           fb:'<b>Doğru.</b> Direk güçlü ama bayrağın oluşmasını bekliyorsun. Sabır da bir kuraldır.'},
+          {t:'Yarısını alır, yarısını beklerim',ok:false,
+           fb:'<b>Sistem dışı.</b> Bu motor tam kırılım tetiğiyle çalışır — kısmi pozisyon burada henüz planın parçası değil.'}
+        ]
+      },
+      { afterBar:15,
+        q:'Bar 16: 7 gündür dar bir bayrak oluştı, 10 GMA\'ya yaslı. Sıkı mı, gevşek mi?',
+        choices:[
+          {t:'Sıkı — dar aralık + 10 GMA yakın + direk var',ok:true,
+           fb:'<b>Doğru.</b> Dar aralık + 10 GMA\'ya yaslanma + önceki güçlü direk = A+ sıkı kurulum. Tetik kırılımı bekliyorsun.'},
+          {t:'Gevşek — aralık bence geniş',ok:false,
+           fb:'<b>Hayır.</b> 7 barda toplam hareket ~$2 (başlangıçtaki $10\'luk direkte sadece %20). Bu dar. Sıkılık kural, his değil.'},
+          {t:'Kararsızım, daha fazla bar bekleyeyim',ok:false,
+           fb:'<b>Fırsat kaçar.</b> Kurulum zaten oluşmuş. Tetik = kırılım — karar zamanı.'}
+        ]
+      },
+      { afterBar:16,
+        q:'Bar 17: Hacimle $66\'ya kırıldı! Girer misin?',
+        choices:[
+          {t:'Evet — ORH kırıldı, hacim var, giriş tetiği ateşlendi',ok:true,
+           fb:'<b>Doğru.</b> Bayrak tepesi hacimle kırıldı = giriş tetiği. Stop günün dibine ($64), mesafe $2. Modül 5\'in konusu.'},
+          {t:'Hayır — "herkese açık" kırılım, geçiyorum',ok:false,
+           fb:'<b>Hayır.</b> Sistem kırılım tetiğiyle çalışır. Herkes görüyor diye kaçmak, sistemi bozmak.'},
+          {t:'Bekliyorum, geri çekilmesini bekliyorum',ok:false,
+           fb:'<b>Hayır.</b> Geri çekilmeyi beklemek ayrı bir strateji (pullback entry). ORH stratejisinde tetik kırılımdır, geri çekilme değil.'}
+        ]
+      }
+    ];
+
+    Akademi.initReplay(el, {
+      title:'Hisse X — 20 günlük grafik',
+      bars: bars,
+      decisions: decisions,
+      onDone: function(score,total){ if(score>=2) Akademi.addXP(10); }
+    });
+  })();
 </script>
 </body>
 </html>

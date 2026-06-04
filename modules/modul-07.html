@@ -157,7 +157,36 @@
         <p class="bridge">Bunu araçlarınla yönet.</p>
       </div>
 
-      <!-- 10 · LAB -->
+      <!-- 10 · KARAR-REPLAY -->
+      <div class="lcard">
+        <div class="l-eyebrow">Karar-Replay</div>
+        <h2>Çıkışı yönet: 3-5 gün + 10 DMA</h2>
+        <p>Pozisyon açık, kazanç birikti. Ne zaman kısmi kâr alırsın, ne zaman runner'ı kesersin?</p>
+        <div class="replay" id="replay-m7">
+          <div class="rp-bar">
+            <span class="rp-title">Hisse Z — çıkış yönetimi</span>
+            <span class="rp-tag">karar-replay</span>
+            <div class="rp-controls">
+              <span class="rp-step">Gün — / 18</span>
+              <button class="btn rp-next-bar">Sonraki bar →</button>
+            </div>
+          </div>
+          <div class="rp-svg-wrap"></div>
+          <div class="rp-decision" style="display:none">
+            <div class="q"></div>
+            <div class="rp-choices"></div>
+            <div class="rp-fb"></div>
+            <div class="rp-next"><button class="btn btn-primary rp-next-dec">Devam →</button></div>
+          </div>
+          <div class="rp-result"></div>
+          <div style="padding:8px 14px 12px;font-size:12.5px;color:var(--ink-3)">
+            Turuncu = 10 GMA &nbsp;·&nbsp; Giriş: $52 &nbsp;·&nbsp; Maliyet = giriş
+          </div>
+        </div>
+        <div class="yani"><b>Yani:</b> 3-5 gün kuralı + 10 DMA trailing + kapanış kuralı — üçü bir arada anlaşılırsa runner'ın büyük R'sini yakalarsın.</div>
+      </div>
+
+      <!-- 11 · LAB -->
       <div class="lcard">
         <div class="l-eyebrow">Bu haftanın labı</div>
         <h2>Çıkış planını kur</h2>
@@ -307,6 +336,71 @@ Bu modülden aldığım tek kural:</textarea>
     });
   });
   render();
+
+  // --- Karar-Replay M7: Çıkış yönetimi ---
+  (function(){
+    var el=document.getElementById('replay-m7'); if(!el) return;
+    // Giriş $52. Bar 1-4: güçlü yükseliş (3-5 gün kuralı tetiklenir), Bar 5-12: runner trendi,
+    // Bar 13: 10 DMA altında GÜN İÇİ, Bar 14: 10 DMA altında KAPANIŞ (çıkış sinyali)
+    var bars=[
+      {o:52,h:54,l:51,c:53, ma10:null,ma20:null},
+      {o:53,h:56,l:52,c:55, ma10:null,ma20:null},
+      {o:55,h:59,l:54,c:58, ma10:null,ma20:null},
+      {o:58,h:63,l:57,c:62, ma10:null,ma20:null, label:'+%19'}, // 3-5 gün kuralı
+      {o:62,h:65,l:60,c:64, ma10:59,ma20:null},
+      {o:64,h:67,l:63,c:66, ma10:61,ma20:null},
+      {o:66,h:68,l:65,c:67, ma10:62,ma20:57},
+      {o:67,h:70,l:66,c:69, ma10:63,ma20:58},
+      {o:69,h:72,l:68,c:71, ma10:65,ma20:59},
+      {o:71,h:74,l:70,c:73, ma10:67,ma20:60},
+      {o:73,h:76,l:72,c:75, ma10:69,ma20:62},
+      {o:75,h:78,l:74,c:77, ma10:71,ma20:63},
+      // Gün içi 10 DMA'nın altına iner, kapanış üstünde
+      {o:77,h:78,l:69,c:75, ma10:72,ma20:64, label:'daldı?'},
+      // 10 DMA altında kapanış = çıkış sinyali
+      {o:75,h:76,l:68,c:70, ma10:72,ma20:64, label:'kırıldı'},
+      {o:70,h:72,l:67,c:68, ma10:72,ma20:65},
+      {o:68,h:70,l:65,c:66, ma10:71,ma20:65},
+      {o:66,h:68,l:63,c:64, ma10:70,ma20:65},
+      {o:64,h:66,l:61,c:62, ma10:69,ma20:65}
+    ];
+    var decisions=[
+      { afterBar:3,
+        q:'Bar 4: Girişten ($52) 4 günde %19 yükseldi. 3-5 gün kuralı ne der?',
+        choices:[
+          {t:'%33-50\'sini sat, stop\'u maliyete ($52) çek',ok:true,
+           fb:'<b>Doğru.</b> Hızlı ralli sonrası kısmi kâr al, stop\'u maliyete çek. Kalan runner "ücretsiz" — artık zarar riski yok. Asimetriyi koruyan karar bu.'},
+          {t:'Hepsini sat, güzel kâr ettim',ok:false,
+           fb:'<b>Hayır.</b> Runner\'ı kesmek büyük R\'yi öldürür. Modül 1\'deki asimetri buraya bağlıdır — kazananı tam kesersen +10R imkânı kaybolur.'},
+          {t:'Hiçbir şey yapma, daha çok yükselir',ok:false,
+           fb:'<b>Hayır.</b> "Daha yükselir" tahmini sisteme ait değil. Kural: 3-5 gün rallisinde kısmi al, stop maliyete.'}
+        ]
+      },
+      { afterBar:12,
+        q:'Bar 13: Fiyat gün içi 10 GMA\'nın ($72) altına (69\'a) indi — ama günü $75\'te kapattı. Çıkış var mı?',
+        choices:[
+          {t:'Evet — 10 GMA altına indi, hemen çıkıyorum',ok:false,
+           fb:'<b>Dikkat.</b> Kapanış kuralı: sadece günlük KAPANIŞ sayılır. Gün içi $69 gürültüdür; $75 kapanış = 10 GMA ($72) üstü. Devam.'},
+          {t:'Hayır — kapanış 10 GMA üstünde. Pozisyon devam.',ok:true,
+           fb:'<b>Doğru.</b> Kapanış $75 > 10 GMA $72. Gün içi sarkma çıkış değildir. Bu inceliği bilmek, runner\'ı çok erken kesmeni engeller.'},
+          {t:'Yarısını satarım, tedbir amaçlı',ok:false,
+           fb:'<b>Hayır.</b> Kural açık: günlük kapanış altına inmedi. Sistem dışı kararlar kuralı tutarsız kılar.'}
+        ]
+      },
+      { afterBar:13,
+        q:'Bar 14: Bu kez fiyat 10 GMA\'nın ($72) altında KAPANDI ($70). Çıkış var mı?',
+        choices:[
+          {t:'Evet — ilk kez 10 GMA altında günlük kapanış = çıkış sinyali',ok:true,
+           fb:'<b>Doğru.</b> Kapanış $70 < 10 GMA $72 = çıkış sinyali ateşlendi. Ertesi açılışta çıkarsın. Giriş $52 → çıkış ~$70 = ~$18 / lot kâr. Runner hedefsiz çalışır, kural bitirir.'},
+          {t:'Hayır — trend devam edebilir, bekliyorum',ok:false,
+           fb:'<b>Hayır.</b> Kural basit: 10 GMA altında ilk günlük kapanış = çıkış. "Devam eder" tahmini değil, kural çalıştı.'},
+          {t:'Yarısını satarım, geri kalanı beklerim',ok:false,
+           fb:'<b>Hayır.</b> Çıkış sinyali gelince tam çıkılır (kısmi kâr zaten Bar 4\'te alındı). Bekleme tahmini, kuralı bozmaktır.'}
+        ]
+      }
+    ];
+    Akademi.initReplay(el, { bars:bars, decisions:decisions });
+  })();
 </script>
 </body>
 </html>

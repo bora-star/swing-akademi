@@ -156,7 +156,36 @@
           data-no="<b>Dikkat.</b> Stop 2,5 ATR çok geniş — 1 ATR sınırını aşıyor. Bu, kurulumun yeterince sıkı olmadığını söyler. Doğru hamle: işlemi geç. Yapay/keyfi stop koymak (C) riski gizlemez, sadece ertelersin."><span class="fb-txt"></span></div>
       </div>
 
-      <!-- 10 · LAB -->
+      <!-- 10 · KARAR-REPLAY -->
+      <div class="lcard">
+        <div class="l-eyebrow">Karar-Replay</div>
+        <h2>Giriş tetiği: ORH mu, kovalama mı?</h2>
+        <p>Kurulum hazır. Barları ilerleterek giriş anını ve stop kararını kendin ver.</p>
+        <div class="replay" id="replay-m5">
+          <div class="rp-bar">
+            <span class="rp-title">Hisse Y — giriş günü</span>
+            <span class="rp-tag">karar-replay</span>
+            <div class="rp-controls">
+              <span class="rp-step">Gün — / 16</span>
+              <button class="btn rp-next-bar">Sonraki bar →</button>
+            </div>
+          </div>
+          <div class="rp-svg-wrap"></div>
+          <div class="rp-decision" style="display:none">
+            <div class="q"></div>
+            <div class="rp-choices"></div>
+            <div class="rp-fb"></div>
+            <div class="rp-next"><button class="btn btn-primary rp-next-dec">Devam →</button></div>
+          </div>
+          <div class="rp-result"></div>
+          <div style="padding:8px 14px 12px;font-size:12.5px;color:var(--ink-3)">
+            Turuncu = 10 GMA &nbsp;·&nbsp; Mavi = 20 GMA
+          </div>
+        </div>
+        <div class="yani"><b>Yani:</b> ORH = tetik. 1 ATR'yi aşmışsa kovalama, geçilir. Stop = günün dibi. Bu ikisini gözle görmeden içselleştirmek zordur.</div>
+      </div>
+
+      <!-- 11 · LAB -->
       <div class="lcard">
         <div class="l-eyebrow">Bu haftanın labı</div>
         <h2>Giriş ve stop planı çıkar</h2>
@@ -306,6 +335,69 @@ Bu modülden aldığım tek kural:</textarea>
     });
   });
   render();
+
+  // --- Karar-Replay M5: Giriş tetiği ---
+  (function(){
+    var el=document.getElementById('replay-m5'); if(!el) return;
+    // ATR ~$2. Sıkı kurulum (1-8) + ORH günü (9) + kaçma günü (10) + stop test günü (12)
+    var bars=[
+      {o:48,h:50,l:47,c:49, ma10:null,ma20:null},
+      {o:49,h:51,l:48,c:50, ma10:null,ma20:null},
+      {o:50,h:52,l:49,c:51, ma10:null,ma20:null},
+      {o:51,h:53,l:50,c:52, ma10:null,ma20:null},
+      {o:52,h:53,l:51,c:52, ma10:51,ma20:null},
+      {o:52,h:54,l:51,c:53, ma10:51,ma20:null},
+      {o:53,h:54,l:52,c:53, ma10:52,ma20:48},
+      {o:53,h:54,l:52,c:53, ma10:52,ma20:49, label:'bayrak'},
+      // ORH günü: hacimle $54'ü kırıyor
+      {o:53,h:57,l:52,c:56, ma10:52,ma20:50, label:'ORH'},
+      // Kovalama günü: $56'dan +$4 yukarıda başlıyor
+      {o:57,h:61,l:56,c:60, ma10:53,ma20:51, label:'+$4'},
+      {o:60,h:63,l:59,c:62, ma10:54,ma20:52},
+      // Stop testi: gün içi $51'e düşüyor ama $53 üstünde kapanıyor
+      {o:62,h:63,l:51,c:62, ma10:55,ma20:53, label:'stop?'},
+      {o:62,h:65,l:61,c:64, ma10:56,ma20:54},
+      {o:64,h:67,l:63,c:66, ma10:58,ma20:55},
+      {o:66,h:69,l:65,c:68, ma10:60,ma20:56},
+      {o:68,h:71,l:67,c:70, ma10:62,ma20:57}
+    ];
+    var decisions=[
+      { afterBar:8,
+        q:'Bar 9 (ORH): Hacimle $54\'ü kırdı. Fiyat $56. Giriş fiyatınızdan $2 uzakta (+1 ATR). Girer misin?',
+        choices:[
+          {t:'Evet — ORH hacimle kırıldı, tetik ateşlendi. Giriyorum.',ok:true,
+           fb:'<b>Doğru.</b> Tetik ateşlendi. $56 girişi 1 ATR sınırı içinde. Stop = günün dibi $52. Mesafe $4 → 1 ATR $2\'nin 2 katı. Biraz geniş ama giriş geçerli.'},
+          {t:'Hayır — bekliyorum, geri çekilsin',ok:false,
+           fb:'<b>Hayır.</b> ORH stratejisinde tetik kırılımdır; geri çekilme beklenmez. Bekleyip sistemi değiştirmek güven sorunudur.'},
+          {t:'Yarısıyla giriyorum, geri kalanı geri çekilmede',ok:false,
+           fb:'<b>Sistem dışı.</b> Bu strateji tam pozisyonla kırılımda girer. Parçalı giriş başka bir sistemdir.'}
+        ]
+      },
+      { afterBar:9,
+        q:'Bar 10: Hisse ORH tetiğinden +$4 DAHA yükseldi. Şimdi girer misin?',
+        choices:[
+          {t:'Evet — momentum güçlü, kaçırmak istemiyorum',ok:false,
+           fb:'<b>Kovalama!</b> Bar 10, tetiğin $4 ($2 ATR × 2) ötesinde. Bu sisteme göre kovalama sınırını aştı. Bu giriş sisteme göre geçilir.'},
+          {t:'Hayır — 1 ATR sınırını geçti, bu kovalama',ok:true,
+           fb:'<b>Doğru.</b> Tetikten $4 uzaklaşmış. Bu kovalamadır. Geçilir, sonraki kurulum beklenir. Sistemi korumak bu kararda başlar.'},
+          {t:'Kısmen giriyorum, riski bölerim',ok:false,
+           fb:'<b>Hayır.</b> Kovalama kovalamadır, boyut fark etmez. Tetikten uzak girişin stop\'u da uzaklaşır — asimetri bozulur.'}
+        ]
+      },
+      { afterBar:11,
+        q:'Bar 12: Hisse gün içi $51\'e (stop seviyemizin altına) indi ama $62\'de KAPANDI. Çıkar mısın?',
+        choices:[
+          {t:'Evet — stop seviyem olan $52\'nin altına indi, çıkıyorum',ok:false,
+           fb:'<b>Dikkat!</b> Kapanış kuralı var: stop sadece günlük kapanışa bakar. Gün içi sarkma çıkış sinyali değildir. $62\'de kapattı = pozisyon devam.'},
+          {t:'Hayır — kapanış $62, 10 GMA üstünde. Devam.',ok:true,
+           fb:'<b>Doğru.</b> Kapanış $62 ve 10 GMA ($55) çok üstünde. Gün içi sarkma gürültüdür. Bu inceliği bilmek, kazanan runner\'ı erken kesmeni engeller.'},
+          {t:'Yarısını satarım',ok:false,
+           fb:'<b>Hayır.</b> Bu anda kısmi satışın kuralı yok. 3-5 gün rallisi kuralı tetiklenmedi. Kapanış = pozisyon devam.'}
+        ]
+      }
+    ];
+    Akademi.initReplay(el, { bars:bars, decisions:decisions });
+  })();
 </script>
 </body>
 </html>
