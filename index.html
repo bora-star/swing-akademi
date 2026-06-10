@@ -3,299 +3,2008 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Swing Akademi · Yolculuk</title>
-<link rel="stylesheet" href="assets/akademi.css">
+<title>Swing Akademi · Haddini Aş Kulübü</title>
 <style>
-  .hero{padding:60px 0 6px;text-align:center;position:relative}
-  .hero .mascot{width:80px;height:80px;margin:0 auto 18px;display:grid;place-items:center;font-size:38px;
-    background:linear-gradient(160deg,#fff,var(--surface-2));border:1px solid var(--line);border-radius:24px;
-    box-shadow:var(--shadow-lg);transform:rotate(-4deg)}
-  .hero h1{margin:6px 0 14px}
-  .hero h1 .hl{background:linear-gradient(120deg,var(--coral),var(--amber));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
-  .hero .lead{max-width:580px;margin:0 auto}
-  .hero .cta{margin-top:28px;display:inline-flex;gap:12px;align-items:center;flex-wrap:wrap;justify-content:center}
-  .statwrap{margin:32px auto 4px;max-width:840px}
-  .ecard{background:linear-gradient(160deg,var(--coral-bg),var(--surface));border-color:var(--coral)!important}
-  .ecard h4{color:var(--coral-ink)}
-  .ecard.done{background:linear-gradient(160deg,var(--teal-bg),var(--surface));border-color:var(--teal)!important}
-  .ecard.done h4{color:var(--teal-ink)}
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700;800&display=swap');
+:root{
+  /* semantik renkler — Tasarım dili v2 */
+  --green:#038266; --green-soft:#06C29A; --green-bg:#D6F7EE;
+  --red:#D8351A;   --red-soft:#FF5436;   --red-bg:#FFE7E0;
+  --amber:#C76E00; --amber-soft:#FF9F1C; --amber-bg:#FFF1D6;
+  --blue:#2E84FF;  --blue-bg:#E0EDFF;
+  --neutral:#978C7D;
+  /* zemin */
+  --bg:#FFF9F2; --surface:#FFFFFF; --surface-2:#FFF6EA;
+  --line:#F0E6D6; --line-2:#E5D7C2;
+  --ink:#1A1612; --ink-2:#5C544A; --ink-3:#978C7D;
+  --shadow:0 1px 2px rgba(120,70,30,.05), 0 6px 20px rgba(150,90,40,.08);
+  --shadow-lg:0 4px 10px rgba(120,70,30,.06), 0 20px 50px rgba(150,90,40,.14);
+  --serif:'Fraunces',Georgia,serif;
+  --sans:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;
+}
+*{box-sizing:border-box; margin:0; padding:0;}
+body{
+  background:var(--bg); color:var(--ink);
+  font-family:var(--sans);
+  font-size:15.5px; line-height:1.65; padding:18px 16px 70px;
+  -webkit-font-smoothing:antialiased;
+}
+::selection{background:var(--amber-bg);}
+.wrap{max-width:820px; margin:0 auto;}
+h1{font-family:var(--serif); font-weight:700; font-size:clamp(26px,4.5vw,36px); line-height:1.15; margin:8px 0 6px; letter-spacing:-0.01em;}
+h2{font-family:var(--serif); font-weight:700; font-size:22px; margin:0 0 12px;}
+h3{font-family:var(--serif); font-weight:700; font-size:17px; margin:0 0 8px;}
+p{margin:0 0 10px; color:var(--ink-2);}
+p:last-child{margin-bottom:0;}
+.label{font-weight:800; letter-spacing:0.16em; text-transform:uppercase; font-size:11px; color:var(--red);}
+.header{
+  background:linear-gradient(160deg,var(--surface),var(--surface-2));
+  border:1px solid var(--line); border-radius:26px; box-shadow:var(--shadow-lg);
+  padding:26px 28px; margin-bottom:16px; display:flex; justify-content:space-between; gap:16px; flex-wrap:wrap;
+}
+.header .meta{text-align:right; font-size:13px; color:var(--ink-3); line-height:1.55;}
+.header .meta strong{color:var(--ink);}
+.subtitle{color:var(--ink-2); font-size:15px; margin-top:6px;}
+.progress-bar{
+  position:sticky; top:10px; z-index:50;
+  background:rgba(255,255,255,.92); backdrop-filter:blur(10px); -webkit-backdrop-filter:blur(10px);
+  border:1px solid var(--line); border-radius:14px; box-shadow:var(--shadow);
+  padding:10px 16px; display:flex; justify-content:space-between; align-items:center; gap:12px; margin-bottom:16px; flex-wrap:wrap;
+}
+.progress-bar .xp{font-weight:800; color:var(--amber); font-size:14px; white-space:nowrap;}
+.progress-bar .badges{font-size:12px; color:var(--ink-3); display:flex; gap:6px; flex-wrap:wrap;}
+.badge{
+  display:inline-block; padding:2px 10px; border-radius:999px; font-size:11px; font-weight:800;
+  background:var(--surface-2); color:var(--ink-3); border:1px solid var(--line-2);
+}
+.badge.earned{background:var(--amber-bg); color:var(--amber); border-color:rgba(255,159,28,0.5);}
+.track{height:6px; background:var(--line); border-radius:3px; width:100%; overflow:hidden;}
+.track .fill{height:100%; background:linear-gradient(90deg,var(--green-soft),var(--amber-soft)); width:0%; border-radius:3px; transition:width .4s cubic-bezier(.22,.61,.36,1);}
+.card{background:var(--surface); border:1px solid var(--line); border-radius:20px; box-shadow:var(--shadow); padding:24px; margin-bottom:16px;}
+.yani{
+  background:var(--green-bg); border-left:4px solid var(--green-soft);
+  border-radius:0 12px 12px 0; padding:12px 16px; margin-top:14px; font-size:14px; color:var(--ink-2);
+}
+.yani strong{color:var(--green);}
+.dot{display:inline-block; width:11px; height:11px; border-radius:50%; margin-right:6px; border:1px solid rgba(0,0,0,.04);}
+.dot.g{background:var(--green-soft);} .dot.r{background:var(--red-soft);} .dot.a{background:var(--amber-soft);} .dot.n{background:var(--line-2);} .dot.b{background:var(--blue);}
+table{width:100%; border-collapse:collapse; margin-top:10px; font-size:14px;}
+th{
+  text-align:left; padding:9px 8px; color:var(--ink-3); font-weight:800;
+  text-transform:uppercase; letter-spacing:0.1em; font-size:11px;
+  border-bottom:2px solid var(--line-2); cursor:pointer; user-select:none;
+}
+th:hover{color:var(--red);}
+td{padding:11px 8px; border-bottom:1px solid var(--line); vertical-align:top; color:var(--ink-2);}
+tr:last-child td{border-bottom:none;}
+.pill{display:inline-block; padding:3px 10px; border-radius:999px; font-size:12px; font-weight:800; white-space:nowrap;}
+.pill.green{background:var(--green-bg); color:var(--green);}
+.pill.red{background:var(--red-bg); color:var(--red);}
+.pill.amber{background:var(--amber-bg); color:var(--amber);}
+.pill.blue{background:var(--blue-bg); color:var(--blue);}
+.formula{
+  background:var(--surface-2); border:1px solid var(--line-2); border-radius:12px;
+  padding:14px 16px; margin:12px 0; font-weight:800; font-size:15px; text-align:center; color:var(--ink);
+}
+.scenario .opt{
+  display:block; width:100%; text-align:left; background:var(--surface);
+  border:1px solid var(--line-2); border-radius:12px; padding:13px 16px; margin-top:10px;
+  color:var(--ink); font-size:14px; font-family:inherit; cursor:pointer; line-height:1.5;
+  transition:border-color .15s, box-shadow .15s, transform .15s;
+}
+.scenario .opt:hover:not(:disabled){border-color:var(--red-soft); box-shadow:var(--shadow); transform:translateY(-1px);}
+.scenario .opt.correct{border-color:var(--green-soft); background:var(--green-bg);}
+.scenario .opt.wrong{border-color:var(--red-soft); background:var(--red-bg);}
+.scenario .opt:disabled{cursor:default;}
+.scenario .opt:focus-visible{outline:none; box-shadow:0 0 0 4px rgba(255,84,54,.18);}
+.explain{display:none; margin-top:12px; border-radius:12px; padding:13px 16px; font-size:14px; color:var(--ink-2);}
+.explain.show{display:block;}
+.explain.good{background:var(--green-bg); border:1px solid rgba(6,194,154,0.45);}
+.explain.bad{background:var(--red-bg); border:1px solid rgba(255,84,54,0.45);}
+.lab-item{display:flex; gap:12px; align-items:flex-start; padding:9px 0; border-bottom:1px solid var(--line);}
+.lab-item:last-child{border-bottom:none;}
+.lab-item input{width:18px; height:18px; margin-top:3px; accent-color:var(--green-soft); cursor:pointer; flex-shrink:0;}
+.lab-item label{cursor:pointer; color:var(--ink-2);}
+code{background:var(--surface-2); border:1px solid var(--line); padding:1px 7px; border-radius:6px; font-size:13px; color:var(--blue); font-family:inherit; font-weight:700;}
+.glossary-grid{display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-top:12px;}
+.glossary-term{background:var(--surface-2); border:1px solid var(--line); border-radius:12px; padding:12px 14px; font-size:13px; color:var(--ink-2);}
+.glossary-term strong{color:var(--green);}
+.disclaimer{font-size:12px; color:var(--ink-3); text-align:center; padding:10px 20px 0; line-height:1.5;}
+.module{display:none;}
+.module.active{display:block;}
+#home.active{display:block;}
+.phase-group{margin-bottom:14px;}
+.phase-group{border-top:4px solid var(--line-2);}
+.phase-group.ph1{border-top-color:#2E84FF;} .phase-group.ph1 .label{color:#2E84FF;}
+.phase-group.ph2{border-top-color:#06C29A;} .phase-group.ph2 .label{color:#038266;}
+.phase-group.ph3{border-top-color:#7C5CFF;} .phase-group.ph3 .label{color:#7C5CFF;}
+.phase-group.ph4{border-top-color:#FF9F1C;} .phase-group.ph4 .label{color:#C76E00;}
+
+.nav-item{
+  display:flex; justify-content:space-between; align-items:center; gap:10px; width:100%;
+  background:var(--surface); border:1px solid var(--line-2); border-radius:12px;
+  padding:13px 16px; margin-top:8px; color:var(--ink); font-family:inherit; font-size:14px;
+  cursor:pointer; text-align:left;
+  transition:border-color .15s, box-shadow .15s, transform .15s;
+}
+.nav-item:hover{border-color:var(--red-soft); box-shadow:var(--shadow); transform:translateY(-1px);}
+.nav-item .nv-meta{font-size:12px; color:var(--ink-3); white-space:nowrap;}
+.nav-item.exam{border-style:dashed;}
+.topnav{
+  display:flex; justify-content:space-between; align-items:center; gap:10px;
+  margin-bottom:12px; flex-wrap:wrap;
+}
+.navbtn{
+  background:var(--surface); border:1px solid var(--line-2); border-radius:10px;
+  padding:8px 14px; color:var(--ink); font-family:inherit; font-size:13px; font-weight:700; cursor:pointer;
+  transition:border-color .15s, box-shadow .15s;
+}
+.navbtn:hover{border-color:var(--red-soft); box-shadow:var(--shadow);}
+.navbtn.primary{
+  background:linear-gradient(135deg,var(--amber-soft),var(--red-soft));
+  color:#fff; border:none; box-shadow:var(--shadow);
+}
+.navbtn.primary:hover{filter:brightness(1.05); box-shadow:var(--shadow-lg);}
+.traffic{display:flex; gap:12px; margin:14px 0 4px; flex-wrap:wrap;}
+.t-light{flex:1; min-width:180px; background:var(--surface-2); border:1px solid var(--line); border-radius:14px; padding:15px; text-align:center; border-top:4px solid var(--line-2);}
+.t-light.g{border-top-color:var(--green-soft);} .t-light.a{border-top-color:var(--amber-soft);} .t-light.r{border-top-color:var(--red-soft);}
+.t-light .big{font-size:16px; font-weight:800; margin:5px 0; color:var(--ink);}
+.t-light.g .big{color:var(--green);} .t-light.a .big{color:var(--amber);} .t-light.r .big{color:var(--red);}
+.t-light .cond{font-size:13px; color:var(--ink-3);}
+.hist{display:flex; gap:12px; flex-wrap:wrap; margin-top:12px;}
+.hist-card{flex:1; min-width:200px; background:var(--surface-2); border:1px solid var(--line); border-radius:14px; padding:15px;}
+.hist-card .val{font-family:var(--serif); font-size:24px; font-weight:700; margin:4px 0; color:var(--ink);}
+.hist-card .val.red{color:var(--red);} .hist-card .val.green{color:var(--green);}
+.src{font-size:11px; color:var(--ink-3); margin-top:8px; line-height:1.45;}
+.story{display:flex; gap:12px; flex-wrap:wrap; margin-top:12px;}
+.story-card{flex:1; min-width:200px; background:var(--surface-2); border:1px solid var(--line); border-radius:14px; padding:15px;}
+.story-card h3{font-size:15px;}
+.warn-note{font-size:12px; color:var(--ink-3); margin-top:10px;}
+strong.g{color:var(--green);} strong.r{color:var(--red);} strong.a{color:var(--amber);} strong.b{color:var(--blue);}
+@media(max-width:560px){
+  .glossary-grid{grid-template-columns:1fr;}
+  .header{flex-direction:column;} .header .meta{text-align:left;}
+  body{padding:12px 10px 50px;}
+  .card{padding:16px;}
+}
+
 </style>
 </head>
 <body>
-
-<div class="bar">
-  <div class="bar-in">
-    <div class="brand"><span class="bull">🐂</span> Swing&nbsp;Akademi</div>
-    <button class="btn" onclick="openTab()">↗ Aç</button>
-    <button class="btn" onclick="window.print()">🖨 PDF</button>
-    <button class="btn" onclick="copyHTML()">⧉ Kopyala</button>
-    <button class="btn" onclick="fs()">⛶ Tam Ekran</button>
-  </div>
-</div>
-
 <div class="wrap">
 
-  <!-- HERO -->
-  <div class="hero">
-    <div class="mascot">🐂</div>
-    <div class="kicker">Haddini Aş Kulübü</div>
-    <h1>Şansla değil, <span class="hl">sistemle.</span></h1>
-    <p class="lead">Disiplinli swing trading'i adım adım öğreten 12 haftalık program. Teoriyi öğren,
-    gerçek piyasada uygula, disiplinini ölç. Acele yok — <b>doğru süreç, sonucu kendi getirir.</b></p>
-    <div class="cta">
-      <a class="btn btn-primary btn-lg" href="modules/modul-01.html">Modül 1'i dene →</a>
-      <a class="btn btn-lg btn-ghost" href="gunluk.html">Günlük mikro</a>
-      <a class="btn btn-lg btn-ghost" id="continueBtn">Yol haritası ↓</a>
-    </div>
+<!-- ANA HEADER -->
+<div class="header">
+  <div>
+    <div class="label">Haddini Aş Kulübü · Swing Akademi</div>
+    <h1>Kumarhane Gibi Düşün, Pilot Gibi Uç</h1>
+    <div class="subtitle">12 modül + 4 faz sınavı. Tahmin etmeyi bırak; üstünlüğü bul, tekrarla, ölç.</div>
   </div>
-
-  <!-- PROGRAM KÜNYESİ -->
-  <div class="sec-h"><span class="kicker">Program Künyesi</span></div>
-  <div class="statwrap" style="max-width:960px">
-    <div class="spec">
-      <div class="spec-main">
-        <h3>Bu program seni nereye götürür?</h3>
-        <p style="font-size:15.5px;margin:8px 0 4px">Amacımız net: sana swing trading'i <b>kurallı,
-        ölçülebilir ve disiplinli</b> uygulayabileceğin bir sistem kazandırmak. Bu eğitim hangi hisseyi
-        alacağını söylemez; <b>hangi işlemi almaman gerektiğini</b> bilme disiplinini kazandırır.
-        Geleceği tahmin etmeyi değil, <b>üstünlüğü olan setup'ları bulup tekrar tekrar oynamayı</b>
-        öğreteceğiz. Omurga: <b>Qullamaggie momentum breakout sistemi</b> — kurallı bir motor; baştan
-        sona, gerçek piyasada.</p>
-        <div class="spec-grid">
-          <div class="si"><div class="si-l">Süre</div><div class="si-v">12 hafta · 4 faz · 12 modül</div></div>
-          <div class="si"><div class="si-l">Tempo</div><div class="si-v">Günde ~10 dk + haftalık modül</div></div>
-          <div class="si"><div class="si-l">Seviye</div><div class="si-v">Acemi → Orta (karma)</div></div>
-          <div class="si"><div class="si-l">Yöntem</div><div class="si-v">Qullamaggie motoru + skill labı</div></div>
-        </div>
-      </div>
-      <div class="spec-side">
-        <div class="side-h">Sonunda yapabileceksin</div>
-        <ul class="outcomes">
-          <li>Piyasa iznini okumak (gaz pedalı / fren)</li>
-          <li>En güçlü momentum hisselerini avlamak</li>
-          <li>Sıkı kurulumu (tight setup) tanımak</li>
-          <li>ORH ile girip günün dibine stop koymak</li>
-          <li>Mekanik pozisyon boyutu + %20 kuralı</li>
-          <li>Kâr alıp trendi 10 günlükte sürmek</li>
-        </ul>
-      </div>
-    </div>
+  <div class="meta">
+    <span id="meta-date"></span><br>
+    12 modül · 4 sınav · 1.030 XP · 5 rozet
   </div>
-
-  <!-- İSTATİSTİK ŞERİDİ -->
-  <div class="statwrap">
-    <div class="stats">
-      <div class="stat">
-        <div class="ring" id="lvlRing"><span class="lv" id="lvlIcon">🌱</span></div>
-        <div><div class="lbl">Seviye</div><div class="val" id="lvlName">Çaylak</div><div class="sub" id="lvlNext">—</div></div>
-      </div>
-      <div class="stat"><div><div class="lbl">Tecrübe Puanı</div><div class="val"><span id="xpVal">0</span> XP</div><div class="sub">dersleri bitirdikçe artar</div></div></div>
-      <div class="stat"><div><div class="lbl">Günlük Seri</div><div class="val"><span id="streakVal">0</span> 🔥</div><div class="sub">üst üste çalıştığın gün</div></div></div>
-      <div class="stat"><div><div class="lbl">Disiplin</div><div class="val" style="color:var(--teal-ink)"><span id="discVal">0</span> 🛡️</div><div class="sub">kurallara sadık kaldığın gün</div></div></div>
-      <div class="stat" style="flex:1;min-width:170px"><div style="width:100%">
-        <div class="lbl">İlerleme · <span id="pctVal">0</span>%</div>
-        <div class="pbar" style="margin-top:8px"><i id="pbarFill"></i></div>
-        <div class="sub" style="margin-top:6px">12 modülün <span id="doneCount">0</span>'ı tamamlandı</div>
-      </div></div>
-    </div>
-  </div>
-
-  <!-- YOL HARİTASI · 4 faz kolonu (yatay) -->
-  <div class="sec-h"><span class="kicker">Yol Haritası</span></div>
-  <div class="sec-sub">Soldan sağa ilerle — her faz bir öncekinin üstüne kurulur.</div>
-
-  <div class="roadmap" id="roadmap">
-
-    <!-- FAZ 1 -->
-    <div class="phase-col p1">
-      <div class="ph-head"><span class="pn">1</span><div><div class="pt">Temel & Piyasa</div><div class="pw">Hafta 1–3</div></div></div>
-      <div class="ph-cards">
-        <a class="rcard" data-mod="1" href="modules/modul-01.html">
-          <div class="rc-top"><span class="rc-wk">Hafta 1</span><span class="rc-xp">+60 XP</span></div>
-          <h4>Swing'in DNA'sı + %25 Paradoksu</h4><p>Kumarhane/edge zihniyeti: düşük isabet, asimetrik kazanç. Sistemin ruhu.</p>
-          <span class="rc-state"></span>
-        </a>
-        <a class="rcard" data-mod="2" href="modules/modul-02.html">
-          <div class="rc-top"><span class="rc-wk">Hafta 2</span><span class="rc-xp">+70 XP</span></div>
-          <h4>Piyasa İzni: Gaz mı, Fren mi?</h4><p>Endeks filtresi: 50/200 SMA üstü = gaz, altı = fren. Motorun 1. kuralı.</p>
-          <span class="rc-state"></span>
-        </a>
-        <a class="rcard" data-mod="3" href="modules/modul-03.html">
-          <div class="rc-top"><span class="rc-wk">Hafta 3</span><span class="rc-xp">+70 XP</span></div>
-          <h4>Av Sahası: En Güçlüyü Filtrele</h4><p>Filtreleme hunisi: top gainers, ADR ≥ %5, hacim ≥ $20M. 10>20 SMA.</p>
-          <span class="rc-state"></span>
-        </a>
-        <a class="rcard ecard" data-exam="1" href="sinavlar/faz-1.html">
-          <div class="rc-top"><span class="rc-wk">Faz Sınavı</span><span class="rc-xp">+60 XP</span></div>
-          <h4>Faz 1 Sınavı: Avcı</h4><p>3 modülü tek senaryoda birleştir. Geç → Avcı rozeti + Faz 2.</p>
-          <span class="rc-state"></span>
-        </a>
-      </div>
-    </div>
-
-    <!-- FAZ 2 -->
-    <div class="phase-col p2">
-      <div class="ph-head"><span class="pn">2</span><div><div class="pt">Kurulum & İcra</div><div class="pw">Hafta 4–6</div></div></div>
-      <div class="ph-cards">
-        <a class="rcard" data-mod="4" href="modules/modul-04.html">
-          <div class="rc-top"><span class="rc-wk">Hafta 4</span><span class="rc-xp">+80 XP</span></div>
-          <h4>Sıkı Kurulum: Yay Gerilmesi</h4><p>Bayrak direği + sıkı konsolidasyon, 10>20 SMA üstünde. "Tight setups."</p>
-          <span class="rc-state"></span>
-        </a>
-        <a class="rcard" data-mod="5" href="modules/modul-05.html">
-          <div class="rc-top"><span class="rc-wk">Hafta 5</span><span class="rc-xp">+80 XP</span></div>
-          <h4>Giriş & Stop: ORH ve Günün Dibi</h4><p>Açılış aralığı kırılımı / Episodic Pivot tetik; stop günün dibine, 1 ATR sınırı.</p>
-          <span class="rc-state"></span>
-        </a>
-        <a class="rcard" data-mod="6" href="modules/modul-06.html">
-          <div class="rc-top"><span class="rc-wk">Hafta 6</span><span class="rc-xp">+80 XP</span></div>
-          <h4>Mekanik Pozisyon Boyutu</h4><p>Lot = sabit risk ÷ (giriş − stop). Tek hisse max %20. Duyguyu mekanizma çıkarır.</p>
-          <span class="rc-state"></span>
-        </a>
-        <a class="rcard ecard" data-exam="2" href="sinavlar/faz-2.html">
-          <div class="rc-top"><span class="rc-wk">Faz Sınavı</span><span class="rc-xp">+60 XP</span></div>
-          <h4>Faz 2 Sınavı: İcracı</h4><p>Giriş + stop + lot + %20 tavanı tek senaryoda. Geç → İcracı rozeti + Faz 3.</p>
-          <span class="rc-state"></span>
-        </a>
-      </div>
-    </div>
-
-    <!-- FAZ 3 -->
-    <div class="phase-col p3">
-      <div class="ph-head"><span class="pn">3</span><div><div class="pt">Yönetim & Onay</div><div class="pw">Hafta 7–9</div></div></div>
-      <div class="ph-cards">
-        <a class="rcard" data-mod="7" href="modules/modul-07.html">
-          <div class="rc-top"><span class="rc-wk">Hafta 7</span><span class="rc-xp">+90 XP</span></div>
-          <h4>Kâr Alma & Trend Sürme</h4><p>3-5 gün kuralı: %50 sat, stop'u maliyete çek. Kalanı 10 günlük ortalamada sür.</p>
-          <span class="rc-state"></span>
-        </a>
-        <a class="rcard" data-mod="8" href="modules/modul-08.html">
-          <div class="rc-top"><span class="rc-wk">Hafta 8</span><span class="rc-xp">+90 XP</span></div>
-          <h4>Akıllı Para Onayı</h4><p>Flow, dark pool, insider — breakout'a ekstra güç katmanı (opsiyonel).</p>
-          <span class="rc-state"></span>
-        </a>
-        <a class="rcard" data-mod="9" href="modules/modul-09.html">
-          <div class="rc-top"><span class="rc-wk">Hafta 9</span><span class="rc-xp">+90 XP</span></div>
-          <h4>Episodic Pivot & Earnings</h4><p>Haber/bilanço gap'iyle gelen EP setup'ı; earnings riskini yönetmek.</p>
-          <span class="rc-state"></span>
-        </a>
-        <a class="rcard ecard" data-exam="3" href="sinavlar/faz-3.html">
-          <div class="rc-top"><span class="rc-wk">Faz Sınavı</span><span class="rc-xp">+60 XP</span></div>
-          <h4>Faz 3 Sınavı: Yönetici</h4><p>Kâr alma + earnings + onay/tetik tek senaryoda. Geç → Yönetici rozeti + Faz 4.</p>
-          <span class="rc-state"></span>
-        </a>
-      </div>
-    </div>
-
-    <!-- FAZ 4 -->
-    <div class="phase-col p4">
-      <div class="ph-head"><span class="pn">4</span><div><div class="pt">Sistemleşme & Ustalık</div><div class="pw">Hafta 10–12</div></div></div>
-      <div class="ph-cards">
-        <a class="rcard" data-mod="10" href="modules/modul-10.html">
-          <div class="rc-top"><span class="rc-wk">Hafta 10</span><span class="rc-xp">+100 XP</span></div>
-          <h4>İşlem Günlüğü & Beklenen Değer</h4><p>Win rate, ort. R, expectancy. %25 isabetle kazandığını kanıtla.</p>
-          <span class="rc-state"></span>
-        </a>
-        <a class="rcard" data-mod="11" href="modules/modul-11.html">
-          <div class="rc-top"><span class="rc-wk">Hafta 11</span><span class="rc-xp">+100 XP</span></div>
-          <h4>Portföy & Konsantrasyon</h4><p>%20 kuralı, portföy ısı, fren ışığında korunma ve nakit yönetimi.</p>
-          <span class="rc-state"></span>
-        </a>
-        <a class="rcard" data-mod="12" href="modules/modul-12.html">
-          <div class="rc-top"><span class="rc-wk">Hafta 12 · 🎓</span><span class="rc-xp">+120 XP</span></div>
-          <h4>Pre-Flight Çeklist + Mezuniyet</h4><p>5 yeşil ışık çeklisti, kendi playbook'un, günlük rutin, mezuniyet projesi.</p>
-          <span class="rc-state"></span>
-        </a>
-        <a class="rcard ecard" data-exam="4" href="sinavlar/faz-4.html">
-          <div class="rc-top"><span class="rc-wk">Mezuniyet Sınavı</span><span class="rc-xp">+100 XP</span></div>
-          <h4>Faz 4 Sınavı: Mezun</h4><p>Beklenen değer + portföy + pre-flight tek senaryoda. Geç → Mezun rozeti.</p>
-          <span class="rc-state"></span>
-        </a>
-      </div>
-    </div>
-  </div>
-
-  <!-- ROZETLER -->
-  <div class="sec-h reveal"><span class="kicker">🏅 Başarımlar</span></div>
-  <div class="sec-sub reveal">Disiplin ve süreklilik ödüllenir — kazanç değil.</div>
-  <div class="badges reveal" style="margin-top:16px" id="badges">
-    <div class="badge" data-b="first-step"><div class="b-ic">🌱</div>İlk Adım</div>
-    <div class="badge" data-b="phase1"><div class="b-ic">🏹</div>Avcı</div>
-    <div class="badge" data-b="phase2"><div class="b-ic">🎯</div>İcracı</div>
-    <div class="badge" data-b="phase3"><div class="b-ic">🧭</div>Yönetici</div>
-    <div class="badge" data-b="streak5"><div class="b-ic">🔥</div>5 Gün Seri</div>
-    <div class="badge" data-b="disc7"><div class="b-ic">🛡️</div>Disiplin 7</div>
-    <div class="badge" data-b="graduate"><div class="b-ic">🎓</div>Mezun</div>
-  </div>
-
-  <div class="disclaimer col">
-    <b>⚠️ Yatırım tavsiyesi değildir.</b> Bu program yalnızca eğitim amaçlıdır; geçmiş performans
-    geleceği garanti etmez. İçerik Telegram'da paylaşılmaz, kripto satışı yapılmaz — bu isimle
-    karşınıza çıkan taklit hesaplara / dolandırıcılara karşı dikkatli olun.
-  </div>
-
-  <div class="devbar">
-    🔧 Prototip — ilerleme demo verisiyle. &nbsp;·&nbsp; <a onclick="Akademi.reset()">İlerlemeyi sıfırla</a>
-  </div>
-  <div class="foot">Swing Akademi · Tasarım dili v2 · Haddini Aş Kulübü</div>
 </div>
 
-<div class="toast" id="toast"></div>
+<!-- İLERLEME -->
+<div class="progress-bar">
+  <span class="label">İlerlemen</span>
+  <div class="track" style="flex:1; min-width:120px;"><div class="fill" id="fill"></div></div>
+  <span class="xp" id="xp">0 / 1030 XP</span>
+  <div class="badges">
+    <span class="badge" id="bd-ilkadim">İlk Adım</span>
+    <span class="badge" id="bd-avci">Avcı</span>
+    <span class="badge" id="bd-icraci">İcracı</span>
+    <span class="badge" id="bd-yonetici">Yönetici</span>
+    <span class="badge" id="bd-mezun">Mezun</span>
+  </div>
+</div>
 
-<script src="assets/akademi.js"></script>
+<!-- ============ HARİTA / İÇİNDEKİLER ============ -->
+<section class="module active" id="home">
+
+<div class="card">
+  <div class="label">Nasıl çalışır?</div>
+  <h2 style="margin-top:6px;">Okuma değil, antrenman</h2>
+  <p>Her modülde kısa teori + senin cevaplayacağın senaryolar var. Doğru cevap XP kazandırır; sınavları geçersen rozet takarsın. Sırayla git — her modül bir öncekinin üstüne kurulur.</p>
+  <p>İlerlemen bu tarayıcıda otomatik kaydedilir; sayfayı kapatıp sonra devam edebilirsin.</p>
+  <div class="yani"><strong>Yani:</strong> Bu bir e-kitap değil, uçuş simülatörü. Kararları sen vereceksin — para riske girmeden.</div>
+</div>
+
+<div class="card phase-group ph1">
+  <div class="label">Faz 1 · Temel &amp; Piyasa</div>
+  <button class="nav-item" data-go="m1"><span><span class="dot n" id="st-m1"></span>Modül 1 · Swing Trading'in DNA'sı</span><span class="nv-meta">~10 dk · 60 XP</span></button>
+  <button class="nav-item" data-go="m2"><span><span class="dot n" id="st-m2"></span>Modül 2 · Piyasa İzni: Gaz mı, Fren mi?</span><span class="nv-meta">~10 dk · 70 XP</span></button>
+  <button class="nav-item" data-go="m3"><span><span class="dot n" id="st-m3"></span>Modül 3 · Av Sahası: En Güçlüyü Filtrele</span><span class="nv-meta">~8 dk · 70 XP</span></button>
+  <button class="nav-item exam" data-go="f1"><span><span class="dot n" id="st-f1"></span>Faz 1 Sınavı · Avcı Olabilir misin?</span><span class="nv-meta">Rozet: Avcı</span></button>
+</div>
+
+<div class="card phase-group ph2">
+  <div class="label">Faz 2 · Kurulum &amp; İcra</div>
+  <button class="nav-item" data-go="m4"><span><span class="dot n" id="st-m4"></span>Modül 4 · Sıkı Kurulum: Yay Gerilmesi</span><span class="nv-meta">~9 dk · 80 XP</span></button>
+  <button class="nav-item" data-go="m5"><span><span class="dot n" id="st-m5"></span>Modül 5 · Giriş &amp; Stop: ORH ve Günün Dibi</span><span class="nv-meta">~9 dk · 80 XP</span></button>
+  <button class="nav-item" data-go="m6"><span><span class="dot n" id="st-m6"></span>Modül 6 · Mekanik Pozisyon Boyutu</span><span class="nv-meta">~8 dk · 80 XP</span></button>
+  <button class="nav-item exam" data-go="f2"><span><span class="dot n" id="st-f2"></span>Faz 2 Sınavı · İcracı Olabilir misin?</span><span class="nv-meta">Rozet: İcracı</span></button>
+</div>
+
+<div class="card phase-group ph3">
+  <div class="label">Faz 3 · Yönetim &amp; Onay</div>
+  <button class="nav-item" data-go="m7"><span><span class="dot n" id="st-m7"></span>Modül 7 · Kâr Alma &amp; Trend Sürme</span><span class="nv-meta">~9 dk · 90 XP</span></button>
+  <button class="nav-item" data-go="m8"><span><span class="dot n" id="st-m8"></span>Modül 8 · Akıllı Para Onayı</span><span class="nv-meta">~7 dk · 90 XP</span></button>
+  <button class="nav-item" data-go="m9"><span><span class="dot n" id="st-m9"></span>Modül 9 · Episodik Pivot &amp; Earnings</span><span class="nv-meta">~8 dk · 90 XP</span></button>
+  <button class="nav-item exam" data-go="f3"><span><span class="dot n" id="st-f3"></span>Faz 3 Sınavı · Yönetici Olabilir misin?</span><span class="nv-meta">Rozet: Yönetici</span></button>
+</div>
+
+<div class="card phase-group ph4">
+  <div class="label">Faz 4 · Sistemleşme &amp; Mezuniyet</div>
+  <button class="nav-item" data-go="m10"><span><span class="dot n" id="st-m10"></span>Modül 10 · İşlem Günlüğü &amp; Beklenen Değer</span><span class="nv-meta">~8 dk · 100 XP</span></button>
+  <button class="nav-item" data-go="m11"><span><span class="dot n" id="st-m11"></span>Modül 11 · Portföy &amp; Konsantrasyon</span><span class="nv-meta">~8 dk · 100 XP</span></button>
+  <button class="nav-item" data-go="m12"><span><span class="dot n" id="st-m12"></span>Modül 12 · Pre-Flight Çeklist + Mezuniyet</span><span class="nv-meta">~9 dk · 120 XP</span></button>
+  <button class="nav-item exam" data-go="f4"><span><span class="dot n" id="st-f4"></span>Faz 4 Sınavı · Mezun Olmaya Hazır mısın?</span><span class="nv-meta">Rozet: Mezun</span></button>
+</div>
+
+<div class="card">
+  <button class="nav-item" data-go="sozluk"><span>Sözlük · Tüm terimler tek yerde</span><span class="nv-meta">Başvuru</span></button>
+</div>
+
+</section>
+
+<!-- ============ MODÜL 1 ============ -->
+<section class="module" id="m1">
+<div class="topnav">
+  <button class="navbtn" data-go="home">← Harita</button>
+  <span class="label">Faz 1 · Modül 1</span>
+  <button class="navbtn primary" data-go="m2">Modül 2 →</button>
+</div>
+
+<div class="card">
+  <h1 style="font-size:23px;">Swing Trading'in DNA'sı</h1>
+  <div class="subtitle">~10 dakika · 3 senaryo · +60 XP</div>
+  <div class="story">
+    <div class="story-card">
+      <h3><span class="dot r"></span>Ali</h3>
+      <p style="font-size:14px;">10 işlemin <strong>7'sini kazanıyor.</strong> Arkadaş ortamında en çok konuşan o. Ama hesabı her ay biraz daha <strong class="r">eriyor.</strong></p>
+    </div>
+    <div class="story-card">
+      <h3><span class="dot g"></span>Mert</h3>
+      <p style="font-size:14px;">10 işlemin yalnızca <strong>4'ünü kazanıyor.</strong> Kimseye işlem anlatmaz. Ama serveti yıldan yıla <strong class="g">büyüyor.</strong></p>
+    </div>
+  </div>
+  <p style="margin-top:12px;">Aynı piyasa, zıt sonuç. <strong>Neden?</strong> Bu modülün sonunda cevabı sadece bilmeyeceksin — kendi elinle hesaplayacaksın.</p>
+</div>
+
+<div class="card">
+  <div class="label">Tanım</div>
+  <h2 style="margin-top:6px;">Swing trading nedir?</h2>
+  <p>Bir hisseyi <strong>birkaç gün ile birkaç hafta</strong> tutarak fiyatın bir "salınımını" (swing) yakalama işi. Gün içinde alıp satan day-trader ile yıllarca bekleyen yatırımcının tam ortasında durur.</p>
+  <table class="sortable">
+    <thead><tr><th>Tarz</th><th>Tutuş süresi</th><th>Ekran başı zaman</th></tr></thead>
+    <tbody>
+      <tr><td>Scalp / Day-trade</td><td>Saniyeler – saatler</td><td>Tüm gün</td></tr>
+      <tr><td><strong class="g">Swing</strong></td><td>2 gün – birkaç hafta</td><td>Günde dakikalar</td></tr>
+      <tr><td>Uzun vadeli yatırım</td><td>Aylar – yıllar</td><td>Ayda bir bakış</td></tr>
+    </tbody>
+  </table>
+  <div class="yani"><strong>Yani:</strong> Swing, normal işi ve hayatı olan biri için en uygun saha. Akşam tararsın, planını kurarsın, tetiği beklersin. Ekrana yapışmak yok.</div>
+</div>
+
+<div class="card">
+  <div class="label">Yıkılan inanç</div>
+  <h2 style="margin-top:6px;">Trading, geleceği bilmek değildir</h2>
+  <p>Çoğu kişi kazanmayı "bir sonraki hareketi doğru tahmin etmek" sanır. Oysa kısa vadede piyasa o kadar gürültülüdür ki bunu kimse tutarlı yapamaz — dünyanın en büyük fonları bile.</p>
+  <p><strong class="r">Kâhinlik tuzağı:</strong> "Bu kesin çıkar" cümlesi, hesap bitiren cümledir. Haklı çıkmaya çalışmak ile para kazanmak aynı şey değildir.</p>
+</div>
+
+<div class="card">
+  <div class="label">Zihinsel model</div>
+  <h2 style="margin-top:6px;">İyi trader bir kumarhanedir</h2>
+  <p>Rulet masasında kumarhanenin sayısal üstünlüğü yalnızca <strong>~%5</strong>'tir. Kumarhane bir sonraki dönüşü <strong>bilmez.</strong> Tek tek elleri sık sık <strong>kaybeder.</strong> Ama o küçük üstünlüğü binlerce kez tekrarladığı için ay sonunda kazancı matematiksel olarak kesindir.</p>
+  <div class="yani"><strong>Yani:</strong> Sen kumarbaz değilsin — sen <strong>kumarhanesin.</strong> İşin tahmin etmek değil; üstünlüğün olduğu durumları bulup onları tekrar tekrar oynamak.</div>
+</div>
+
+<div class="card">
+  <div class="label">Çekirdek kavram</div>
+  <h2 style="margin-top:6px;">Üstünlük = Beklenen Değer</h2>
+  <div class="formula">Beklenen Değer = (Kazanma% × Ort. Kazanç) − (Kaybetme% × Ort. Kayıp)</div>
+  <p>Kazancı ve kaybı <strong>"R"</strong> ile ölçeriz. <strong>1R = bir işlemde riske ettiğin para</strong> (örneğin 100 $). Kazancın "+3R" ise riskinin 3 katını kazandın; kaybın "−1R" ise riskin kadar kaybettin demektir.</p>
+  <p>R'nin güzelliği şu: hesap büyüklüğünden bağımsızdır. 1.000 $'lık hesapla da 1.000.000 $'lık hesapla da aynı dili konuşursun.</p>
+</div>
+
+<div class="card">
+  <div class="label">Hesap · Sistem A</div>
+  <h2 style="margin-top:6px;">Kaybede kaybede zengin olmak</h2>
+  <p>Kazanma oranı <strong>%40</strong>, kazançlar ortalama <strong class="g">+3R</strong>, kayıplar <strong class="r">−1R</strong> olsun:</p>
+  <div class="formula">(0,40 × 3R) − (0,60 × 1R) = 1,2R − 0,6R = <span style="color:var(--green);">+0,6R / işlem</span></div>
+  <table class="sortable">
+    <thead><tr><th>İstatistik</th><th>Değer</th></tr></thead>
+    <tbody>
+      <tr><td>Kazanma oranı</td><td>%40</td></tr>
+      <tr><td>100 işlemde beklenen kazanç</td><td>+60R</td></tr>
+      <tr><td>R = 100 $ ise</td><td>+6.000 $</td></tr>
+    </tbody>
+  </table>
+  <p style="margin-top:12px;"><strong>İşlemlerin %60'ını kaybediyorsun</strong> — ama yine de para basıyorsun. İşte Mert'in sırrı buydu. Ali ise sık kazanıyor ama tek büyük kayıp bütün küçük kazançlarını siliyor.</p>
+</div>
+
+<div class="card scenario" data-q="m1q1" data-xp="20">
+  <div class="label">Senaryo · Sistem C · +20 XP</div>
+  <h2 style="margin-top:6px;">Çok kazandıran sistem tuzağı</h2>
+  <p>Bir sistem işlemlerin <strong>%70'ini</strong> kazandırıyor. Ama kazançlar <strong>+1R</strong>, kayıplar <strong>−3R</strong>. Bu sistem uzun vadede ne yapar?</p>
+  <button class="opt" data-k="w" data-e="Hesabı yap: (0,70 × 1R) − (0,30 × 3R) = 0,7R − 0,9R = −0,2R/işlem. Yüksek kazanma oranı seni kandırdı — Ali'nin düştüğü tuzak tam buydu.">A) %70 kazandırdığı için kesin kâr eder</button>
+  <button class="opt" data-k="w" data-e="Yaklaşık bile değil: (0,70 × 1) − (0,30 × 3) = −0,2R/işlem. Her 100 işlemde 20R kayıp. R 100 $ ise yılda binlerce dolar erime.">B) Yaklaşık başabaş kalır</button>
+  <button class="opt" data-k="c" data-e="Doğru: (0,70 × 1R) − (0,30 × 3R) = −0,2R/işlem. Sistem %70 kazandırırken hesap eriyor. Kazanma oranı tek başına hiçbir şey söylemez — kazanç/kayıp boyutu olmadan anlamsızdır.">C) Para kaybeder</button>
+  <div class="explain"></div>
+</div>
+
+<div class="card">
+  <div class="label">Motor</div>
+  <h2 style="margin-top:6px;">Neden kayıplar küçük kalmalı?</h2>
+  <p>Kayıp büyüdükçe, telafisi orantısız büyür. Matematik acımasız:</p>
+  <table class="sortable">
+    <thead><tr><th>Kaybın</th><th>Başa dönmek için gereken kazanç</th></tr></thead>
+    <tbody>
+      <tr><td>−%10</td><td>+%11</td></tr>
+      <tr><td>−%25</td><td>+%33</td></tr>
+      <tr><td>−%50</td><td><strong class="r">+%100</strong></td></tr>
+      <tr><td>−%75</td><td><strong class="r">+%300</strong></td></tr>
+    </tbody>
+  </table>
+  <div class="yani"><strong>Yani:</strong> Çukur derinleştikçe çıkışı dikleşir. %50 kaybedersen paranı ikiye katlaman gerekir — sadece başladığın yere dönmek için. Bu yüzden kayıplar daha küçükken kesilir.</div>
+</div>
+
+<div class="card scenario" data-q="m1q2" data-xp="20">
+  <div class="label">Hızlı kontrol · +20 XP</div>
+  <h2 style="margin-top:6px;">Çukur matematiği</h2>
+  <p>Hesabın %50 düştü. Sadece başa dönmek için yüzde kaç kazanman gerekir?</p>
+  <button class="opt" data-k="w" data-e="100 $'ın %50 düşerse 50 $ kalır. 50 $'ın %50 kazancı 75 $ eder — hâlâ 25 $ eksiktesin. Kayıp ve kazanç yüzdeleri simetrik değildir.">A) +%50</button>
+  <button class="opt" data-k="c" data-e="Doğru. 100 $ → 50 $ düştü; 50 $'ın tekrar 100 $ olması için %100 kazanç gerekir. Kayıp yüzdesi ile telafi yüzdesi asla simetrik değildir — bu asimetri, sıkı stop disiplininin matematiksel gerekçesidir.">B) +%100</button>
+  <button class="opt" data-k="w" data-e="50 $'ın %75 kazancı 87,50 $ eder — başa dönemedin. Doğru cevap %100: yarıya inen para, ikiye katlanmak zorunda.">C) +%75</button>
+  <div class="explain"></div>
+</div>
+
+<div class="card">
+  <div class="label">Tekrar yasası</div>
+  <h2 style="margin-top:6px;">Tek işlem değil, seri kazandırır</h2>
+  <p>Kumarhane tek masada üzülmez; ay sonu bilançosuna bakar. Sen de tek işleme değil, yüz işlemlik seriye odaklan. Bunun için kuralı tersine çevir:</p>
+  <p><span class="dot g"></span>Planına uyup <strong>kaybettiğin</strong> işlem = <strong class="g">İYİ işlem.</strong></p>
+  <p><span class="dot r"></span>Plansız ya da şansla <strong>kazandığın</strong> işlem = <strong class="r">KÖTÜ işlem.</strong></p>
+  <p>Çünkü iyi süreç bin kez tekrarlanınca kazandırır; şans tekrarlanınca iflas ettirir.</p>
+</div>
+
+<div class="card scenario" data-q="m1q3" data-xp="20">
+  <div class="label">Senaryo · +20 XP</div>
+  <h2 style="margin-top:6px;">Plan kusursuzdu, sonuç eksi</h2>
+  <p>Kurulumun mükemmeldi, planına tam uydun, stop'unu doğru yere koydun. Ama hisse ters gitti, −1R kaybettin. Bu nasıl bir işlemdi?</p>
+  <button class="opt" data-k="w" data-e="Sonuca göre değerlendirme (outcome bias) en yaygın trader hatasıdır. Kumarhane de tek tek eller kaybeder — süreç doğruysa işlem iyidir. Kaybettiğin 1R, sistemin işletme maliyetidir.">A) Kötü işlem — sonuçta para kaybettin</button>
+  <button class="opt" data-k="c" data-e="Doğru. Süreci kusursuz uyguladın; −1R, planın içinde zaten vardı. Bunu 100 kez tekrarla: %40'ı +3R kazandırırsa zengin olursun. İyi işlem = plana uyulan işlem, kazanılan işlem değil.">B) İyi işlem — süreci kusursuz uyguladın</button>
+  <button class="opt" data-k="w" data-e="Tek bir sonuç, kurulumun kalitesi hakkında neredeyse hiçbir şey söylemez. O kurulum istatistiksel üstünlük taşıyorsa tekrar tekrar girilir — tek kayıpla çöpe atılmaz.">C) Şanssızlık — o kuruluma bir daha girme</button>
+  <div class="explain"></div>
+</div>
+
+<div class="card">
+  <div class="label">Üstünlüğü ne yok eder?</div>
+  <h2 style="margin-top:6px;">Duygular matematiği nasıl bozar</h2>
+  <table class="sortable">
+    <thead><tr><th>Duygu</th><th>Ne yaptırır</th><th>Üstünlüğe etkisi</th></tr></thead>
+    <tbody>
+      <tr><td><strong>FOMO</strong> (kaçırma korkusu)</td><td>Kurulumsuz, fiyat kovalayarak girdirir</td><td>Üstünlüğü olmayan işlem — beklenen değer sıfır ya da eksi</td></tr>
+      <tr><td><strong>İntikam işlemi</strong></td><td>Kaybı geri almak için boyut büyüttürür</td><td>Sabit R bozulur — iflas riski açılır</td></tr>
+      <tr><td><strong>Tilt</strong> (kontrol kaybı)</td><td>Üst üste kayıpta savruk işlemler açtırır</td><td>Süreç tamamen terk edilir</td></tr>
+    </tbody>
+  </table>
+  <div class="yani"><strong>Yani:</strong> Çözüm irade değil, <strong>mekanizmadır</strong> — önceden yazılı kurallar, sabit risk ve işlem günlüğü. İradene güvenme; sistemine güven.</div>
+</div>
+
+<div class="card">
+  <div class="label">İlham</div>
+  <h2 style="margin-top:6px;">Qullamaggie motoru</h2>
+  <p>Bu akademinin omurgası, Kristjan Kullamägi'nin (Qullamaggie) kamuya açık paylaştığı sistemdir:</p>
+  <table class="sortable">
+    <thead><tr><th>Özellik</th><th>Değer</th></tr></thead>
+    <tbody>
+      <tr><td>İsabet oranı</td><td>~%25</td></tr>
+      <tr><td>Kayıp anında kesilir</td><td>−1R</td></tr>
+      <tr><td>Kazanan sonuna dek taşınır</td><td>+10R'ye kadar</td></tr>
+    </tbody>
+  </table>
+  <p style="margin-top:12px;">4 işlemden yalnızca 1'ini kazanır — ama servet üretir. Çünkü tamamen asimetri üzerine kuruludur: <strong>zararı küçük kes, kazananı sonuna kadar taşı.</strong></p>
+  <p class="warn-note">Not: Oranlar Qullamaggie'nin kendi paylaşımlarındandır; bir performans garantisi değil, sistemin mantığını gösteren büyüklük sırasıdır.</p>
+</div>
+
+<div class="card">
+  <div class="label">Bu haftanın laboratuvarı</div>
+  <h2 style="margin-top:6px;">Gözünü eğit</h2>
+  <div>
+    <div class="lab-item"><input type="checkbox" data-c="m1l1" id="m1l1"><label for="m1l1">Bir <strong>likit hisse</strong> seç (fiyat 5 $+, günlük hacim 1M+ lot)</label></div>
+    <div class="lab-item"><input type="checkbox" data-c="m1l2" id="m1l2"><label for="m1l2"><strong>5 iş günü</strong>, her kapanışta 2 dakika: yükseldi mi düştü mü, hacim yüksek miydi, haber var mıydı? Her gün <strong>tek cümle</strong> not al</label></div>
+    <div class="lab-item"><input type="checkbox" data-c="m1l3" id="m1l3"><label for="m1l3">İleri seviye (opsiyonel): aynı hisseyi <code>trendcheck</code> ile çalıştır, kendi notunla karşılaştır</label></div>
+  </div>
+</div>
+
+<div class="card">
+  <div class="label">Ödev</div>
+  <h2 style="margin-top:6px;">Yazıya dök</h2>
+  <div>
+    <div class="lab-item"><input type="checkbox" data-c="m1o1" id="m1o1"><label for="m1o1"><strong>"Neden trade ediyorum?"</strong> — 3-4 cümleyle yaz. (Cevabın "hızlı zenginlik" ise bu modülü baştan oku.)</label></div>
+    <div class="lab-item"><input type="checkbox" data-c="m1o2" id="m1o2"><label for="m1o2"><strong>5 maddelik kural taslağı</strong> çıkar — Modül 12'de olgunlaştıracaksın</label></div>
+    <div class="lab-item"><input type="checkbox" data-c="m1o3" id="m1o3"><label for="m1o3"><strong>Mini hesap:</strong> %50 kazanma, kazançlar +2R, kayıplar −1R → beklenen değeri hesapla. (Cevap: (0,5×2)−(0,5×1) = +0,5R)</label></div>
+  </div>
+  <div class="yani"><strong>Yani:</strong> Artık "kaç kez kazandın?" diye sormuyorsun. Soru şu: "Kazandığında ne kadar kazanıyorsun, kaybettiğinde ne kadar kaybediyorsun?"</div>
+</div>
+
+<div class="topnav">
+  <button class="navbtn" data-go="home">← Harita</button>
+  <button class="navbtn primary" data-go="m2">Modül 2: Piyasa İzni →</button>
+</div>
+</section>
+<!-- ============ MODÜL 2 ============ -->
+<section class="module" id="m2">
+<div class="topnav">
+  <button class="navbtn" data-go="m1">← Modül 1</button>
+  <span class="label">Faz 1 · Modül 2</span>
+  <button class="navbtn primary" data-go="m3">Modül 3 →</button>
+</div>
+
+<div class="card">
+  <h1 style="font-size:23px;">Piyasa İzni: Gaz mı, Fren mi?</h1>
+  <div class="subtitle">~10 dakika · 2 senaryo · +70 XP</div>
+  <p style="margin-top:12px;">Mükemmel hisse bile yanlış piyasada para kaybettirir. Qullamaggie'nin <strong>1. kuralı:</strong> hisselere bakmadan önce piyasadan izin al.</p>
+</div>
+
+<div class="card">
+  <div class="label">Neden önce piyasa?</div>
+  <h2 style="margin-top:6px;">Akıntıya karşı yüzülmez</h2>
+  <p>Nehirde akıntı yönünde yüzersen az çabayla hızlı ilerlersin. Akıntıya karşı yüzersen aynı çaba seni yerinde saydırır — hatta geriletir. Borsada akıntı, genel piyasanın yönüdür.</p>
+  <p>Momentum kırılımları yükselen piyasada çalışır. Düşen piyasada aynı kurulumlar çoğunlukla <strong class="r">tuzağa</strong> dönüşür: hisse yukarı kırar gibi yapar, sonra geri çöker.</p>
+  <p>Sistemin isabet oranının ~%25 olduğunu Modül 1'den biliyorsun. Bu ince üstünlük, ancak akıntı arkandayken çalışır — piyasaya karşı işlem yaparsan tamamen yok olur.</p>
+  <div class="yani"><strong>Yani:</strong> Hangi hisseyi seçtiğinden önce, hangi piyasada olduğun gelir. Önce akıntıya bak, sonra yüzmeye başla.</div>
+</div>
+
+<div class="card">
+  <div class="label">Temel kural</div>
+  <h2 style="margin-top:6px;">Üç Işık: Gaz, Dikkat, Fren</h2>
+  <p>Her sabah tek soru: <strong>SPY ve QQQ, 50 ve 200 günlük ortalamalarının (SMA) neresinde?</strong> Cevap sana üç ışıktan birini verir.</p>
+  <div class="traffic">
+    <div class="t-light g">
+      <div class="label">Yeşil</div>
+      <div class="big">GAZ</div>
+      <div class="cond">Endeksler hem 50 hem 200 günlük SMA'nın <strong>üzerinde</strong></div>
+    </div>
+    <div class="t-light a">
+      <div class="label">Sarı</div>
+      <div class="big">DİKKAT</div>
+      <div class="cond">İki ortalamadan yalnız <strong>birinin</strong> üzerinde</div>
+    </div>
+    <div class="t-light r">
+      <div class="label">Kırmızı</div>
+      <div class="big">FREN</div>
+      <div class="cond">Endeksler 50 günlük SMA'nın <strong>altında</strong></div>
+    </div>
+  </div>
+  <table class="sortable">
+    <thead><tr><th>Işık</th><th>Koşul</th><th>Aksiyon</th></tr></thead>
+    <tbody>
+      <tr><td><span class="pill green">YEŞİL · GAZ</span></td><td>50 VE 200 günlük SMA'nın üzerinde</td><td>Boğa piyasası. Kurallara uyan kurulumlara tam boy gir.</td></tr>
+      <tr><td><span class="pill amber">SARI · DİKKAT</span></td><td>Yalnız bir ortalamanın üzerinde</td><td>Geçiş dönemi. Boyutu yarıya indir, yalnız en iyi kurulumları al.</td></tr>
+      <tr><td><span class="pill red">KIRMIZI · FREN</span></td><td>50 günlük SMA'nın altında</td><td>Koruma modu. Pozisyonları azalt ya da tamamen nakde geç, bekle.</td></tr>
+    </tbody>
+  </table>
+  <p style="margin-top:14px;"><strong class="a">Sarı ışık gerçek hayatta sık görülür.</strong> Örnek: Ocak 2023'te SPY, 50 günlük ortalamasının üzerine çıktı ama 200 günlüğün hâlâ altında ya da hemen dibindeydi. O dönemde "tam gaz" da "tam fren" de yanlıştı — doğrusu küçük boyutla seçici olmaktı.</p>
+  <div class="yani"><strong>Yani:</strong> Yeşilde tam boy, sarıda yarım boy ve seçici, kırmızıda kenarda. Işık karar verir, sen uygularsın.</div>
+</div>
+
+<div class="card">
+  <div class="label">Terimler</div>
+  <h2 style="margin-top:6px;">30 saniyede tanımlar</h2>
+  <p><strong>Endeks:</strong> Piyasanın geneli. Pratikte <strong>SPY</strong> (S&amp;P 500) ve <strong>QQQ</strong> (Nasdaq 100) ETF'lerine bakarız.</p>
+  <p><strong>SMA (basit hareketli ortalama):</strong> Son N günün kapanışlarının ortalaması. 50 günlük orta vadeli, 200 günlük uzun vadeli trendi gösterir.</p>
+  <p><strong>Ortalamanın üzerinde</strong> = yükseliş trendi; <strong>altında</strong> = düşüş trendi. Her iki ortalamanın üzerinde olmak en güçlü yeşildir; 50'nin altına sarkmak ilk uyarıdır.</p>
+</div>
+
+<div class="card">
+  <div class="label">Tarih ne diyor?</div>
+  <h2 style="margin-top:6px;">Işıklar gerçek piyasada test edildi</h2>
+  <div class="hist">
+    <div class="hist-card">
+      <span class="pill red">KIRMIZI</span>
+      <div class="val red">−%34,1</div>
+      <p style="font-size:13px;">COVID çöküşü: SPY 23 işlem gününde üçte birini kaybetti. 50 günlük ortalama daha ilk haftada kırıldı — fren sinyali, dibin çok üzerinde geldi.</p>
+      <div class="src">FMO · EOD kapanış · 19 Şub 2020: 338,34 → 23 Mar 2020: 222,95</div>
+    </div>
+    <div class="hist-card">
+      <span class="pill red">KIRMIZI</span>
+      <div class="val red">−%25,4</div>
+      <p style="font-size:13px;">2022 ayı piyasası: SPY ocak zirvesinden ekim dibine 9 ay düştü. Endeks bu sürede 50 günlük ortalamanın çoğunlukla altındaydı — fren neredeyse tüm yıl yanıktı.</p>
+      <div class="src">FMO · EOD kapanış · 3 Oca 2022: 477,71 → 12 Eki 2022: 356,56</div>
+    </div>
+    <div class="hist-card">
+      <span class="pill green">YEŞİL</span>
+      <div class="val green">+%33,3</div>
+      <p style="font-size:13px;">Toparlanma: Ekim 2022 dibinden 2023 sonuna SPY üçte bir değer kazandı. Sarıdan yeşile dönen ışık, yükselişin büyük kısmında "gaz" dedi.</p>
+      <div class="src">FMO · EOD kapanış · 12 Eki 2022: 356,56 → 29 Ara 2023: 475,31</div>
+    </div>
+  </div>
+  <div class="yani"><strong>Yani:</strong> Fren seni −%25'lik, −%34'lük çukurlardan korur. Gaz, +%33'lük yokuşları kaçırmamanı sağlar. İkisi de aynı sistemin parçası.</div>
+</div>
+
+<div class="card scenario" data-q="m2q1" data-xp="35">
+  <div class="label">Senaryo 1 · +35 XP</div>
+  <h2 style="margin-top:6px;">Fren yanıyor, elinde fırsat var</h2>
+  <p>Endeksler 50 günlük SMA'nın altına düştü. Tam o gün, aylardır izlediğin hisse harika bir kırılım kurulumu veriyor. Ne yaparsın?</p>
+  <button class="opt" data-k="w" data-e="Kırmızıda en iyi görünen kurulum bile akıntıya karşı yüzer. 2022'de böyle 'mükemmel' kurulumların çoğu günler içinde çöktü. Işıkla tartışma.">A) Kurulum çok iyi — yine de alırım</button>
+  <button class="opt" data-k="c" data-e="Doğru. Kırmızı ışık 'piyasa kesin düşecek' demez; 'istatistik şu an aleyhinde, bekle' der. Hisse gerçekten güçlüyse, ışık yeşile döndüğünde yeni bir kurulum daha verir.">B) Pozisyonları azaltır ya da nakde geçer, beklerim</button>
+  <button class="opt" data-k="w" data-e="Kaldıraç, üstünlüğün varken çarpan, yokken mezar kazıcısıdır. Kırmızıda kaldıraç artırmak, Modül 1'deki çukur matematiğini en hızlı şekilde aleyhine çalıştırır.">C) Fırsat büyük — kaldıraçla girerim</button>
+  <div class="explain"></div>
+</div>
+
+<div class="card">
+  <div class="label">Neden çalışır?</div>
+  <h2 style="margin-top:6px;">Aynı kurulum, iki farklı kader</h2>
+  <p><span class="dot g"></span><strong class="g">Yeşilde:</strong> Alıcılar baskın. Sıkışan hisse yukarı kırıldığında arkasından gelen para hareketi büyütür. İsabet oranı yükselir, kazananlar büyür.</p>
+  <p><span class="dot r"></span><strong class="r">Kırmızıda:</strong> Satıcılar baskın. Aynı kırılım önce çalışır gibi görünür, sonra satış dalgasıyla çöker. İsabet düşer, kayıplar birikir.</p>
+  <p>Qullamaggie'nin kendi deneyiminden: yeşil dönemde isabet <strong class="g">~%30</strong> ve sistem kârlı; kırmızıda <strong class="r">~%15</strong>'e düşüyor — bu noktada beklenen değer eksiye geçer, sistem <strong>para kaybettirir.</strong></p>
+  <p class="warn-note">Not: Oranlar Qullamaggie'nin kendi istatistikleridir; garanti değil, büyüklük sırası göstergesidir.</p>
+  <div class="yani"><strong>Yani:</strong> %30 ile %15 arasındaki fark küçük görünür ama biri kârlı sistem, öteki para öğüten makine. Aradaki tek değişken: piyasa ışığı.</div>
+</div>
+
+<div class="card">
+  <div class="label">Öte yandan</div>
+  <h2 style="margin-top:6px;">Yeşilde tereddüt de para kaybettirir</h2>
+  <p>Frene basmak madalyonun yalnızca bir yüzü. Sistemin kazancının büyük bölümü, görece kısa süren yeşil pencerelerden gelir. 2023 toparlanması gibi dönemlerde kenarda beklemek, çöküşte içeride kalmak kadar pahalıdır — kayıp sadece hesap ekstresinde değil, "kaçan fırsat" hanesinde yazar.</p>
+  <p><strong>Disiplin çift yönlüdür:</strong> kırmızı freni zorunlu kılar, yeşil gazı zorunlu kılar. İkisinde de duyguya değil kurala uyarsın.</p>
+  <div class="yani"><strong>Yani:</strong> Korkak boğa da, inatçı ayı da kaybeder. Işık neyse onu yap — tartışmadan.</div>
+</div>
+
+<div class="card scenario" data-q="m2q2" data-xp="35">
+  <div class="label">Senaryo 2 · +35 XP</div>
+  <h2 style="margin-top:6px;">Her şey yeşil, sen tedirginsin</h2>
+  <p>SPY ve QQQ her iki ortalamanın da üzerinde ve yükseliyor. Elinde kurallarına tam uyan, sıkı bir kırılım adayı var. Ama içinden bir ses "çok yükseldi, ya dönerse?" diyor. Işık ne diyor?</p>
+  <button class="opt" data-k="w" data-e="'Ya dönerse' duygudur, sinyal değil. Yeşil pencereler nadirdir ve sistemin kazancının çoğu buradan gelir. Beklemek bu pencereyi harcamaktır.">A) Yine de beklerim, piyasa dönebilir</button>
+  <button class="opt" data-k="c" data-e="Doğru. Yeşil ışık + kurallara uyan kurulum = gir. Stop seviyen yanılma ihtimalini zaten karşılıyor; tereddüdün karşıladığı tek şey fırsat maliyeti.">B) Yeşil ışık — kurallara göre girerim</button>
+  <button class="opt" data-k="w" data-e="Yarım girip 'gerisini şansa bırakmak' kural değil, pazarlıktır. Boyut kararını ışık ve risk planın verir; sarıda yarım boy mantıklıdır, yeşilde kural neyse o.">C) Yarısını alır, gerisini şansa bırakırım</button>
+  <div class="explain"></div>
+</div>
+
+<div class="card">
+  <div class="label">Zihniyet</div>
+  <h2 style="margin-top:6px;">Işık bir kapıdır, kahin değil</h2>
+  <p>Yeşil ışık "piyasa yükselecek" diye söz vermez; <strong>"işlem yapmaya iznin var"</strong> der. Kırmızı "kesin düşecek" demez; <strong>"bekle"</strong> der. Trafik lambası da kaza yapmayacağını garanti etmez — sadece geçişin güvenli olduğu anı söyler.</p>
+  <p>Her sabah, hisselere bakmadan önce tek soru: <strong>"Endeksler 50 ve 200 günlük SMA'nın üzerinde mi?"</strong> Bu, bütün işlem kararlarının önündeki ilk ve en önemli filtredir.</p>
+  <div class="yani"><strong>Yani:</strong> Işıktan tahmin isteme, izin iste. Kararı kurallar versin; sen sadece uygula.</div>
+</div>
+
+<div class="card">
+  <div class="label">Bu haftanın laboratuvarı</div>
+  <h2 style="margin-top:6px;">Bugünün ışığını sen belirle</h2>
+  <div>
+    <div class="lab-item"><input type="checkbox" data-c="m2l1" id="m2l1"><label for="m2l1"><code>marketpulse</code> çalıştır → SPY ve QQQ'nun 50 ve 200 günlük ortalamalara göre konumuna bak</label></div>
+    <div class="lab-item"><input type="checkbox" data-c="m2l2" id="m2l2"><label for="m2l2"><code>makro</code> çalıştır → genel risk iştahının ışıkla aynı yönde olup olmadığını doğrula</label></div>
+    <div class="lab-item"><input type="checkbox" data-c="m2l3" id="m2l3"><label for="m2l3">Grafiğe kendin bak — araca körü körüne güvenme, gözünle teyit et</label></div>
+    <div class="lab-item"><input type="checkbox" data-c="m2l4" id="m2l4"><label for="m2l4">Sonucu tek kelimeyle not et: <strong class="g">Gaz</strong>, <strong class="a">Dikkat</strong> ya da <strong class="r">Fren</strong> — 5 işlem günü boyunca her sabah tekrarla</label></div>
+  </div>
+  <div class="yani"><strong>Yani:</strong> Bu 30 saniyelik kontrol, her işlem gününün ilk hamlesi. Önce izin, sonra hisse.</div>
+</div>
+
+<div class="topnav">
+  <button class="navbtn" data-go="home">← Harita</button>
+  <button class="navbtn primary" data-go="m3">Modül 3: Av Sahası →</button>
+</div>
+</section>
+
+<!-- ============ MODÜL 3 ============ -->
+<section class="module" id="m3">
+<div class="topnav">
+  <button class="navbtn" data-go="m2">← Modül 2</button>
+  <span class="label">Faz 1 · Modül 3</span>
+  <button class="navbtn primary" data-go="f1">Faz 1 Sınavı →</button>
+</div>
+
+<div class="card">
+  <h1 style="font-size:23px;">Av Sahası: En Güçlüyü Filtrele</h1>
+  <div class="subtitle">~8 dakika · 2 senaryo · +70 XP</div>
+  <p style="margin-top:12px;">Borsada binlerce hisse var; senin avlanacağın saha 10-20 isimden ibaret olmalı. Ana felsefe: <strong>güç, güce akar.</strong> İndirim avlamak değil, momentum takip etmek.</p>
+</div>
+
+<div class="card">
+  <div class="label">Sistem</div>
+  <h2 style="margin-top:6px;">Üç filtreli huni</h2>
+  <p>Binlerce hisseyi üç filtreden geçirirsin; huninin dibinde avlanmaya değer bir avuç isim kalır.</p>
+  <table class="sortable">
+    <thead><tr><th>Filtre</th><th>Eşik</th><th>Neden</th></tr></thead>
+    <tbody>
+      <tr><td><strong>1 · Momentum</strong></td><td>Son 1, 3 ve 6 ayın en çok kazandıranları</td><td>Güç güce çeker. Çökmüş hisse "ucuz" değil, zayıftır.</td></tr>
+      <tr><td><strong>2 · Oynaklık (ADR)</strong></td><td>Günlük ortalama hareket en az <strong>%5</strong></td><td>Sistem asimetriden kazanır; kıpırdamayan hisse makul sürede +10R üretemez.</td></tr>
+      <tr><td><strong>3 · Likidite</strong></td><td>Günlük en az <strong>20 milyon $</strong> işlem hacmi</td><td>Kayma (slippage) olmadan rahat giriş-çıkış için şart.</td></tr>
+    </tbody>
+  </table>
+  <div class="yani"><strong>Yani:</strong> Aradığımız hisse: koşan, geniş adım atan ve kalabalık caddede işlem gören. Yavaş, dar ve tenha olanlar elenir.</div>
+</div>
+
+<div class="card">
+  <div class="label">Kalite onayı</div>
+  <h2 style="margin-top:6px;">Sağlıklı trend imzası</h2>
+  <p>Filtrelerden geçen adayda son kontrol: <strong>10 günlük SMA, 20 günlük SMA'nın üzerinde; fiyat her ikisinin de üstünde.</strong> Bu dizilim, sağlıklı ve henüz uzamamış bir yükseliş trendinin imzasıdır.</p>
+</div>
+
+<div class="card">
+  <div class="label">Temel ilke</div>
+  <h2 style="margin-top:6px;">Veri, hikâyeyi döver</h2>
+  <p>"Güzel hikâye + zayıf kurulum = kaybedilen işlem."</p>
+  <p>Kararlar yalnızca fiyata, hacme ve teknik yapıya dayanır — şirketin anlatısına, sosyal medyanın heyecanına ya da senin o hisseye duyduğun sempatiye değil. Hikâye en parlak göründüğü an, genellikle fiyatın çoktan koştuğu andır.</p>
+</div>
+
+<div class="card scenario" data-q="m3q1" data-xp="35">
+  <div class="label">Senaryo 1 · +35 XP</div>
+  <h2 style="margin-top:6px;">Herkesin konuştuğu hisse</h2>
+  <p>Bir hisse müthiş bir yapay zekâ hikâyesiyle gündemde. Ama tablo şu: 6 aydır düşüş trendinde, ADR %2, günlük hacim 8 milyon $. İzleme listene girer mi?</p>
+  <button class="opt" data-k="w" data-e="Hikâye filtre değildir. Bu hisse üç filtrenin üçünden de kalıyor: momentum yok (6 ay düşüş), ADR %2 < %5, hacim 8M $ < 20M $. Anlatı ne kadar parlaksa, tuzak o kadar derin olabilir.">A) Evet — tema güçlü, erken binmek lazım</button>
+  <button class="opt" data-k="c" data-e="Doğru. Üç filtreden üçü de kırmızı: düşüş trendi (momentum yok), %2 ADR (hareket yok), 8M $ hacim (likidite yok). Hikâye ne derse desin, veri 'hayır' diyor. Buna 'hikâye tuzağı' denir.">B) Hayır — üç filtreden üçünden de kalıyor</button>
+  <button class="opt" data-k="w" data-e="Yarım pozisyon, filtreyi geçemeyen hisseyi geçer yapmaz. Zayıf adaya küçük girmek, kötü işlemi küçük yapmaktır — iyi işlem yapmaz. Filtreyi geçemeyen aday listeye giremez.">C) Yarım pozisyonla denerim, belki tutar</button>
+  <div class="explain"></div>
+</div>
+
+<div class="card scenario" data-q="m3q2" data-xp="35">
+  <div class="label">Senaryo 2 · +35 XP</div>
+  <h2 style="margin-top:6px;">İki aday, tek koltuk</h2>
+  <p><strong>Hisse X:</strong> Son 3 ayın lideri, ADR %6, günlük hacim 30M $.<br>
+  <strong>Hisse Y:</strong> Zirvesinden %60 düşmüş, "artık çok ucuz" deniyor, ADR %4, hacim 15M $.<br>
+  Hangisi izleme listene girer?</p>
+  <button class="opt" data-k="c" data-e="Doğru. X üç filtreyi de geçiyor: lider (momentum), %6 ADR, 30M $ hacim. Güç güce akar — kazananlar kazanmaya devam etme eğilimindedir. Dip avcılığı bu sistemin işi değildir.">A) X — üç filtreyi de geçiyor</button>
+  <button class="opt" data-k="w" data-e="'Çok düştü' bir alım sebebi değil, bir uyarıdır. Y momentum filtresinden kalıyor (düşüş trendi), ADR %4 < %5 ve hacim 15M $ < 20M $. 'Ucuz' diye alınan hisse daha da ucuzlayabilir.">B) Y — dipten dönerse büyük kazandırır</button>
+  <button class="opt" data-k="w" data-e="İkisini birden almak çeşitlendirme değil, disiplinsizlik. Y filtreleri geçemiyor; listede yeri yok. Av sahasına yalnızca filtrelerden geçenler girer.">C) İkisi de — çeşitlendirme iyidir</button>
+  <div class="explain"></div>
+</div>
+
+<div class="card">
+  <div class="label">Günlük iş akışı</div>
+  <h2 style="margin-top:6px;">Panik değil, rutin</h2>
+  <p>Piyasa kapandıktan sonra tarama araçlarını çalıştır → ertesi gün için <strong>10-20 adaylık izleme listesi</strong> oluştur. Sabah telaşla hisse aramazsın; akşamdan hazırladığın listeyle uyanırsın.</p>
+  <p><strong>Araç:</strong> <code>qswing</code> (tarama modu)</p>
+</div>
+
+<div class="card">
+  <div class="label">Ödev</div>
+  <h2 style="margin-top:6px;">Huniyi kendin çalıştır</h2>
+  <div>
+    <div class="lab-item"><input type="checkbox" data-c="m3o1" id="m3o1"><label for="m3o1"><strong>3 aday</strong> bul: üç filtreden de geçsin; her biri için momentum, ADR ve hacim değerlerini not et</label></div>
+    <div class="lab-item"><input type="checkbox" data-c="m3o2" id="m3o2"><label for="m3o2">Bir <strong>"hikâye tuzağı"</strong> bul: anlatısı güçlü ama filtreleri geçemeyen bir hisse — hangi filtrelerden kaldığını tek cümleyle yaz</label></div>
+  </div>
+  <div class="yani"><strong>Yani:</strong> Av sahası dar olur. 10-20 güçlü isim, 3.000 vasat isimden her zaman daha değerlidir.</div>
+</div>
+
+<div class="topnav">
+  <button class="navbtn" data-go="home">← Harita</button>
+  <button class="navbtn primary" data-go="f1">Faz 1 Sınavı: Avcı →</button>
+</div>
+</section>
+
+<!-- ============ MODÜL 4 ============ -->
+<section class="module" id="m4">
+<div class="topnav">
+  <button class="navbtn" data-go="f1">← Faz 1 Sınavı</button>
+  <span class="label">Faz 2 · Modül 4</span>
+  <button class="navbtn primary" data-go="m5">Modül 5 →</button>
+</div>
+
+<div class="card">
+  <h1 style="font-size:23px;">Sıkı Kurulum: Yay Gerilmesi</h1>
+  <div class="subtitle">~9 dakika · 2 senaryo · +80 XP</div>
+  <p style="margin-top:12px;">Qullamaggie'nin tüm metodu tek cümlede özetlenir: <strong>"It's all about tight setups"</strong> — her şey sıkı kurulumlarda biter. En güçlü hisseyi buldun (Modül 3); şimdi onu <strong>doğru anda</strong> yakalamak için kurulumun anatomisini öğren.</p>
+</div>
+
+<div class="card">
+  <div class="label">Anatomi</div>
+  <h2 style="margin-top:6px;">Kurulumun iki parçası</h2>
+  <h3>1 · Bayrak direği (flag pole)</h3>
+  <p>Keskin, güçlü bir yükseliş — momentum patlaması. Direk = yakıt. Yakıtı olmayan hissenin bayrağı da güvenilmezdir.</p>
+  <h3 style="margin-top:14px;">2 · Sıkı konsolidasyon (bayrak)</h3>
+  <p>Direğin ardından fiyatın dar bir aralıkta dinlenmesi, <strong>yay gibi gerilmesi.</strong> Küçük mumlarla, azalan oynaklıkla, yatay ve sakin seyreder.</p>
+  <div class="yani"><strong>Yani:</strong> Önce bir fırlama (direk), sonra bir nefes (sıkı bayrak). Yay ne kadar sıkı gerilirse, bırakıldığında o kadar sert fırlar. Biz o gerilmiş yayı avlarız.</div>
+</div>
+
+<div class="card">
+  <div class="label">Konum</div>
+  <h2 style="margin-top:6px;">Bayrak nerede oluşmalı?</h2>
+  <p>Sıkı bayrak, <strong>hareketli ortalamaların hemen üstünde</strong> oluşmalı:</p>
+  <p><span class="dot g"></span>10 günlük SMA, 20 günlük SMA'nın üzerinde</p>
+  <p><span class="dot g"></span>Fiyat, 10 günlük SMA'nın <strong>hemen üstünde</strong> sıkışıyor — ortalamadan kopup uzaklaşmış değil</p>
+  <p>İdeal resim: fiyat 10 günlük ortalamaya yaslanmış, dar bir aralıkta gerilmiş; altında 10&gt;20 SMA merdiveni.</p>
+</div>
+
+<div class="card">
+  <div class="label">Neden önemli?</div>
+  <h2 style="margin-top:6px;">Sıkılık = küçük risk + büyük potansiyel</h2>
+  <p>Sıkı bayrakta fiyat dar aralıkta → stop'unu <strong>çok yakına</strong> koyabilirsin → 1R küçülür. Kırılım gerçekleşince hareket büyük olabilir → potansiyel +10R.</p>
+  <div class="formula">Sıkı kurulum → yakın stop → küçük 1R → büyük R-katı potansiyeli</div>
+  <p>Gevşek konsolidasyonda stop uzaktır → 1R büyür → aynı fiyat hareketi daha az R eder. Modül 1'deki asimetri matematiği tam burada kazanılır ya da kaybedilir.</p>
+</div>
+
+<div class="card scenario" data-q="m4q1" data-xp="40">
+  <div class="label">Göz testi · +40 XP</div>
+  <h2 style="margin-top:6px;">Hangisi A+ kurulum?</h2>
+  <p><strong>Grafik A:</strong> Güçlü direkten sonra giderek daralan, küçük mumlu, 10 günlük SMA'ya yaslı dar aralık.<br>
+  <strong>Grafik B:</strong> Geniş, savruk, büyük mumlu; fiyat 20 günlük SMA'nın bir altına bir üstüne çırpınan yatay.</p>
+  <button class="opt" data-k="c" data-e="Doğru. Daralan aralık + küçük mumlar + 10 SMA'ya yaslanma = gerilmiş yay. Stop yakın, 1R küçük, asimetri sende.">A) Grafik A — daralan, sakin, ortalamaya yaslı</button>
+  <button class="opt" data-k="w" data-e="Geniş ve savruk konsolidasyon gevşek yaydır: stop uzak, 1R büyük, kırılım güvenilmez. 20 SMA'nın altına sarkıp duran fiyat, alıcı-satıcı dengesinin hâlâ kurulmadığını gösterir.">B) Grafik B — oynaklık yüksek, daha çok fırsat var</button>
+  <div class="explain"></div>
+</div>
+
+<div class="card">
+  <div class="label">Tuzaklar</div>
+  <h2 style="margin-top:6px;">Üç yaygın hata</h2>
+  <table class="sortable">
+    <thead><tr><th>Hata</th><th>Neden tehlikeli</th></tr></thead>
+    <tbody>
+      <tr><td>Uzamış (extended) hisseyi kovalamak</td><td>Fiyat 10 SMA'dan çok uzakta → stop uzak, risk büyük, geç kalmışsın</td></tr>
+      <tr><td>Gevşek / geniş bazı almak</td><td>Aralık geniş → 1R büyük → asimetri bozulur</td></tr>
+      <tr><td>10 SMA, 20'nin altındayken girmek</td><td>Dizilim bozuk = bu aslında bir düşüş trendi</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="card scenario" data-q="m4q2" data-xp="40">
+  <div class="label">Senaryo · +40 XP</div>
+  <h2 style="margin-top:6px;">Tren kalkmış mı?</h2>
+  <p>Harika bir lider hisse, ama şu an <strong>10 günlük SMA'sının %20 üstünde</strong> — dik bir yükselişte ve ortada sıkı bir bayrak <strong>yok.</strong> Şimdi girer misin?</p>
+  <button class="opt" data-k="w" data-e="Bu FOMO'nun ders kitabı tanımı. Uzamış hissede stop koyacak mantıklı yer yok: yakın stop anlamsız (gürültüyle stoplanırsın), uzak stop 1R'yi şişirir. Güçlü hisseler tekrar bayrak yapar — o zaman binersin.">A) Evet — çok güçlü, kaçırmak istemem</button>
+  <button class="opt" data-k="c" data-e="Doğru. Uzamış hisse 'güzel ama binilemez' durumdadır. Geri çekilip 10 SMA civarında yeni bir sıkı bayrak kurarsa, o zaman tanımlı riskle girersin. Tren kaçmaz; istasyona tekrar gelir.">B) Hayır — uzamış. Geri çekilip sıkı bayrak yapmasını beklerim</button>
+  <button class="opt" data-k="w" data-e="Güçlü momentumun tepesinden short açmak, gelen trenin önünde durmaktır. 'Çok yükseldi' bir short sebebi değildir — momentum beklediğinden çok daha uzun sürebilir.">C) Tam tepeden short açarım</button>
+  <div class="explain"></div>
+</div>
+
+<div class="card">
+  <div class="label">İmza</div>
+  <h2 style="margin-top:6px;">A+ sıkı kurulumun üç koşulu</h2>
+  <p><span class="dot g"></span>Net, güçlü bir <strong>direk</strong> (momentum kanıtı)</p>
+  <p><span class="dot g"></span>Giderek <strong>daralan</strong>, küçük mumlu, 10 SMA'ya yaslı bayrak</p>
+  <p><span class="dot g"></span>Dizilim: fiyat &gt; 10 SMA &gt; 20 SMA ve <strong>uzamamış</strong></p>
+</div>
+
+<div class="card">
+  <div class="label">Laboratuvar + Ödev</div>
+  <h2 style="margin-top:6px;">Gözünü kalibre et</h2>
+  <div>
+    <div class="lab-item"><input type="checkbox" data-c="m4l1" id="m4l1"><label for="m4l1"><code>qswing</code> (tek hisse modu) → sıkı kurulum, 10/20 SMA konumu ve kırılım okuması</label></div>
+    <div class="lab-item"><input type="checkbox" data-c="m4l2" id="m4l2"><label for="m4l2"><code>swinganalysis</code> → giriş seviyesi ve kurulum kalitesi; önce gözünle karar ver, sonra araçla doğrula</label></div>
+    <div class="lab-item"><input type="checkbox" data-c="m4o1" id="m4o1"><label for="m4o1"><strong>3 grafik</strong> bul: her birini "sıkı" ya da "gevşek" etiketle, gerekçeni tek cümleyle yaz</label></div>
+    <div class="lab-item"><input type="checkbox" data-c="m4o2" id="m4o2"><label for="m4o2">Her grafikte 10&gt;20 SMA dizilimini kontrol et; bir <strong>"uzamış/kovalama"</strong> örneği işaretle</label></div>
+  </div>
+  <div class="yani"><strong>Yani:</strong> Emin değilsen "sıkı değil" say ve geç. Kaçırılan fırsat, kötü girişten çok daha ucuzdur.</div>
+</div>
+
+<div class="topnav">
+  <button class="navbtn" data-go="home">← Harita</button>
+  <button class="navbtn primary" data-go="m5">Modül 5: Giriş &amp; Stop →</button>
+</div>
+</section>
+<!-- ============ MODÜL 5 ============ -->
+<section class="module" id="m5">
+<div class="topnav">
+  <button class="navbtn" data-go="m4">← Modül 4</button>
+  <span class="label">Faz 2 · Modül 5</span>
+  <button class="navbtn primary" data-go="m6">Modül 6 →</button>
+</div>
+
+<div class="card">
+  <h1 style="font-size:23px;">Giriş &amp; Stop: ORH ve Günün Dibi</h1>
+  <div class="subtitle">~9 dakika · 2 senaryo · +80 XP</div>
+  <p style="margin-top:12px;">Sıkı kurulumu buldun — şimdi <strong>ne zaman</strong> ve <strong>nereye</strong> gireceğini, yanılırsan <strong>nereden</strong> çıkacağını öğren.</p>
+</div>
+
+<div class="card">
+  <div class="label">Tetik mantığı</div>
+  <h2 style="margin-top:6px;">Sıkı kurulum ≠ hemen alım</h2>
+  <p>Gerilmiş yay, tek başına alım sebebi değildir — yayın gerçekten fırladığını görmeden tetik çekme. Motorun iki giriş tetiği var:</p>
+  <table class="sortable">
+    <thead><tr><th>Tetik</th><th>Açıklama</th></tr></thead>
+    <tbody>
+      <tr><td><strong>ORH</strong></td><td>Açılış Aralığı Kırılımı (Opening Range High) — sessiz bayrak kırılımı</td></tr>
+      <tr><td><strong>EP</strong></td><td>Episodik Pivot — gürültülü haber/earnings boşluğu (Modül 9'da derinleşecek)</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="card">
+  <div class="label">Tetik 1</div>
+  <h2 style="margin-top:6px;">ORH: Açılış aralığının zirvesi</h2>
+  <p>Piyasa açıldığında hissenin ilk <strong>1, 5 veya 60 dakikası</strong> açılış aralığını belirler (hangi zaman dilimini kullanacağın senin planına bağlı — önemli olan tutarlılık). Bu aralığın zirvesi <strong>hacimle</strong> kırıldığında giriş tetiği aktive olur.</p>
+  <p><strong>Mantık:</strong> Açılış zirvesi, alıcıyla satıcı arasındaki savaş çizgisidir. Fiyat bu çizgiyi hacimle geçtiğinde alıcılar kontrolü ele geçirmiştir — giriş anı odur.</p>
+</div>
+
+<div class="card">
+  <div class="label">Kritik kural</div>
+  <h2 style="margin-top:6px;">Kovalama yok: 1 ATR sınırı</h2>
+  <p><strong>ATR (Ortalama Gerçek Aralık):</strong> Hissenin bir günde tipik olarak kat ettiği mesafe.</p>
+  <p><strong>Ana ilke:</strong> Gün içi hareket zaten 1 ATR'yi aştıysa, <strong class="r">kovalama yok.</strong> Tetiği kaçırdıysan ve fiyat koştuysa, stop çok geniş açılır, risk şişer, asimetri bozulur.</p>
+  <div class="yani"><strong>Yani:</strong> Otobüs kalktıysa arkasından koşma. Bu sistemde her gün yeni otobüs var — kaçırılan işlem, kötü girişten çok daha ucuzdur.</div>
+</div>
+
+<div class="card scenario" data-q="m5q1" data-xp="40">
+  <div class="label">Senaryo 1 · +40 XP</div>
+  <h2 style="margin-top:6px;">Tetiği kaçırdın, fiyat koştu</h2>
+  <p>Hisse ORH'yi kırdı ama sen izlemiyordun. Fiyat şu an kırılımın <strong>+2 ATR</strong> üzerinde. Ne yaparsın?</p>
+  <button class="opt" data-k="w" data-e="+2 ATR'de girersen stop'un ya mantıksız uzakta olur (1R şişer) ya da mantıksız yakında (gürültüyle stoplanırsın). İki durumda da matematik bozuldu. Momentum güçlü olabilir ama senin girişin artık üstünlük taşımıyor.">A) Hemen alırım — momentum güçlü, kaçırmam</button>
+  <button class="opt" data-k="c" data-e="Doğru. 1 ATR sınırı aşıldı = işlem yok. Güçlü hisseler yeni kurulumlar yapar; sabırlı avcı bir sonraki sıkı bayrağı bekler. Kaçan işlem maliyet değildir; kötü giriş maliyettir.">B) Geçerim — kovalamak yok, sonraki kurulumu beklerim</button>
+  <button class="opt" data-k="w" data-e="'Yarısını al, düşerse ekle' iki hatayı birleştirir: kovalama + zarar eden pozisyona ekleme (averaging down). Düşerse eklemek, yanlış çıkan teze para yatırmaktır.">C) Yarısını alırım, düşerse eklerim</button>
+  <div class="explain"></div>
+</div>
+
+<div class="card">
+  <div class="label">Güvenlik ağı 1</div>
+  <h2 style="margin-top:6px;">Stop = Günün Dibi (LoD)</h2>
+  <p>Girdikten sonra, giriş gününün en düşük noktası (Low of the Day) ilk günün stop'udur. <strong>İstisna yok.</strong></p>
+  <p><strong>Mantık:</strong> Fiyat kırılım gününün dibinin altına düşerse kurulum başarısız olmuştur. Oradan çıkarsın. Tahmin yok, "biraz daha bekleyeyim" yok.</p>
+</div>
+
+<div class="card">
+  <div class="label">Güvenlik ağı 2</div>
+  <h2 style="margin-top:6px;">Boşluk istisnası</h2>
+  <p>Boşluklu (gap) açılışlarda ve EP kurulumlarında stop, <strong>açılış mumunun dibine</strong> konur. Boşluk mesafesi risk hesabına dahil edilir — boşluk işlemleri doğası gereği daha geniş risk taşır.</p>
+</div>
+
+<div class="card">
+  <div class="label">Mesafe sınırı</div>
+  <h2 style="margin-top:6px;">Stop mesafesi ≤ 1 ATR</h2>
+  <p>Giriş ile stop arasındaki mesafe genellikle bir günlük ATR'yi geçmemeli. Geçiyorsa iki ihtimal var: ya kurulum yeterince sıkı değil, ya giriş çok geç geldi. İkisinde de cevap aynı: <strong>geç.</strong></p>
+  <div class="formula">Sıkı kurulum (M4) → yakın stop → küçük 1R → asimetri (M1)</div>
+</div>
+
+<div class="card scenario" data-q="m5q2" data-xp="40">
+  <div class="label">Senaryo 2 · +40 XP</div>
+  <h2 style="margin-top:6px;">Stop fazla uzak</h2>
+  <p>Bir kurulumda giriş ile günün dibi arasında <strong>2,5 ATR</strong> mesafe var. Ne yaparsın?</p>
+  <button class="opt" data-k="w" data-e="2,5 ATR'lik stop 'kabul edilebilir' değil; 1R'yi 2,5 kat şişirir. Aynı kazanç artık 2,5 kat daha az R eder — Modül 1'in asimetri matematiği çöktü.">A) Yine de girerim; stop geniş ama kabul edilebilir</button>
+  <button class="opt" data-k="c" data-e="Doğru. Stop mesafesi >1 ATR = kurulum yeterince sıkı değil ya da giriş geç. Bu işlem geçilir. Disiplin tam da böyle anlarda kazanılır.">B) Geçerim — stop &gt;1 ATR, kurulum yeterince sıkı değil</button>
+  <button class="opt" data-k="w" data-e="Stop'u 'yapay olarak' yakına çekmek riski küçültmez, sadece stoplanma ihtimalini büyütür. Stop, grafiğin söylediği yere konur — senin istediğin yere değil. Yapay stop = gürültüye bağış.">C) Stop'u yapay olarak 1 ATR'ye çekerim</button>
+  <div class="explain"></div>
+</div>
+
+<div class="card">
+  <div class="label">Laboratuvar + Ödev</div>
+  <h2 style="margin-top:6px;">Plansız giriş yok</h2>
+  <div>
+    <div class="lab-item"><input type="checkbox" data-c="m5l1" id="m5l1"><label for="m5l1"><code>qswing</code> (tek hisse modu) → giriş tetiği, stop konumu ve yaşam döngüsü okuması</label></div>
+    <div class="lab-item"><input type="checkbox" data-c="m5l2" id="m5l2"><label for="m5l2">Modül 3-4'ten bir adayın için yaz: ORH nerede oluşur? Günün dibi stop'u ≤1 ATR mı?</label></div>
+    <div class="lab-item"><input type="checkbox" data-c="m5o1" id="m5o1"><label for="m5o1">Giriş − stop = kaç ATR? 1'in üzerindeyse bu kurulumu neden <strong>geçeceğini</strong> tek cümleyle açıkla</label></div>
+  </div>
+  <div class="yani"><strong>Yani:</strong> Önce yaz, sonra araçla doğrula, sonra gir — ya da geç. Sıralama asla değişmez.</div>
+</div>
+
+<div class="topnav">
+  <button class="navbtn" data-go="home">← Harita</button>
+  <button class="navbtn primary" data-go="m6">Modül 6: Pozisyon Boyutu →</button>
+</div>
+</section>
+
+<!-- ============ MODÜL 6 ============ -->
+<section class="module" id="m6">
+<div class="topnav">
+  <button class="navbtn" data-go="m5">← Modül 5</button>
+  <span class="label">Faz 2 · Modül 6</span>
+  <button class="navbtn primary" data-go="f2">Faz 2 Sınavı →</button>
+</div>
+
+<div class="card">
+  <h1 style="font-size:23px;">Mekanik Pozisyon Boyutu</h1>
+  <div class="subtitle">~8 dakika · 2 senaryo · +80 XP</div>
+  <p style="margin-top:12px;">Doğru hisse, doğru zamanlama, doğru stop — peki <strong>kaç lot?</strong> Yanlış boyut, en iyi sistemi bile bozar. İyi haber: cevap bir formülde saklı ve duyguya hiç yer yok.</p>
+</div>
+
+<div class="card">
+  <div class="label">Temel ilke</div>
+  <h2 style="margin-top:6px;">Her işlemde aynı parasal risk</h2>
+  <p>Her işlemde <strong>sabit bir dolar tutarı</strong> riske et (örneğin 500 $). Önceden belirlenmiş, tüm işlemlerde aynı. Böylece hiçbir işlem hesabına orantısız zarar veremez.</p>
+  <p><strong>Tanım:</strong> 1R = bu sabit risk tutarın. Genellikle hesabın %0,5–1'i makul bir başlangıçtır.</p>
+</div>
+
+<div class="card">
+  <div class="label">Çekirdek formül</div>
+  <h2 style="margin-top:6px;">Tek formül, sıfır duygu</h2>
+  <div class="formula">Lot = Parasal Risk ÷ (Giriş Fiyatı − Stop Fiyatı)</div>
+  <p><strong>Örnek:</strong> Risk 500 $, giriş 50 $, stop 47 $. Stop mesafesi = 3 $.</p>
+  <p>500 $ ÷ 3 $ = <strong>166 lot</strong></p>
+  <p>Stop 47 $'da tetiklenirse: 166 × 3 $ ≈ 500 $ — tam planladığın 1R. Sürpriz yok.</p>
+</div>
+
+<div class="card">
+  <div class="label">Neden çalışır?</div>
+  <h2 style="margin-top:6px;">Formül boyutu kendisi ayarlar</h2>
+  <p><span class="dot g"></span><strong>Sıkı kurulum</strong> (yakın stop, küçük mesafe) → daha çok lot, ama risk yine 500 $</p>
+  <p><span class="dot a"></span><strong>Gevşek kurulum</strong> (uzak stop) → daha az lot, risk yine 500 $</p>
+  <p>Sonuç: hangi işlem olursa olsun, kaybedenler hep aynı 1R'ye mal olur. Modül 1'deki matematik ancak böyle çalışabilir.</p>
+</div>
+
+<div class="card scenario" data-q="m6q1" data-xp="40">
+  <div class="label">Pratik soru · +40 XP</div>
+  <h2 style="margin-top:6px;">Hesabı sen yap</h2>
+  <p>Risk 500 $, giriş 20 $, stop 19 $ (mesafe 1 $). Kaç lot alırsın?</p>
+  <button class="opt" data-k="c" data-e="Doğru: 500 $ ÷ 1 $ = 500 lot. Stop tetiklenirse 500 × 1 $ = 500 $ = tam 1R. Formül bu kadar basit — ve bu basitlik onun gücü.">A) 500 lot</button>
+  <button class="opt" data-k="w" data-e="500 $ ÷ 1 $ = 500 lot olmalı. 250 lot alırsan stop'ta yalnızca 250 $ kaybedersin — kulağa iyi geliyor ama kazandığında da yarım kazanırsın. Sistem, planlanan R üzerinden çalışır.">B) 250 lot</button>
+  <button class="opt" data-k="w" data-e="100 lot, riskin yalnızca 100 $'ını kullanır. Formül: 500 ÷ (20−19) = 500 lot. Mesafe küçükken lot büyür — risk hep sabit kalır.">C) 100 lot</button>
+  <div class="explain"></div>
+</div>
+
+<div class="card">
+  <div class="label">İkinci sınır</div>
+  <h2 style="margin-top:6px;">Tek hisse ≤ portföyün ~%20'si</h2>
+  <p>Formül bazen çok yakın stop'lu kurulumlarda dev pozisyon önerir. İkinci güvenlik kuralı devreye girer: <strong>tek hisse, portföyün yaklaşık %20'sini aşamaz.</strong> Formül daha büyüğünü söylese bile %20'de kesersin.</p>
+  <p><strong>Neden:</strong> Stop, fiyatın oraya <strong>uğramasını</strong> gerektirir. Hisse gece kötü haberle %30 aşağıda açılırsa stop'un atlanır — kaybın 1R değil, çok daha fazlası olur. %20 tavanı, bu felaket senaryosunun hesabını sınırlar.</p>
+</div>
+
+<div class="card scenario" data-q="m6q2" data-xp="40">
+  <div class="label">Senaryo · +40 XP</div>
+  <h2 style="margin-top:6px;">Kurallar çakışırsa</h2>
+  <p>Formül 40.000 $'lık pozisyon söylüyor — ama bu, 115.000 $'lık hesabının yaklaşık %35'i. Ne yaparsın?</p>
+  <button class="opt" data-k="w" data-e="Formül risk kuralı, %20 tavanı felaket kuralıdır. İkisi çakışınca koruyucu olan kazanır. %35'lik pozisyonda kötü bir gecelik boşluk, aylar süren birikimini siler.">A) Formülü uygularım (40.000 $)</button>
+  <button class="opt" data-k="c" data-e="Doğru. 115.000 × %20 = 23.000 $ tavan. Formül 40.000 dese de pozisyon 23.000 $'da kesilir. İki kural çakıştığında her zaman daha muhafazakâr olan kazanır.">B) %20'de keserim (~23.000 $), fazlasını geçerim</button>
+  <button class="opt" data-k="w" data-e="'Güçlü kurulum' istisna yaratmaz — istisnalar disiplini öldürür. Bir kez %50 yaparsan, bir dahaki 'çok güçlü' kurulumda %80 yaparsın. Kural kuraldır.">C) %50'ye çıkarım — kurulum çok güçlü</button>
+  <div class="explain"></div>
+</div>
+
+<div class="card">
+  <div class="label">Özet</div>
+  <h2 style="margin-top:6px;">İki sınır, iki felaketten koruma</h2>
+  <table class="sortable">
+    <thead><tr><th>Kural</th><th>Önlediği felaket</th></tr></thead>
+    <tbody>
+      <tr><td>Sabit 1R riski (formül)</td><td>Tek işlemden orantısız kayıp</td></tr>
+      <tr><td>%20 konsantrasyon tavanı</td><td>Tek hissenin gecelik boşlukla hesabı mahvetmesi</td></tr>
+    </tbody>
+  </table>
+  <div class="yani"><strong>Yani:</strong> Mekanik boyutlama "en fazla ne kaybederim?" sorusunu önceden cevaplar. Hiçbir tek pozisyon sistemi bozamaz — kumarhane masalarından birinde ne olursa olsun, kumarhane ayakta kalır.</div>
+</div>
+
+<div class="card">
+  <div class="label">Laboratuvar + Ödev</div>
+  <h2 style="margin-top:6px;">Kendi rakamlarınla</h2>
+  <div>
+    <div class="lab-item"><input type="checkbox" data-c="m6l1" id="m6l1"><label for="m6l1">Sabit parasal riskini belirle (hesabın %0,5–1'i) ve bir yere <strong>yaz</strong></label></div>
+    <div class="lab-item"><input type="checkbox" data-c="m6l2" id="m6l2"><label for="m6l2"><strong>3 farklı stop mesafesiyle</strong> lot hesabı yap (yakın, orta, uzak stop)</label></div>
+    <div class="lab-item"><input type="checkbox" data-c="m6l3" id="m6l3"><label for="m6l3">Her birinde <strong>%20 tavanını</strong> kontrol et — tavan kaç kez devreye girdi?</label></div>
+  </div>
+</div>
+
+<div class="topnav">
+  <button class="navbtn" data-go="home">← Harita</button>
+  <button class="navbtn primary" data-go="f2">Faz 2 Sınavı: İcracı →</button>
+</div>
+</section>
+
+<!-- ============ MODÜL 7 ============ -->
+<section class="module" id="m7">
+<div class="topnav">
+  <button class="navbtn" data-go="f2">← Faz 2 Sınavı</button>
+  <span class="label">Faz 3 · Modül 7</span>
+  <button class="navbtn primary" data-go="m8">Modül 8 →</button>
+</div>
+
+<div class="card">
+  <h1 style="font-size:23px;">Kâr Alma &amp; Trend Sürme</h1>
+  <div class="subtitle">~9 dakika · 2 senaryo · +90 XP</div>
+  <p style="margin-top:12px;">Girdin, hisse koştu — şimdi en zor soru: <strong>ne zaman çıkacaksın?</strong> Erken çıkarsan büyük kazananı kaçırırsın; geç çıkarsan kâr buhar olur. Cevap yine kurallarda.</p>
+</div>
+
+<div class="card">
+  <div class="label">Çıkış felsefesi</div>
+  <h2 style="margin-top:6px;">İki parçalı çıkış</h2>
+  <p>Strateji iki parça: <strong>erken kâr kilitleme</strong> + <strong>kalanı trend bitene kadar taşıma.</strong></p>
+  <p>Bu yapı iki zıt duyguyu aynı anda yönetir: korku "kârı hemen al" diye bağırır — ilk parça onu susturur. Açgözlülük "daha da yükselecek" diye fısıldar — ikinci parça onu kurala bağlar.</p>
+</div>
+
+<div class="card">
+  <div class="label">Parça 1</div>
+  <h2 style="margin-top:6px;">3-5 gün kuralı</h2>
+  <p>Kırılımdan sonraki <strong>3-5 gün</strong> içinde güçlü bir ralli gelirse, pozisyonun <strong>%33-50'sini sat</strong> → kâr kilitlendi, risk azaldı.</p>
+  <p><strong>Hemen ardından:</strong> kalan pozisyonun stop'unu giriş fiyatına (başabaş noktasına) taşı.</p>
+</div>
+
+<div class="card">
+  <div class="label">Parça 2</div>
+  <h2 style="margin-top:6px;">Bedava sörf (free ride)</h2>
+  <p>Kısmi satış + stop'un maliyete taşınması = sihirli kombinasyon. Kilitlenen kâr cepte; kalan pozisyonda artık <strong>kaybetme ihtimalin yok.</strong> Piyasanın parasıyla sörf yapıyorsun — dalga nereye götürürse.</p>
+</div>
+
+<div class="card">
+  <div class="label">Parça 3</div>
+  <h2 style="margin-top:6px;">Runner yönetimi: 10 günlük ortalama</h2>
+  <p><strong>Runner:</strong> kısmi satıştan sonra elde kalan pozisyon. Ona sabit kâr hedefi koyma — en büyük kazançlar her zaman tahminin ötesine geçer.</p>
+  <p>Takip aracı: <strong>10 günlük hareketli ortalama (10 DMA).</strong> Fiyat 10 DMA'nın üzerinde kaldıkça trend sağlıklı → tut. 10 DMA yükselen bir taban gibi pozisyonun altından takip eder.</p>
+  <p><strong>Çıkış sinyali:</strong> Fiyat ilk kez 10 DMA'nın <strong>altında kapandığında</strong> çık. Kritik detay: gün içi sarkmalar tetik <strong>değildir</strong> — yalnızca günlük kapanış sayılır.</p>
+</div>
+
+<div class="card scenario" data-q="m7q1" data-xp="45">
+  <div class="label">Senaryo 1 · +45 XP</div>
+  <h2 style="margin-top:6px;">Dördüncü günde ralli</h2>
+  <p>Kırılımdan 4 gün sonra hisse <strong>+%15</strong> yukarıda ve güçlü gidiyor. Kurallar ne diyor?</p>
+  <button class="opt" data-k="w" data-e="Hepsini satmak korkunun kararıdır. Kazancın asıl büyüğü runner'dan gelir — 10-20R'lik işlemler, ilk güçlü günde her şeyi satan traderın asla göremeyeceği rakamlardır.">A) Hepsini satarım — kâr kârdır</button>
+  <button class="opt" data-k="c" data-e="Doğru: %33-50 sat (kâr kilitle) + stop'u maliyete taşı (bedava sörf) + kalan runner'ı 10 DMA ile takip et. Korku da açgözlülük de kurala bağlandı.">B) %33-50'sini satarım, stop'u maliyete taşırım, kalanı 10 DMA'da sürerim</button>
+  <button class="opt" data-k="w" data-e="Hiçbir şey yapmamak da karar — ve kötüsü. Kısmi kâr kilitlenmeden gelen sert düzeltme, kâğıt üzerindeki kazancı birkaç günde buharlaştırır. 3-5 gün kuralı tam bu yüzden var.">C) Hiçbir şey yapmam — hedef fiyatımı beklerim</button>
+  <div class="explain"></div>
+</div>
+
+<div class="card scenario" data-q="m7q2" data-xp="45">
+  <div class="label">Senaryo 2 · +45 XP</div>
+  <h2 style="margin-top:6px;">Gün içi korkutma</h2>
+  <p>Runner'ın var. Bugün fiyat gün içinde 10 DMA'nın <strong>altına sarktı</strong>, ama kapanışta <strong>üzerine geri döndü.</strong> Ne yaparsın?</p>
+  <button class="opt" data-k="w" data-e="Gün içi sarkma tetik değildir. Büyük trendlerde fiyat 10 DMA'yı gün içinde defalarca test eder — her seferinde çıkanlar, asıl hareketi hep kaçırır.">A) Çıkarım — 10 DMA'ya dokundu, sinyal geldi</button>
+  <button class="opt" data-k="c" data-e="Doğru. Kural net: yalnızca 10 DMA ALTINDA GÜNLÜK KAPANIŞ tetiktir. Bugün kapanış üstte = trend sağlıklı = tut. Bu detay, uzun trendlerin tamamını yakalamanın anahtarıdır.">B) Tutarım — yalnızca kapanış altı tetiktir, kapanış üstte</button>
+  <button class="opt" data-k="w" data-e="Korkutma atlatıldı diye pozisyon büyütmek plana yeni risk ekler. Runner'ın işi büyümek değil, taşınmaktır — ekleme kararı ayrı bir kurulum gerektirir.">C) Pozisyonu büyütürüm — testi geçti, güçlü demek</button>
+  <div class="explain"></div>
+</div>
+
+<div class="card">
+  <div class="label">Büyük resim</div>
+  <h2 style="margin-top:6px;">10R buradan gelir</h2>
+  <p>Garantili kısmi kâr (3-5 gün kuralı) + ara sıra gelen dev runner'lar (10 DMA takibi) = asimetrik getiri.</p>
+  <p>Çoğu işlem küçük sonuçlanır; ama birkaç runner 20-30 günde <strong>10-20R</strong>'ye ulaşır. Modül 1'deki "%25 isabetle servet" matematiğinin motoru tam burasıdır.</p>
+  <div class="yani"><strong>Yani:</strong> Küçük kârları kilitleyerek hayatta kalırsın; runner'ları sürerek zenginleşirsin. İkisini aynı pozisyon içinde yaparsın.</div>
+</div>
+
+<div class="card">
+  <div class="label">Araçlar + Ödev</div>
+  <h2 style="margin-top:6px;">Geçmişten öğren</h2>
+  <div>
+    <div class="lab-item"><input type="checkbox" data-c="m7l1" id="m7l1"><label for="m7l1"><code>trailstop</code> → 10 günlük takip stop seviyesini ve tut/çık planını hesaplar</label></div>
+    <div class="lab-item"><input type="checkbox" data-c="m7l2" id="m7l2"><label for="m7l2"><code>qswing</code> → kısmi ve nihai çıkış mantığıyla 4 evreli yaşam döngüsünü gösterir</label></div>
+    <div class="lab-item"><input type="checkbox" data-c="m7o1" id="m7o1"><label for="m7o1">Geçmiş bir kazanan işlemin grafiğini bul; işaretle: giriş, 3-5 günlük kısmi satış, başabaş stop, 10 DMA çizgisi, kapanış altı çıkış</label></div>
+    <div class="lab-item"><input type="checkbox" data-c="m7o2" id="m7o2"><label for="m7o2">Hesapla: "İlk güçlü günde her şeyi satsaydım ne kadar kaçırırdım?"</label></div>
+  </div>
+</div>
+
+<div class="topnav">
+  <button class="navbtn" data-go="home">← Harita</button>
+  <button class="navbtn primary" data-go="m8">Modül 8: Akıllı Para →</button>
+</div>
+</section>
+
+<!-- ============ MODÜL 8 ============ -->
+<section class="module" id="m8">
+<div class="topnav">
+  <button class="navbtn" data-go="m7">← Modül 7</button>
+  <span class="label">Faz 3 · Modül 8</span>
+  <button class="navbtn primary" data-go="m9">Modül 9 →</button>
+</div>
+
+<div class="card">
+  <h1 style="font-size:23px;">Akıllı Para Onayı</h1>
+  <div class="subtitle">~7 dakika · 2 senaryo · +90 XP</div>
+  <p style="margin-top:12px;">Saf motor tek başına çalışır. Ama senin kırılımına <strong>kurumsal para</strong> da biniyorsa, güven artar. Bu modül o izleri okumayı öğretir — ve onları asla tetik sanmamayı.</p>
+</div>
+
+<div class="card">
+  <div class="label">Tanım</div>
+  <h2 style="margin-top:6px;">Kurumsal izler nedir?</h2>
+  <p>"Akıllı para", büyük kurumsal hareketlerin piyasada bıraktığı izlerdir:</p>
+  <p><span class="dot b"></span><strong>Opsiyon akışı (flow):</strong> Büyük ölçekli, agresif call alımları — özellikle sweep / golden sweep tipinde, satıcının istediği fiyattan (ask tarafından) geçen emirler</p>
+  <p><span class="dot b"></span><strong>Dark pool:</strong> Borsa dışı platformlarda dönen büyük blok işlemler — sessiz birikim ipucu</p>
+  <p><span class="dot b"></span><strong>Insider / Kongre:</strong> CEO, CFO, yönetim kurulu üyeleri ya da ABD Kongresi üyelerinin kendi paralarıyla yaptıkları alımlar</p>
+  <p>Şirketin içindekilerin <strong>kendi cebinden</strong> hisse alması, sözle değil parayla verilmiş bir güven oyudur.</p>
+</div>
+
+<div class="card">
+  <div class="label">Altın kural</div>
+  <h2 style="margin-top:6px;">Onay evet, tetik asla</h2>
+  <p>Motorun tetiği <strong>ORH / sıkı kurulumdur</strong> (Modül 4-5). Akıllı para bu temelin yerine geçemez — yalnızca güveni artırır. Tek başına flow'a dayalı işlem, kurulumsuz işlemdir: üstünlüğü yoktur.</p>
+  <div class="yani"><strong>Yani:</strong> Akıllı para, pastanın kreması — pastanın kendisi değil. Pasta (sıkı kurulum) yoksa, krema tek başına yenmez.</div>
+</div>
+
+<div class="card">
+  <div class="label">Eşikler</div>
+  <h2 style="margin-top:6px;">Neye "büyük" denir?</h2>
+  <p>Kurumsal ölçekli flow için pratik eşik: <strong>prim ≥ 250.000 $</strong>, ask tarafında, sweep tipi agresif call alımları. Bu ölçekteki emirler bireysel yatırımcıdan gelmez — birileri büyük oynuyor demektir.</p>
+</div>
+
+<div class="card scenario" data-q="m8q1" data-xp="45">
+  <div class="label">Senaryo 1 · +45 XP</div>
+  <h2 style="margin-top:6px;">Flow var, kurulum yok</h2>
+  <p>Bir hissede dev yükseliş flow'u görüyorsun. Ama sıkı kurulum yok ve piyasa ışığı kırmızı. Yalnızca flow'a dayanarak işlem açar mısın?</p>
+  <button class="opt" data-k="w" data-e="Akıllı para da kaybeder — hem de sık sık. Kurumların vade, hedge ve sermaye yapısı seninkinden tamamen farklıdır; onların 'bildiği' şey senin zaman dilimine hiç uğramayabilir.">A) Evet — akıllı para biliyor demektir</button>
+  <button class="opt" data-k="c" data-e="Doğru. Flow onaydır, tetik değil. Üstelik piyasa kırmızı — Modül 2'nin birinci filtresi zaten 'dur' diyor. Kurallar sırayla çalışır: ışık → kurulum → tetik → (en sonda) onay.">B) Hayır — flow onaydır, tetik değil; kurallar önce</button>
+  <button class="opt" data-k="w" data-e="'Yarısını almak' kuralsızlığın yarısı değil, tamamıdır. Kurulum yoksa pozisyon da yok — boyutu küçültmek, olmayan üstünlüğü var etmez.">C) Yarısını alırım — flow yeterli sinyal</button>
+  <div class="explain"></div>
+</div>
+
+<div class="card">
+  <div class="label">İdeal senaryo</div>
+  <h2 style="margin-top:6px;">Çift onay: kurulum ∩ akıllı para</h2>
+  <p>En güçlü fırsatlar iki kümenin kesişiminde doğar: <span class="pill green">SIKI KURULUM</span> + <span class="pill blue">AKILLI PARA</span></p>
+  <p>Sıkı teknik kırılım kurulumu zaten kendi başına işlem sebebi. Üstüne kurumsal akış da aynı yönü gösteriyorsa, izleme listende o aday en üste çıkar.</p>
+</div>
+
+<div class="card scenario" data-q="m8q2" data-xp="45">
+  <div class="label">Senaryo 2 · +45 XP</div>
+  <h2 style="margin-top:6px;">Her şey üst üste geldi</h2>
+  <p>A+ sıkı bir kurulum; aynı anda golden sweep call alımları + insider alımı görünüyor. Bu ne anlama gelir?</p>
+  <button class="opt" data-k="w" data-e="Hiçbir kombinasyon kazancı garanti etmez. Stop'suz işlem, çift onaylı bile olsa, tek kötü gecede Modül 1'in çukur matematiğine düşer. Garanti yok; sadece olasılık var.">A) Stop'a gerek yok — kazanç garanti</button>
+  <button class="opt" data-k="c" data-e="Doğru. Çift onay güveni (konviksiyonu) artırır — ama giriş tetiği, stop ve boyut kuralları milim değişmez. Akıllı para olasılığı iyileştirir; kuralları iptal etmez.">B) Güven yüksek — ama giriş/stop/boyut kuralları aynen geçerli</button>
+  <button class="opt" data-k="w" data-e="Çift onay, %20 tavanını ve sabit R'yi değiştirmez. 'Bu sefer farklı' diye boyut büyütmek, intikam işlemiyle aynı kapıya çıkar: sistemin matematiğini bozar.">C) Pozisyonu %50'ye çıkarırım — çift onay var</button>
+  <div class="explain"></div>
+</div>
+
+<div class="card">
+  <div class="label">Laboratuvar</div>
+  <h2 style="margin-top:6px;">Çift onay ara</h2>
+  <div>
+    <div class="lab-item"><input type="checkbox" data-c="m8l1" id="m8l1"><label for="m8l1"><code>firsattara</code> → swing kurulumu + opsiyon flow'u birlikte tarar; çift onaylı fikirleri öne çıkarır</label></div>
+    <div class="lab-item"><input type="checkbox" data-c="m8l2" id="m8l2"><label for="m8l2"><code>smartmoney</code> → kongre/insider alımlarını adaylarınla eşleştirir</label></div>
+    <div class="lab-item"><input type="checkbox" data-c="m8l3" id="m8l3"><label for="m8l3"><code>leapsflow</code> → uzun vadeli call (LEAPS) birikimini tespit eder</label></div>
+    <div class="lab-item"><input type="checkbox" data-c="m8o1" id="m8o1"><label for="m8o1">Sıkı kurulumlu bir aday bul; akıllı parayı doğrula. Çift onay var mı? Bir de "flow var ama kurulum yok" örneği bul — neden işlem açmadığını yaz</label></div>
+  </div>
+  <div class="yani"><strong>Yani:</strong> Bu katman opsiyoneldir — saf motor onsuz da çalışır. Bonus güven olarak gör, bağımlılık olarak değil.</div>
+</div>
+
+<div class="topnav">
+  <button class="navbtn" data-go="home">← Harita</button>
+  <button class="navbtn primary" data-go="m9">Modül 9: Episodik Pivot →</button>
+</div>
+</section>
+
+<!-- ============ MODÜL 9 ============ -->
+<section class="module" id="m9">
+<div class="topnav">
+  <button class="navbtn" data-go="m8">← Modül 8</button>
+  <span class="label">Faz 3 · Modül 9</span>
+  <button class="navbtn primary" data-go="f3">Faz 3 Sınavı →</button>
+</div>
+
+<div class="card">
+  <h1 style="font-size:23px;">Episodik Pivot &amp; Earnings</h1>
+  <div class="subtitle">~8 dakika · 2 senaryo · +90 XP</div>
+  <p style="margin-top:12px;">Sessiz bayrak kırılımlarını öğrendin. Şimdi <strong>gürültülü haber patlamalarını</strong> öğren — ve aynı haberin pozisyonunu nasıl yakabileceğini.</p>
+</div>
+
+<div class="card">
+  <div class="label">Tanım</div>
+  <h2 style="margin-top:6px;">Episodik Pivot (EP) nedir?</h2>
+  <p>Bazen hisse yavaş yavaş bayrak kurmaz. Güçlü bir <strong>earnings (finansal sonuç)</strong> ya da büyük haber, fiyatı gecede dev bir yukarı boşlukla açtırır. Bu <strong>episodik pivottur</strong> — katalizörün kendisi tetik görevi görür.</p>
+  <p><strong>Fark:</strong> Sıkı kurulum "sessiz birikimin patlaması", EP "ani haberin patlaması"dır. İkisi de aynı şeyi hedefler: güçlü, yüksek hacimli yukarı momentumun başlangıcını yakalamak.</p>
+</div>
+
+<div class="card">
+  <div class="label">Mekanizma</div>
+  <h2 style="margin-top:6px;">EP neden çalışır?</h2>
+  <p>Büyük kurumlar istedikleri pozisyonu tek günde dolduramaz — milyarlarca dolar bir kapıdan aynı anda geçemez. Beklentileri ezen bir earnings piyasayı şaşırttığında, kurumlar <strong>günlerce, haftalarca</strong> almaya devam eder.</p>
+  <p><strong>Sonuç:</strong> Sürpriz haber + dev hacim = boşluktan sonra bile süren momentum. EP, kurallara göre ilk gün binmektir.</p>
+</div>
+
+<div class="card">
+  <div class="label">Kurallar</div>
+  <h2 style="margin-top:6px;">EP'de giriş ve stop</h2>
+  <p><span class="dot g"></span><strong>Tetik:</strong> boşluğun kendisi — güçlü hacimle yukarı açılış</p>
+  <p><span class="dot g"></span><strong>Stop:</strong> Modül 5'in boşluk istisnası — açılış mumunun dibi</p>
+  <p><span class="dot g"></span><strong>Boyut:</strong> boşluk işlemleri daha geniş risk taşır → Modül 6 formülü lot sayısını otomatik küçültür</p>
+  <p><span class="dot g"></span><strong>Kovalama:</strong> 1 ATR kuralı burada da geçerli</p>
+</div>
+
+<div class="card scenario" data-q="m9q1" data-xp="45">
+  <div class="label">Senaryo 1 · +45 XP</div>
+  <h2 style="margin-top:6px;">Dev boşluk, dev hacim</h2>
+  <p>Beklentileri ezen bir earnings sonrası hisse <strong>+%20 boşlukla</strong> ve dev hacimle açılıyor. Bu nedir?</p>
+  <button class="opt" data-k="c" data-e="Doğru. Sürpriz katalizör + dev hacim + yukarı boşluk = klasik EP. Stop açılış mumunun dibine, boyut formülle, kovalama sınırı geçerli — agresif ama kurallı bir taarruz.">A) Klasik Episodik Pivot adayı — boşluk stop kurallarıyla yönetilir</button>
+  <button class="opt" data-k="w" data-e="'Boşluklar hep kapanır' bir borsa efsanesidir. Güçlü katalizörlü boşluklar çoğu kez kapanmaz — kurumsal alım haftalarca sürer. Momentum boşluğuna karşı short açmak, gelen trene karşı yürümektir.">B) Tehlikeli — boşluklar hep kapanır, short açarım</button>
+  <button class="opt" data-k="w" data-e="EP, sıkı bayrağın alternatifi olarak motorun resmî parçasıdır. 'Yalnızca bayrak' demek, sistemin en patlayıcı işlem tipini masada bırakmaktır.">C) İlgisiz — ben yalnızca sıkı bayrak işlemi yaparım</button>
+  <div class="explain"></div>
+</div>
+
+<div class="card">
+  <div class="label">Madalyonun öbür yüzü</div>
+  <h2 style="margin-top:6px;">Earnings: çift taraflı kılıç</h2>
+  <p>Earnings, EP fırsatlarının yakıtıdır — en büyük kırılımlar buradan doğar. Ama aynı earnings, <strong>elindeki pozisyonu da yakabilir.</strong></p>
+  <p><strong>Neden?</strong> Earnings gecesi hisse her yöne sert boşluk yapabilir. Yukarıysa ne âlâ. Aşağıysa stop'un <strong>atlanır</strong> — fiyat stop seviyene hiç uğramadan çok altında açılır ve kaybın planladığın 1R'nin katlarına çıkar.</p>
+  <div class="formula">Mevcut pozisyon + earnings gecesi = kumar</div>
+</div>
+
+<div class="card">
+  <div class="label">Kural</div>
+  <h2 style="margin-top:6px;">Bilinçli oyna ya da çık</h2>
+  <p><span class="dot g"></span><strong>EP'yi bilinçli oyna:</strong> Earnings'i baştan EP fırsatı olarak hedefliyorsan, küçük boyutla, bilerek gir.</p>
+  <p><span class="dot a"></span><strong>Kârı koru:</strong> Kârlı pozisyonun earnings'e denk geliyorsa, öncesinde azalt ya da çık. Kazanılmış parayla kumar oynanmaz.</p>
+  <div class="yani"><strong>Yani:</strong> EP = bilinçli taarruz (boşluğa planla girersin). Pozisyon + earnings = savunma (kârı korur, kumarı reddedersin). İkisini karıştıran, ikisinde de kaybeder.</div>
+</div>
+
+<div class="card scenario" data-q="m9q2" data-xp="45">
+  <div class="label">Senaryo 2 · +45 XP</div>
+  <h2 style="margin-top:6px;">Yarın earnings var</h2>
+  <p>Güzel kârda olan sıkı-kurulum pozisyonun var. Yarın akşam earnings açıklanacak. Varsayılan hareketin ne olmalı?</p>
+  <button class="opt" data-k="w" data-e="'Yukarı boşluk yapabilir' bir umut cümlesidir, plan değil. Aşağı boşlukta stop atlanır ve kayıp 1R'nin katlarına çıkar. Umut, pozisyon yönetim aracı değildir.">A) Tutarım — yukarı boşluk yapabilir, hepsini bırakayım</button>
+  <button class="opt" data-k="c" data-e="Doğru. Varsayılan: earnings öncesi azalt ya da çık. Kazanılmış kârı gecelik piyangoya yatırmazsın. Earnings oynamak istiyorsan onu ayrı, küçük, bilinçli bir EP işlemi olarak planlarsın.">B) Earnings öncesi azaltırım ya da çıkarım — kârla kumar oynamam</button>
+  <button class="opt" data-k="w" data-e="İkiye katlamak, kumarın üstüne kumar koymaktır. Earnings sonucu yazı-tura; pozisyon büyüklüğü bu belirsizliğe maruziyetini katlar. Sistemin hiçbir kuralı bunu desteklemez.">C) İkiye katlarım — fırsat bu</button>
+  <div class="explain"></div>
+</div>
+
+<div class="card">
+  <div class="label">Laboratuvar + Ödev</div>
+  <h2 style="margin-top:6px;">Takvimi öğren</h2>
+  <div>
+    <div class="lab-item"><input type="checkbox" data-c="m9l1" id="m9l1"><label for="m9l1"><code>qswing</code> (EP modu) → haber/earnings boşluklarından EP kurulumlarını analiz eder</label></div>
+    <div class="lab-item"><input type="checkbox" data-c="m9l2" id="m9l2"><label for="m9l2"><code>preearnings</code> / <code>postearnings</code> / <code>earningstrade</code> → sonuç öncesi/sonrası analiz</label></div>
+    <div class="lab-item"><input type="checkbox" data-c="m9l3" id="m9l3"><label for="m9l3"><code>firsattara</code> → adaylarda earnings yakınlığını işaretler (≤14 gün uyarısı)</label></div>
+    <div class="lab-item"><input type="checkbox" data-c="m9o1" id="m9o1"><label for="m9o1">Yakın tarihli bir EP grafiği bul; boşluğu ve açılış mumu dibini (stop) işaretle</label></div>
+    <div class="lab-item"><input type="checkbox" data-c="m9o2" id="m9o2"><label for="m9o2">Mevcut pozisyonla earnings'e girmenin kayba yol açtığı bir örnek bul (aşağı boşluk + atlanmış stop)</label></div>
+    <div class="lab-item"><input type="checkbox" data-c="m9o3" id="m9o3"><label for="m9o3">İzleme listendeki <strong>tüm hisselerin</strong> earnings tarihlerini not et — asla habersiz yakalanma</label></div>
+  </div>
+</div>
+
+<div class="topnav">
+  <button class="navbtn" data-go="home">← Harita</button>
+  <button class="navbtn primary" data-go="f3">Faz 3 Sınavı: Yönetici →</button>
+</div>
+</section>
+<!-- ============ MODÜL 10 ============ -->
+<section class="module" id="m10">
+<div class="topnav">
+  <button class="navbtn" data-go="f3">← Faz 3 Sınavı</button>
+  <span class="label">Faz 4 · Modül 10</span>
+  <button class="navbtn primary" data-go="m11">Modül 11 →</button>
+</div>
+
+<div class="card">
+  <h1 style="font-size:23px;">İşlem Günlüğü &amp; Beklenen Değer</h1>
+  <div class="subtitle">~8 dakika · 2 senaryo · +100 XP</div>
+  <p style="margin-top:12px;"><strong>"Ölçmediğini geliştiremezsin."</strong> Kumarhane her masanın istatistiğini tutar. Sen de tutacaksın.</p>
+</div>
+
+<div class="card">
+  <div class="label">Neden günlük?</div>
+  <h2 style="margin-top:6px;">Hafıza, en pahalı yalancındır</h2>
+  <p>Hafıza kazançları büyütür, kayıpları küçültür, hataları "şanssızlık" diye yeniden yazar. Yalnızca yazılı kayıt gerçeği söyler. Günlük tutmayan trader, karanlıkta araba kullanır — bazen varır, ama nereye çarptığını asla bilmez.</p>
+</div>
+
+<div class="card">
+  <div class="label">Dört metrik</div>
+  <h2 style="margin-top:6px;">Sistemin nabzı</h2>
+  <table class="sortable">
+    <thead><tr><th>Metrik</th><th>Ne söyler</th></tr></thead>
+    <tbody>
+      <tr><td><strong>1 · Kazanma oranı</strong></td><td>Kârlı işlemlerin yüzdesi</td></tr>
+      <tr><td><strong>2 · Ortalama kazanç (R)</strong></td><td>Kazanan işlemlerin ortalama R katı</td></tr>
+      <tr><td><strong>3 · Ortalama kayıp (R)</strong></td><td>Kaybeden işlemlerin ortalama R katı</td></tr>
+      <tr><td><strong>4 · Beklenen değer</strong></td><td>Üçünü birleştiren tek sayı: işlem başına ortalama kazancın</td></tr>
+    </tbody>
+  </table>
+  <div class="formula">Beklenti = (Kazanma% × Ort. Kazanç) − (Kaybetme% × Ort. Kayıp)</div>
+</div>
+
+<div class="card">
+  <div class="label">Kanıt</div>
+  <h2 style="margin-top:6px;">%25 isabetle kâr — sayılarla</h2>
+  <p>Son 20 işlemin: 5 kazanan (ortalama +4R), 15 kaybeden (ortalama −1R).</p>
+  <div class="formula">(0,25 × 4R) − (0,75 × 1R) = 1,0R − 0,75R = <span style="color:var(--green);">+0,25R / işlem</span></div>
+  <p>4 işlemden 3'ünü kaybeden bu sistem, her işlemde ortalama çeyrek R kazandırıyor. 100 işlemde +25R. R 500 $ ise yılda +12.500 $. Modül 1'in vaadi, günlükte kanıtlanıyor.</p>
+</div>
+
+<div class="card">
+  <div class="label">Teşhis aracı</div>
+  <h2 style="margin-top:6px;">Hata etiketleri sistemi</h2>
+  <p>Her işleme, varsa, hata etiketi yapıştır:</p>
+  <table class="sortable">
+    <thead><tr><th>Etiket</th><th>Tanım</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Kovaladım</strong></td><td>1 ATR aşıldıktan sonra girdim (M5 ihlali)</td></tr>
+      <tr><td><strong>Stop'u oynattım</strong></td><td>Stop'u aşağı kaydırdım, kayba alan açtım (M5 ihlali)</td></tr>
+      <tr><td><strong>Aşırı boyut</strong></td><td>Formülü ya da %20 tavanını aştım (M6 ihlali)</td></tr>
+      <tr><td><strong>Earnings'e tuttum</strong></td><td>Bilinçsiz gecelik earnings maruziyeti (M9 ihlali)</td></tr>
+    </tbody>
+  </table>
+  <p style="margin-top:12px;">Birkaç hafta sonra günlüğün konuşmaya başlar: en büyük kayıpların hangi etikette toplandığını görürsün. Artık neyi düzelteceğini <strong>biliyorsun</strong> — tahmin etmiyorsun.</p>
+</div>
+
+<div class="card scenario" data-q="m10q1" data-xp="50">
+  <div class="label">Soru 1 · +50 XP</div>
+  <h2 style="margin-top:6px;">Beklentiyi hesapla</h2>
+  <p>%30 kazanma oranı, +3R ortalama kazanç, −1R ortalama kayıp. Beklenen değer kaç?</p>
+  <button class="opt" data-k="w" data-e="İşaret hatası: (0,30 × 3) − (0,70 × 1) = 0,90 − 0,70 = +0,20R. Sistem kazandırıyor — %70 kaybetmesine rağmen.">A) −0,4R</button>
+  <button class="opt" data-k="c" data-e="Doğru: (0,30 × 3R) − (0,70 × 1R) = 0,90 − 0,70 = +0,20R/işlem. İşlemlerin %70'i kaybederken sistem para basıyor. Artık bu hesabı uykudan uyandırılsan bile yapabilmelisin.">B) +0,2R</button>
+  <button class="opt" data-k="w" data-e="Başabaş değil: 0,90 − 0,70 = +0,20R. Küçük görünen bu fark, 100 işlemde +20R eder — R 500 $ ise +10.000 $.">C) 0R</button>
+  <div class="explain"></div>
+</div>
+
+<div class="card scenario" data-q="m10q2" data-xp="50">
+  <div class="label">Soru 2 · +50 XP</div>
+  <h2 style="margin-top:6px;">Günlük konuştu</h2>
+  <p>Günlüğünde en büyük kayıpların hepsi aynı etiketi taşıyor: <strong>"Stop'u oynattım."</strong> Doğru yaklaşım hangisi?</p>
+  <button class="opt" data-k="w" data-e="'Bir daha yapmayacağım' iradeye yatırımdır — ve irade, tam da stop oynatılan o stresli anda iflas eder. Modül 1'in dersi: çözüm irade değil, mekanizma.">A) Kendime söz veririm — bir daha asla oynatmam</button>
+  <button class="opt" data-k="c" data-e="Doğru. Mekanik engel kur: stop emrini işleme girer girmez broker'a gir (zihinsel stop değil, gerçek emir). Gerekirse stop'u değiştirmeyi zorlaştıran ek kurallar koy. İrade değil, mekanizma.">B) Mekanik engel kurarım — stop emri baştan broker'a girilir, zihinsel stop yasak</button>
+  <button class="opt" data-k="w" data-e="Stop'u bırakmak, hastalığı öldürerek tedavi etmektir. Sorun stop değil, ona dokunman. Stop'suz sistemde tek kötü işlem hesabı bitirir — Modül 1'in çukur tablosunu hatırla.">C) Stop kullanmayı bırakırım — nasılsa oynatıyorum</button>
+  <div class="explain"></div>
+</div>
+
+<div class="card">
+  <div class="label">Laboratuvar + Ödev</div>
+  <h2 style="margin-top:6px;">Günlüğünü kur</h2>
+  <div>
+    <div class="lab-item"><input type="checkbox" data-c="m10l1" id="m10l1"><label for="m10l1">İşlem günlüğü kur (basit tablo yeter): tarih, sembol, giriş, stop, çıkış, R sonucu, hata etiketi, kurallara uyum</label></div>
+    <div class="lab-item"><input type="checkbox" data-c="m10o1" id="m10o1"><label for="m10o1"><strong>10 gerçek (ya da simüle) işlemi</strong> R sonuçları ve hata etiketleriyle gir</label></div>
+    <div class="lab-item"><input type="checkbox" data-c="m10o2" id="m10o2"><label for="m10o2">Kişisel beklenen değerini hesapla</label></div>
+    <div class="lab-item"><input type="checkbox" data-c="m10o3" id="m10o3"><label for="m10o3">En çok tekrarlanan hatanı bul ve onu engelleyen <strong>bir mekanik kural</strong> yaz</label></div>
+  </div>
+  <div class="yani"><strong>Yani:</strong> Günlük, aynanın acımasız hâlidir. Haftada bir bak; ne gördüysen o sensin — düzeltilecek olan da o.</div>
+</div>
+
+<div class="topnav">
+  <button class="navbtn" data-go="home">← Harita</button>
+  <button class="navbtn primary" data-go="m11">Modül 11: Portföy →</button>
+</div>
+</section>
+
+<!-- ============ MODÜL 11 ============ -->
+<section class="module" id="m11">
+<div class="topnav">
+  <button class="navbtn" data-go="m10">← Modül 10</button>
+  <span class="label">Faz 4 · Modül 11</span>
+  <button class="navbtn primary" data-go="m12">Modül 12 →</button>
+</div>
+
+<div class="card">
+  <h1 style="font-size:23px;">Portföy &amp; Konsantrasyon</h1>
+  <div class="subtitle">~8 dakika · 2 senaryo · +100 XP</div>
+  <p style="margin-top:12px;">Tek işlemi yönetmeyi öğrendin. Ama gerçek hayatta aynı anda 4-5 pozisyon taşırsın — ve asıl tehlike tek tek pozisyonlarda değil, <strong>toplamda</strong> saklanır.</p>
+</div>
+
+<div class="card">
+  <div class="label">Kavram</div>
+  <h2 style="margin-top:6px;">Portföy ısısı: toplam açık risk</h2>
+  <p>Her işlem 1R risk taşıyorsa, 5 açık pozisyon = <strong>5R toplam ısı.</strong> Piyasa sert dönerse ve hepsi aynı gün stoplanırsa, tek günde 5R kaybedersin.</p>
+  <p>Isıyı bilmek, sobaya kaç elini koyduğunu bilmektir. Tek tek "her el güvende" diyebilirsin — ama beş el aynı sobadaysa, soba devrildiğinde hepsi yanar.</p>
+</div>
+
+<div class="card scenario" data-q="m11q1" data-xp="50">
+  <div class="label">Senaryo 1 · +50 XP</div>
+  <h2 style="margin-top:6px;">Isıyı ölç</h2>
+  <p>5 açık pozisyonun var, her biri 1R risk taşıyor ve hiçbirinin stop'u henüz maliyete taşınmadı. Toplam açık riskin kaç R?</p>
+  <button class="opt" data-k="w" data-e="Her pozisyonun riski ayrı ayrı yaşar — biri stoplanınca diğerlerininki silinmez. 5 pozisyon × 1R = 5R. Sert bir piyasa gününde bu 5R'nin tamamı aynı anda gerçekleşebilir.">A) 1R — her seferinde en fazla biri stoplanır</button>
+  <button class="opt" data-k="c" data-e="Doğru: 5 × 1R = 5R toplam ısı. Kötü bir günde hepsi birden stoplanabilir — özellikle pozisyonlar birbirine benziyorsa (bir sonraki kart tam bunu anlatıyor).">B) 5R — ve kötü günde hepsi aynı anda gerçekleşebilir</button>
+  <button class="opt" data-k="w" data-e="Stop, riski sıfırlamaz; sınırlar. 5 pozisyonun her biri kendi 1R'sini taşır: toplam 5R. 'Stopluyum, güvendeyim' cümlesi tek pozisyon için doğru, portföy için eksiktir.">C) 0R — hepsinin stop'u var, risk yok</button>
+  <div class="explain"></div>
+</div>
+
+<div class="card">
+  <div class="label">Tuzak</div>
+  <h2 style="margin-top:6px;">Korelasyon: sahte çeşitlendirme</h2>
+  <div class="formula">"5 yapay zekâ hissesi = 1 bahis"</div>
+  <p>Aynı temadan 5 hisse tutmak çeşitlendirme <strong>değildir.</strong> Tema düştüğü gün beşi birlikte düşer — kâğıt üzerinde 5 ayrı pozisyon, gerçekte tek ve dev bir bahistir.</p>
+  <p>Gerçek soru "kaç pozisyonum var?" değil; <strong>"kaç bağımsız bahsim var?"</strong></p>
+</div>
+
+<div class="card scenario" data-q="m11q2" data-xp="50">
+  <div class="label">Senaryo 2 · +50 XP</div>
+  <h2 style="margin-top:6px;">Beş pozisyon, kaç bahis?</h2>
+  <p>5 pozisyonun var: hepsi yarı iletken (çip) sektöründen. Piyasa ışığı az önce kırmızıya döndü. Durumun ve ilk hamlen ne?</p>
+  <button class="opt" data-k="w" data-e="Sektör aynıysa çeşitlendirme yok. Çip teması bozulduğunda beşi birden düşer — 5R ısının tamamı tek temaya bağlı. Bu, 'çeşitlenmiş' değil 'yoğunlaşmış' portföydür.">A) 5 ayrı bahsim var — çeşitlenmişim, beklerim</button>
+  <button class="opt" data-k="c" data-e="Doğru: gerçekte 1 korelasyonlu bahis taşıyorsun. Işık kırmızı + tek tema = en tehlikeli kombinasyon. İlk hamle: en zayıf pozisyonları kapat, ısıyı düşür, nakdi yükselt.">B) Aslında 1 bahis — en zayıfları kapatır, ısıyı düşürür, nakde geçerim</button>
+  <button class="opt" data-k="w" data-e="Kırmızı ışıkta pozisyon eklemek zaten M2 ihlali; aynı temadan eklemek korelasyon riskini de katlar. Bu, yangına benzinle gitmektir.">C) Fırsat bu — düşüşte bir çip hissesi daha eklerim</button>
+  <div class="explain"></div>
+</div>
+
+<div class="card">
+  <div class="label">Çerçeve</div>
+  <h2 style="margin-top:6px;">İki kural + savunma planı</h2>
+  <p><span class="dot g"></span><strong>Tek pozisyon:</strong> ≤ portföyün %20'si (Modül 6)</p>
+  <p><span class="dot g"></span><strong>Toplam ısı:</strong> korelasyonlu kümeleri tek bahis sayarak izle</p>
+  <p style="margin-top:12px;"><strong class="r">Işık kırmızıya dönünce savunma sırası:</strong> 1) En zayıf pozisyonları kapat → 2) Isıyı azalt → 3) Nakdi yükselt.</p>
+  <div class="formula">"Nakit de bir pozisyondur."</div>
+  <div class="yani"><strong>Yani:</strong> Hayatta kal ki yeşil ışıkta avlanabilesin. Kırmızıda kaybetmediğin para, yeşilde kullanacağın cephanedir.</div>
+</div>
+
+<div class="card">
+  <div class="label">Laboratuvar</div>
+  <h2 style="margin-top:6px;">Kendi ısını ölç</h2>
+  <div>
+    <div class="lab-item"><input type="checkbox" data-c="m11l1" id="m11l1"><label for="m11l1"><code>portman</code> → portföy ısısını ve korelasyon kümelerini analiz eder</label></div>
+    <div class="lab-item"><input type="checkbox" data-c="m11l2" id="m11l2"><label for="m11l2"><code>protect</code> → kırmızı ışık senaryosunda hangi pozisyonların kapatılacağını gösterir</label></div>
+    <div class="lab-item"><input type="checkbox" data-c="m11l3" id="m11l3"><label for="m11l3"><strong>Kırmızı ışık acil planını</strong> şimdi yaz: hangi pozisyonları hangi sırayla kapatırsın? (Kriz anında plan yazılmaz, uygulanır.)</label></div>
+  </div>
+</div>
+
+<div class="topnav">
+  <button class="navbtn" data-go="home">← Harita</button>
+  <button class="navbtn primary" data-go="m12">Modül 12: Mezuniyet →</button>
+</div>
+</section>
+
+<!-- ============ MODÜL 12 ============ -->
+<section class="module" id="m12">
+<div class="topnav">
+  <button class="navbtn" data-go="m11">← Modül 11</button>
+  <span class="label">Faz 4 · Modül 12</span>
+  <button class="navbtn primary" data-go="f4">Faz 4 Sınavı →</button>
+</div>
+
+<div class="card">
+  <h1 style="font-size:23px;">Pre-Flight Çeklist + Mezuniyet</h1>
+  <div class="subtitle">~9 dakika · 2 senaryo · +120 XP</div>
+  <p style="margin-top:12px;">Her şeyi öğrendin. Şimdi tüm motoru <strong>tek sayfaya</strong> indiriyoruz: <strong>5 yeşil ışık.</strong> Pilotlar binlerce uçuş saatine rağmen her kalkıştan önce aynı listeyi okur — sen de okuyacaksın.</p>
+</div>
+
+<div class="card">
+  <div class="label">Pre-flight çeklist</div>
+  <h2 style="margin-top:6px;">5 yeşil ışık</h2>
+  <p>Her işlemden önce bu beş soruyu sor. <strong>Hepsi "evet" değilse, işlem yok.</strong></p>
+  <table class="sortable">
+    <thead><tr><th>#</th><th>Yeşil ışık</th><th>Modül</th></tr></thead>
+    <tbody>
+      <tr><td>1</td><td><strong>Piyasa izni:</strong> Endeksler 50 ve 200 SMA'nın üzerinde mi?</td><td>M2</td></tr>
+      <tr><td>2</td><td><strong>Momentum kalitesi:</strong> Dönemin lideri mi ve ADR &gt; %5 mi?</td><td>M3</td></tr>
+      <tr><td>3</td><td><strong>Sıkı kurulum:</strong> 10&gt;20 SMA dizilimi var ve bayrak yeterince sıkı mı?</td><td>M4</td></tr>
+      <tr><td>4</td><td><strong>Giriş &amp; risk:</strong> Tetik temiz mi? Stop mesafesi ≤1 ATR mı?</td><td>M5</td></tr>
+      <tr><td>5</td><td><strong>Mekanik boyut:</strong> Formülle boyutlandı mı, %20 tavanı korunuyor mu?</td><td>M6</td></tr>
+    </tbody>
+  </table>
+  <div class="yani"><strong>Yani:</strong> Bütün akademi bu beş satıra sığar. Beş satır, beş saniye — her işlemden önce.</div>
+</div>
+
+<div class="card">
+  <div class="label">Altın kural</div>
+  <h2 style="margin-top:6px;">Disiplin, stratejiden önemlidir</h2>
+  <p>Qullamaggie'nin en önemli sözü strateji hakkında değildir:</p>
+  <div class="formula">"Disiplin, stratejinin kendisinden önemlidir."<br>Beş yeşil ışık yoksa, işlem yok.</div>
+  <p>Dünyanın en iyi sistemi, kurallarını kıran birinin elinde para kaybeder. Üstünlük sistemin kendisinde değil, ona <strong>disiplinli bağlılıkta.</strong></p>
+</div>
+
+<div class="card scenario" data-q="m12q1" data-xp="60">
+  <div class="label">Senaryo 1 · +60 XP</div>
+  <h2 style="margin-top:6px;">4/5 yeterli mi?</h2>
+  <p>Beş ışıktan dördü yeşil. Ama stop mesafesi <strong>2 ATR</strong> — 4. ışık kırmızı. Hisse de gerçekten harika. İşlemi açar mısın?</p>
+  <button class="opt" data-k="w" data-e="'4/5 yeterince iyi' cümlesi, disiplinin çözülmeye başladığı andır. Bugün 4/5'e evet dersen, yarın 3/5'e dersin. Çeklistin gücü tavizsizliğindedir — pilot 'motorların 4'ü çalışıyor, kalkalım' demez.">A) Evet — 4/5 yeterince iyi</button>
+  <button class="opt" data-k="c" data-e="Doğru. Tek kırmızı ışık = işlem yok. İstisnasız. Bu katılık kısıt değil, özgürlüktür: karar vermek zorunda kalmazsın, çeklist senin yerine karar verir.">B) Hayır — beş ışık da yanmalı, yoksa işlem yok</button>
+  <button class="opt" data-k="w" data-e="Stop'u 'yapay olarak' 1 ATR'ye çekmek ışığı yeşile boyamaktır, yeşil yapmaz. Grafik 2 ATR diyorsa kurulum sıkı değildir; boyalı ışıkla kalkan uçak düşer.">C) Stop'u yapay olarak 1 ATR'ye çekerim — ışık yeşile döner</button>
+  <div class="explain"></div>
+</div>
+
+<div class="card">
+  <div class="label">Yaşam döngüsü</div>
+  <h2 style="margin-top:6px;">Kusursuz işlemin 4 evresi</h2>
+  <table class="sortable">
+    <thead><tr><th>Evre</th><th>Ne yaparsın</th><th>Modül</th></tr></thead>
+    <tbody>
+      <tr><td><strong>1 · Kurulum</strong></td><td>Sıkı bayrak + 10&gt;20 SMA konumu</td><td>M3-M4</td></tr>
+      <tr><td><strong>2 · Giriş &amp; risk</strong></td><td>ORH/EP tetiği + günün dibinde stop, ≤1 ATR</td><td>M5-M6</td></tr>
+      <tr><td><strong>3 · Kısmi çıkış</strong></td><td>3-5 günde %33-50 sat + stop'u maliyete taşı</td><td>M7</td></tr>
+      <tr><td><strong>4 · Nihai çıkış</strong></td><td>Runner'ı 10 DMA'da takip et; kapanış altında çık</td><td>M7</td></tr>
+    </tbody>
+  </table>
+  <p style="margin-top:12px;">Çeklist "girmeli miyim?" sorusunu cevaplar; 4 evre "girdikten sonra ne yapacağım?" sorusunu. Birlikte tam motoru oluştururlar.</p>
+</div>
+
+<div class="card">
+  <div class="label">Operasyonel rutin</div>
+  <h2 style="margin-top:6px;">Günün üç vardiyası</h2>
+  <p><strong class="a">Sabah:</strong> Önce ışığa bak (M2). Yeşilse izleme listesini gözden geçir, ORH tetik alarmlarını kur.</p>
+  <p><strong class="b">Gün içi:</strong> Yalnızca kurallarına göre işlem yap. Tetik yok = giriş yok; tetik geldi = kurallı giriş. Gürültüyü yoksay; fiyatı ve hacmi izle.</p>
+  <p><strong class="g">Akşam:</strong> En çok kazandıranları tara (M3), izleme listesini 10-20 isimle güncelle, işlemleri günlüğe kaydet (M10).</p>
+  <div class="yani"><strong>Yani:</strong> Ustalık ilham değil, tekrarlanabilir rutindir. Her gün aynı süreç; sonuçlar süreçten akar.</div>
+</div>
+
+<div class="card scenario" data-q="m12q2" data-xp="60">
+  <div class="label">Senaryo 2 · +60 XP</div>
+  <h2 style="margin-top:6px;">Sabahın ilk hamlesi</h2>
+  <p>Her sabah yaptığın <strong>ilk hareket</strong> ne olmalı?</p>
+  <button class="opt" data-k="w" data-e="Gündemin en çok konuşulan hissesi, Modül 3'ün 'hikâye tuzağı'nın ta kendisidir. Kalabalığın konuştuğu hisse çoğu zaman koşusunu bitirmiş hissedir.">A) Günün en çok konuşulan hissesini almak — güne erken başlamak</button>
+  <button class="opt" data-k="c" data-e="Doğru. Önce piyasa ışığı: gaz mı, dikkat mi, fren mi? Bu 30 saniyelik kontrol, günün bütün kararlarının çerçevesini çizer. Önce izin, sonra hisse — her zaman.">B) Piyasa ışığını kontrol etmek — gaz mı, fren mi?</button>
+  <button class="opt" data-k="w" data-e="'Dünkü kaybı telafi etme' arayışı, intikam işleminin (M1) ayak sesidir. Piyasa senin dünkü kaybını bilmez ve umursamaz. Her gün sıfırdan başlar: ışık, liste, kurallar.">C) Dünkü kaybı telafi edecek işlemi aramak</button>
+  <div class="explain"></div>
+</div>
+
+<div class="card">
+  <div class="label">Mezuniyet projesi 1</div>
+  <h2 style="margin-top:6px;">Kendi playbook'unu yaz</h2>
+  <p>Her şeyi <strong>tek sayfalık kişisel playbook'a</strong> (oyun planına) sıkıştır:</p>
+  <div>
+    <div class="lab-item"><input type="checkbox" data-c="m12p1" id="m12p1"><label for="m12p1">5 yeşil ışık çeklistin — ezbere</label></div>
+    <div class="lab-item"><input type="checkbox" data-c="m12p2" id="m12p2"><label for="m12p2">İşlem yaşam döngüsünün 4 evresi</label></div>
+    <div class="lab-item"><input type="checkbox" data-c="m12p3" id="m12p3"><label for="m12p3">Sabit parasal riskin (1R) ve %20 tavanın</label></div>
+    <div class="lab-item"><input type="checkbox" data-c="m12p4" id="m12p4"><label for="m12p4">Kişisel kuralların (Modül 1'deki taslak — artık olgunlaştı)</label></div>
+    <div class="lab-item"><input type="checkbox" data-c="m12p5" id="m12p5"><label for="m12p5">Günlük rutin: sabah / gün içi / akşam</label></div>
+  </div>
+  <div class="yani"><strong>Yani:</strong> Bu tek sayfa senin işlem anayasandır. Zor anda ona danışırsın; duygu sessiz kalır.</div>
+</div>
+
+<div class="card">
+  <div class="label">Mezuniyet projesi 2</div>
+  <h2 style="margin-top:6px;">Bir işlemi baştan sona belgele</h2>
+  <p>Gerçek ya da kâğıt üzerinde (paper) bir işlemi tam zinciriyle belgele:</p>
+  <p>Işık yeşil mi? → Huniden geçti mi (momentum/ADR/hacim)? → Kurulum sıkı mı? → Tetik (ORH/EP) → Stop (günün dibi, ≤1 ATR) → Boyut (formül + %20) → 3-5 günde kısmi çıkış → 10 DMA takibi → Kapanış altı nihai çıkış → R sonucu günlüğe.</p>
+  <p><strong>Araçlar:</strong> <code>dailypack</code> (sabah paketi), <code>qswing</code> (tarama + tek hisse), <code>firsattara</code>, <code>trailstop</code>, <code>protect</code>, <code>smartmoney</code></p>
+</div>
+
+<div class="card">
+  <div class="label">Tebrikler</div>
+  <h2 style="margin-top:6px;">Mezuniyetin eşiğindesin</h2>
+  <p>Sıfırdan başladın: "kaç kez kazandın?" diye soruyordun. Artık kumarhane gibi düşünüyorsun, piyasadan izin istiyorsun, en güçlüyü avlıyorsun, gerilmiş yayı bekliyorsun, mekanik giriyorsun, kurallarla yönetiyorsun ve üstünlüğünü ölçüyorsun.</p>
+  <p>Son adım: <strong>Faz 4 sınavını geç, Mezun rozetini tak.</strong> Ama asıl iş ondan sonra başlıyor: disiplinle tekrarla.</p>
+</div>
+
+<div class="topnav">
+  <button class="navbtn" data-go="home">← Harita</button>
+  <button class="navbtn primary" data-go="f4">Faz 4 Sınavı: Mezun →</button>
+</div>
+</section>
+<!-- ============ FAZ 1 SINAVI ============ -->
+<section class="module" id="f1">
+<div class="topnav">
+  <button class="navbtn" data-go="m3">← Modül 3</button>
+  <span class="label">Faz 1 Sınavı</span>
+  <button class="navbtn primary" data-go="m4">Modül 4 →</button>
+</div>
+
+<div class="card">
+  <h1 style="font-size:23px;">Avcı Olabilir misin?</h1>
+  <div class="subtitle">Tek senaryo, üç karar · 3/3 doğru → <span class="pill amber">ROZET: AVCI</span></div>
+  <p style="margin-top:12px;">Piyasa sinyalini oku, güçlüyü filtrele, tuzağı yakala. İlk denemede üçünü de bilmen gerekiyor — gerçek piyasada da ikinci deneme yoktur.</p>
+</div>
+
+<div class="card">
+  <div class="label">Bugünün tablosu</div>
+  <h2 style="margin-top:6px;">Senaryo</h2>
+  <p><strong>Piyasa bağlamı:</strong></p>
+  <p><span class="dot a"></span><strong>SPY:</strong> 50 günlük SMA'nın üzerinde, 200 günlük SMA'nın <strong>altında</strong></p>
+  <p><span class="dot g"></span><strong>QQQ:</strong> Her iki ortalamanın da üzerinde</p>
+  <p style="margin-top:10px;"><strong>Hisse A:</strong> Son 3 ayın en çok kazandıranlarından. ADR %7, günlük hacim 45M $, 10&gt;20 SMA dizilimi var.</p>
+  <p><strong>Hisse B:</strong> Güçlü yapay zekâ anlatısıyla gündemde. 6 aydır düşüyor, ADR %2, hacim 8M $.</p>
+</div>
+
+<div class="card scenario" data-q="f1q1" data-xp="0" data-exam="f1">
+  <div class="label">Soru 1 · Piyasa izni</div>
+  <h2 style="margin-top:6px;">Işık ne renk?</h2>
+  <p>Bugünün sinyali net yeşil mi? Motora göre nasıl hareket edersin?</p>
+  <button class="opt" data-k="w" data-e="SPY 200 günlük ortalamasının altında — iki endeksten biri tam onay vermiyor. Bu tablo yeşil değil, sarıdır: tam gaz yanlış.">A) Evet, tam yeşil — en güçlü adayı agresif alırım</button>
+  <button class="opt" data-k="c" data-e="Doğru. SPY sarı (50 üstü ama 200 altı), QQQ yeşil → bileşik tablo SARI: yarım boyut, yalnız en iyi kurulumlar. Modül 2'nin sarı ışığı tam bu an için var.">B) Tam değil — SPY 200 SMA altında; sarı ışık: temkinli, kısmi boyut</button>
+  <button class="opt" data-k="w" data-e="Kırmızı da değil: hiçbir endeks 50 günlük ortalamasının altında değil. 'Hepsi ya da hiçbiri' düşüncesi sarı bölgeyi görmez — oysa piyasa yılın önemli bölümünü sarıda geçirir.">C) Kırmızı — bugün işlem yok</button>
+  <div class="explain"></div>
+</div>
+
+<div class="card scenario" data-q="f1q2" data-xp="0" data-exam="f1">
+  <div class="label">Soru 2 · Av sahası</div>
+  <h2 style="margin-top:6px;">Hangisi listeye girer?</h2>
+  <button class="opt" data-k="c" data-e="Doğru. A üç filtreyi de geçiyor: momentum (3 ayın lideri), oynaklık (ADR %7 > %5), likidite (45M $ > 20M $). Üstüne 10>20 SMA dizilimi de sağlam.">A) Hisse A — üç filtreyi de geçiyor (momentum + ADR + hacim)</button>
+  <button class="opt" data-k="w" data-e="Anlatı filtre değildir. B momentumdan (6 ay düşüş), oynaklıktan (%2 < %5) ve likiditeden (8M $ < 20M $) kalıyor. Üçte sıfır.">B) Hisse B — güçlü yapay zekâ teması, anlatı kazanır</button>
+  <button class="opt" data-k="w" data-e="B'yi listeye almak çeşitlendirme değil, filtre disiplinini bozmaktır. Av sahasına yalnızca filtrelerden geçenler girer — B giremez.">C) Her ikisi de — çeşitlendirme iyidir</button>
+  <div class="explain"></div>
+</div>
+
+<div class="card scenario" data-q="f1q3" data-xp="0" data-exam="f1">
+  <div class="label">Soru 3 · Tuzağı yakala</div>
+  <h2 style="margin-top:6px;">Hisse B neden elenir?</h2>
+  <p>Tek cümlelik mantık hangisi?</p>
+  <button class="opt" data-k="w" data-e="Fiyat seviyesi ('pahalı/ucuz') bu sistemde hiçbir filtrenin parçası değildir. Elenme sebebi ölçülebilir: momentum, ADR, likidite.">A) Fiyatı çok yüksek, pahalı</button>
+  <button class="opt" data-k="c" data-e="Doğru. Momentum yok (düşüş trendi) + ADR eşiğin altında (%2 < %5) + likidite eşiğin altında (8M $ < 20M $). Veri konuştu; hikâye sustu.">B) Momentum yok + ADR ve likidite eşiğin altında</button>
+  <button class="opt" data-k="w" data-e="Temanın bitip bitmediği spekülasyondur — belki harika bir tema ve beş yıl sürecek. Ama bu hisse o temaya binememiş: veriler zayıf. Eleme sebebi tema değil, sayılar.">C) Yapay zekâ teması bitti</button>
+  <div class="explain"></div>
+</div>
+
+<div class="card" id="f1res-card">
+  <div class="label">Sonuç</div>
+  <h2 style="margin-top:6px;" id="f1res">Üç soruyu da cevapla</h2>
+  <button class="navbtn" data-reset="f1">Sınavı sıfırla ve tekrar dene</button>
+</div>
+
+<div class="topnav">
+  <button class="navbtn" data-go="home">← Harita</button>
+  <button class="navbtn primary" data-go="m4">Faz 2'ye başla: Modül 4 →</button>
+</div>
+</section>
+
+<!-- ============ FAZ 2 SINAVI ============ -->
+<section class="module" id="f2">
+<div class="topnav">
+  <button class="navbtn" data-go="m6">← Modül 6</button>
+  <span class="label">Faz 2 Sınavı</span>
+  <button class="navbtn primary" data-go="m7">Modül 7 →</button>
+</div>
+
+<div class="card">
+  <h1 style="font-size:23px;">İcracı Olabilir misin?</h1>
+  <div class="subtitle">Tek senaryo, üç karar · 3/3 doğru → <span class="pill amber">ROZET: İCRACI</span></div>
+  <p style="margin-top:12px;">Giriş koşullarını doğrula, pozisyonu boyutlandır, risk kurallarını uygula. Hesap makinesi serbest — gerçekte de serbest olacak.</p>
+</div>
+
+<div class="card">
+  <div class="label">Senaryo</div>
+  <h2 style="margin-top:6px;">Hisse C</h2>
+  <table class="sortable">
+    <thead><tr><th>Veri</th><th>Değer</th></tr></thead>
+    <tbody>
+      <tr><td>Kurulum</td><td>Güçlü hareketten sonra 10 SMA'ya yaslı sıkı bayrak</td></tr>
+      <tr><td>ATR</td><td>2,00 $</td></tr>
+      <tr><td>ORH</td><td>52,00 $ (açılışta hacimle kırıldı; fiyat şu an 52,40 $)</td></tr>
+      <tr><td>Günün dibi (LoD)</td><td>50,80 $</td></tr>
+      <tr><td>Hesap büyüklüğü</td><td>25.000 $</td></tr>
+      <tr><td>Sabit risk / işlem</td><td>400 $</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="card scenario" data-q="f2q1" data-xp="0" data-exam="f2">
+  <div class="label">Soru 1 · Giriş geçerliliği</div>
+  <h2 style="margin-top:6px;">Geçerli giriş mi, kovalama mı?</h2>
+  <p>52,40 $'dan girersen, stop günün dibinde (50,80 $) olacak. Bu giriş geçerli mi?</p>
+  <button class="opt" data-k="c" data-e="Doğru. Stop mesafesi: 52,40 − 50,80 = 1,60 $. ATR 2,00 $ → 1,60 < 2,00, yani mesafe 1 ATR'nin altında. Tetik hacimle geldi, kurulum sıkı: geçerli giriş.">A) Geçerli — stop mesafesi 1,60 $, 1 ATR'nin (2 $) altında</button>
+  <button class="opt" data-k="w" data-e="Hesabı yap: 52,40 − 50,80 = 1,60 $ < 2,00 $ ATR. Fiyat ORH'nin yalnızca 0,40 $ üzerinde — kovalama sayılmaz. Sayılar varken sezgiyle 'uzak görünüyor' denmez.">B) Kovalama — fiyat ORH'nin üzerinde, geç kalındı</button>
+  <button class="opt" data-k="w" data-e="Belirsizlik yok; ölçü net: stop mesafesi (1,60 $) ÷ ATR (2,00 $) = 0,8 ATR ≤ 1 ATR. Kurallar tam da 'emin olamadığın' anları matematiğe bağlamak için var.">C) Belirsiz — biraz daha beklemek gerek</button>
+  <div class="explain"></div>
+</div>
+
+<div class="card scenario" data-q="f2q2" data-xp="0" data-exam="f2">
+  <div class="label">Soru 2 · Pozisyon boyutu</div>
+  <h2 style="margin-top:6px;">Formül kaç lot diyor?</h2>
+  <p>Giriş 52,40 $, stop 50,80 $, sabit risk 400 $. Lot sayısı?</p>
+  <button class="opt" data-k="w" data-e="200 lot, riskin yalnızca 320 $'ını kullanır (200 × 1,60). Formül: 400 ÷ 1,60 = 250 lot.">A) 200 lot</button>
+  <button class="opt" data-k="c" data-e="Doğru: 400 $ ÷ (52,40 − 50,80) = 400 ÷ 1,60 = 250 lot. Stop tetiklenirse kayıp: 250 × 1,60 = 400 $ = tam 1R.">B) 250 lot</button>
+  <button class="opt" data-k="w" data-e="312 lot'ta stop kaybı 312 × 1,60 ≈ 500 $ olur — planlanan 400 $'ı aşar. Formül: 400 ÷ 1,60 = 250.">C) 312 lot</button>
+  <div class="explain"></div>
+</div>
+
+<div class="card scenario" data-q="f2q3" data-xp="0" data-exam="f2">
+  <div class="label">Soru 3 · Risk yönetimi</div>
+  <h2 style="margin-top:6px;">%20 tavanı devrede mi?</h2>
+  <p>250 lot × 52,40 $ = <strong>13.100 $</strong> pozisyon → 25.000 $ hesabın <strong>~%52'si.</strong> Ne yaparsın?</p>
+  <button class="opt" data-k="w" data-e="%52'lik tek pozisyon, gecelik kötü bir boşlukta hesabın yarısını riske atar. Formül risk kuralıdır, %20 tavanı felaket kuralı — çakıştıklarında tavan kazanır.">A) 250 lot kalır — formül böyle dedi</button>
+  <button class="opt" data-k="c" data-e="Doğru. Tavan: 25.000 × %20 = 5.000 $ → 5.000 ÷ 52,40 ≈ 95 lot. Formül 250 dese de pozisyon 95 lot'ta kesilir. Not: bu durumda fiili risk de düşer (95 × 1,60 = 152 $) — tavan hem pozisyonu hem riski küçülttü.">B) ~95 lot'a inerim — 25.000 × %20 = 5.000 $ tavan</button>
+  <button class="opt" data-k="w" data-e="125 lot = 6.550 $ = hesabın %26'sı — tavan hâlâ aşılıyor. Doğru hesap: 5.000 $ ÷ 52,40 $ ≈ 95 lot.">C) 125 lot'a inerim — yarıya indirmek yeter</button>
+  <div class="explain"></div>
+</div>
+
+<div class="card">
+  <div class="label">Sonuç</div>
+  <h2 style="margin-top:6px;" id="f2res">Üç soruyu da cevapla</h2>
+  <button class="navbtn" data-reset="f2">Sınavı sıfırla ve tekrar dene</button>
+</div>
+
+<div class="topnav">
+  <button class="navbtn" data-go="home">← Harita</button>
+  <button class="navbtn primary" data-go="m7">Faz 3'e başla: Modül 7 →</button>
+</div>
+</section>
+
+<!-- ============ FAZ 3 SINAVI ============ -->
+<section class="module" id="f3">
+<div class="topnav">
+  <button class="navbtn" data-go="m9">← Modül 9</button>
+  <span class="label">Faz 3 Sınavı</span>
+  <button class="navbtn primary" data-go="m10">Modül 10 →</button>
+</div>
+
+<div class="card">
+  <h1 style="font-size:23px;">Yönetici Olabilir misin?</h1>
+  <div class="subtitle">Tek senaryo, üç karar · 3/3 doğru → <span class="pill amber">ROZET: YÖNETİCİ</span></div>
+  <p style="margin-top:12px;">Pozisyon açıldı, kâr birikti, earnings yaklaşıyor. Kazananı yönet, tuzağı gör, onayı tetikten ayır.</p>
+</div>
+
+<div class="card">
+  <div class="label">Senaryo</div>
+  <h2 style="margin-top:6px;">Hisse C — devam</h2>
+  <p><span class="dot g"></span><strong>Pozisyon:</strong> 95 lot girildi (%20 tavanı uygulandı)</p>
+  <p><span class="dot g"></span><strong>Durum:</strong> 4 gün sonra fiyat +%18, güçlü ralli sürüyor</p>
+  <p><span class="dot a"></span><strong>Takvim:</strong> Önümüzdeki hafta earnings var</p>
+  <p><span class="dot b"></span><strong>Akış:</strong> Flow taramasında eş zamanlı agresif call sweep'leri görünüyor</p>
+</div>
+
+<div class="card scenario" data-q="f3q1" data-xp="0" data-exam="f3">
+  <div class="label">Soru 1 · 3-5 gün kuralı</div>
+  <h2 style="margin-top:6px;">4 günde +%18 — şimdi ne?</h2>
+  <button class="opt" data-k="w" data-e="Hepsini satmak runner'ı öldürür. 10-20R'lik dev kazançlar, ilk güçlü haftada tamamen satan traderın günlüğünde asla görünmez.">A) Hepsini satarım, kârı kilitlerim</button>
+  <button class="opt" data-k="c" data-e="Doğru: %33-50 sat (kâr kilitle) + stop'u maliyete taşı (bedava sörf) + kalan runner'ı 10 DMA'da takip et. Modül 7'nin üç parçası, tek hamlede.">B) %33-50'sini satarım + stop'u maliyete taşırım + kalanı 10 DMA'da sürerim</button>
+  <button class="opt" data-k="w" data-e="Sabit fiyat hedefi bu sistemde yok — en büyük kazançlar her hedefin ötesine geçer. Ama kısmi kâr kilitlemeden beklemek de düzeltmede kârın buharlaşması demek. Kural: kilitle + sür.">C) Hiçbir şey yapmam, fiyat hedefimi beklerim</button>
+  <div class="explain"></div>
+</div>
+
+<div class="card scenario" data-q="f3q2" data-xp="0" data-exam="f3">
+  <div class="label">Soru 2 · Earnings riski</div>
+  <h2 style="margin-top:6px;">Runner earnings'e girsin mi?</h2>
+  <p>Kalan runner'ı yalnızca "belki daha da yükselir" umuduyla earnings gecesine taşır mısın?</p>
+  <button class="opt" data-k="w" data-e="Flow güçlü olabilir — ama earnings gecesi her şeyi sıfırlar: aşağı boşlukta stop atlanır, kayıp planın katlarına çıkar. Flow, gecelik kumarın sigortası değildir.">A) Evet — flow güçlü, kazanırım</button>
+  <button class="opt" data-k="c" data-e="Doğru. Umut, pozisyon yönetim aracı değildir. Ya bilinçli ve küçük bir EP oyunu planlarsın ya da earnings öncesi azaltır/çıkarsın. Kazanılmış kârla kumar oynanmaz (M9).">B) Hayır — ya bilinçli küçük EP oyna ya da öncesinde azalt/çık</button>
+  <button class="opt" data-k="w" data-e="İkiye katlamak, kumarın üstüne kumar koymak. Earnings öncesi pozisyon büyütmek, sistemin hiçbir kuralından destek almaz.">C) İkiye katlarım — fırsat bu</button>
+  <div class="explain"></div>
+</div>
+
+<div class="card scenario" data-q="f3q3" data-xp="0" data-exam="f3">
+  <div class="label">Soru 3 · Onay mı, tetik mi?</div>
+  <h2 style="margin-top:6px;">Call sweep'ler ne içindi?</h2>
+  <p>Taramada gördüğün call sweep'ler bu işleme girme <strong>sebebin</strong> miydi?</p>
+  <button class="opt" data-k="w" data-e="Tetik ORH'ydi (52 $ hacimle kırıldı). Flow'u tetik sanmak, Modül 8'in altın kuralını ihlal eder — flow'suz günlerde işlemsiz kalır ya da flow'lu ama kurulumsuz tuzaklara girersin.">A) Evet — flow tetikti, bunun için girdim</button>
+  <button class="opt" data-k="c" data-e="Doğru. Tetik ORH'ydi; flow yalnızca güveni artıran onay katmanı. Sıralama hep aynı: ışık → kurulum → tetik → onay.">B) Hayır — tetik ORH'ydi; flow yalnızca onay/güven kattı</button>
+  <button class="opt" data-k="w" data-e="'Flow olmasaydı girmezdim' demek, kararını onay katmanına devretmek demektir. A+ kurulum + temiz tetik, flow olmadan da işlemdir. Onay bonus; şart değil.">C) Flow olmasaydı girmezdim</button>
+  <div class="explain"></div>
+</div>
+
+<div class="card">
+  <div class="label">Sonuç</div>
+  <h2 style="margin-top:6px;" id="f3res">Üç soruyu da cevapla</h2>
+  <button class="navbtn" data-reset="f3">Sınavı sıfırla ve tekrar dene</button>
+</div>
+
+<div class="topnav">
+  <button class="navbtn" data-go="home">← Harita</button>
+  <button class="navbtn primary" data-go="m10">Faz 4'e başla: Modül 10 →</button>
+</div>
+</section>
+
+<!-- ============ FAZ 4 SINAVI ============ -->
+<section class="module" id="f4">
+<div class="topnav">
+  <button class="navbtn" data-go="m12">← Modül 12</button>
+  <span class="label">Faz 4 Sınavı</span>
+  <button class="navbtn primary" data-go="home">Harita →</button>
+</div>
+
+<div class="card">
+  <h1 style="font-size:23px;">Mezun Olmaya Hazır mısın?</h1>
+  <div class="subtitle">Üç yetkinlik · 3/3 doğru → <span class="pill amber">ROZET: MEZUN</span></div>
+  <p style="margin-top:12px;">Son sınav: performansı ölç, portföyü bütün gör, pre-flight disiplinini kanıtla.</p>
+</div>
+
+<div class="card scenario" data-q="f4q1" data-xp="0" data-exam="f4">
+  <div class="label">Soru 1 · Ölç</div>
+  <h2 style="margin-top:6px;">Beklenen değer</h2>
+  <p>Son 20 işlem: 5 kazanan (ortalama +4R), 15 kaybeden (ortalama −1R). Beklenen değer?</p>
+  <button class="opt" data-k="w" data-e="Hesap: kazanma oranı 5/20 = %25. (0,25 × 4R) − (0,75 × 1R) = 1,0 − 0,75 = +0,25R. Sistem kazandırıyor.">A) −0,5R — sistem para kaybettiriyor</button>
+  <button class="opt" data-k="c" data-e="Doğru: (0,25 × 4R) − (0,75 × 1R) = +0,25R/işlem. İşlemlerin dörtte üçü kaybederken sistem pozitif. Modül 1'de öğrendin, Modül 10'da ölçtün, şimdi kanıtladın.">B) +0,25R — pozitif, sistem kazandırıyor</button>
+  <button class="opt" data-k="w" data-e="Başabaş değil: 1,0R − 0,75R = +0,25R. Bu 'küçük' fark, 100 işlemde +25R eder.">C) 0R — başabaş</button>
+  <div class="explain"></div>
+</div>
+
+<div class="card scenario" data-q="f4q2" data-xp="0" data-exam="f4">
+  <div class="label">Soru 2 · Portföyü bütün gör</div>
+  <h2 style="margin-top:6px;">Beş pozisyon, tek tema</h2>
+  <p>5 pozisyonun var, hepsi yarı iletken sektöründe. Piyasa ışığı kırmızıya döndü. Kaç gerçek bahsin var ve ilk aksiyonun ne?</p>
+  <button class="opt" data-k="w" data-e="Aynı sektörden 5 hisse, düşüş günü tek vücut hareket eder. Bu çeşitlendirme değil, yoğunlaşmadır — beklemek 5R ısıyı tek temanın insafına bırakmaktır.">A) 5 ayrı bahis — çeşitlenmişim, beklerim</button>
+  <button class="opt" data-k="c" data-e="Doğru: gerçekte 1 korelasyonlu bahis. Kırmızı ışıkta savunma sırası: en zayıfları kapat → ısıyı düşür → nakdi yükselt. Nakit de bir pozisyondur.">B) Aslında 1 korelasyonlu bahis — en zayıfları kapatır, ısıyı düşürür, nakde geçerim</button>
+  <button class="opt" data-k="w" data-e="Kırmızı ışıkta alım zaten yasak (M2); aynı temadan alım, korelasyon yoğunluğunu daha da artırır. Çifte ihlal.">C) Fırsat — bir yarı iletken daha eklerim</button>
+  <div class="explain"></div>
+</div>
+
+<div class="card scenario" data-q="f4q3" data-xp="0" data-exam="f4">
+  <div class="label">Soru 3 · Pre-flight</div>
+  <h2 style="margin-top:6px;">Son kapı</h2>
+  <p>5 yeşil ışık kontrol edildi; biri kırmızı: boyut, formülün gereğini karşılamıyor. İşlemi açar mısın?</p>
+  <button class="opt" data-k="w" data-e="4/5 ile kalkış yok. Bugünkü küçük taviz, yarınki büyük tavizin provasıdır. Çeklist pazarlık masası değildir.">A) Evet — 4/5 yeterince güçlü</button>
+  <button class="opt" data-k="c" data-e="Doğru. Beş ışık yanmadan işlem yok — istisnasız. Mezuniyetin asıl kanıtı bu cevabı bilmek değil, altı ay sonra canlı piyasada hâlâ böyle davranmaktır.">B) Hayır — beş ışık da yanmadan işlem yok</button>
+  <button class="opt" data-k="w" data-e="'Sezgime güvenirim' cümlesi, bu akademinin ilk sayfasında çöpe attığımız kâhinlik tuzağının geri dönüşüdür. Sezgi değil, sistem.">C) Duruma göre — sezgime güvenirim</button>
+  <div class="explain"></div>
+</div>
+
+<div class="card">
+  <div class="label">Sonuç</div>
+  <h2 style="margin-top:6px;" id="f4res">Üç soruyu da cevapla</h2>
+  <button class="navbtn" data-reset="f4">Sınavı sıfırla ve tekrar dene</button>
+</div>
+
+<div class="topnav">
+  <button class="navbtn" data-go="home">← Harita</button>
+  <button class="navbtn" data-go="sozluk">Sözlük →</button>
+</div>
+</section>
+
+<!-- ============ SÖZLÜK ============ -->
+<section class="module" id="sozluk">
+<div class="topnav">
+  <button class="navbtn" data-go="home">← Harita</button>
+  <span class="label">Başvuru</span>
+  <span></span>
+</div>
+
+<div class="card glossary">
+  <h2 style="margin-top:0;">Sözlük</h2>
+  <div class="glossary-grid">
+    <div class="glossary-term"><strong>Swing trade:</strong> Bir hisseyi birkaç gün–birkaç hafta tutarak fiyat salınımını yakalama yöntemi.</div>
+    <div class="glossary-term"><strong>R / 1R:</strong> Bir işlemde riske ettiğin sabit para. Tüm kazanç ve kayıplar bunun katı olarak ölçülür.</div>
+    <div class="glossary-term"><strong>Beklenen değer:</strong> İşlem başına ortalama kazancın: (Kazanma% × Ort. Kazanç) − (Kaybetme% × Ort. Kayıp).</div>
+    <div class="glossary-term"><strong>Kazanma (isabet) oranı:</strong> Tüm işlemler içinde kârla kapananların yüzdesi.</div>
+    <div class="glossary-term"><strong>SMA:</strong> Basit hareketli ortalama — son N günün kapanış ortalaması. 50 günlük orta, 200 günlük uzun vadeyi gösterir.</div>
+    <div class="glossary-term"><strong>10 DMA:</strong> 10 günlük hareketli ortalama — runner takibinde kullanılan yükselen taban.</div>
+    <div class="glossary-term"><strong>Endeks:</strong> Piyasanın genelini temsil eden sepet; pratikte SPY ve QQQ izlenir.</div>
+    <div class="glossary-term"><strong>SPY / QQQ:</strong> S&amp;P 500 ve Nasdaq 100 endekslerini takip eden borsa yatırım fonları (ETF).</div>
+    <div class="glossary-term"><strong>ETF:</strong> Tek hisse gibi alınıp satılan, içinde birçok hisse barındıran fon.</div>
+    <div class="glossary-term"><strong>ADR:</strong> Ortalama günlük aralık — hissenin günde tipik olarak yüzde kaç hareket ettiği. Eşik: %5+.</div>
+    <div class="glossary-term"><strong>ATR:</strong> Ortalama gerçek aralık — hissenin bir günde dolar cinsinden tipik hareketi. Stop mesafesi ölçüsü.</div>
+    <div class="glossary-term"><strong>Likidite:</strong> Hissenin günlük işlem hacmi (dolar). Eşik: 20M $+. Düşükse giriş-çıkışta kayma olur.</div>
+    <div class="glossary-term"><strong>Kayma (slippage):</strong> Emrin istediğin fiyattan değil, daha kötü fiyattan gerçekleşmesi.</div>
+    <div class="glossary-term"><strong>Kırılım (breakout):</strong> Fiyatın sıkıştığı dar bölgeden hacimle yukarı çıkışı.</div>
+    <div class="glossary-term"><strong>Kurulum (setup):</strong> İşleme girmeden önce aranan, kurallarla tanımlı grafik düzeni.</div>
+    <div class="glossary-term"><strong>Bayrak direği:</strong> Kurulumdan önceki keskin yükseliş — momentumun kanıtı, yayın yakıtı.</div>
+    <div class="glossary-term"><strong>Sıkı konsolidasyon (bayrak):</strong> Direk sonrası dar aralıkta, küçük mumlu dinlenme — gerilmiş yay.</div>
+    <div class="glossary-term"><strong>Uzamış (extended):</strong> Fiyatın 10 günlük ortalamadan fazla uzaklaşması — kovalamak yasak.</div>
+    <div class="glossary-term"><strong>ORH:</strong> Açılış aralığı zirvesi (Opening Range High) — ilk 1/5/60 dakikanın en yükseği; hacimle kırılması giriş tetiğidir.</div>
+    <div class="glossary-term"><strong>EP (Episodik Pivot):</strong> Güçlü haber/earnings sonrası dev hacimli yukarı boşluk — kendisi tetik olan kurulum.</div>
+    <div class="glossary-term"><strong>Boşluk (gap):</strong> Hissenin bir önceki kapanıştan belirgin farklı fiyatla açılması.</div>
+    <div class="glossary-term"><strong>LoD (Günün dibi):</strong> Giriş gününün en düşük fiyatı — ilk günün stop seviyesi.</div>
+    <div class="glossary-term"><strong>Stop (zarar kes):</strong> Fiyat oraya gelirse pozisyonun otomatik kapanacağı, önceden belirlenmiş seviye.</div>
+    <div class="glossary-term"><strong>Atlanmış stop:</strong> Fiyatın stop seviyesine uğramadan çok altında açılması — kaybın planı aşması.</div>
+    <div class="glossary-term"><strong>Runner:</strong> Kısmi kâr satışından sonra trendi sürmesi için elde tutulan pozisyon parçası.</div>
+    <div class="glossary-term"><strong>Bedava sörf (free ride):</strong> Kısmi satış + stop'un maliyete taşınması — kalan pozisyonda kayıp ihtimalinin sıfırlanması.</div>
+    <div class="glossary-term"><strong>Earnings:</strong> Şirketin üç ayda bir açıkladığı finansal sonuçlar — sert gecelik boşlukların ana kaynağı.</div>
+    <div class="glossary-term"><strong>Opsiyon akışı (flow):</strong> Opsiyon piyasasındaki büyük emirlerin izi — kurumsal yön ipucu.</div>
+    <div class="glossary-term"><strong>Sweep / golden sweep:</strong> Birden çok borsayı tek anda süpüren agresif, büyük opsiyon emri.</div>
+    <div class="glossary-term"><strong>Dark pool:</strong> Borsa dışı platformlarda eşleşen büyük blok işlemler — sessiz kurumsal birikim ipucu.</div>
+    <div class="glossary-term"><strong>Insider:</strong> Şirket yöneticilerinin kendi şirket hisselerinde yaptığı, kamuya açıklanması zorunlu alım-satımlar.</div>
+    <div class="glossary-term"><strong>LEAPS:</strong> Vadesi 1 yıldan uzun opsiyonlar — uzun vadeli kurumsal pozisyonlanma ipucu.</div>
+    <div class="glossary-term"><strong>FOMO:</strong> Kaçırma korkusu — kurulumsuz, kovalayarak girilen işlemlerin ana sebebi.</div>
+    <div class="glossary-term"><strong>Tilt:</strong> Üst üste kayıplar sonrası kontrolün kaybedilip savruk işlemler açılması.</div>
+    <div class="glossary-term"><strong>Portföy ısısı:</strong> Tüm açık pozisyonların toplam R riski.</div>
+    <div class="glossary-term"><strong>Korelasyon:</strong> Pozisyonların birlikte hareket etme eğilimi — aynı temadan 5 hisse = 1 bahis.</div>
+    <div class="glossary-term"><strong>Kaldıraç:</strong> Borçla pozisyon büyütme — kazancı da kaybı da katlar.</div>
+    <div class="glossary-term"><strong>Ayı / boğa piyasası:</strong> Uzun süreli düşüş (zirveden −%20+) / uzun süreli geniş katılımlı yükseliş dönemi.</div>
+    <div class="glossary-term"><strong>Paper trade:</strong> Gerçek para olmadan, kâğıt üzerinde simüle işlem.</div>
+    <div class="glossary-term"><strong>Playbook:</strong> Traderın tek sayfalık kişisel kural ve rutin belgesi — işlem anayasası.</div>
+  </div>
+</div>
+
+<div class="disclaimer">
+  Bu eğitim içeriği yalnızca eğitim amaçlıdır; yatırım tavsiyesi değildir. Tarihsel fiyat verileri FMO (Financial Modeling) kaynaklıdır; geçmiş performans gelecek sonuçların garantisi değildir. İsabet oranı ve R istatistikleri Kristjan Kullamägi'nin (Qullamaggie) kamuya açık paylaşımlarından alınmıştır ve performans garantisi değildir. Swing Akademi · Haddini Aş Kulübü.
+</div>
+
+<div class="topnav" style="margin-top:14px;">
+  <button class="navbtn" data-go="home">← Harita</button>
+  <span></span>
+</div>
+</section>
+
+</div>
+
 <script>
-  function fs(){ document.fullscreenElement ? document.exitFullscreen() : document.documentElement.requestFullscreen(); }
-  function openTab(){ var b=new Blob([document.documentElement.outerHTML],{type:'text/html'}); window.open(URL.createObjectURL(b),'_blank'); }
-  function copyHTML(){ navigator.clipboard.writeText(document.documentElement.outerHTML).then(function(){ toast('HTML kopyalandı ✓'); }); }
-  function toast(m){ var t=document.getElementById('toast'); t.textContent=m; t.classList.add('show'); clearTimeout(t._h); t._h=setTimeout(function(){t.classList.remove('show');},1900); }
+(function(){
+  var TOTAL_XP = 1030;
+  var MODQ = {
+    m1:['m1q1','m1q2','m1q3'], m2:['m2q1','m2q2'], m3:['m3q1','m3q2'],
+    m4:['m4q1','m4q2'], m5:['m5q1','m5q2'], m6:['m6q1','m6q2'],
+    m7:['m7q1','m7q2'], m8:['m8q1','m8q2'], m9:['m9q1','m9q2'],
+    m10:['m10q1','m10q2'], m11:['m11q1','m11q2'], m12:['m12q1','m12q2'],
+    f1:['f1q1','f1q2','f1q3'], f2:['f2q1','f2q2','f2q3'],
+    f3:['f3q1','f3q2','f3q3'], f4:['f4q1','f4q2','f4q3']
+  };
+  var BADGES = {f1:'bd-avci', f2:'bd-icraci', f3:'bd-yonetici', f4:'bd-mezun'};
 
-  var P = Akademi.init({ demo: true });   // prototip demo. Yayında: {demo:false}
-  Akademi.touchStreak(); P = Akademi.get();
+  // --- Durum (localStorage; yoksa bellek) ---
+  var state = {xp:0, ans:{}, checks:{}, last:'home'};
+  function load(){
+    try{
+      var raw = localStorage.getItem('swingAkademiV1');
+      if(raw){ var s = JSON.parse(raw); if(s && typeof s==='object'){ state = s; state.ans=state.ans||{}; state.checks=state.checks||{}; } }
+    }catch(e){}
+  }
+  function save(){ try{ localStorage.setItem('swingAkademiV1', JSON.stringify(state)); }catch(e){} }
 
-  // İstatistik şeridi
-  var lv = Akademi.levelFor(P.xp);
-  document.getElementById('lvlRing').style.setProperty('--p', lv.pct);
-  document.getElementById('lvlIcon').textContent = lv.icon;
-  document.getElementById('lvlName').textContent = lv.name;
-  document.getElementById('lvlNext').textContent = lv.next ? ((lv.next.min - P.xp) + ' XP sonra: ' + lv.next.name) : 'En üst seviye 👑';
-  Akademi.countUp(document.getElementById('xpVal'), P.xp);
-  document.getElementById('streakVal').textContent = P.streak.count;
-  document.getElementById('discVal').textContent = P.discipline.count;
-  var pct = Math.round(P.completed.length / 12 * 100);
-  document.getElementById('pctVal').textContent = pct;
-  document.getElementById('doneCount').textContent = P.completed.length;
-  setTimeout(function(){ document.getElementById('pbarFill').style.width = pct + '%'; }, 200);
-
-  // Yol haritası durumları (yalnız modül kartları)
-  document.querySelectorAll('.rcard[data-mod]').forEach(function(card){
-    var id = +card.getAttribute('data-mod');
-    var st = Akademi.statusOf(id);
-    card.classList.add(st);
-    var s = card.querySelector('.rc-state');
-    if (st==='done')    s.innerHTML = '✓ Tamamlandı';
-    if (st==='current'){ s.innerHTML = '⭐ Şimdi sıra burada'; var g=document.createElement('span'); g.className='go'; g.textContent='Başla →'; card.appendChild(g); }
-    if (st==='locked')  s.innerHTML = '🔒 Kilitli';
+  // --- Navigasyon ---
+  function show(id){
+    document.querySelectorAll('.module').forEach(function(s){ s.classList.remove('active'); });
+    var el = document.getElementById(id);
+    if(el){ el.classList.add('active'); state.last = id; save(); window.scrollTo(0,0); }
+  }
+  document.querySelectorAll('[data-go]').forEach(function(b){
+    b.addEventListener('click', function(){ show(b.dataset.go); });
   });
 
-  // Faz sınavı kartları
-  document.querySelectorAll('.ecard[data-exam]').forEach(function(card){
-    var n = +card.getAttribute('data-exam');
-    var s = card.querySelector('.rc-state');
-    if (Akademi.examDone(n)) { card.classList.add('done'); s.innerHTML = '✓ Geçildi'; }
-    else { s.innerHTML = '🏹 Sınava gir'; }
+  // --- Soru motoru ---
+  function applyAnswer(card, qid, chosenBtn, animate){
+    var opts = card.querySelectorAll('.opt');
+    var exp = card.querySelector('.explain');
+    var rec = state.ans[qid];
+    if(!rec) return;
+    opts.forEach(function(b, i){
+      b.disabled = true;
+      if(b.dataset.k === 'c') b.classList.add('correct');
+      else if(i === rec.i) b.classList.add('wrong');
+    });
+    var btn = opts[rec.i];
+    if(btn && exp){
+      exp.textContent = btn.dataset.e || '';
+      exp.classList.add('show', rec.ok ? 'good' : 'bad');
+    }
+  }
+  document.querySelectorAll('.scenario').forEach(function(card){
+    var qid = card.dataset.q;
+    var xp = parseInt(card.dataset.xp || '0', 10);
+    var opts = card.querySelectorAll('.opt');
+    opts.forEach(function(btn, idx){
+      btn.addEventListener('click', function(){
+        if(state.ans[qid]) return;
+        var ok = btn.dataset.k === 'c';
+        state.ans[qid] = {i:idx, ok:ok};
+        if(ok && xp > 0){ state.xp += xp; }
+        save();
+        applyAnswer(card, qid, btn, true);
+        refresh();
+      });
+    });
   });
 
-  // Rozetler
-  document.querySelectorAll('.badge').forEach(function(b){
-    b.classList.add(P.badges.indexOf(b.getAttribute('data-b'))!==-1 ? 'earned' : 'locked');
+  // --- Checkbox kalıcılığı ---
+  document.querySelectorAll('input[data-c]').forEach(function(cb){
+    cb.addEventListener('change', function(){
+      state.checks[cb.dataset.c] = cb.checked; save();
+    });
   });
 
-  document.getElementById('continueBtn').addEventListener('click', function(e){
-    e.preventDefault();
-    document.getElementById('roadmap').scrollIntoView({behavior:'smooth',block:'start'});
+  // --- Sınav sıfırlama ---
+  document.querySelectorAll('[data-reset]').forEach(function(b){
+    b.addEventListener('click', function(){
+      var ex = b.dataset.reset;
+      (MODQ[ex]||[]).forEach(function(q){ delete state.ans[q]; });
+      save();
+      location.reload();
+    });
   });
 
-  Akademi.revealOnScroll();
+  // --- Durum yenileme: XP, rozetler, harita noktaları, sınav sonuçları ---
+  function refresh(){
+    document.getElementById('xp').textContent = state.xp + ' / ' + TOTAL_XP + ' XP';
+    document.getElementById('fill').style.width = Math.min(100, Math.round(state.xp / TOTAL_XP * 100)) + '%';
+
+    Object.keys(MODQ).forEach(function(mid){
+      var qs = MODQ[mid];
+      var done = qs.filter(function(q){ return state.ans[q]; }).length;
+      var dot = document.getElementById('st-' + mid);
+      if(dot){
+        dot.className = 'dot ' + (done === qs.length ? 'g' : (done > 0 ? 'a' : 'n'));
+      }
+    });
+
+    // İlk Adım rozeti: Modül 1'in 3 sorusu da cevaplandı
+    var m1done = MODQ.m1.every(function(q){ return state.ans[q]; });
+    document.getElementById('bd-ilkadim').classList.toggle('earned', m1done);
+
+    // Sınav rozetleri + sonuç metinleri
+    Object.keys(BADGES).forEach(function(ex){
+      var qs = MODQ[ex];
+      var answered = qs.filter(function(q){ return state.ans[q]; }).length;
+      var correct = qs.filter(function(q){ return state.ans[q] && state.ans[q].ok; }).length;
+      var all = answered === qs.length;
+      var earned = all && correct === qs.length;
+      document.getElementById(BADGES[ex]).classList.toggle('earned', earned);
+      var res = document.getElementById(ex + 'res');
+      if(res){
+        if(!all) res.textContent = answered + '/' + qs.length + ' cevaplandı — devam et';
+        else if(earned) res.textContent = '3/3 doğru — rozet kazanıldı, tebrikler!';
+        else res.textContent = correct + '/3 doğru — rozet için 3/3 gerekiyor. İlgili modüllere dön, sonra sıfırla ve tekrar dene.';
+      }
+    });
+  }
+
+  // --- Sıralanabilir tablolar ---
+  document.querySelectorAll('table').forEach(function(table){
+    var dirs = {};
+    table.querySelectorAll('th').forEach(function(th, col){
+      th.addEventListener('click', function(){
+        var tbody = table.querySelector('tbody');
+        if(!tbody) return;
+        var rows = Array.prototype.slice.call(tbody.querySelectorAll('tr'));
+        dirs[col] = !dirs[col];
+        rows.sort(function(a, b){
+          var x = (a.cells[col] ? a.cells[col].textContent : '').trim();
+          var y = (b.cells[col] ? b.cells[col].textContent : '').trim();
+          var nx = parseFloat(x.replace(/[^0-9,.-]/g, '').replace(',', '.'));
+          var ny = parseFloat(y.replace(/[^0-9,.-]/g, '').replace(',', '.'));
+          var cmp;
+          if(!isNaN(nx) && !isNaN(ny)) cmp = nx - ny;
+          else cmp = x.localeCompare(y, 'tr');
+          return dirs[col] ? cmp : -cmp;
+        });
+        rows.forEach(function(r){ tbody.appendChild(r); });
+      });
+    });
+  });
+
+  // --- Başlangıç ---
+  (function(){
+    var d = new Date();
+    var ay = ['Ocak','Şubat','Mart','Nisan','Mayıs','Haziran','Temmuz','Ağustos','Eylül','Ekim','Kasım','Aralık'];
+    var el = document.getElementById('meta-date');
+    if(el) el.innerHTML = '<strong>' + d.getDate() + ' ' + ay[d.getMonth()] + ' ' + d.getFullYear() + '</strong>';
+  })();
+  load();
+  // Cevaplanmış soruları geri yükle
+  document.querySelectorAll('.scenario').forEach(function(card){
+    var qid = card.dataset.q;
+    if(state.ans[qid]) applyAnswer(card, qid, null, false);
+  });
+  // Checkbox durumlarını geri yükle
+  document.querySelectorAll('input[data-c]').forEach(function(cb){
+    if(state.checks[cb.dataset.c]) cb.checked = true;
+  });
+  refresh();
+  show(state.last && document.getElementById(state.last) ? state.last : 'home');
+})();
 </script>
 </body>
 </html>
